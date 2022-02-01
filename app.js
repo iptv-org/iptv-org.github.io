@@ -17,9 +17,6 @@ const ChannelItem = {
       <td class="is-vcentered" nowrap>
         <code v-text="channel.id"></code>
       </td>
-      <td class="is-vcentered">
-        <p v-for="guide in channel.guides"><code style="white-space: nowrap" v-text="guide"></code></p>
-      </td>
     </tr>
   `
 }
@@ -99,7 +96,6 @@ const CountryItem = {
                 <th></th>
                 <th>Name</th>
                 <th>TVG-ID</th>
-                <th>EPG</th>
               </tr>
             </thead>
             <tbody>
