@@ -28,49 +28,23 @@ const CountryItem = {
   components: {
     ChannelItem
   },
-  props: ['item', 'normQuery', 'regQuery'],
-  data() {
-    return {
-      count: 0
-    }
-  },
-  computed: {
-    countryChannels() {
-      if (!this.normQuery) return this.item.channels
-
-      return (
-        this.item.channels.filter(c => {
-          const normResult = c.key.includes(this.normQuery)
-          const regResult = this.regQuery
-            ? this.regQuery.test(c.name) || this.regQuery.test(c.id)
-            : false
-
-          return normResult || regResult
-        }) || []
-      )
-    }
-  },
-  watch: {
-    countryChannels: function (value) {
-      this.count = value.length
-    }
-  },
+  props: ['channels', 'normQuery', 'regQuery', 'country'],
   template: `
     <div
       class="card mb-3 is-shadowless"
       style="border: 1px solid #dbdbdb"
-      v-show="countryChannels && countryChannels.length > 0"
+      v-show="channels && channels.length > 0"
     >
       <div
         class="card-header is-shadowless is-clickable"
-        @click="item.expanded = !item.expanded"
+        @click="country.expanded = !country.expanded"
       >
-        <span class="card-header-title">{{item.flag}}&nbsp;{{item.name}}</span>
+        <span class="card-header-title">{{country.flag}}&nbsp;{{country.name}}</span>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
               <path
-                v-show="!item.expanded"
+                v-show="!country.expanded"
                 fill="none"
                 stroke="currentColor"
                 stroke-linecap="round"
@@ -79,7 +53,7 @@ const CountryItem = {
                 d="M112 184l144 144 144-144"
               />
               <path
-                v-show="item.expanded"
+                v-show="country.expanded"
                 fill="none"
                 stroke="currentColor"
                 stroke-linecap="round"
@@ -91,7 +65,7 @@ const CountryItem = {
           </span>
         </button>
       </div>
-      <div class="card-content" v-show="item.expanded || (count > 0 && normQuery.length)">
+      <div class="card-content" v-show="country.expanded || (channels && channels.length > 0 && normQuery.length)">
         <div class="table-container">
           <table class="table" style="min-width: 100%">
             <thead>
@@ -103,7 +77,7 @@ const CountryItem = {
               </tr>
             </thead>
             <tbody>
-              <channel-item v-for="channel in countryChannels" :channel="channel"></channel-item>
+              <channel-item v-for="channel in channels" :channel="channel"></channel-item>
             </tbody>
           </table>
         </div>
@@ -122,7 +96,25 @@ const App = {
       query: '',
       normQuery: '',
       regQuery: null,
-      items: []
+      countries: [],
+      channels: []
+    }
+  },
+  computed: {
+    filtered() {
+      if (!this.normQuery) return this.channels
+
+      return this.channels.filter(c => {
+        const normResult = c.key.includes(this.normQuery)
+        const regResult = this.regQuery
+          ? this.regQuery.test(c.name) || this.regQuery.test(c.id)
+          : false
+
+        return normResult || regResult
+      })
+    },
+    grouped() {
+      return _.groupBy(this.filtered, 'country')
     }
   },
   methods: {
@@ -138,7 +130,7 @@ const App = {
     guides = guides.length ? guides : []
     guides = _.groupBy(guides, 'channel')
 
-    const channels = await fetch('https://iptv-org.github.io/api/channels.json')
+    this.channels = await fetch('https://iptv-org.github.io/api/channels.json')
       .then(response => response.json())
       .then(arr =>
         arr.map(c => {
@@ -147,16 +139,17 @@ const App = {
           return c
         })
       )
-      .then(arr => _.groupBy(arr, 'country'))
-      .catch(console.log)
+      .catch(err => {
+        console.log(err)
+        return []
+      })
 
     const countries = await fetch('https://iptv-org.github.io/api/countries.json')
       .then(response => response.json())
       .catch(console.log)
 
-    this.items = countries.map(i => {
+    this.countries = countries.map(i => {
       i.expanded = false
-      i.channels = channels[i.code] || []
       return i
     })
 
