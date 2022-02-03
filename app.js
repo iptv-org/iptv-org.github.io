@@ -87,6 +87,9 @@ const CountryItem = {
 }
 
 const App = {
+  compilerOptions: {
+    isCustomElement: tag => tag.startsWith('ion-')
+  },
   components: {
     CountryItem
   },
@@ -97,7 +100,8 @@ const App = {
       normQuery: '',
       regQuery: null,
       countries: [],
-      channels: []
+      channels: [],
+      scrollTop: 0
     }
   },
   computed: {
@@ -121,38 +125,51 @@ const App = {
     search() {
       this.normQuery = this.query.replace(/\s/g, '').toLowerCase()
       this.regQuery = new RegExp(this.query)
+    },
+    scrollToTop() {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+    },
+    onScroll(e) {
+      this.scrollTop = window.top.scrollY
+    },
+    async loadChannels() {
+      let guides = await fetch('https://iptv-org.github.io/api/guides.json')
+        .then(response => response.json())
+        .catch(console.log)
+      guides = guides.length ? guides : []
+      guides = _.groupBy(guides, 'channel')
+
+      this.channels = await fetch('https://iptv-org.github.io/api/channels.json')
+        .then(response => response.json())
+        .then(arr =>
+          arr.map(c => {
+            c.key = `${c.id}_${c.name}`.replace(/\s/g, '').toLowerCase()
+            c.guides = guides[c.id] || []
+            return c
+          })
+        )
+        .catch(err => {
+          console.log(err)
+          return []
+        })
+
+      const countries = await fetch('https://iptv-org.github.io/api/countries.json')
+        .then(response => response.json())
+        .catch(console.log)
+
+      this.countries = countries.map(i => {
+        i.expanded = false
+        return i
+      })
     }
   },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
   async mounted() {
-    let guides = await fetch('https://iptv-org.github.io/api/guides.json')
-      .then(response => response.json())
-      .catch(console.log)
-    guides = guides.length ? guides : []
-    guides = _.groupBy(guides, 'channel')
-
-    this.channels = await fetch('https://iptv-org.github.io/api/channels.json')
-      .then(response => response.json())
-      .then(arr =>
-        arr.map(c => {
-          c.key = `${c.id}_${c.name}`.replace(/\s/g, '').toLowerCase()
-          c.guides = guides[c.id] || []
-          return c
-        })
-      )
-      .catch(err => {
-        console.log(err)
-        return []
-      })
-
-    const countries = await fetch('https://iptv-org.github.io/api/countries.json')
-      .then(response => response.json())
-      .catch(console.log)
-
-    this.countries = countries.map(i => {
-      i.expanded = false
-      return i
-    })
-
+    window.addEventListener('scroll', this.onScroll)
+    await this.loadChannels()
     this.isLoading = false
   }
 }

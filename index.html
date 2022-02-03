@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
   </head>
   <body style="background-color: #f6f8fa; min-height: 100vh">
     <div id="app">
@@ -58,7 +62,9 @@
                         </button>
                       </div>
                     </div>
-                    <p v-if="!isLoading" class="help">Found {{ filtered.length.toLocaleString() }} channels</p>
+                    <p v-if="!isLoading" class="help">
+                      Found {{ filtered.length.toLocaleString() }} channels
+                    </p>
                   </div>
                 </div>
               </form>
@@ -67,11 +73,47 @@
                 <div class="level-item">Loading...</div>
               </div>
 
-              <country-item v-for="country in countries" :country="country" :channels="grouped[country.code]" :norm-query="normQuery" :reg-query="regQuery"></country-item>
+              <country-item
+                v-for="country in countries"
+                :country="country"
+                :channels="grouped[country.code]"
+                :norm-query="normQuery"
+                :reg-query="regQuery"
+              ></country-item>
             </div>
           </div>
         </div>
       </div>
+
+      <footer
+        class="footer"
+        style="
+          background-color: transparent;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          padding: 3rem 1.5rem;
+          pointer-events: none;
+        "
+      >
+        <div class="content">
+          <div class="level">
+            <div class="level-left"></div>
+            <div class="level-right">
+              <button
+                v-show="scrollTop > 100"
+                class="button level-item is-hidden-mobile"
+                @click="scrollToTop()"
+                style="pointer-events: auto"
+              >
+                <span class="icon is-small">
+                  <ion-icon name="arrow-up-outline"></ion-icon>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <script src="app.js"></script>
