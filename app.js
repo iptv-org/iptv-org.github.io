@@ -17,6 +17,9 @@ const ChannelItem = {
       <td class="is-vcentered" nowrap>
         <code v-text="channel.id"></code>
       </td>
+      <td class="is-vcentered">
+        <p v-for="guide in channel.guides"><code style="white-space: nowrap" v-text="guide.url"></code></p>
+      </td>
     </tr>
   `
 }
@@ -96,6 +99,7 @@ const CountryItem = {
                 <th></th>
                 <th>Name</th>
                 <th>TVG-ID</th>
+                <th>EPG</th>
               </tr>
             </thead>
             <tbody>
@@ -128,19 +132,18 @@ const App = {
     }
   },
   async mounted() {
-    // NOTE: epg/guides.json temporary anavailable
-    // const guides = await fetch('https://iptv-org.github.io/epg/guides.json')
-    //   .then(response => response.json())
-    //   .catch(console.log)
-    const guides = []
+    let guides = await fetch('https://iptv-org.github.io/api/guides.json')
+      .then(response => response.json())
+      .catch(console.log)
+    guides = guides.length ? guides : []
+    guides = _.groupBy(guides, 'channel')
 
     const channels = await fetch('https://iptv-org.github.io/api/channels.json')
       .then(response => response.json())
       .then(arr =>
         arr.map(c => {
-          const found = guides.filter(g => g.channel === c.id)
           c.key = `${c.id}_${c.name}`.replace(/\s/g, '').toLowerCase()
-          c.guides = found.map(f => f.url) || []
+          c.guides = guides[c.id] || []
           return c
         })
       )
