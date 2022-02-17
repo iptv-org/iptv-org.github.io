@@ -15,10 +15,10 @@ const ChannelItem = {
         <p v-text="channel.name"></p>
       </td>
       <td class="is-vcentered" nowrap>
-        <code v-text="channel.id"></code>
+        <code v-text="channel.id" style="user-select: all;"></code>
       </td>
       <td class="is-vcentered">
-        <p v-for="guide in channel.guides"><code style="white-space: nowrap" v-text="guide.url"></code></p>
+        <p v-for="guide in channel.guides"><code style="white-space: nowrap; user-select: all;" v-text="guide.url"></code></p>
       </td>
     </tr>
   `
