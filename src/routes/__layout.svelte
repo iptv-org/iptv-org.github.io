@@ -12,7 +12,7 @@
 <div class="navbar" style="background-color: transparent">
   <div class="navbar-end">
     <div class="navbar-item">
-      <a href="https://github.com/iptv-org/database">
+      <a href="https://github.com/iptv-org/api">
         <span class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
