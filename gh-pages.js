@@ -1,4 +1,4 @@
-var { publish } = require('gh-pages')
+import { publish } from 'gh-pages'
 
 publish(
 	'build',
