@@ -5,8 +5,12 @@ const config = {
 	kit: {
 		adapter: adapter({
 			pages: 'docs',
-			assets: 'docs'
-		})
+			assets: 'docs',
+			precompress: true
+		}),
+		prerender: {
+			default: true
+		}
 	}
 }
 

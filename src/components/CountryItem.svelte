@@ -1,65 +1,52 @@
 <script>
-	import ChannelItem from './ChannelItem.svelte'
+	import ChannelGrid from './ChannelGrid.svelte'
 
 	export let country
 	export let channels = []
-	export let normQuery
+	export let hasQuery
+
+	$: expanded = country.expanded || (channels && channels.length > 0 && hasQuery)
 
 	function onExpand() {
 		country.expanded = !country.expanded
 	}
 </script>
 
-{#if channels && channels.length > 0}
-<div class="card mb-3 is-shadowless" style="border: 1px solid #dbdbdb">
-	<div class="card-header is-shadowless is-clickable" on:click="{onExpand}">
-		<span class="card-header-title">{country.flag}&nbsp;{country.name}</span>
-		<button class="card-header-icon" aria-label="more options">
-			<span class="icon">
-				<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-					{#if !country.expanded}
-					<path
-						fill="none"
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="48"
-						d="M112 184l144 144 144-144"
-					/>
-					{/if} {#if country.expanded}
-					<path
-						fill="none"
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="48"
-						d="M112 328l144-144 144 144"
-					/>
-					{/if}
-				</svg>
-			</span>
+<div class="mb-3">
+	<h2 id="accordion-heading-{country.code}">
+		<button
+			on:click="{onExpand}"
+			type="button"
+			class="flex items-center focus:ring-0 dark:focus:ring-gray-800 justify-between p-4 w-full font-medium text-left border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-800"
+			class:rounded-t-md="{expanded}"
+			class:rounded-md="{!expanded}"
+			class:border-b-0="{expanded}"
+			aria-expanded="{expanded}"
+			aria-controls="accordion-body-{country.code}"
+		>
+			<span>{country.flag}&nbsp;{country.name}</span>
+			<svg
+				class:rotate-180="{expanded}"
+				class="w-6 h-6 shrink-0"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+					clip-rule="evenodd"
+				></path>
+			</svg>
 		</button>
-	</div>
-	{#if country.expanded || (channels && channels.length > 0 && normQuery.length)}
-	<div class="card-content">
-		<div class="table-container">
-			<table class="table" style="min-width: 100%">
-				<thead>
-					<tr>
-						<th></th>
-						<th>Name</th>
-						<th>TVG-ID</th>
-						<th>EPG</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each channels as channel}
-					<ChannelItem bind:channel="{channel}"></ChannelItem>
-					{/each}
-				</tbody>
-			</table>
+	</h2>
+	{#if expanded}
+	<div id="accordion-body-{country.code}" aria-labelledby="accordion-heading-{country.code}">
+		<div
+			class="border border-gray-200 dark:border-gray-700 dark:bg-gray-900 rounded-b-md overflow-hidden"
+		>
+			<ChannelGrid bind:channels="{channels}" />
 		</div>
 	</div>
 	{/if}
 </div>
-{/if}
