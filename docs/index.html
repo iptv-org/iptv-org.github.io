@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="manifest" crossorigin="use-credentials" href="./manifest.json">
 		<meta http-equiv="content-security-policy" content=""><title>iptv-org</title><script data-svelte="svelte-bjnlvt">if (document) {
       let mode = localStorage.theme || 'light'
       if (mode === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -18,11 +19,16 @@
 	<link rel="stylesheet" href="/_app/assets/vendor-c8b32335.css">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-dfa63d41.css">
 	<link rel="stylesheet" href="/_app/assets/pages/index.svelte-fade4f59.css">
-	<link rel="modulepreload" href="/_app/start-3427dd58.js">
+	<link rel="modulepreload" href="/_app/start-6444c7e5.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-699b6971.js">
 	<link rel="modulepreload" href="/_app/pages/__layout.svelte-c3821928.js">
 	<link rel="modulepreload" href="/_app/chunks/store-61c15de0.js">
 	<link rel="modulepreload" href="/_app/pages/index.svelte-c559d2d1.js">
+				<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/service-worker.js');
+		}
+	</script>
 	</head>
 	<body>
 		
@@ -58,7 +64,7 @@
 
 
 		<script type="module" data-hydrate="1wsdtjz">
-		import { start } from "/_app/start-3427dd58.js";
+		import { start } from "/_app/start-6444c7e5.js";
 		start({
 			target: document.querySelector('[data-hydrate="1wsdtjz"]').parentNode,
 			paths: {"base":"","assets":""},
