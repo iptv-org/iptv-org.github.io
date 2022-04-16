@@ -16,8 +16,8 @@ export function search(_query) {
 		let field = '_key'
 		if (value.includes(':')) {
 			;[field, value] = value.split(':')
-			value = value.replace(/\"/g, '')
 		}
+		value = value.replace(/\"/g, '')
 
 		if (field && value) {
 			filters.push({ field, value })
@@ -156,8 +156,7 @@ function generateSearchKey(c) {
 	return [c.id, c.name, c.native_name, translit]
 		.map(v => v || '')
 		.filter(v => v)
-		.join('_')
-		.replace(/\s/g, '')
+		.join('|')
 		.toLowerCase()
 }
 
