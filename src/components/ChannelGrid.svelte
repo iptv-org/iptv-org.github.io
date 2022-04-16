@@ -13,7 +13,7 @@
 				>
 					<thead class="bg-gray-50 dark:bg-gray-700">
 						<tr>
-							<th scope="col" class="min-w-[10rem] md:w-[12rem]"></th>
+							<th scope="col" class="min-w-[10rem] md:w-[12rem] relative"></th>
 							<th
 								scope="col"
 								class="py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 min-w-[14rem] md:w-[19rem]"
@@ -26,7 +26,7 @@
 							>
 								TVG-ID
 							</th>
-							<th scope="col">
+							<th scope="col" class="relative">
 								<span class="sr-only">Actions</span>
 							</th>
 						</tr>
