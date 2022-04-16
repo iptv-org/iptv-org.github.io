@@ -1,4 +1,5 @@
 <script>
+	import dayjs from 'dayjs'
 	import { search, query, hasQuery } from '../store.js'
 
 	export let data
@@ -16,6 +17,8 @@
 		{ name: 'languages', type: 'link[]', value: data.languages.map(v => v.name) },
 		{ name: 'categories', type: 'link[]', value: data.categories.map(v => v.name) },
 		{ name: 'is_nsfw', type: 'link', value: data.is_nsfw.toString() },
+		{ name: 'launched', type: 'date', value: data.launched ? dayjs(data.launched).format('D MMMM YYYY') : null },
+		{ name: 'closed', type: 'date', value: data.closed ? dayjs(data.closed).format('D MMMM YYYY') : null },
 		{ name: 'website', type: 'external_link', value: data.website }
 	].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
 
