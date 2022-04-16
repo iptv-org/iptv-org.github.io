@@ -63,7 +63,7 @@
 		{#each fieldset as field}
 		<tr>
 			<td
-				class="w-[6rem] md:w-[11rem] px-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400 align-top"
+				class="w-[7rem] md:w-[11rem] px-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400 align-top"
 			>
 				{field.name}
 			</td>
