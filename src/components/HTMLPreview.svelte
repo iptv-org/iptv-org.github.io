@@ -1,9 +1,15 @@
 <script>
 	import dayjs from 'dayjs'
-	import { search, query, hasQuery } from '../store.js'
+	import { search, query, hasQuery, channels } from '../store.js'
 
 	export let data
 	export let close
+
+	let replaced_by = null
+	if (data.replaced_by) {
+		const channel = $channels.find(c => c.id === data.replaced_by)
+		if (channel) replaced_by = channel.name
+	}
 
 	const fieldset = [
 		{ name: 'logo', type: 'image', value: data.logo },
@@ -17,8 +23,17 @@
 		{ name: 'languages', type: 'link[]', value: data.languages.map(v => v.name) },
 		{ name: 'categories', type: 'link[]', value: data.categories.map(v => v.name) },
 		{ name: 'is_nsfw', type: 'link', value: data.is_nsfw.toString() },
-		{ name: 'launched', type: 'date', value: data.launched ? dayjs(data.launched).format('D MMMM YYYY') : null },
-		{ name: 'closed', type: 'date', value: data.closed ? dayjs(data.closed).format('D MMMM YYYY') : null },
+		{
+			name: 'launched',
+			type: 'date',
+			value: data.launched ? dayjs(data.launched).format('D MMMM YYYY') : null
+		},
+		{
+			name: 'closed',
+			type: 'date',
+			value: data.closed ? dayjs(data.closed).format('D MMMM YYYY') : null
+		},
+		{ name: 'replaced_by', type: 'channel', value: replaced_by },
 		{ name: 'website', type: 'external_link', value: data.website }
 	].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
 
@@ -53,6 +68,13 @@
 								referrerpolicy="no-referrer"
 								class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
 							/>
+							{:else if field.type === 'channel'}
+							<button
+								on:click="{() => searchBy('name', field.value)}"
+								class="underline hover:text-blue-500"
+							>
+								{field.value}
+							</button>
 							{:else if field.type === 'link'}
 							<button
 								on:click="{() => searchBy(field.name, field.value)}"
