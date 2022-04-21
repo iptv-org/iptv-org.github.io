@@ -9,7 +9,6 @@ export const countries = writable({})
 export const filteredChannels = writable([])
 
 export function search(_query) {
-	setSearchParam('q', _query)
 	const parts = _query.toLowerCase().match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g) || []
 	const filters = []
 	for (let value of parts) {
@@ -180,11 +179,19 @@ function generateSearchable(c) {
 	return searchable
 }
 
-function setSearchParam(key, value) {
+export function setSearchParam(key, value) {
 	if (window.history.pushState) {
 		let query = key && value ? `?${key}=${value}` : ''
 		query = query.replace(/\+/g, '%2B')
 		const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}${query}`
-		window.history.pushState({ path: url }, '', url)
+		const state = {}
+		state[key] = value
+		window.history.pushState(state, '', url)
+		setPageTitle(value)
 	}
+}
+
+export function setPageTitle(value) {
+	const title = value ? `${value} · iptv-org` : 'iptv-org'
+	document.title = title
 }

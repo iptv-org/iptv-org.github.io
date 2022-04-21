@@ -1,6 +1,6 @@
 <script>
 	import dayjs from 'dayjs'
-	import { search, query, hasQuery, channels } from '../store.js'
+	import { search, query, hasQuery, channels, setSearchParam } from '../store.js'
 
 	export let data
 	export let close
@@ -40,9 +40,12 @@
 	function searchBy(name, value) {
 		value = value.includes(' ') ? `"${value}"` : value
 		const q = `${name}:${value}`
-		query.set(q)
-		hasQuery.set(true)
-		search(q)
+		if($query !== q) {
+			query.set(q)
+			hasQuery.set(true)
+			search(q)
+			setSearchParam('q', q)
+		}
 		close()
 	}
 </script>

@@ -1,6 +1,6 @@
 <script>
   import InfiniteLoading from 'svelte-infinite-loading'
-  import { fetchChannels, hasQuery, countries, filteredChannels, query, search } from '../store.js'
+  import { fetchChannels, hasQuery, countries, filteredChannels, query, search, setSearchParam, setPageTitle } from '../store.js'
   import { onMount, onDestroy } from 'svelte'
   import CountryItem from '../components/CountryItem.svelte'
   import SearchField from '../components/SearchField.svelte'
@@ -19,12 +19,8 @@
 
   $: grouped = _.groupBy($filteredChannels, 'country.code')
 
-  function reset() {
-    limit = initLimit
-    infiniteId = +new Date()
-  }
-
-  function loadMore({ detail: { loaded, complete } }) {
+  function loadMore({ detail }) {
+    let { loaded, complete } = detail
     if (limit < _countries.length) {
       limit++
       loaded()
@@ -33,10 +29,16 @@
     }
   }
 
+  function reset() {
+    infiniteId = +new Date()
+    limit = initLimit
+  }
+
   onMount(async () => {
     const params = new URLSearchParams(window.location.search)
     const q = params.get('q')
     if (q) {
+      setPageTitle(q)
       query.set(q)
       hasQuery.set(true)
     }
@@ -45,8 +47,21 @@
     _countries = Object.values($countries)
     isLoading = false
 
-    if ($hasQuery) {
+    if($hasQuery) {
       search($query)
+    }
+
+    window.onpopstate = (event) => {
+      const q = event.state.q
+      if (q) {
+        setPageTitle(q)
+        query.set(q)
+        hasQuery.set(true)
+        search($query)
+      } else {
+        setPageTitle(null)
+        hasQuery.set(false)
+      }
     }
   })
 </script>
