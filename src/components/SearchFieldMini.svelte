@@ -1,8 +1,13 @@
 <script>
-  import { query, search } from '../store.js'
+  import { query, search, setSearchParam } from '../store.js'
+
+  function onSubmit() {
+    setSearchParam('q', $query)
+    search($query)
+  }
 </script>
 
-<form on:submit|preventDefault="{search($query)}" autocomplete="off" class="w-full">
+<form on:submit|preventDefault="{onSubmit}" autocomplete="off" class="w-full">
   <div class="w-full">
     <label for="search-input" class="sr-only">Search</label>
     <div class="relative w-full">
