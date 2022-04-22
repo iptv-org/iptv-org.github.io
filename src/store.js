@@ -31,7 +31,9 @@ export function search(_query) {
 
 	const filtered = get(channels).filter(c => {
 		for (let f of filters) {
-			if (!c._searchable[f.field] || c._searchable[f.field].indexOf(f.value) === -1) {
+			if (!f.value) return false
+			const regex = new RegExp(f.value, 'i')
+			if (!c._searchable[f.field] || !regex.test(c._searchable[f.field])) {
 				return false
 			}
 		}
