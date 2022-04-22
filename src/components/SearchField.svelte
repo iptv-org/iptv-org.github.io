@@ -1,11 +1,16 @@
 <script>
-  import { query, search } from '../store.js'
+  import { query, search, setSearchParam } from '../store.js'
 
   export let found = 0
   export let isLoading = true
+
+  function onSubmit() {
+    setSearchParam('q', $query)
+    search($query)
+  }
 </script>
 
-<form class="mb-5" on:submit|preventDefault="{search($query)}">
+<form class="mb-5" on:submit|preventDefault="{onSubmit}">
   <div>
     <label for="search-input" class="sr-only">Search</label>
     <div class="relative mt-1">
