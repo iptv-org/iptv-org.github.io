@@ -4,7 +4,6 @@ const ASSETS = `cache_${version}`
 
 const to_cache = build.concat(files)
 const staticAssets = new Set(to_cache)
-console.log(ASSETS, staticAssets)
 
 self.addEventListener('install', event => {
 	event.waitUntil(
