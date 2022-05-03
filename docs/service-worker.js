@@ -1,5 +1,5 @@
 const build = [
-  "/_app/start-d43d765c.js",
+  "/_app/start-01c47118.js",
   "/_app/pages/__layout.svelte-8a4b19fb.js",
   "/_app/assets/pages/__layout.svelte-0f0f9924.css",
   "/_app/error.svelte-eafc136f.js",
@@ -15,11 +15,10 @@ const files = [
   "/logo_512.png",
   "/manifest.json"
 ];
-const version = "1650585984725";
+const version = "1651576934419";
 const ASSETS = `cache_${version}`;
 const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
-console.log(ASSETS, staticAssets);
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(ASSETS).then((cache) => cache.addAll(to_cache)).then(() => {
     self.skipWaiting();
