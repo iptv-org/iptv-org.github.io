@@ -1,5 +1,5 @@
 const build = [
-  "/_app/start-01c47118.js",
+  "/_app/start-0281ef27.js",
   "/_app/pages/__layout.svelte-8a4b19fb.js",
   "/_app/assets/pages/__layout.svelte-0f0f9924.css",
   "/_app/error.svelte-eafc136f.js",
@@ -15,7 +15,7 @@ const files = [
   "/logo_512.png",
   "/manifest.json"
 ];
-const version = "1651576934419";
+const version = "1652029742872";
 const ASSETS = `cache_${version}`;
 const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
@@ -51,13 +51,16 @@ self.addEventListener("fetch", (event) => {
     return;
   const url = new URL(event.request.url);
   const isHttp = url.protocol.startsWith("http");
-  const isDevServerRequest = url.hostname === self.location.hostname && url.port !== self.location.port;
-  const isStaticAsset = url.host === self.location.host && staticAssets.has(url.pathname);
+  const isSameOrigin = url.host === self.location.host;
+  const isStaticAsset = isSameOrigin && staticAssets.has(url.pathname);
   const skipBecauseUncached = event.request.cache === "only-if-cached" && !isStaticAsset;
-  if (isHttp && !isDevServerRequest && !skipBecauseUncached) {
-    event.respondWith((async () => {
-      const cachedAsset = isStaticAsset && await caches.match(event.request);
-      return cachedAsset || fetchAndCache(event.request);
-    })());
-  }
+  if (!isHttp || !isSameOrigin || skipBecauseUncached)
+    return;
+  event.respondWith((async () => {
+    let cachedAsset;
+    if (isStaticAsset) {
+      cachedAsset = await caches.match(event.request);
+    }
+    return cachedAsset || fetchAndCache(event.request);
+  })());
 });
