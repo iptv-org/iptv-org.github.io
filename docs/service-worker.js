@@ -1,13 +1,13 @@
 const build = [
-  "/_app/start-0281ef27.js",
-  "/_app/pages/__layout.svelte-8a4b19fb.js",
-  "/_app/assets/pages/__layout.svelte-0f0f9924.css",
-  "/_app/error.svelte-eafc136f.js",
-  "/_app/pages/index.svelte-925f19ed.js",
-  "/_app/assets/pages/index.svelte-fade4f59.css",
-  "/_app/chunks/vendor-e06f8fa1.js",
-  "/_app/assets/vendor-c8b32335.css",
-  "/_app/chunks/store-93a026ed.js"
+  "/_app/start-7ed185ec.js",
+  "/_app/pages/__layout.svelte-530a141d.js",
+  "/_app/assets/pages/__layout.svelte-07dcf560.css",
+  "/_app/error.svelte-67a4a6f4.js",
+  "/_app/pages/index.svelte-6f1b9321.js",
+  "/_app/assets/pages/index.svelte-7b0d7303.css",
+  "/_app/chunks/index-d84399ad.js",
+  "/_app/chunks/index-9924f987.js",
+  "/_app/chunks/store-c8953aa8.js"
 ];
 const files = [
   "/.nojekyll",
@@ -15,7 +15,7 @@ const files = [
   "/logo_512.png",
   "/manifest.json"
 ];
-const version = "1652029742872";
+const version = "1652032873384";
 const ASSETS = `cache_${version}`;
 const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
@@ -51,16 +51,14 @@ self.addEventListener("fetch", (event) => {
     return;
   const url = new URL(event.request.url);
   const isHttp = url.protocol.startsWith("http");
+  const isDevServerRequest = url.hostname === self.location.hostname && url.port !== self.location.port;
   const isSameOrigin = url.host === self.location.host;
   const isStaticAsset = isSameOrigin && staticAssets.has(url.pathname);
   const skipBecauseUncached = event.request.cache === "only-if-cached" && !isStaticAsset;
-  if (!isHttp || !isSameOrigin || skipBecauseUncached)
-    return;
-  event.respondWith((async () => {
-    let cachedAsset;
-    if (isStaticAsset) {
-      cachedAsset = await caches.match(event.request);
-    }
-    return cachedAsset || fetchAndCache(event.request);
-  })());
+  if (isHttp && isSameOrigin && !isDevServerRequest && !skipBecauseUncached) {
+    event.respondWith((async () => {
+      const cachedAsset = isStaticAsset && await caches.match(event.request);
+      return cachedAsset || fetchAndCache(event.request);
+    })());
+  }
 });
