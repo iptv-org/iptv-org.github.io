@@ -154,7 +154,7 @@ export async function fetchChannels() {
 function generateSearchKey(c) {
 	const translit = c.native_name ? transliterate(c.native_name) : null
 
-	return [c.id, c.name, c.native_name, translit, c.network]
+	return [c.id, c.name, c.native_name, translit, c.network, c.city]
 		.map(v => v || '')
 		.filter(v => v)
 		.join('|')
