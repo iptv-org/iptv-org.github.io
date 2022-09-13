@@ -1,5 +1,9 @@
 <script>
+  import { getContext } from 'svelte'
   import { query, search, setSearchParam } from '../store.js'
+  import SearchSyntaxPopup from './SearchSyntaxPopup.svelte'
+
+  const { open } = getContext('simple-modal')
 
   export let found = 0
   export let isLoading = true
@@ -7,6 +11,14 @@
   function onSubmit() {
     setSearchParam('q', $query)
     search($query)
+  }
+
+  const showSearchSyntax = () => {
+    open(
+      SearchSyntaxPopup,
+      {},
+      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+    )
   }
 </script>
 
@@ -36,12 +48,19 @@
         placeholder="Search for channels"
       />
     </div>
-    <p class="mt-2">
+    <div class="mt-2 flex justify-between">
       <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono"
         >Found&nbsp;
         <span class:animate-spin="{isLoading}">{ !isLoading ? found.toLocaleString() : '/' }</span>
         &nbsp;channels</span
       >
-    </p>
+      <button
+        type="button"
+        on:click|preventDefault="{showSearchSyntax}"
+        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400"
+      >
+        Advanced search syntax
+      </button>
+    </div>
   </div>
 </form>
