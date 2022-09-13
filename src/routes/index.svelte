@@ -1,6 +1,15 @@
 <script>
   import InfiniteLoading from 'svelte-infinite-loading'
-  import { fetchChannels, hasQuery, countries, filteredChannels, query, search, setSearchParam, setPageTitle } from '../store.js'
+  import {
+    fetchChannels,
+    hasQuery,
+    countries,
+    filteredChannels,
+    query,
+    search,
+    setSearchParam,
+    setPageTitle
+  } from '../store.js'
   import { onMount, onDestroy } from 'svelte'
   import CountryItem from '../components/CountryItem.svelte'
   import SearchField from '../components/SearchField.svelte'
@@ -17,7 +26,7 @@
 
   $: visible = _countries.slice(0, limit)
 
-  $: grouped = _.groupBy($filteredChannels, 'country.code')
+  $: grouped = _.groupBy($filteredChannels, 'country')
 
   function loadMore({ detail }) {
     let { loaded, complete } = detail
@@ -47,11 +56,11 @@
     _countries = Object.values($countries)
     isLoading = false
 
-    if($hasQuery) {
+    if ($hasQuery) {
       search($query)
     }
 
-    window.onpopstate = (event) => {
+    window.onpopstate = event => {
       const q = event.state.q
       if (q) {
         setPageTitle(q)
@@ -79,7 +88,8 @@
   >
     loading...
   </div>
-  {/if} {#each visible as country} {#if grouped[country.code] && grouped[country.code].length > 0}
+  {/if} {#each visible as country (country.code)} {#if grouped[country.code] &&
+  grouped[country.code].length > 0}
   <CountryItem
     bind:country="{country}"
     bind:channels="{grouped[country.code]}"
