@@ -77,7 +77,7 @@
 				</a>
 				{#if channel._searchable.is === 'closed'}
 				<div
-					class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:bg-gray-700 dark:text-gray-300 cursor-default rounded-full"
+					class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:text-gray-300 cursor-default rounded-full"
 					title="closed: {channel.closed}"
 				>
 					Closed
