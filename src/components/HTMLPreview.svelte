@@ -15,14 +15,51 @@
 		{ name: 'logo', type: 'image', value: data.logo },
 		{ name: 'name', type: 'string', value: data.name },
 		{ name: 'native_name', type: 'string', value: data.native_name },
-		{ name: 'network', type: 'link', value: data.network },
-		{ name: 'country', type: 'link', value: data.country.name },
-		{ name: 'subdivision', type: 'link', value: data.subdivision ? data.subdivision.name : null },
-		{ name: 'city', type: 'link', value: data.city },
-		{ name: 'broadcast_area', type: 'link[]', value: data.broadcast_area.map(v => v.name) },
-		{ name: 'languages', type: 'link[]', value: data.languages.map(v => v.name) },
-		{ name: 'categories', type: 'link[]', value: data.categories.map(v => v.name) },
-		{ name: 'is_nsfw', type: 'link', value: data.is_nsfw.toString() },
+		{
+			name: 'network',
+			type: 'link',
+			value: data.network ? { label: data.network, query: `network:${norm(data.network)}` } : null
+		},
+		{
+			name: 'country',
+			type: 'link',
+			value: { label: data._country.name, query: `country:${data._country.code}` }
+		},
+		{
+			name: 'subdivision',
+			type: 'link',
+			value: data._subdivision
+				? { label: data._subdivision.name, query: `subdivision:${data._subdivision.code}` }
+				: null
+		},
+		{
+			name: 'city',
+			type: 'link',
+			value: data.city ? { label: data.city, query: `city:${norm(data.city)}` } : null
+		},
+		{
+			name: 'broadcast_area',
+			type: 'link[]',
+			value: data._broadcast_area.map(v => ({
+				label: v.name,
+				query: `broadcast_area:${v.type}/${v.code}`
+			}))
+		},
+		{
+			name: 'languages',
+			type: 'link[]',
+			value: data._languages.map(v => ({ label: v.name, query: `languages:${v.code}` }))
+		},
+		{
+			name: 'categories',
+			type: 'link[]',
+			value: data._categories.map(v => ({ label: v.name, query: `categories:${v.id}` }))
+		},
+		{
+			name: 'is_nsfw',
+			type: 'link',
+			value: { label: data.is_nsfw.toString(), query: `is_nsfw:${data.is_nsfw.toString()}` }
+		},
 		{
 			name: 'launched',
 			type: 'date',
@@ -37,10 +74,12 @@
 		{ name: 'website', type: 'external_link', value: data.website }
 	].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
 
-	function searchBy(name, value) {
-		value = value.includes(' ') ? `"${value}"` : value
-		const q = `${name}:${value}`
-		if($query !== q) {
+	function norm(value) {
+		return value.includes(' ') ? `"${value}"` : value
+	}
+
+	function searchBy(q) {
+		if ($query !== q) {
 			query.set(q)
 			hasQuery.set(true)
 			search(q)
@@ -71,29 +110,22 @@
 								referrerpolicy="no-referrer"
 								class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
 							/>
-							{:else if field.type === 'channel'}
-							<button
-								on:click="{() => searchBy('name', field.value)}"
-								class="underline hover:text-blue-500"
-							>
-								{field.value}
-							</button>
 							{:else if field.type === 'link'}
 							<button
-								on:click="{() => searchBy(field.name, field.value)}"
+								on:click="{() => searchBy(field.value.query)}"
 								class="underline hover:text-blue-500"
 							>
-								{field.value}
+								{field.value.label}
 							</button>
 							{:else if field.type === 'link[]'} {#each field.value as value, i} {#if i > 0}<span
 								>,&nbsp;
 							</span>
 							{/if}
 							<button
-								on:click="{() => searchBy(field.name, value)}"
+								on:click="{() => searchBy(value.query)}"
 								class="underline hover:text-blue-500"
 							>
-								{value}
+								{value.label}
 							</button>
 							{/each} {:else if field.type === 'external_link'}
 							<a
