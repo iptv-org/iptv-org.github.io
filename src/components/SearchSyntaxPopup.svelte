@@ -60,20 +60,21 @@
       </button>
     </div>
     <div class="overflow-y-scroll overflow-x-hidden w-full">
-      <div class="p-6 text-gray-800">
-        <!-- <h2 class="text-xl font-semibold pb-2 border-b-[1px] my-2">Basic search</h2> -->
+      <div class="p-6 text-gray-800 dark:text-white">
         <table class="w-full">
           <thead>
             <tr>
-              <th class="border p-2">Query</th>
-              <th class="border p-2">Result</th>
+              <th class="border p-2 dark:border-gray-700">Query</th>
+              <th class="border p-2 dark:border-gray-700">Result</th>
             </tr>
           </thead>
           <tbody class="text-left">
             {#each examples as example}
-            <tr class="even:bg-gray-50">
-              <td class="border px-4 py-3 whitespace-nowrap">{example.query}</td>
-              <td class="border px-4 py-3">{example.result}</td>
+            <tr class="even:bg-gray-50 even:dark:bg-gray-700">
+              <td class="border dark:border-gray-700 px-4 py-3 whitespace-nowrap">
+                {example.query}
+              </td>
+              <td class="border dark:border-gray-700 px-4 py-3">{example.result}</td>
             </tr>
             {/each}
           </tbody>
