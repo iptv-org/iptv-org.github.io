@@ -30,8 +30,6 @@ export function search(_query) {
 		return
 	}
 
-	console.log(filters)
-
 	const filtered = get(channels).filter(c => {
 		let results = []
 		for (let f of filters) {
