@@ -1,9 +1,9 @@
 const build = [
-  "/_app/start-e06e5bc4.js",
+  "/_app/start-120c02ce.js",
   "/_app/pages/__layout.svelte-0f472765.js",
   "/_app/assets/pages/__layout.svelte-93a078ce.css",
   "/_app/error.svelte-5666402b.js",
-  "/_app/pages/index.svelte-52e88d44.js",
+  "/_app/pages/index.svelte-84f0f3e2.js",
   "/_app/assets/pages/index.svelte-7b0d7303.css",
   "/_app/chunks/index-21b643b4.js",
   "/_app/chunks/index-f9f1dab1.js",
@@ -15,7 +15,7 @@ const files = [
   "/logo_512.png",
   "/manifest.json"
 ];
-const version = "1663901444849";
+const version = "1666015065064";
 const ASSETS = `cache_${version}`;
 const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
