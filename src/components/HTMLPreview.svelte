@@ -21,6 +21,11 @@
 			value: data.network ? { label: data.network, query: `network:${norm(data.network)}` } : null
 		},
 		{
+			name: 'owners',
+			type: 'link[]',
+			value: data.owners.map(value => ({ label: value, query: `owners:${norm(value)}` }))
+		},
+		{
 			name: 'country',
 			type: 'link',
 			value: { label: data._country.name, query: `country:${data._country.code}` }
