@@ -13,8 +13,8 @@
       result: 'Find channels that have "Nat Geo" in the name.'
     },
     {
-      query: 'native_name:חינוכית',
-      result: 'Finds channels whose original name contains "חינוכית".'
+      query: 'alt_names:חינוכית',
+      result: 'Finds channels whose alternative name contains "חינוכית".'
     },
     { query: 'categories:news', result: 'Finds all the news channels.' },
     { query: 'languages:fra', result: 'Find channels that are broadcast in French.' },
