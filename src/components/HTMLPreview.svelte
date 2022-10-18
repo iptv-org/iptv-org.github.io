@@ -14,7 +14,7 @@
 	const fieldset = [
 		{ name: 'logo', type: 'image', value: data.logo },
 		{ name: 'name', type: 'string', value: data.name },
-		{ name: 'native_name', type: 'string', value: data.native_name },
+		{ name: 'alt_names', type: 'string', value: data.alt_names.join(', ') },
 		{
 			name: 'network',
 			type: 'link',
