@@ -115,7 +115,7 @@ function generateKey(c) {
 		_.pick(c, [
 			'id',
 			'name',
-			'native_name',
+			'alt_names',
 			'network',
 			'country',
 			'subdivision',
@@ -128,7 +128,7 @@ function generateKey(c) {
 			'replaced_by'
 		])
 	)
-	const translit = c.native_name ? transliterate(c.native_name) : null
+	const translit = c.alt_names ? transliterate(c.alt_names) : null
 
 	return [...data, translit]
 		.map(v => v || '')
