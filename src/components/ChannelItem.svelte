@@ -49,7 +49,7 @@
 <tr
 	class="border-b last:border-b-0 border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:dark:bg-gray-700 h-16"
 >
-	<td class="pl-2 pr-4 md:pr-7">
+	<td class="pl-2 pr-4 md:pr-7 py-2">
 		<div class="inline-flex w-full align-middle justify-center whitespace-nowrap overflow-hidden">
 			{#if channel.logo}
 			<img
@@ -62,7 +62,7 @@
 			{/if}
 		</div>
 	</td>
-	<td class="pl-3 pr-2">
+	<td class="pl-3 pr-2 py-2">
 		<div>
 			<div class="text-left">
 				<a
@@ -82,13 +82,13 @@
 				>
 					Closed
 				</div>
-				{/if} {#if channel.native_name}
-				<div class="text-sm text-gray-400 dark:text-gray-400">{channel.native_name}</div>
+				{/if} {#if channel.alt_names.length}
+				<div class="text-sm text-gray-400 dark:text-gray-400">{channel.alt_names.join(', ')}</div>
 				{/if}
 			</div>
 		</div>
 	</td>
-	<td class="px-2">
+	<td class="px-2 py-2">
 		<div>
 			<code
 				class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
@@ -96,7 +96,7 @@
 			>
 		</div>
 	</td>
-	<td class="pl-2 pr-5">
+	<td class="pl-2 pr-5 py-2">
 		<div class="text-right flex justify-end space-x-3 items-center">
 			{#if guides.length}
 			<button
