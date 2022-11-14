@@ -13,6 +13,7 @@
 
 	const fieldset = [
 		{ name: 'logo', type: 'image', value: data.logo },
+		{ name: 'id', type: 'string', value: data.id },
 		{ name: 'name', type: 'string', value: data.name },
 		{ name: 'alt_names', type: 'string', value: data.alt_names.join(', ') },
 		{
