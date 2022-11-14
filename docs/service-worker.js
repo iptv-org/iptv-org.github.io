@@ -1,13 +1,13 @@
 const build = [
-  "/_app/start-3ce0cc71.js",
-  "/_app/pages/__layout.svelte-5c3a0e11.js",
-  "/_app/assets/pages/__layout.svelte-44c6510a.css",
-  "/_app/error.svelte-5666402b.js",
-  "/_app/pages/index.svelte-de2c4fd6.js",
-  "/_app/assets/pages/index.svelte-7b0d7303.css",
-  "/_app/chunks/index-21b643b4.js",
-  "/_app/chunks/index-f9f1dab1.js",
-  "/_app/chunks/store-77ecf84b.js"
+  "/_app/start-b517e802.js",
+  "/_app/pages/__layout.svelte-339ab694.js",
+  "/_app/assets/pages/__layout.svelte-c7d2bc0e.css",
+  "/_app/error.svelte-9550f281.js",
+  "/_app/pages/index.svelte-e43592a6.js",
+  "/_app/assets/pages/index.svelte-fade4f59.css",
+  "/_app/chunks/vendor-be4ac25a.js",
+  "/_app/assets/vendor-eecf3eda.css",
+  "/_app/chunks/store-9cda06e2.js"
 ];
 const files = [
   "/.nojekyll",
@@ -15,7 +15,7 @@ const files = [
   "/logo_512.png",
   "/manifest.json"
 ];
-const version = "1666130787319";
+const version = "1668387778347";
 const ASSETS = `cache_${version}`;
 const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
