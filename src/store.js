@@ -45,7 +45,7 @@ export function search(_query) {
 				}
 			} else {
 				const regex = new RegExp(f.value.replaceAll(',', '|'), 'i')
-				results.push(c._searchable[f.field] && regex.test(c._searchable[f.field]))
+				results.push(regex.test(c._searchable[f.field]))
 			}
 		}
 
@@ -95,11 +95,11 @@ export async function fetchChannels() {
 function generateSearchable(c) {
 	const searchable = {}
 	for (let key in c) {
-		if (key.startsWith('_') || c[key] === null || c[key] === undefined) continue
+		if (key.startsWith('_')) continue
 		if (Array.isArray(c[key])) {
 			searchable[key] = c[key].map(v => v.toString().toLowerCase()).join(',')
 		} else {
-			searchable[key] = c[key].toString().toLowerCase()
+			searchable[key] = c[key] ? c[key].toString().toLowerCase() : ''
 		}
 	}
 	searchable.streams = c._streams.length
