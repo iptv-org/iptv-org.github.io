@@ -16,11 +16,20 @@
       query: 'alt_names:חינוכית',
       result: 'Finds channels whose alternative name contains "חינוכית".'
     },
-    { query: 'categories:news', result: 'Finds all the news channels.' },
-    { query: 'languages:fra', result: 'Find channels that are broadcast in French.' },
-    { query: 'city:"San Francisco"', result: 'Finds all channels broadcast from San Francisco.' },
     { query: 'network:ABC', result: 'Finds all channels operated by the ABC Network.' },
+    {
+      query: 'owners:^$',
+      result: 'Finds channels that have no owner listed.'
+    },
+    { query: 'country:GY', result: 'Finds all channels that are broadcast from Guyana.' },
+    {
+      query: 'subdivision:FR-OCC',
+      result: 'Finds all channels that are broadcast from the French region of Occitanie.'
+    },
+    { query: 'city:"San Francisco"', result: 'Finds all channels broadcast from San Francisco.' },
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
+    { query: 'languages:fra', result: 'Find channels that are broadcast in French.' },
+    { query: 'categories:news', result: 'Finds all the news channels.' },
     { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
     {
