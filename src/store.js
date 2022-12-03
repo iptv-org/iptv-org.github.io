@@ -173,7 +173,7 @@ async function loadAPI() {
 	api.categories = await fetch('https://iptv-org.github.io/api/categories.json')
 		.then(r => r.json())
 		.then(data => (data.length ? data : []))
-		.then(data => keyBy(data, 'code'))
+		.then(data => keyBy(data, 'id'))
 		.catch(console.error)
 
 	api.streams = await fetch('https://iptv-org.github.io/api/streams.json')
