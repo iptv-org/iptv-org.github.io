@@ -7,7 +7,7 @@
   export let title = 'Guides'
 </script>
 
-<div class="relative px-2 py-[9rem] flex justify-center" on:click|self="{close}">
+<div class="relative px-2 py-[9rem] flex justify-center" on:click|self="{close}" on:keypress|self="{close}">
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -35,6 +35,7 @@
       </h3>
       <button
         on:click="{close}"
+        on:keypress="{close}"
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
       >

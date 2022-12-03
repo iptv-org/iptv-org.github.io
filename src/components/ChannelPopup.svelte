@@ -23,7 +23,7 @@
   }
 </style>
 
-<div class="relative px-2 py-[4rem] flex justify-center" on:click|self="{closePopup}">
+<div class="relative px-2 py-[4rem] flex justify-center" on:click|self="{closePopup}" on:keypress|self="{closePopup}">
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-4xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -37,6 +37,7 @@
             type="button"
             area-selected="{view === 'html'}"
             on:click="{() => switchView('html')}"
+            on:keypress="{() => switchView('html')}"
             class:active="{view === 'html'}"
             class="py-2 px-4 text-xs font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-transparent dark:text-white dark:hover:text-white dark:hover:bg-gray-600"
           >
@@ -46,6 +47,7 @@
             type="button"
             area-selected="{view === 'html'}"
             on:click="{() => switchView('json')}"
+            on:keypress="{() => switchView('json')}"
             class:active="{view === 'json'}"
             class="py-2 px-4 text-xs font-medium text-gray-900 bg-white border-t border-b border-r rounded-r-lg border-gray-200 hover:bg-gray-100 dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-600"
           >
@@ -57,6 +59,7 @@
       <div class="inline-flex w-1/3 justify-end">
         <button
           on:click="{closePopup}"
+          on:keypress="{closePopup}"
           type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
         >

@@ -7,13 +7,11 @@
     filteredChannels,
     query,
     search,
-    setSearchParam,
     setPageTitle
   } from '../store.js'
   import { onMount, onDestroy } from 'svelte'
   import CountryItem from '../components/CountryItem.svelte'
   import SearchField from '../components/SearchField.svelte'
-  import _ from 'lodash'
 
   let _countries = []
   const initLimit = 10
@@ -26,7 +24,7 @@
 
   $: visible = _countries.slice(0, limit)
 
-  $: grouped = _.groupBy($filteredChannels, 'country')
+  $: grouped = $filteredChannels.reduce((r, v, i, a, k = v.country) => ((r[k] || (r[k] = [])).push(v), r), {})
 
   function loadMore({ detail }) {
     let { loaded, complete } = detail

@@ -18,6 +18,7 @@
       <button
         class="w-4 h-4 flex justify-center align-middle text-gray-500 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-600 shrink-0"
         on:click="{() => {expanded = !expanded}}"
+        on:keypress="{() => {expanded = !expanded}}"
       >
         <svg
           class="w-4 h-4"
@@ -40,6 +41,7 @@
         href="{guide.url}"
         title="{guide.url}"
         target="_blank"
+        rel="noreferrer"
       >
         <span class="truncate max-w-[30rem]">{guide.url}</span
         ><span

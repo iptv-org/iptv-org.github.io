@@ -60,6 +60,7 @@
               href="https://github.com/iptv-org/iptv"
               class="block py-2 pr-4 pl-3 text-sm text-gray-700 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               target="_blank"
+              rel="noreferrer"
               >Playlists<span
                 class="inline-flex items-center p-1 mr-2 text-sm font-semibold text-gray-400 rounded-full"
               >
@@ -80,6 +81,7 @@
               href="https://github.com/iptv-org/epg"
               class="block py-2 pr-4 pl-3 text-sm text-gray-700 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               target="_blank"
+              rel="noreferrer"
               >EPG<span
                 class="inline-flex items-center p-1 mr-2 text-sm font-semibold text-gray-400 rounded-full"
               >
@@ -100,6 +102,7 @@
               href="https://github.com/iptv-org/database"
               class="block py-2 pr-4 pl-3 text-sm text-gray-700 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               target="_blank"
+              rel="noreferrer"
               >Database<span
                 class="inline-flex items-center p-1 mr-2 text-sm font-semibold text-gray-400 rounded-full"
               >
@@ -120,6 +123,7 @@
               href="https://github.com/iptv-org/api"
               class="block py-2 pr-4 pl-3 text-sm text-gray-700 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               target="_blank"
+              rel="noreferrer"
               >API<span
                 class="inline-flex items-center p-1 mr-2 text-sm font-semibold text-gray-400 rounded-full"
               >
@@ -140,6 +144,7 @@
       <button
         type="button"
         on:click="{toggleDarkMode}"
+        on:keypress="{toggleDarkMode}"
         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full text-sm p-2.5"
         aria-label="Toggle Dark Mode"
       >
@@ -173,6 +178,7 @@
         href="https://github.com/iptv-org/"
         class="inline-flex text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full text-sm p-2.5 ml-1"
         target="_blank"
+        rel="noreferrer"
         aria-label="GitHub"
       >
         <svg
