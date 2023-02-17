@@ -1,0 +1,17 @@
+{
+  "short_name": "iptv-org",
+  "name": "iptv-org",
+  "start_url": "/",
+  "id": "/",
+  "icons": [
+    {
+      "src": "logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#f8fafc"
+}
