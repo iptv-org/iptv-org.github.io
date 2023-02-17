@@ -1,64 +1,61 @@
-const build = [
-  "/_app/start-4d4bbd8b.js",
-  "/_app/pages/__layout.svelte-bbbb0830.js",
-  "/_app/assets/pages/__layout.svelte-c7d2bc0e.css",
-  "/_app/error.svelte-9550f281.js",
-  "/_app/pages/index.svelte-a8f6902b.js",
-  "/_app/assets/pages/index.svelte-fade4f59.css",
-  "/_app/chunks/vendor-be4ac25a.js",
-  "/_app/assets/vendor-eecf3eda.css",
-  "/_app/chunks/store-92203636.js"
-];
-const files = [
+const m = [
+  "/_app/immutable/chunks/0-899ce9a5.js",
+  "/_app/immutable/chunks/1-a05c0897.js",
+  "/_app/immutable/chunks/2-b238695c.js",
+  "/_app/immutable/chunks/3-e5308f68.js",
+  "/_app/immutable/assets/HTMLPreview-0d24e5da.css",
+  "/_app/immutable/chunks/HTMLPreview-d8b21788.js",
+  "/_app/immutable/chunks/_layout-da46b06b.js",
+  "/_app/immutable/chunks/index-71936449.js",
+  "/_app/immutable/chunks/singletons-228a5c53.js",
+  "/_app/immutable/chunks/stores-eb5cf413.js",
+  "/_app/immutable/start-f15ffc58.js",
+  "/_app/immutable/components/error.svelte-d45d2747.js",
+  "/_app/immutable/assets/_layout-32e929c2.css",
+  "/_app/immutable/modules/pages/_layout.js-9cbb603b.js",
+  "/_app/immutable/components/pages/_layout.svelte-a9bd6fbc.js",
+  "/_app/immutable/assets/_page-dfa854c9.css",
+  "/_app/immutable/components/pages/_page.svelte-b502142d.js",
+  "/_app/immutable/components/pages/channel/_page.svelte-d194e74b.js"
+], h = [
   "/.nojekyll",
   "/favicon.png",
   "/logo_512.png",
   "/manifest.json"
-];
-const version = "1669100105277";
-const ASSETS = `cache_${version}`;
-const to_cache = build.concat(files);
-const staticAssets = new Set(to_cache);
-self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(ASSETS).then((cache) => cache.addAll(to_cache)).then(() => {
-    self.skipWaiting();
-  }).catch(console.error));
+], o = "1676636073406", i = `cache_${o}`, p = m.concat(h), r = new Set(p);
+self.addEventListener("install", (e) => {
+  e.waitUntil(
+    caches.open(i).then((s) => s.addAll(p)).then(() => {
+      self.skipWaiting();
+    }).catch(console.error)
+  );
 });
-self.addEventListener("activate", (event) => {
-  event.waitUntil(caches.keys().then(async (keys) => {
-    for (const key of keys) {
-      if (key !== ASSETS)
-        await caches.delete(key);
-    }
-    self.clients.claim();
-  }).catch(console.error));
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then(async (s) => {
+      for (const t of s)
+        t !== i && await caches.delete(t);
+      self.clients.claim();
+    }).catch(console.error)
+  );
 });
-async function fetchAndCache(request) {
-  const cache = await caches.open(`offline_${version}`);
+async function u(e) {
+  const s = await caches.open(`offline_${o}`);
   try {
-    const response = await fetch(request);
-    cache.put(request, response.clone());
-    return response;
-  } catch (err) {
-    const response = await cache.match(request);
-    if (response)
-      return response;
-    throw err;
+    const t = await fetch(e);
+    return s.put(e, t.clone()), t;
+  } catch (t) {
+    const a = await s.match(e);
+    if (a)
+      return a;
+    throw t;
   }
 }
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET" || event.request.headers.has("range"))
+self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET" || e.request.headers.has("range"))
     return;
-  const url = new URL(event.request.url);
-  const isHttp = url.protocol.startsWith("http");
-  const isDevServerRequest = url.hostname === self.location.hostname && url.port !== self.location.port;
-  const isSameOrigin = url.host === self.location.host;
-  const isStaticAsset = isSameOrigin && staticAssets.has(url.pathname);
-  const skipBecauseUncached = event.request.cache === "only-if-cached" && !isStaticAsset;
-  if (isHttp && isSameOrigin && !isDevServerRequest && !skipBecauseUncached) {
-    event.respondWith((async () => {
-      const cachedAsset = isStaticAsset && await caches.match(event.request);
-      return cachedAsset || fetchAndCache(event.request);
-    })());
-  }
+  const s = new URL(e.request.url), t = s.protocol.startsWith("http"), a = s.hostname === self.location.hostname && s.port !== self.location.port, c = s.host === self.location.host, n = c && r.has(s.pathname), l = e.request.cache === "only-if-cached" && !n;
+  t && c && !a && !l && e.respondWith(
+    (async () => n && await caches.match(e.request) || u(e.request))()
+  );
 });

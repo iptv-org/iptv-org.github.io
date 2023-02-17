@@ -14,7 +14,7 @@
     class="w-full inline-flex justify-between px-3 py-2 border-gray-200 dark:border-gray-600"
     class:border-b="{expanded}"
   >
-    <div class="flex space-x-3 items-center max-w-[90%]">
+    <div class="flex space-x-3 items-center max-w-[90%] w-full">
       <button
         class="w-4 h-4 flex justify-center align-middle text-gray-500 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-600 shrink-0"
         on:click="{() => {expanded = !expanded}}"
@@ -46,13 +46,13 @@
         <circle cx="50" cy="50" r="50" />
       </svg>
       <a
-        class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle"
+        class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[85%] w-full"
         href="{stream.url}"
         title="{stream.url}"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span class="truncate max-w-[30rem]">{stream.url}</span
+        <span class="truncate">{stream.url}</span
         ><span
           class="inline-flex items-center pl-1 text-sm font-semibold text-gray-500 rounded-full"
         >
