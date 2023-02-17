@@ -1,7 +1,11 @@
 <script>
+  import NavBar from '~/components/NavBar.svelte'
+  import Modal from 'svelte-simple-modal'
+  import { page } from '$app/stores'
   import InfiniteLoading from 'svelte-infinite-loading'
   import {
     fetchChannels,
+    channels,
     hasQuery,
     countries,
     filteredChannels,
@@ -14,6 +18,7 @@
   import CountryItem from '~/components/CountryItem.svelte'
   import SearchField from '~/components/SearchField.svelte'
   import _ from 'lodash'
+  import { afterNavigate } from '$app/navigation'
 
   let _countries = []
   const initLimit = 10
@@ -52,7 +57,9 @@
       hasQuery.set(true)
     }
 
-    await fetchChannels()
+    if (!$channels.length) {
+      await fetchChannels()
+    }
     _countries = Object.values($countries)
     isLoading = false
 
@@ -73,34 +80,62 @@
       }
     }
   })
+
+  afterNavigate(() => {
+    setSearchParam('q', $query)
+    search($query)
+  })
+
+  let scrollTop = 0
 </script>
 
+<svelte:window bind:scrollY="{scrollTop}" />
 <svelte:head>
   <title>iptv-org</title>
   <meta name="description" content="Collection of resources dedicated to IPTV" />
 </svelte:head>
 
-<section class="container max-w-5xl mx-auto px-2 py-20">
-  <SearchField bind:isLoading="{isLoading}" bind:found="{$filteredChannels.length}"></SearchField>
-  {#if isLoading}
-  <div
-    class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
+<header
+  class:absolute="{scrollTop <= 150}"
+  class:fixed="{scrollTop > 150}"
+  class="z-40 w-full min-w-[360px]"
+  style="top: {scrollTop > 150 && scrollTop <= 210 ? scrollTop-210: 0}px"
+>
+  <NavBar withSearch="{scrollTop > 150}" />
+</header>
+
+<main class="bg-slate-50 dark:bg-[#1d232e] min-h-screen pt-10 min-w-[360px]">
+  <Modal
+    unstyled="{true}"
+    classBg="fixed top-0 left-0 z-40 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-scroll"
+    closeButton="{false}"
   >
-    loading...
-  </div>
-  {/if} {#each visible as country (country.code)} {#if grouped[country.code] &&
-  grouped[country.code].length > 0}
-  <CountryItem
-    bind:country="{country}"
-    bind:channels="{grouped[country.code]}"
-    bind:hasQuery="{$hasQuery}"
-  ></CountryItem>
-  {/if} {/each} {#if !isLoading}
-  <InfiniteLoading on:infinite="{loadMore}" identifier="{infiniteId}" distance="{500}">
-    <div slot="noResults"></div>
-    <div slot="noMore"></div>
-    <div slot="error"></div>
-    <div slot="spinner"></div>
-  </InfiniteLoading>
-  {/if}
-</section>
+    <section class="container max-w-5xl mx-auto px-2 py-20">
+      <SearchField
+        bind:isLoading="{isLoading}"
+        bind:found="{$filteredChannels.length}"
+      ></SearchField>
+      {#if isLoading}
+      <div
+        class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
+      >
+        loading...
+      </div>
+      {/if} {#each visible as country (country.code)} {#if grouped[country.code] &&
+      grouped[country.code].length > 0}
+      <CountryItem
+        bind:country="{country}"
+        bind:channels="{grouped[country.code]}"
+        bind:hasQuery="{$hasQuery}"
+      ></CountryItem>
+      {/if} {/each} {#if !isLoading}
+      <InfiniteLoading on:infinite="{loadMore}" identifier="{infiniteId}" distance="{500}">
+        <div slot="noResults"></div>
+        <div slot="noMore"></div>
+        <div slot="error"></div>
+        <div slot="spinner"></div>
+      </InfiniteLoading>
+      {/if}
+    </section>
+  </Modal>
+</main>

@@ -1,9 +1,9 @@
 <script>
-  import { query, search, setSearchParam } from '../store.js'
+  import { query, search, setSearchParam } from '~/store'
+  import { goto } from '$app/navigation'
 
   function onSubmit() {
-    setSearchParam('q', $query)
-    search($query)
+    goto('/')
   }
 </script>
 
