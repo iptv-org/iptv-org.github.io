@@ -15,9 +15,6 @@ const config = {
       assets: 'docs',
       precompress: true
     })
-    // prerender: {
-    //   default: true
-    // }
   },
   preprocess: vitePreprocess()
 }

@@ -68,12 +68,10 @@
     "esbuild" "^0.14.21"
     "tiny-glob" "^0.2.9"
 
-"@sveltejs/adapter-static@^1.0.0-next.28":
-  "integrity" "sha512-0hjGnfT3BRyoHnzJ2w0/xL+xICRpKneDTm45ZzggiRrc0r71WJfF6toGeg8N4QUQnj8EJ3Itm453gsS1kt7VUQ=="
-  "resolved" "https://registry.npmjs.org/@sveltejs/adapter-static/-/adapter-static-1.0.0-next.29.tgz"
-  "version" "1.0.0-next.29"
-  dependencies:
-    "tiny-glob" "^0.2.9"
+"@sveltejs/adapter-static@^2.0.1":
+  "integrity" "sha512-o5/q3YwD/ErxYCFlK1v3ydvldyNKk1lh3oeyxn4mhz+Pkbx/uuxhzmbOpytTlp5aVqNHDVsb04xadUzOFCDDzw=="
+  "resolved" "https://registry.npmjs.org/@sveltejs/adapter-static/-/adapter-static-2.0.1.tgz"
+  "version" "2.0.1"
 
 "@sveltejs/adapter-vercel@1.0.0-next.47":
   "integrity" "sha512-VV3vP8KqL9XOc7xfQLVhXTM5jrTme+r1qJy98u5/dhAhkdjqrGDwAKo/s7MoB3rTYxLb2b8I4QxAaoz2Y2aIBg=="
@@ -82,7 +80,7 @@
   dependencies:
     "esbuild" "^0.14.21"
 
-"@sveltejs/kit@^1.7.1":
+"@sveltejs/kit@^1.5.0", "@sveltejs/kit@^1.7.1":
   "integrity" "sha512-epaQCaZ/D3Qr/SgrRKHv+MpM6rz8JdaXSjOjas8t7PbDJl88KpqYWUvsmyuJQn/yNNGar23kENyy4NueNnjIKQ=="
   "resolved" "https://registry.npmjs.org/@sveltejs/kit/-/kit-1.7.1.tgz"
   "version" "1.7.1"
