@@ -9,10 +9,10 @@
     search,
     setSearchParam,
     setPageTitle
-  } from '../store.js'
+  } from '~/store.js'
   import { onMount, onDestroy } from 'svelte'
-  import CountryItem from '../components/CountryItem.svelte'
-  import SearchField from '../components/SearchField.svelte'
+  import CountryItem from '~/components/CountryItem.svelte'
+  import SearchField from '~/components/SearchField.svelte'
   import _ from 'lodash'
 
   let _countries = []

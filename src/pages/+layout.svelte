@@ -1,6 +1,6 @@
 <script>
-  import '../app.css'
-  import NavBar from '../components/NavBar.svelte'
+  import '~/app.css'
+  import NavBar from '~/components/NavBar.svelte'
   import Modal from 'svelte-simple-modal'
 
   let scrollTop = 0
