@@ -10,13 +10,14 @@
   const guides = channel._guides
   const streams = channel._streams
 
-  const currLocation = window.location.href
+  let currLocation
   const { open } = getContext('simple-modal')
   const onOpened = () => {
+    currLocation = window.location.href
     window.history.pushState({}, `${channel.name} • iptv-org`, `/channel?id=${channel.id}`)
   }
   const onClosed = () => {
-    window.history.pushState({}, `iptv-org`, currLocation)
+    window.history.pushState({}, `iptv-org`, currLocation || '/')
   }
   const showGuides = () =>
     open(
@@ -41,16 +42,6 @@
 
   function pluralize(number, word) {
     return number > 1 ? word + 's' : word
-  }
-
-  function searchBy(q) {
-    if ($query !== q) {
-      query.set(q)
-      hasQuery.set(true)
-      search(q)
-      setSearchParam('q', q)
-    }
-    close()
   }
 </script>
 
