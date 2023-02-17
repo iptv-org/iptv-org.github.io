@@ -1,57 +1,22 @@
 <script>
-  import JsonDataViewer from './JsonDataViewer.svelte'
-  import HTMLPreview from './HTMLPreview.svelte'
+  import HTMLPreview from '~/components/HTMLPreview.svelte'
   import { getContext } from 'svelte'
   const { close } = getContext('simple-modal')
 
   export let channel
-
-  let view = 'html'
-  function switchView(value) {
-    view = value
-  }
 
   const closePopup = () => {
     close()
   }
 </script>
 
-<style>
-  .active {
-    background-color: #f3f4f6;
-    color: #111828;
-  }
-</style>
-
-<div class="relative px-2 py-[4rem] flex justify-center" on:click|self="{closePopup}">
-  <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-4xl">
+<div class="relative px-2 py-[4rem] flex justify-center" on:keypress on:click|self="{closePopup}">
+  <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
     >
-      <div class="w-1/3 overflow-hidden">
+      <div class="w-2/3 overflow-hidden">
         <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h3>
-      </div>
-      <div class="inline-flex justify-center w-1/3">
-        <div class="inline-flex rounded-md" role="group">
-          <button
-            type="button"
-            area-selected="{view === 'html'}"
-            on:click="{() => switchView('html')}"
-            class:active="{view === 'html'}"
-            class="py-2 px-4 text-xs font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 dark:border-gray-700 dark:bg-transparent dark:text-white dark:hover:text-white dark:hover:bg-gray-600"
-          >
-            HTML
-          </button>
-          <button
-            type="button"
-            area-selected="{view === 'html'}"
-            on:click="{() => switchView('json')}"
-            class:active="{view === 'json'}"
-            class="py-2 px-4 text-xs font-medium text-gray-900 bg-white border-t border-b border-r rounded-r-lg border-gray-200 hover:bg-gray-100 dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-600"
-          >
-            JSON
-          </button>
-        </div>
       </div>
 
       <div class="inline-flex w-1/3 justify-end">
@@ -76,15 +41,9 @@
       </div>
     </div>
     <div class="overflow-y-scroll overflow-x-hidden w-full">
-      {#if view === 'json'}
-      <div class="pb-8 px-8 pt-6">
-        <div class="flex p-4 bg-gray-50 dark:bg-gray-700 rounded-md w-full">
-          <JsonDataViewer data="{channel._raw}" />
-        </div>
+      <div class="p-12 pt-10">
+        <HTMLPreview data="{channel}" close="{closePopup}" />
       </div>
-      {:else if view === 'html'}
-      <HTMLPreview data="{channel}" close="{closePopup}" />
-      {/if}
     </div>
   </div>
 </div>
