@@ -7,12 +7,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@freearhey/search-js": "^0.1.1",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "^2.0.1",
     "@sveltejs/kit": "^1.7.1",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@zerodevx/svelte-json-view": "^1.0.2",
     "autoprefixer": "^10.4.2",
     "dayjs": "^1.11.1",
+    "iptv-playlist-generator": "^0.1.5",
     "lodash": "^4.17.21",
     "postcss": "^8.4.19",
     "prettier-plugin-svelte": "^2.6.0",
