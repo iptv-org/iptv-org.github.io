@@ -1,5 +1,5 @@
 {
-  "name": "iptv-org",
+  "name": "iptv-org.github.io",
   "private": true,
   "scripts": {
     "dev": "vite dev",
