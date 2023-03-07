@@ -1,5 +1,6 @@
 <script>
   import NavBar from '~/components/NavBar.svelte'
+  import BottomBar from '~/components/BottomBar.svelte'
   import Modal from 'svelte-simple-modal'
   import { page } from '$app/stores'
   import InfiniteLoading from 'svelte-infinite-loading'
@@ -10,10 +11,11 @@
     countries,
     filteredChannels,
     query,
-    search,
     setSearchParam,
-    setPageTitle
-  } from '~/store.js'
+    setPageTitle,
+    downloadMode,
+    search
+  } from '~/store'
   import { onMount, onDestroy } from 'svelte'
   import CountryItem from '~/components/CountryItem.svelte'
   import SearchField from '~/components/SearchField.svelte'
@@ -98,19 +100,19 @@
 <header
   class:absolute="{scrollTop <= 150}"
   class:fixed="{scrollTop > 150}"
-  class="z-40 w-full min-w-[360px]"
+  class="z-40 w-full min-w-[360px] flex items-center"
   style="top: {scrollTop > 150 && scrollTop <= 210 ? scrollTop-210: 0}px"
 >
   <NavBar withSearch="{scrollTop > 150}" />
 </header>
 
-<main class="bg-slate-50 dark:bg-[#1d232e] min-h-screen pt-10 min-w-[360px]">
+<main class="bg-slate-50 dark:bg-[#1d232e] min-h-screen min-w-[360px]">
   <Modal
     unstyled="{true}"
     classBg="fixed top-0 left-0 z-40 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-scroll"
     closeButton="{false}"
   >
-    <section class="container max-w-5xl mx-auto px-2 py-20">
+    <section class="max-w-5xl mx-auto px-2 pt-24 sm:pt-32 pb-20 overflow-hidden">
       <SearchField
         bind:isLoading="{isLoading}"
         bind:found="{$filteredChannels.length}"
@@ -139,3 +141,7 @@
     </section>
   </Modal>
 </main>
+
+{#if $downloadMode}
+<BottomBar />
+{/if}
