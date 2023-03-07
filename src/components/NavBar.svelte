@@ -4,6 +4,7 @@
   import SearchFieldMini from './SearchFieldMini.svelte'
   import CreatePlaylistButton from './CreatePlaylistButton.svelte'
   import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
 
   export let withSearch = false
 
@@ -113,7 +114,7 @@
         </button>
       </div>
       <div>
-        <CreatePlaylistButton on:click="{() => goto('/')}" />
+        <CreatePlaylistButton on:click="{() => {if($page.url.pathname !== '/') {goto('/')}}}" />
       </div>
     </div>
   </div>
