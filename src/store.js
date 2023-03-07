@@ -1,5 +1,6 @@
 import { writable, get } from 'svelte/store'
-import { transliterate } from 'transliteration'
+import { Playlist, Link } from 'iptv-playlist-generator'
+import sj from '@freearhey/search-js'
 import _ from 'lodash'
 
 export const query = writable('')
@@ -7,57 +8,23 @@ export const hasQuery = writable(false)
 export const channels = writable([])
 export const countries = writable({})
 export const filteredChannels = writable([])
+export const selected = writable([])
+export const downloadMode = writable(false)
 
-export function search(_query) {
-  const parts = _query.toLowerCase().match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g) || []
-  const filters = []
-  for (let value of parts) {
-    let field = '_key'
-    if (value.includes(':')) {
-      ;[field, value] = value.split(':')
-    }
-    value = value.replace(/\"/g, '')
-
-    if (field && value) {
-      let numerical = ['streams', 'guides'].includes(field)
-      filters.push({ field, numerical, value })
-    }
-  }
-
-  if (!filters.length) {
-    hasQuery.set(false)
+let searchIndex = {}
+export function search(q) {
+  console.log('.')
+  if (!q) {
     filteredChannels.set(get(channels))
+    hasQuery.set(false)
     return
   }
 
-  const filtered = get(channels).filter(c => {
-    let results = []
-    for (let f of filters) {
-      if (!f.value) return false
-
-      if (f.numerical) {
-        if (f.value.startsWith('<')) {
-          results.push(c._searchable[f.field] < parseInt(f.value.replace('<', '')))
-        } else if (f.value.startsWith('>')) {
-          results.push(c._searchable[f.field] > parseInt(f.value.replace('>', '')))
-        } else {
-          results.push(c._searchable[f.field] === parseInt(f.value))
-        }
-      } else {
-        const regex = new RegExp(f.value.replaceAll(',', '|'), 'i')
-        // console.log(regex, c._searchable[f.field])
-        results.push(regex.test(c._searchable[f.field]))
-      }
-    }
-
-    return results.every(Boolean)
-  })
-
-  filteredChannels.set(filtered)
-
-  hasQuery.set(true)
-
-  console.log('.')
+  if (searchIndex.search) {
+    let results = searchIndex.search(q)
+    filteredChannels.set(results)
+    hasQuery.set(true)
+  }
 }
 
 export async function fetchChannels() {
@@ -66,7 +33,6 @@ export async function fetchChannels() {
   countries.set(api.countries)
 
   let _channels = api.channels.map(c => {
-    c._raw = copy(c)
     c._streams = api.streams[c.id] || []
     c._guides = api.guides[c.id] || []
     c._country = api.countries[c.country]
@@ -84,63 +50,17 @@ export async function fetchChannels() {
           return { type, ...api.subdivisions[code] }
       }
     })
-    c._searchable = generateSearchable(c)
+    c.is = c.closed || c.replaced_by ? 'closed' : 'active'
+    c.streams = c._streams.length
+    c.guides = c._guides.length
+    // c._searchable = generateSearchable(c)
 
     return c
   })
 
   channels.set(_channels)
   filteredChannels.set(_channels)
-}
-
-function generateSearchable(c) {
-  const searchable = {}
-  for (let key in c) {
-    if (key.startsWith('_')) continue
-    if (Array.isArray(c[key])) {
-      searchable[key] = c[key].map(v => v.toString().toLowerCase()).join(',')
-    } else {
-      searchable[key] =
-        c[key] !== undefined && c[key] !== null ? c[key].toString().toLowerCase() : ''
-    }
-  }
-  searchable.streams = c._streams.length
-  searchable.guides = c._guides.length
-  searchable.is = c.closed || c.replaced_by ? 'closed' : 'active'
-  searchable._key = generateKey(c)
-
-  return searchable
-}
-
-function generateKey(c) {
-  const data = Object.values(
-    _.pick(c, [
-      'id',
-      'name',
-      'alt_names',
-      'network',
-      'country',
-      'subdivision',
-      'city',
-      'broadcast_area',
-      'languages',
-      'categories',
-      'launched',
-      'closed',
-      'replaced_by'
-    ])
-  )
-  const translit = c.alt_names ? transliterate(c.alt_names) : null
-
-  return [...data, translit]
-    .map(v => v || '')
-    .filter(v => v)
-    .join('|')
-    .toLowerCase()
-}
-
-function copy(value) {
-  return JSON.parse(JSON.stringify(value))
+  searchIndex = sj.createIndex(_channels)
 }
 
 export function setSearchParam(key, value) {
@@ -219,4 +139,78 @@ async function loadAPI() {
     })
 
   return api
+}
+
+function getGuides() {
+  let guides = {}
+  get(selected).forEach(channel => {
+    let guide = channel._guides.length ? channel._guides[0] : null
+    if (guide && !guides[guide.url]) {
+      guides[guide.url] = guide.url
+    }
+  })
+
+  return Object.values(guides)
+}
+
+function getStreams() {
+  let streams = []
+  get(selected).forEach(channel => {
+    channel._streams.forEach(stream => {
+      if (stream.status === 'error') return
+
+      stream.channel = channel
+      streams.push(stream)
+    })
+  })
+
+  const levels = { online: 1, blocked: 2, timeout: 3, error: 4, default: 5 }
+  streams = _.orderBy(
+    streams,
+    [
+      s => s.channel.id.toLowerCase(),
+      s => levels[s.status] || levels['default'],
+      'height',
+      'frame_rate',
+      'url'
+    ],
+    ['asc', 'asc', 'desc', 'desc', 'asc']
+  )
+  streams = _.uniqBy(streams, stream => stream.channel.id || _.uniqueId())
+
+  return streams
+}
+
+export function createPlaylist() {
+  const playlist = new Playlist()
+
+  let guides = getGuides()
+  playlist.header = { 'x-tvg-url': guides.sort().join(',') }
+
+  let streams = getStreams()
+  streams.forEach(stream => {
+    const link = new Link(stream.url)
+    link.title = stream.channel.name
+    link.attrs = {
+      'tvg-id': stream.channel.id,
+      'tvg-logo': stream.channel.logo,
+      'group-title': stream.channel._categories
+        .map(c => c.name)
+        .sort()
+        .join(';')
+    }
+
+    if (stream.user_agent) {
+      link.attrs['user-agent'] = stream.user_agent
+      link.vlcOpts['http-user-agent'] = stream.user_agent
+    }
+
+    if (stream.http_referrer) {
+      link.vlcOpts['http-referrer'] = stream.http_referrer
+    }
+
+    playlist.links.push(link)
+  })
+
+  return playlist
 }
