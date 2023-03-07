@@ -1,6 +1,6 @@
 <script>
   import { getContext } from 'svelte'
-  import { query, search, setSearchParam } from '../store.js'
+  import { query, search, setSearchParam } from '~/store'
   import SearchSyntaxPopup from './SearchSyntaxPopup.svelte'
 
   const { open } = getContext('simple-modal')
@@ -48,18 +48,18 @@
         placeholder="Search for channels"
       />
     </div>
-    <div class="mt-2 flex justify-between">
+    <div class="mt-2 flex justify-between px-1">
       <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono"
         >Found&nbsp;
         <span class:animate-spin="{isLoading}">{ !isLoading ? found.toLocaleString() : '/' }</span>
-        &nbsp;channels</span
+        &nbsp;channel(s)</span
       >
       <button
         type="button"
         on:click|preventDefault="{showSearchSyntax}"
         class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400"
       >
-        Advanced search syntax
+        Search syntax
       </button>
     </div>
   </div>
