@@ -53,14 +53,32 @@ export async function fetchChannels() {
     c.is = c.closed || c.replaced_by ? 'closed' : 'active'
     c.streams = c._streams.length
     c.guides = c._guides.length
-    // c._searchable = generateSearchable(c)
 
     return c
   })
 
   channels.set(_channels)
   filteredChannels.set(_channels)
-  searchIndex = sj.createIndex(_channels)
+  searchIndex = sj.createIndex(_channels, {
+    searchable: [
+      'id',
+      'name',
+      'alt_names',
+      'network',
+      'country',
+      'subdivision',
+      'city',
+      'broadcast_area',
+      'languages',
+      'categories',
+      'launched',
+      'closed',
+      'replaced_by',
+      'streams',
+      'guides',
+      'is'
+    ]
+  })
 }
 
 export function setSearchParam(key, value) {
