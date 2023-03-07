@@ -1,7 +1,7 @@
 <script>
   import dayjs from 'dayjs'
   import { goto } from '$app/navigation'
-  import { search, query, hasQuery, channels, setSearchParam } from '~/store'
+  import { query, hasQuery, channels, setSearchParam } from '~/store'
 
   export let data
   export let close
