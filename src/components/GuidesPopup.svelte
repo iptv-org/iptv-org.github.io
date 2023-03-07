@@ -7,7 +7,7 @@
   export let title = 'Guides'
 </script>
 
-<div class="relative px-2 py-[9rem] flex justify-center" on:keypress on:click|self="{close}">
+<div class="relative px-2 py-32 flex justify-center" on:keypress on:click|self="{close}">
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
