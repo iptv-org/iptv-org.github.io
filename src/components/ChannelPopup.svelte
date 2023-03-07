@@ -10,7 +10,7 @@
   }
 </script>
 
-<div class="relative px-2 py-[4rem] flex justify-center" on:keypress on:click|self="{closePopup}">
+<div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self="{closePopup}">
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
