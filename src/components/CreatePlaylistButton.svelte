@@ -6,7 +6,7 @@
   const dispatch = createEventDispatcher()
 </script>
 
-<div class="w-14 sm:w-40">
+<div class="w-14 sm:w-36">
   {#if $downloadMode}
   <DefaultButton on:click="{() => {downloadMode.set(false);dispatch('click')}}" area-label="Done">
     <span class="sm:hidden inline">
