@@ -7,6 +7,13 @@
   "resolved" "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.16.17.tgz"
   "version" "0.16.17"
 
+"@freearhey/search-js@^0.1.1":
+  "integrity" "sha512-nmXhqBg5lh6GxMT2g1hgmSc/pbXGw0P4ZxXaPt/cnuZYtvPHSo0CPOF65iNC9LEqvrrnLig4RFlG1dBDPNAU0g=="
+  "resolved" "https://registry.npmjs.org/@freearhey/search-js/-/search-js-0.1.1.tgz"
+  "version" "0.1.1"
+  dependencies:
+    "lodash" "^4.17.21"
+
 "@iarna/toml@^2.2.5":
   "integrity" "sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg=="
   "resolved" "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
@@ -110,6 +117,11 @@
     "magic-string" "^0.27.0"
     "svelte-hmr" "^0.15.1"
     "vitefu" "^0.2.3"
+
+"@tailwindcss/line-clamp@^0.4.2":
+  "integrity" "sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw=="
+  "resolved" "https://registry.npmjs.org/@tailwindcss/line-clamp/-/line-clamp-0.4.2.tgz"
+  "version" "0.4.2"
 
 "@types/cookie@^0.5.1":
   "integrity" "sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g=="
@@ -471,6 +483,11 @@
   dependencies:
     "function-bind" "^1.1.1"
 
+"iptv-playlist-generator@^0.1.5":
+  "integrity" "sha512-dJA1XjDVpaGuNJ7oMIskyjviV6j9ixd0Z8gQW8dZ7NfgPDffQq1OkjLugVFr374x7fSSIR8O1TgqLDVNMg/ZAg=="
+  "resolved" "https://registry.npmjs.org/iptv-playlist-generator/-/iptv-playlist-generator-0.1.5.tgz"
+  "version" "0.1.5"
+
 "is-binary-path@~2.1.0":
   "integrity" "sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw=="
   "resolved" "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz"
@@ -825,7 +842,7 @@
   "resolved" "https://registry.npmjs.org/svelte/-/svelte-3.55.1.tgz"
   "version" "3.55.1"
 
-"tailwindcss@^3.2.7":
+"tailwindcss@^3.2.7", "tailwindcss@>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1":
   "integrity" "sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.7.tgz"
   "version" "3.2.7"

@@ -3,7 +3,9 @@
   import StreamsPopup from './StreamsPopup.svelte'
   import GuidesPopup from './GuidesPopup.svelte'
   import ChannelPopup from './ChannelPopup.svelte'
-  import { search, query, hasQuery, setSearchParam } from '../store.js'
+  import Checkbox from './Checkbox.svelte'
+  import { downloadMode, selected } from '~/store'
+  import { fade } from 'svelte/transition'
 
   export let channel
 
@@ -43,16 +45,38 @@
   function pluralize(number, word) {
     return number > 1 ? word + 's' : word
   }
+
+  function onCheckboxChange(event) {
+    selected.update(arr => {
+      if (event.detail.state) {
+        arr.push(channel)
+      } else {
+        arr = arr.filter(c => c.id !== channel.id)
+      }
+
+      return arr
+    })
+  }
+
+  $: isSelected = !!$selected.find(c => c.id === channel.id)
 </script>
 
-<tr
-  class="border-b last:border-b-0 border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:dark:bg-gray-700 h-16"
+{#if $downloadMode}
+<div
+  transition:fade="{{duration:200}}"
+  class="w-14 h-14 shrink-0 flex items-center absolute -left-14"
 >
-  <td class="pl-2 pr-4 md:pr-7 py-2">
-    <div class="inline-flex w-full align-middle justify-center whitespace-nowrap overflow-hidden">
+  <Checkbox selected="{isSelected}" on:change="{onCheckboxChange}" />
+</div>
+{/if}
+<div
+  class="border-b last:border-b-0 border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:dark:bg-gray-700 h-16 flex items-center relative"
+>
+  <div class="px-4 sm:pl-10 sm:pr-16 w-36 sm:w-52 flex shrink-0 items-center justify-center">
+    <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
       {#if channel.logo}
       <img
-        class="block align-middle mx-auto max-w-[6rem] max-h-[3rem] text-sm text-gray-400 dark:text-gray-600 cursor-default"
+        class="block align-middle mx-auto max-w-[6rem] max-h-[2.75rem] text-sm text-gray-400 dark:text-gray-600 cursor-defaults"
         loading="lazy"
         referrerpolicy="no-referrer"
         src="{channel.logo}"
@@ -60,40 +84,49 @@
       />
       {/if}
     </div>
-  </td>
-  <td class="pl-3 pr-2 py-2">
+  </div>
+  <div class="w-52 px-2 sm:w-72 shrink-0">
     <div>
       <div class="text-left">
-        <a
-          on:click|preventDefault="{showChannelData}"
-          href="/channel?id={channel.id}"
-          tabindex="0"
-          class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500"
-        >
-          {channel.name}
-        </a>
-        {#if channel._searchable.is === 'closed'}
-        <div
-          class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:text-gray-300 cursor-default rounded-full"
-          title="closed: {channel.closed}"
-        >
-          Closed
+        <div class="flex space-x-2 items-center">
+          <a
+            on:click|preventDefault="{showChannelData}"
+            href="/channel?id={channel.id}"
+            tabindex="0"
+            class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 line-clamp-1"
+            title="{channel.name}"
+          >
+            {channel.name}
+          </a>
+          {#if channel.is === 'closed'}
+          <div
+            class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:text-gray-300 cursor-default rounded-full"
+            title="closed: {channel.closed}"
+          >
+            Closed
+          </div>
+          {/if}
         </div>
-        {/if} {#if channel.alt_names.length}
-        <div class="text-sm text-gray-400 dark:text-gray-400">{channel.alt_names.join(', ')}</div>
+        {#if channel.alt_names.length}
+        <div
+          class="text-sm text-gray-400 dark:text-gray-400 line-clamp-1"
+          title="{channel.alt_names.join(', ')}"
+        >
+          {channel.alt_names.join(', ')}
+        </div>
         {/if}
       </div>
     </div>
-  </td>
-  <td class="px-2 py-2">
+  </div>
+  <div class="w-52 px-2 sm:w-72">
     <div>
       <code
         class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
         >{channel.id}</code
       >
     </div>
-  </td>
-  <td class="pl-2 pr-5 py-2">
+  </div>
+  <div class="w-52 px-4 sm:56">
     <div class="text-right flex justify-end space-x-3 items-center">
       {#if guides.length}
       <button
@@ -144,5 +177,5 @@
       </button>
       {/if}
     </div>
-  </td>
-</tr>
+  </div>
+</div>

@@ -5,7 +5,6 @@
   export let title = 'Search syntax'
   let examples = [
     { query: 'cat', result: 'Finds channels that have "cat" in their descriptions.' },
-    { query: '^dog', result: 'Finds channels whose name starts with "dog".' },
     { query: 'cat dog', result: 'Finds channels that have "cat" AND "dog" in their descriptions.' },
     { query: 'cat,dog', result: 'Finds channels that have "cat" OR "dog" in their descriptions.' },
     {
@@ -41,7 +40,7 @@
   ]
 </script>
 
-<div class="relative px-2 py-[7rem] flex justify-center" on:keypress on:click|self="{close}">
+<div class="relative px-2 py-20 flex justify-center" on:keypress on:click|self="{close}">
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -73,8 +72,8 @@
         <table class="w-full">
           <thead>
             <tr>
-              <th class="border p-2 dark:border-gray-700">Query</th>
-              <th class="border p-2 dark:border-gray-700">Result</th>
+              <th class="border p-2 dark:border-gray-700 font-semibold">Query</th>
+              <th class="border p-2 dark:border-gray-700 font-semibold">Result</th>
             </tr>
           </thead>
           <tbody class="text-left">

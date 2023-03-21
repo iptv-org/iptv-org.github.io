@@ -1,5 +1,5 @@
 <script>
-  import { query, search, setSearchParam } from '~/store'
+  import { query } from '~/store'
   import { goto } from '$app/navigation'
 
   function onSubmit() {
