@@ -35,7 +35,6 @@
       query: 'is:closed',
       result: 'Finds channels that have been closed.'
     },
-    { query: 'guides:>5', result: 'Finds channels with more than 5 guides.' },
     { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' }
   ]
 </script>
