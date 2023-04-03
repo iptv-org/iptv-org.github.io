@@ -72,7 +72,8 @@
         </div>
       </div>
     </div>
-    {/if} {#if guides.length}
+    {/if}
+    <!-- {#if guides.length}
     <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
       <div
         class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -89,6 +90,6 @@
         </div>
       </div>
     </div>
-    {/if}
+    {/if} -->
   </section>
 </main>
