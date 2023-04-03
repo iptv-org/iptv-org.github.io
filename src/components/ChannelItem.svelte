@@ -128,7 +128,7 @@
   </div>
   <div class="w-52 px-4 sm:56">
     <div class="text-right flex justify-end space-x-3 items-center">
-      {#if guides.length}
+      <!-- {#if guides.length}
       <button
         on:click="{showGuides}"
         class="text-sm text-gray-500 dark:text-gray-100 inline-flex space-x-1 flex items-center hover:text-blue-500 dark:hover:text-blue-400"
@@ -152,7 +152,8 @@
         <div>{guides.length}</div>
         <div>{pluralize(guides.length, 'guide')}</div>
       </button>
-      {/if}{#if streams.length}
+      {/if} -->
+      {#if streams.length}
       <button
         on:click="{showStreams}"
         class="text-sm text-gray-500 dark:text-gray-100 inline-flex space-x-1 flex items-center hover:text-blue-500 dark:hover:text-blue-400"
