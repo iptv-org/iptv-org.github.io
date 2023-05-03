@@ -35,7 +35,7 @@
           ></path>
         </svg>
       </button>
-      <svg
+      <!-- <svg
         class="w-2 h-2 flex shrink-0"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@
         class:fill-red-500="{stream.status === 'error'}"
       >
         <circle cx="50" cy="50" r="50" />
-      </svg>
+      </svg> -->
       <a
         class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[85%] w-full"
         href="{stream.url}"
