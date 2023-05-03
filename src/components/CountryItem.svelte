@@ -58,6 +58,7 @@
       aria-controls="accordion-body-{country.code}"
     >
       <span>{country.flag}&nbsp;{country.name}</span>
+      {#if !hasQuery}
       <svg
         class:rotate-180="{expanded}"
         class="w-6 h-6 shrink-0"
@@ -71,6 +72,7 @@
           clip-rule="evenodd"
         ></path>
       </svg>
+      {/if}
     </button>
   </h2>
   {#if expanded}
