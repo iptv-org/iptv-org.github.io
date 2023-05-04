@@ -143,11 +143,12 @@ async function loadAPI() {
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
 
-  api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.groupBy(data, 'channel'))
-    .catch(console.error)
+  api.guides = {}
+  // api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
+  //   .then(r => r.json())
+  //   .then(data => (data.length ? data : []))
+  //   .then(data => _.groupBy(data, 'channel'))
+  //   .catch(console.error)
 
   api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
     .then(r => r.json())
@@ -202,8 +203,8 @@ function getStreams() {
 export function createPlaylist() {
   const playlist = new Playlist()
 
-  let guides = getGuides()
-  playlist.header = { 'x-tvg-url': guides.sort().join(',') }
+  // let guides = getGuides()
+  // playlist.header = { 'x-tvg-url': guides.sort().join(',') }
 
   let streams = getStreams()
   streams.forEach(stream => {
