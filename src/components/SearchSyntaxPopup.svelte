@@ -29,17 +29,22 @@
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
     { query: 'languages:fra', result: 'Find channels that are broadcast in French.' },
     { query: 'categories:news', result: 'Finds all the news channels.' },
-    { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
+    { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     {
-      query: 'is:closed',
+      query: 'is_closed:true',
       result: 'Finds channels that have been closed.'
+    },
+    {
+      query: 'is_blocked:true',
+      result:
+        'Finds channels that have been added to our blocklist due to the claim of the copyright holder.'
     },
     { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' }
   ]
 </script>
 
-<div class="relative px-2 py-20 flex justify-center" on:keypress on:click|self="{close}">
+<div class="relative px-2 py-20 flex justify-center" on:keypress on:click|self={close}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -48,7 +53,7 @@
         {title}
       </h3>
       <button
-        on:click="{close}"
+        on:click={close}
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
       >
@@ -66,7 +71,7 @@
         </svg>
       </button>
     </div>
-    <div class="overflow-y-scroll overflow-x-hidden w-full">
+    <div class="overflow-y-auto overflow-x-hidden w-full">
       <div class="p-6 text-gray-800 dark:text-white">
         <table class="w-full">
           <thead>
@@ -77,12 +82,12 @@
           </thead>
           <tbody class="text-left">
             {#each examples as example}
-            <tr class="even:bg-gray-50 even:dark:bg-gray-700">
-              <td class="border dark:border-gray-700 px-4 py-3 whitespace-nowrap">
-                {example.query}
-              </td>
-              <td class="border dark:border-gray-700 px-4 py-3">{example.result}</td>
-            </tr>
+              <tr class="even:bg-gray-50 even:dark:bg-gray-700">
+                <td class="border dark:border-gray-700 px-4 py-3 whitespace-nowrap">
+                  {example.query}
+                </td>
+                <td class="border dark:border-gray-700 px-4 py-3">{example.result}</td>
+              </tr>
             {/each}
           </tbody>
         </table>

@@ -7,7 +7,7 @@
   export let title = 'Streams'
 </script>
 
-<div class="relative px-2 py-32 flex justify-center" on:keypress on:click|self="{close}">
+<div class="relative px-2 py-32 flex justify-center" on:keypress on:click|self={close}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -29,11 +29,11 @@
               stroke-linejoin="round"
               d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"
             />
-          </svg> </span
-        >{title}
+          </svg>
+        </span>{title}
       </h3>
       <button
-        on:click="{close}"
+        on:click={close}
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
       >
@@ -51,10 +51,10 @@
         </svg>
       </button>
     </div>
-    <div class="overflow-y-scroll overflow-x-hidden w-full">
+    <div class="overflow-y-auto overflow-x-hidden w-full">
       <div class="p-6 space-y-2">
         {#each streams as stream}
-        <StreamItem stream="{stream}" />
+          <StreamItem {stream} />
         {/each}
       </div>
     </div>

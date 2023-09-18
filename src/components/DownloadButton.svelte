@@ -24,9 +24,9 @@
 
 <div class="w-14 sm:w-44">
   <button
-    class="rounded-md bg-accent-500 hover:bg-accent-600 transition-colors duration-200 text-sm text-white font-semibold px-5 h-10 flex items-center disabled:bg-gray-200 dark:disabled:text-gray-500 dark:disabled:bg-gray-700 w-full justify-center"
-    on:click="{onClick}"
-    disabled="{!$selected.length}"
+    class="rounded-md bg-primary-default hover:bg-primary-dark hover:dark:bg-primary-light transition-colors duration-200 text-sm text-white font-semibold px-5 h-10 flex items-center disabled:bg-gray-200 dark:disabled:text-gray-500 dark:disabled:bg-gray-700 w-full justify-center"
+    on:click={onClick}
+    disabled={!$selected.length}
     area-label="Download Playlist"
   >
     <span class="sm:hidden inline">

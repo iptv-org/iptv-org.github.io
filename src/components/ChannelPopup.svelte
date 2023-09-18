@@ -10,7 +10,7 @@
   }
 </script>
 
-<div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self="{closePopup}">
+<div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self={closePopup}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -21,7 +21,7 @@
 
       <div class="inline-flex w-1/3 justify-end">
         <button
-          on:click="{closePopup}"
+          on:click={closePopup}
           type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
         >
@@ -40,9 +40,9 @@
         </button>
       </div>
     </div>
-    <div class="overflow-y-scroll overflow-x-hidden w-full">
+    <div class="overflow-y-auto overflow-x-hidden w-full">
       <div class="p-12 pt-10">
-        <HTMLPreview data="{channel}" close="{closePopup}" />
+        <HTMLPreview data={channel} close={closePopup} />
       </div>
     </div>
   </div>

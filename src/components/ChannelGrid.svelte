@@ -12,7 +12,7 @@
           <div class="flex">
             <div class="w-36 sm:w-52 shrink-0"></div>
             <div
-              class="py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 w-52 sm:w-72 shrink-0"
+              class="py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 w-52 sm:w-80 shrink-0"
             >
               Name
             </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="bg-white dark:bg-gray-800">
           {#each channels as channel (channel.id)}
-          <ChannelItem bind:channel="{channel}" />
+            <ChannelItem bind:channel />
           {/each}
         </div>
       </div>
