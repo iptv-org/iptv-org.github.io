@@ -10,10 +10,10 @@ module.exports = {
         width: 'width'
       },
       colors: {
-        accent: {
-          400: '#594ee9',
-          500: '#5045e8',
-          600: '#4338e5'
+        primary: {
+          light: '#2f4368',
+          default: '#293b5b',
+          dark: '#253552'
         }
       }
     }
