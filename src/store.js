@@ -50,7 +50,8 @@ export async function fetchChannels() {
           return { type, ...api.subdivisions[code] }
       }
     })
-    c.is = c.closed || c.replaced_by ? 'closed' : 'active'
+    c.is_closed = !!c.closed || !!c.replaced_by
+    c.is_blocked = !!api.blocklist[c.id]
     c.streams = c._streams.length
     c.guides = c._guides.length
 
@@ -76,7 +77,9 @@ export async function fetchChannels() {
       'replaced_by',
       'streams',
       'guides',
-      'is'
+      'is_nsfw',
+      'is_closed',
+      'is_blocked'
     ]
   })
 }
@@ -138,6 +141,12 @@ async function loadAPI() {
     .catch(console.error)
 
   api.streams = await fetch('https://iptv-org.github.io/api/streams.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
+    .then(data => _.groupBy(data, 'channel'))
+    .catch(console.error)
+
+  api.blocklist = await fetch('https://iptv-org.github.io/api/blocklist.json')
     .then(r => r.json())
     .then(data => (data.length ? data : []))
     .then(data => _.groupBy(data, 'channel'))
