@@ -1,6 +1,8 @@
 <script>
   import HTMLPreview from '~/components/HTMLPreview.svelte'
   import EditButton from '~/components/EditButton.svelte'
+  import Divider from '~/components/Divider.svelte'
+  import SquareButton from '~/components/SquareButton.svelte'
   import { getContext } from 'svelte'
   const { close } = getContext('simple-modal')
 
@@ -14,19 +16,16 @@
 <div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self={closePopup}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
-      class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+      class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
     >
       <div class="w-2/3 overflow-hidden">
         <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h3>
       </div>
 
-      <div class="inline-flex w-1/3 justify-end space-x-3">
+      <div class="inline-flex w-1/3 justify-end space-x-3 items-center">
         <EditButton {channel} />
-        <button
-          on:click={closePopup}
-          type="button"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm w-[32px] h-[32px] justify-center ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-        >
+        <Divider />
+        <SquareButton on:click={closePopup}>
           <svg
             class="w-5 h-5"
             fill="currentColor"
@@ -39,7 +38,7 @@
               clip-rule="evenodd"
             ></path>
           </svg>
-        </button>
+        </SquareButton>
       </div>
     </div>
     <div class="overflow-y-auto overflow-x-hidden w-full">

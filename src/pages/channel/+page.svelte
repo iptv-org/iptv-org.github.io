@@ -47,7 +47,7 @@
     {#if channel}
       <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
         <div
-          class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
         >
           <div class="w-1/3 overflow-hidden">
             <h1 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h1>
@@ -64,7 +64,7 @@
     {#if streams.length}
       <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
         <div
-          class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
         >
           <div class="w-1/3 overflow-hidden">
             <h3 class="text-l font-medium text-gray-900 dark:text-white">Streams</h3>

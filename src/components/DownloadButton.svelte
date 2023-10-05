@@ -1,4 +1,5 @@
 <script>
+  import ActionButton from './ActionButton.svelte'
   import { selected, createPlaylist } from '~/store'
 
   function onClick() {
@@ -23,12 +24,7 @@
 </script>
 
 <div class="w-14 sm:w-44">
-  <button
-    class="rounded-md bg-primary-default hover:bg-primary-dark hover:dark:bg-primary-light transition-colors duration-200 text-sm text-white font-semibold px-5 h-10 flex items-center disabled:bg-gray-200 dark:disabled:text-gray-500 dark:disabled:bg-gray-700 w-full justify-center"
-    on:click={onClick}
-    disabled={!$selected.length}
-    area-label="Download Playlist"
-  >
+  <ActionButton on:click={onClick} disabled={!$selected.length} area-label="Download Playlist">
     <span class="sm:hidden inline">
       <svg
         fill="currentColor"
@@ -50,5 +46,5 @@
     </span>
 
     <span class="hidden sm:inline">Download Playlist</span>
-  </button>
+  </ActionButton>
 </div>

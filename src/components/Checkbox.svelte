@@ -13,7 +13,7 @@
 
 {#if selected}
   <button
-    class="w-12 h-12 rounded-full text-primary-light hover:text-primary-default dark:hover:text-primary-light transition-colors duration-200 flex items-center justify-center"
+    class="w-12 h-12 rounded-full text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center justify-center"
     area-label="Unselect"
     on:click={() => toggle(false)}
   >
@@ -27,7 +27,7 @@
   </button>
 {:else if indeterminate}
   <button
-    class="w-12 h-12 rounded-full text-primary-default hover:text-primary-dark dark:hover:text-primary-light transition-colors duration-200 flex items-center justify-center"
+    class="w-12 h-12 rounded-full text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center justify-center"
     area-label="Unselect"
     on:click={() => toggle(false)}
   >
