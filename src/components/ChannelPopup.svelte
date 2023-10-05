@@ -1,5 +1,6 @@
 <script>
   import HTMLPreview from '~/components/HTMLPreview.svelte'
+  import EditButton from '~/components/EditButton.svelte'
   import { getContext } from 'svelte'
   const { close } = getContext('simple-modal')
 
@@ -19,11 +20,12 @@
         <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h3>
       </div>
 
-      <div class="inline-flex w-1/3 justify-end">
+      <div class="inline-flex w-1/3 justify-end space-x-3">
+        <EditButton {channel} />
         <button
           on:click={closePopup}
           type="button"
-          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm w-[32px] h-[32px] justify-center ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
         >
           <svg
             class="w-5 h-5"
