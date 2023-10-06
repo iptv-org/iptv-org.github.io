@@ -4,7 +4,7 @@
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const title = `Edit: ${channel.name}`
   const labels = 'channels:edit'
-  const template = 'channels_edit.yml'
+  const template = '__channels_edit.yml'
 
   const editUrl = encodeURI(
     `${endpoint}?labels=${labels}&template=${template}&title=${title}&id=${channel.id}`
