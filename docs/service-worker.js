@@ -1,23 +1,23 @@
 const s = /* @__PURE__ */ location.pathname.split("/").slice(0, -1).join("/"), h = [
-  s + "/_app/immutable/entry/app.c018c3e7.js",
+  s + "/_app/immutable/entry/app.e1f5bfa5.js",
   s + "/_app/immutable/assets/0.039b7214.css",
   s + "/_app/immutable/nodes/0.1654e388.js",
-  s + "/_app/immutable/nodes/1.078a6320.js",
+  s + "/_app/immutable/nodes/1.15979b07.js",
   s + "/_app/immutable/assets/2.dfa854c9.css",
-  s + "/_app/immutable/nodes/2.3e3c98de.js",
-  s + "/_app/immutable/nodes/3.bd9e67c7.js",
+  s + "/_app/immutable/nodes/2.5eb75e1b.js",
+  s + "/_app/immutable/nodes/3.dd846bcd.js",
   s + "/_app/immutable/assets/EditButton.0d24e5da.css",
-  s + "/_app/immutable/chunks/EditButton.80944880.js",
+  s + "/_app/immutable/chunks/EditButton.0d8ca4d9.js",
   s + "/_app/immutable/chunks/index.33dbc0d8.js",
-  s + "/_app/immutable/chunks/singletons.497cadfa.js",
-  s + "/_app/immutable/chunks/stores.ac853a9e.js",
-  s + "/_app/immutable/entry/start.737d4d95.js"
+  s + "/_app/immutable/chunks/singletons.7472e3f8.js",
+  s + "/_app/immutable/chunks/stores.b56ccc8c.js",
+  s + "/_app/immutable/entry/start.a461f483.js"
 ], m = [
   s + "/.nojekyll",
   s + "/favicon.png",
   s + "/logo_512.png",
   s + "/manifest.json"
-], i = "1696480578539", l = `cache_${i}`, p = h.concat(m), d = new Set(p);
+], i = "1696552312143", l = `cache_${i}`, p = h.concat(m), d = new Set(p);
 self.addEventListener("install", (t) => {
   t.waitUntil(
     caches.open(l).then((e) => e.addAll(p)).then(() => {
