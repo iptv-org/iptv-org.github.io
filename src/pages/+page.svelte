@@ -112,7 +112,7 @@
     classBg="fixed top-0 left-0 z-40 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-auto"
     closeButton={false}
   >
-    <section class="max-w-5xl mx-auto px-2 pt-24 sm:pt-32 pb-20 overflow-hidden">
+    <section class="max-w-5xl mx-auto px-2 pt-24 sm:pt-32 pb-20 overflow-hidden min-h-full">
       <SearchField bind:isLoading bind:found={$filteredChannels.length}></SearchField>
       {#if isLoading}
         <div
