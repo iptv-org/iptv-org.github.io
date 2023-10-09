@@ -29,11 +29,14 @@ jobs:
           path: |
             docs
             .svelte-kit
+            src/data
           key: ${{ runner.os }}-svelte-build-${{ hashFiles('docs') }}
           restore-keys: |
             ${{ runner.os }}-svelte-build-
       - name: Install dependencies
         run: npm install
+      - name: Download data from API
+        run: ./api.sh
       - name: Build /docs
         run: npm run build
       - name: Upload artifact
