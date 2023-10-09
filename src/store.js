@@ -2,6 +2,14 @@ import { writable, get } from 'svelte/store'
 import { Playlist, Link } from 'iptv-playlist-generator'
 import sj from '@freearhey/search-js'
 import _ from 'lodash'
+import api_channels from '~/data/channels.json'
+import api_regions from '~/data/regions.json'
+import api_countries from '~/data/countries.json'
+import api_languages from '~/data/languages.json'
+import api_streams from '~/data/streams.json'
+import api_subdivisions from '~/data/subdivisions.json'
+import api_blocklist from '~/data/blocklist.json'
+import api_categories from '~/data/categories.json'
 
 export const query = writable('')
 export const hasQuery = writable(false)
@@ -104,6 +112,30 @@ export function setPageTitle(value) {
 async function loadAPI() {
   const api = {}
 
+  api.countries = _.keyBy(
+    api_countries.map(i => {
+      i.expanded = false
+      return i
+    }),
+    'code'
+  )
+
+  api.regions = _.keyBy(api_regions, 'code')
+  api.subdivisions = _.keyBy(api_subdivisions, 'code')
+  api.languages = _.keyBy(api_languages, 'code')
+  api.categories = _.keyBy(api_categories, 'id')
+  api.streams = _.keyBy(api_streams, 'channel')
+  api.blocklist = _.keyBy(api_blocklist, 'channel')
+  api.guides = {}
+
+  api.channels = api_channels
+
+  return api
+}
+
+async function _loadAPI() {
+  const api = {}
+
   api.countries = await fetch('https://iptv-org.github.io/api/countries.json')
     .then(r => r.json())
     .then(data => (data.length ? data : []))
@@ -153,11 +185,6 @@ async function loadAPI() {
     .catch(console.error)
 
   api.guides = {}
-  // api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
-  //   .then(r => r.json())
-  //   .then(data => (data.length ? data : []))
-  //   .then(data => _.groupBy(data, 'channel'))
-  //   .catch(console.error)
 
   api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
     .then(r => r.json())
@@ -167,18 +194,6 @@ async function loadAPI() {
     })
 
   return api
-}
-
-function getGuides() {
-  let guides = {}
-  get(selected).forEach(channel => {
-    let guide = channel._guides.length ? channel._guides[0] : null
-    if (guide && !guides[guide.url]) {
-      guides[guide.url] = guide.url
-    }
-  })
-
-  return Object.values(guides)
 }
 
 function getStreams() {
@@ -211,9 +226,6 @@ function getStreams() {
 
 export function createPlaylist() {
   const playlist = new Playlist()
-
-  // let guides = getGuides()
-  // playlist.header = { 'x-tvg-url': guides.sort().join(',') }
 
   let streams = getStreams()
   streams.forEach(stream => {
