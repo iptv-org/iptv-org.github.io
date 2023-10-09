@@ -200,7 +200,7 @@ export function createPlaylist() {
       'tvg-id': stream.channel.id,
       'tvg-logo': stream.channel.logo,
       'group-title': stream.channel._categories
-        .map(c => channel.name)
+        .map(channel => channel.name)
         .sort()
         .join(';')
     }
