@@ -32,7 +32,7 @@ export async function fetchChannels() {
 
   countries.set(api.countries)
 
-  let _channels = api.channels.map(c => transformChannel(c, api))
+  let _channels = Object.values(api.channels).map(c => transformChannel(c, api))
 
   channels.set(_channels)
   filteredChannels.set(_channels)
@@ -129,6 +129,8 @@ async function loadAPI() {
 
   api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
     .then(r => r.json())
+    .then(data => (data.length ? data : []))
+    .then(data => _.keyBy(data, channel => channel.id.toLowerCase()))
     .catch(err => {
       console.error(err)
       return []
@@ -157,6 +159,7 @@ export function transformChannel(channel, data) {
   channel.is_closed = !!channel.closed || !!channel.replaced_by
   channel.is_blocked = !!data.blocklist[channel.id]
   channel.streams = channel._streams.length
+  channel._replaced_by = channel.replaced_by ? data.channels[channel.replaced_by.toLowerCase()] : {}
 
   return channel
 }
