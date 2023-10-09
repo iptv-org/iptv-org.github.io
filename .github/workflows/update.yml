@@ -29,7 +29,6 @@ jobs:
           path: |
             docs
             .svelte-kit
-            src/data
           key: ${{ runner.os }}-svelte-build-${{ hashFiles('docs') }}
           restore-keys: |
             ${{ runner.os }}-svelte-build-
