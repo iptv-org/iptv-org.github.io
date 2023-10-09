@@ -16,7 +16,7 @@
   const { open } = getContext('simple-modal')
   const onOpened = () => {
     currLocation = window.location.href
-    window.history.pushState({}, `${channel.name} • iptv-org`, `/channel?id=${channel.id}`)
+    window.history.pushState({}, `${channel.name} • iptv-org`, `/channels/${channel.id}`)
   }
   const onClosed = () => {
     window.history.pushState({}, `iptv-org`, currLocation || '/')
@@ -91,7 +91,7 @@
         <div class="flex space-x-2 items-center">
           <a
             on:click|preventDefault={showChannelData}
-            href="/channel?id={channel.id}"
+            href="/channels/{channel.id}"
             tabindex="0"
             class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 line-clamp-1"
             title={channel.name}

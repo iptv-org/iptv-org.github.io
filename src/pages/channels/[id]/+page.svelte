@@ -4,27 +4,12 @@
   import HTMLPreview from '~/components/HTMLPreview.svelte'
   import EditButton from '~/components/EditButton.svelte'
   import NavBar from '~/components/NavBar.svelte'
-  import { onMount } from 'svelte'
-  import { fetchChannels, channels } from '~/store'
-  import { page } from '$app/stores'
 
-  let channel
-  let isLoading = true
-  let streams = []
-  let guides = []
+  export let data
 
-  onMount(async () => {
-    const id = $page.url.searchParams.get('id')
-    if (id && !$channels.length) {
-      await fetchChannels()
-    }
-    channel = $channels.find(c => c.id === id)
-    if (channel) {
-      streams = channel._streams
-      guides = channel._guides
-    }
-    isLoading = false
-  })
+  let isLoading = false
+  let channel = data.channel
+  let streams = data.streams
 </script>
 
 <svelte:head>

@@ -4,7 +4,7 @@
   import { query, hasQuery, channels, setSearchParam } from '~/store'
 
   export let data
-  export let close
+  export let close = () => {}
 
   let replaced_by = null
   if (data.replaced_by) {
@@ -100,64 +100,71 @@
 <table class="table-fixed w-full">
   <tbody>
     {#each fieldset as field}
-    <tr>
-      <td class="align-top w-[11rem]">
-        <div class="flex pr-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400">
-          {field.name}
-        </div>
-      </td>
-      <td class="align-top">
-        <div class="flex py-1 text-sm text-gray-700 dark:text-gray-100 flex-wrap">
-          {#if field.type === 'image'}
-          <img
-            src="{field.value}"
-            alt="{field.name}"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
-          />
-          {:else if field.type === 'link'}
-          <button
-            on:click="{() => searchBy(field.value.query)}"
-            class="underline hover:text-blue-500"
-          >
-            {field.value.label}
-          </button>
-          {:else if field.type === 'link[]'} {#each field.value as value, i} {#if i > 0}<span
-            >,&nbsp;
-          </span>
-          {/if}
-          <button on:click="{() => searchBy(value.query)}" class="underline hover:text-blue-500">
-            {value.label}
-          </button>
-          {/each} {:else if field.type === 'external_link'}
-          <a
-            href="{field.value}"
-            class="underline hover:text-blue-500 inline-flex align-middle"
-            target="_blank"
-            rel="noopener noreferrer"
-            >{field.value}<span
-              class="inline-flex items-center pl-1 text-sm font-semibold text-gray-400 rounded-full"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+      <tr>
+        <td class="align-top w-[11rem]">
+          <div class="flex pr-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400">
+            {field.name}
+          </div>
+        </td>
+        <td class="align-top">
+          <div class="flex py-1 text-sm text-gray-700 dark:text-gray-100 flex-wrap">
+            {#if field.type === 'image'}
+              <img
+                src={field.value}
+                alt={field.name}
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
+              />
+            {:else if field.type === 'link'}
+              <button
+                on:click={() => searchBy(field.value.query)}
+                class="underline hover:text-blue-500"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                ></path>
-              </svg> </span
-          ></a>
-          {:else} {field.value} {/if}
-        </div>
-      </td>
-    </tr>
+                {field.value.label}
+              </button>
+            {:else if field.type === 'link[]'}
+              {#each field.value as value, i}
+                {#if i > 0}<span>,&nbsp; </span>
+                {/if}
+                <button
+                  on:click={() => searchBy(value.query)}
+                  class="underline hover:text-blue-500"
+                >
+                  {value.label}
+                </button>
+              {/each}
+            {:else if field.type === 'external_link'}
+              <a
+                href={field.value}
+                class="underline hover:text-blue-500 inline-flex align-middle"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{field.value}<span
+                  class="inline-flex items-center pl-1 text-sm font-semibold text-gray-400 rounded-full"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    ></path>
+                  </svg>
+                </span></a
+              >
+            {:else}
+              {field.value}
+            {/if}
+          </div>
+        </td>
+      </tr>
     {/each}
   </tbody>
 </table>

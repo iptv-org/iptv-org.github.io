@@ -2,14 +2,6 @@ import { writable, get } from 'svelte/store'
 import { Playlist, Link } from 'iptv-playlist-generator'
 import sj from '@freearhey/search-js'
 import _ from 'lodash'
-import api_channels from '~/data/channels.json'
-import api_regions from '~/data/regions.json'
-import api_countries from '~/data/countries.json'
-import api_languages from '~/data/languages.json'
-import api_streams from '~/data/streams.json'
-import api_subdivisions from '~/data/subdivisions.json'
-import api_blocklist from '~/data/blocklist.json'
-import api_categories from '~/data/categories.json'
 
 export const query = writable('')
 export const hasQuery = writable(false)
@@ -112,33 +104,8 @@ export function setPageTitle(value) {
 async function loadAPI() {
   const api = {}
 
-  api.countries = _.keyBy(
-    api_countries.map(i => {
-      i.expanded = false
-      return i
-    }),
-    'code'
-  )
-
-  api.regions = _.keyBy(api_regions, 'code')
-  api.subdivisions = _.keyBy(api_subdivisions, 'code')
-  api.languages = _.keyBy(api_languages, 'code')
-  api.categories = _.keyBy(api_categories, 'id')
-  api.streams = _.keyBy(api_streams, 'channel')
-  api.blocklist = _.keyBy(api_blocklist, 'channel')
-  api.guides = {}
-
-  api.channels = api_channels
-
-  return api
-}
-
-async function _loadAPI() {
-  const api = {}
-
-  api.countries = await fetch('https://iptv-org.github.io/api/countries.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.countries = await import('~/data/countries.json')
+    .then(m => m.default)
     .then(data =>
       data.map(i => {
         i.expanded = false
@@ -148,46 +115,40 @@ async function _loadAPI() {
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.regions = await fetch('https://iptv-org.github.io/api/regions.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.regions = await import('~/data/regions.json')
+    .then(m => m.default)
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.subdivisions = await fetch('https://iptv-org.github.io/api/subdivisions.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.subdivisions = await import('~/data/subdivisions.json')
+    .then(m => m.default)
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.languages = await fetch('https://iptv-org.github.io/api/languages.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.languages = await import('~/data/languages.json')
+    .then(m => m.default)
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.categories = await fetch('https://iptv-org.github.io/api/categories.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.categories = await import('~/data/categories.json')
+    .then(m => m.default)
     .then(data => _.keyBy(data, 'id'))
     .catch(console.error)
 
-  api.streams = await fetch('https://iptv-org.github.io/api/streams.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.streams = await import('~/data/streams.json')
+    .then(m => m.default)
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
 
-  api.blocklist = await fetch('https://iptv-org.github.io/api/blocklist.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
+  api.blocklist = await import('~/data/blocklist.json')
+    .then(m => m.default)
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
 
   api.guides = {}
 
-  api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
-    .then(r => r.json())
+  api.channels = await import('~/data/channels.json')
+    .then(m => m.default)
     .catch(err => {
       console.error(err)
       return []
