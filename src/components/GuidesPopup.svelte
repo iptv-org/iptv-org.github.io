@@ -3,11 +3,10 @@
   import { getContext } from 'svelte'
   const { close } = getContext('simple-modal')
 
-  export let guides = []
   export let title = 'Guides'
 </script>
 
-<div class="relative px-2 py-32 flex justify-center" on:keypress on:click|self="{close}">
+<div class="relative px-2 py-32 flex justify-center" on:keypress on:click|self={close}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
     <div
       class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
@@ -30,11 +29,11 @@
               d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
               clip-rule="evenodd"
             />
-          </svg> </span
-        >{title}
+          </svg>
+        </span>{title}
       </h3>
       <button
-        on:click="{close}"
+        on:click={close}
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
       >
@@ -51,13 +50,6 @@
           ></path>
         </svg>
       </button>
-    </div>
-    <div class="overflow-y-scroll overflow-x-hidden w-full">
-      <div class="p-6 space-y-2">
-        {#each guides as guide}
-        <GuideItem guide="{guide}" />
-        {/each}
-      </div>
     </div>
   </div>
 </div>

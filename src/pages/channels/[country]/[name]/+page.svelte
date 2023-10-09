@@ -9,7 +9,7 @@
 
   let isLoading = false
   let channel = data.channel
-  let streams = data.streams
+  let streams = channel ? channel._streams : []
 </script>
 
 <svelte:head>
@@ -64,23 +64,5 @@
         </div>
       </div>
     {/if}
-    <!-- {#if guides.length}
-    <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
-      <div
-        class="flex justify-between items-center py-4 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
-      >
-        <div class="w-1/3 overflow-hidden">
-          <h3 class="text-l font-medium text-gray-900 dark:text-white">Guides</h3>
-        </div>
-      </div>
-      <div class="overflow-y-auto overflow-x-hidden w-full p-6">
-        <div class="space-y-2">
-          {#each guides as guide}
-          <GuideItem guide="{guide}" />
-          {/each}
-        </div>
-      </div>
-    </div>
-    {/if} -->
   </section>
 </main>

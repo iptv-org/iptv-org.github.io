@@ -20,47 +20,33 @@ export async function entries() {
   })
 }
 
-export async function load({ params }) {
-  const data = await loadData()
+export function load({ params }) {
+  const data = loadData()
 
   const country = params.country
   const name = params.name
   const id = `${name}.${country}`.toLowerCase()
 
-  const _channels = data.channels
-
-  let streams = []
-  let channel = _channels.find(channel => channel.id.toLowerCase() === id)
+  let channel = channels.find(channel => channel.id.toLowerCase() === id) || {}
   if (channel) {
     channel = transformChannel(channel, data)
-    streams = channel._streams
   }
 
   return {
-    channel,
-    streams
+    channel
   }
 }
 
-async function loadData() {
+function loadData() {
   const data = {}
 
-  data.countries = _.keyBy(
-    countries.map(country => {
-      country.expanded = false
-
-      return country
-    }),
-    'code'
-  )
-
+  data.countries = _.keyBy(countries, 'code')
   data.regions = _.keyBy(regions, 'code')
   data.subdivisions = _.keyBy(subdivisions, 'code')
   data.languages = _.keyBy(languages, 'code')
   data.categories = _.keyBy(categories, 'id')
-  data.streams = _.keyBy(streams, 'channel')
-  data.blocklist = _.keyBy(blocklist, 'channel')
-  data.channels = channels
+  data.streams = _.groupBy(streams, 'channel')
+  data.blocklist = _.groupBy(blocklist, 'channel')
 
   return data
 }

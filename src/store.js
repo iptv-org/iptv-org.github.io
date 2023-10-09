@@ -52,7 +52,6 @@ export async function fetchChannels() {
       'closed',
       'replaced_by',
       'streams',
-      'guides',
       'is_nsfw',
       'is_closed',
       'is_blocked'
@@ -127,8 +126,6 @@ async function loadAPI() {
     .then(data => (data.length ? data : []))
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
-
-  api.guides = {}
 
   api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
     .then(r => r.json())
