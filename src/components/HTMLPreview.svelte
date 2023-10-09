@@ -1,16 +1,10 @@
 <script>
   import dayjs from 'dayjs'
   import { goto } from '$app/navigation'
-  import { query, hasQuery, channels, setSearchParam } from '~/store'
+  import { query, hasQuery, setSearchParam } from '~/store'
 
   export let data
   export let close = () => {}
-
-  let replaced_by = null
-  if (data.replaced_by) {
-    const channel = $channels.find(c => c.id === data.replaced_by)
-    if (channel) replaced_by = channel.name
-  }
 
   const fieldset = [
     { name: 'logo', type: 'image', value: data.logo },
@@ -77,7 +71,11 @@
       type: 'date',
       value: data.closed ? dayjs(data.closed).format('D MMMM YYYY') : null
     },
-    { name: 'replaced_by', type: 'channel', value: replaced_by },
+    {
+      name: 'replaced_by',
+      type: 'channel',
+      value: data._replaced_by ? data._replaced_by.name : null
+    },
     { name: 'website', type: 'external_link', value: data.website }
   ].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
 
