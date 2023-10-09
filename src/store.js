@@ -32,31 +32,7 @@ export async function fetchChannels() {
 
   countries.set(api.countries)
 
-  let _channels = api.channels.map(c => {
-    c._streams = api.streams[c.id] || []
-    c._guides = api.guides[c.id] || []
-    c._country = api.countries[c.country]
-    c._subdivision = api.subdivisions[c.subdivision]
-    c._languages = c.languages.map(code => api.languages[code]).filter(i => i)
-    c._categories = c.categories.map(id => api.categories[id]).filter(i => i)
-    c._broadcast_area = c.broadcast_area.map(value => {
-      const [type, code] = value.split('/')
-      switch (type) {
-        case 'c':
-          return { type, ...api.countries[code] }
-        case 'r':
-          return { type, ...api.regions[code] }
-        case 's':
-          return { type, ...api.subdivisions[code] }
-      }
-    })
-    c.is_closed = !!c.closed || !!c.replaced_by
-    c.is_blocked = !!api.blocklist[c.id]
-    c.streams = c._streams.length
-    c.guides = c._guides.length
-
-    return c
-  })
+  let _channels = api.channels.map(c => transformChannel(c, api))
 
   channels.set(_channels)
   filteredChannels.set(_channels)
@@ -104,8 +80,9 @@ export function setPageTitle(value) {
 async function loadAPI() {
   const api = {}
 
-  api.countries = await import('~/data/countries.json')
-    .then(m => m.default)
+  api.countries = await fetch('https://iptv-org.github.io/api/countries.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data =>
       data.map(i => {
         i.expanded = false
@@ -115,46 +92,76 @@ async function loadAPI() {
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.regions = await import('~/data/regions.json')
-    .then(m => m.default)
+  api.regions = await fetch('https://iptv-org.github.io/api/regions.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.subdivisions = await import('~/data/subdivisions.json')
-    .then(m => m.default)
+  api.subdivisions = await fetch('https://iptv-org.github.io/api/subdivisions.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.languages = await import('~/data/languages.json')
-    .then(m => m.default)
+  api.languages = await fetch('https://iptv-org.github.io/api/languages.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.keyBy(data, 'code'))
     .catch(console.error)
 
-  api.categories = await import('~/data/categories.json')
-    .then(m => m.default)
+  api.categories = await fetch('https://iptv-org.github.io/api/categories.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.keyBy(data, 'id'))
     .catch(console.error)
 
-  api.streams = await import('~/data/streams.json')
-    .then(m => m.default)
+  api.streams = await fetch('https://iptv-org.github.io/api/streams.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
 
-  api.blocklist = await import('~/data/blocklist.json')
-    .then(m => m.default)
+  api.blocklist = await fetch('https://iptv-org.github.io/api/blocklist.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
     .then(data => _.groupBy(data, 'channel'))
     .catch(console.error)
 
   api.guides = {}
 
-  api.channels = await import('~/data/channels.json')
-    .then(m => m.default)
+  api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
+    .then(r => r.json())
     .catch(err => {
       console.error(err)
       return []
     })
 
   return api
+}
+
+export function transformChannel(channel, data) {
+  channel._streams = data.streams[channel.id] || []
+  channel._country = data.countries[channel.country]
+  channel._subdivision = data.subdivisions[channel.subdivision]
+  channel._languages = channel.languages.map(code => data.languages[code]).filter(i => i)
+  channel._categories = channel.categories.map(id => data.categories[id]).filter(i => i)
+  channel._broadcast_area = channel.broadcast_area.map(value => {
+    const [type, code] = value.split('/')
+    switch (type) {
+      case 'c':
+        return { type, ...data.countries[code] }
+      case 'r':
+        return { type, ...data.regions[code] }
+      case 's':
+        return { type, ...data.subdivisions[code] }
+    }
+  })
+  channel.is_closed = !!channel.closed || !!channel.replaced_by
+  channel.is_blocked = !!data.blocklist[channel.id]
+  channel.streams = channel._streams.length
+
+  return channel
 }
 
 function getStreams() {
@@ -196,7 +203,7 @@ export function createPlaylist() {
       'tvg-id': stream.channel.id,
       'tvg-logo': stream.channel.logo,
       'group-title': stream.channel._categories
-        .map(c => c.name)
+        .map(c => channel.name)
         .sort()
         .join(';')
     }
