@@ -9,6 +9,16 @@ import blocklist from '~/data/blocklist.json'
 import languages from '~/data/languages.json'
 import streams from '~/data/streams.json'
 
+const data = {}
+data.countries = _.keyBy(countries, 'code')
+data.regions = _.keyBy(regions, 'code')
+data.subdivisions = _.keyBy(subdivisions, 'code')
+data.languages = _.keyBy(languages, 'code')
+data.categories = _.keyBy(categories, 'id')
+data.streams = _.groupBy(streams, 'channel')
+data.blocklist = _.groupBy(blocklist, 'channel')
+data.channels = _.keyBy(channels, channel => channel.id.toLowerCase())
+
 export async function entries() {
   return channels.map(channel => {
     const [name, country] = channel.id.split('.')
@@ -21,13 +31,11 @@ export async function entries() {
 }
 
 export function load({ params }) {
-  const data = loadData()
-
   const country = params.country
   const name = params.name
   const id = `${name}.${country}`.toLowerCase()
 
-  let channel = channels.find(channel => channel.id.toLowerCase() === id) || {}
+  let channel = data.channels[id] || {}
   if (channel) {
     channel = transformChannel(channel, data)
   }
@@ -35,18 +43,4 @@ export function load({ params }) {
   return {
     channel
   }
-}
-
-function loadData() {
-  const data = {}
-
-  data.countries = _.keyBy(countries, 'code')
-  data.regions = _.keyBy(regions, 'code')
-  data.subdivisions = _.keyBy(subdivisions, 'code')
-  data.languages = _.keyBy(languages, 'code')
-  data.categories = _.keyBy(categories, 'id')
-  data.streams = _.groupBy(streams, 'channel')
-  data.blocklist = _.groupBy(blocklist, 'channel')
-
-  return data
 }
