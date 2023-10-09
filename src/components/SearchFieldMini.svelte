@@ -3,11 +3,11 @@
   import { goto } from '$app/navigation'
 
   function onSubmit() {
-    goto('/')
+    goto(`/?q=${$query}`)
   }
 </script>
 
-<form on:submit|preventDefault="{onSubmit}" autocomplete="off" class="w-full">
+<form on:submit|preventDefault={onSubmit} autocomplete="off" class="w-full">
   <div class="w-full">
     <label for="search-input" class="sr-only">Search</label>
     <div class="relative w-full">
@@ -28,7 +28,7 @@
       <input
         type="search"
         id="search-input"
-        bind:value="{$query}"
+        bind:value={$query}
         class="bg-gray-50 border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-9 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search"
       />
