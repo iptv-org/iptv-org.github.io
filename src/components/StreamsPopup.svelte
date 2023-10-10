@@ -36,6 +36,7 @@
         on:click={close}
         type="button"
         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-full text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        area-label="Close"
       >
         <svg
           class="w-5 h-5"
