@@ -43,6 +43,7 @@ export async function fetchChannels() {
       'name',
       'alt_names',
       'network',
+      'owners',
       'country',
       'subdivision',
       'city',
