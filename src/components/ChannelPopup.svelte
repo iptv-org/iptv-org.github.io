@@ -31,8 +31,8 @@
         <CloseButton on:click={close} />
       </div>
     </div>
-    <div class="overflow-y-auto overflow-x-hidden w-full">
-      <div class="p-12 pt-10">
+    <div class="overflow-y-auto overflow-x-scroll w-full scrollbar-hide">
+      <div class="inline-table p-12 pt-10">
         <HTMLPreview data={channel} {close} />
       </div>
     </div>

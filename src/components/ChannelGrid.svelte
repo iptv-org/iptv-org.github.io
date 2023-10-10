@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="overflow-y-auto">
+  <div class="overflow-y-auto scrollbar-hide">
     <div class="inline-block min-w-full align-middle overflow-hidden">
       <div class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
         <div class="bg-gray-50 dark:bg-gray-700">

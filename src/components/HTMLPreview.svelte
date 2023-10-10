@@ -84,17 +84,17 @@
   }
 </script>
 
-<table class="table-fixed w-full">
+<table class="table-fixed">
   <tbody>
     {#each fieldset as field}
       <tr>
         <td class="align-top w-[11rem]">
-          <div class="flex pr-4 py-1 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+          <div class="flex pr-4 pb-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
             {field.name}
           </div>
         </td>
         <td class="align-top">
-          <div class="flex py-1 text-sm text-gray-800 dark:text-gray-100 flex-wrap">
+          <div class="flex pb-3 text-sm text-gray-800 dark:text-gray-100 flex-wrap">
             {#if field.type === 'image'}
               <img
                 src={field.value}
@@ -125,7 +125,7 @@
             {:else if field.type === 'external_link'}
               <a
                 href={field.value}
-                class="underline hover:text-blue-500 inline-flex align-middle"
+                class="underline hover:text-blue-500 inline-flex align-middle whitespace-nowrap"
                 target="_blank"
                 rel="noopener noreferrer"
                 >{field.value}<span
