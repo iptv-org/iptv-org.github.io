@@ -37,11 +37,8 @@ export function load({ params }) {
   const id = `${name}.${country}`.toLowerCase()
 
   let channel = data.channels[id]
-  if (!channel) {
-    throw error(404, 'Not Found')
-  }
 
   return {
-    channel: transformChannel(channel, data)
+    channel: channel ? transformChannel(channel, data) : null
   }
 }
