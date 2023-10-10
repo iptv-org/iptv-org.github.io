@@ -22,7 +22,7 @@
   }
 </script>
 
-<form class="mb-5" on:submit|preventDefault="{onSubmit}">
+<form class="mb-5" on:submit|preventDefault={onSubmit}>
   <div>
     <label for="search-input" class="sr-only">Search</label>
     <div class="relative mt-1">
@@ -43,21 +43,21 @@
       <input
         type="search"
         id="search-input"
-        bind:value="{$query}"
+        bind:value={$query}
         class="bg-white border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search for channels"
       />
     </div>
     <div class="mt-2 flex justify-between px-1">
-      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono"
+      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-1"
         >Found&nbsp;
-        <span class:animate-spin="{isLoading}">{ !isLoading ? found.toLocaleString() : '/' }</span>
+        <span class:animate-spin={isLoading}>{!isLoading ? found.toLocaleString() : '/'}</span>
         &nbsp;channel(s)</span
       >
       <button
         type="button"
-        on:click|preventDefault="{showSearchSyntax}"
-        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400"
+        on:click|preventDefault={showSearchSyntax}
+        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-1"
       >
         Search syntax
       </button>
