@@ -9,11 +9,26 @@
   let isLoading = false
   let channel = data.channel
   let streams = channel ? channel._streams : []
+
+  const structuredData = {
+    '@context': 'https://schema.org/',
+    '@type': 'TelevisionChannel',
+    identifier: channel.id,
+    name: channel.name,
+    image: channel.logo,
+    alternateName: channel.alt_names.map(value => ({ '@value': value })),
+    genre: channel._categories.map(category => ({ '@value': category.name })),
+    sameAs: channel.website
+  }
+  const schema = () => {
+    return `<script type="application/ld+json">${JSON.stringify(structuredData)}<\/script>`
+  }
 </script>
 
 <svelte:head>
   <title>{channel && channel.name ? `${channel.name} • iptv-org` : 'iptv-org'}</title>
   <meta name="description" content="A detailed description of {channel.name}." />
+  {@html schema()}
 </svelte:head>
 
 <header class="fixed z-40 w-full min-w-[360px] top-0">
