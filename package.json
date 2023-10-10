@@ -5,7 +5,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs"
+    "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
+    "postinstall": "./src/load.sh"
   },
   "devDependencies": {
     "@freearhey/search-js": "^0.1.1",
