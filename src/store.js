@@ -2,6 +2,7 @@ import { writable, get } from 'svelte/store'
 import { Playlist, Link } from 'iptv-playlist-generator'
 import sj from '@freearhey/search-js'
 import _ from 'lodash'
+import { browser } from '$app/environment'
 
 export const query = writable('')
 export const hasQuery = writable(false)
@@ -72,8 +73,10 @@ export function setSearchParam(key, value) {
 }
 
 export function setPageTitle(value) {
-  const title = value ? `${value} · iptv-org` : 'iptv-org'
-  document.title = title
+  if (browser) {
+    const title = value ? `${value} · iptv-org` : 'iptv-org'
+    window.document.title = title
+  }
 }
 
 async function loadAPI() {
