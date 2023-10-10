@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit'
 import { transformChannel } from '~/store'
 import _ from 'lodash'
 import channels from '~/data/channels.json'
@@ -35,12 +36,12 @@ export function load({ params }) {
   const name = params.name
   const id = `${name}.${country}`.toLowerCase()
 
-  let channel = data.channels[id] || {}
-  if (channel) {
-    channel = transformChannel(channel, data)
+  let channel = data.channels[id]
+  if (!channel) {
+    throw error(404, 'Not Found')
   }
 
   return {
-    channel
+    channel: transformChannel(channel, data)
   }
 }
