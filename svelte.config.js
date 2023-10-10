@@ -13,7 +13,8 @@ const config = {
     adapter: adapter({
       pages: 'docs',
       assets: 'docs',
-      precompress: false
+      precompress: false,
+      strict: true
     })
   },
   preprocess: vitePreprocess()

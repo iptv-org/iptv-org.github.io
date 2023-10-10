@@ -22,8 +22,11 @@ data.streams = _.groupBy(_streams, 'channel')
 data.blocklist = _.groupBy(blocklist, 'channel')
 data.channels = _.keyBy(channels, channel => channel.id.toLowerCase())
 
+export const csr = true
+export const ssr = true
+
 export function entries() {
-  return Object.values(data.channels).map(channel => {
+  return channels.map(channel => {
     const [name, country] = channel.id.split('.')
 
     return {
