@@ -99,7 +99,6 @@
               <img
                 src={field.value}
                 alt={field.name}
-                loading="lazy"
                 referrerpolicy="no-referrer"
                 class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
               />
