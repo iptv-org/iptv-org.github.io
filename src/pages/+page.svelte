@@ -77,7 +77,6 @@
 <svelte:window bind:scrollY={scrollTop} />
 <svelte:head>
   <title>iptv-org</title>
-  <meta name="description" content="Collection of resources dedicated to IPTV" />
 </svelte:head>
 
 <header
