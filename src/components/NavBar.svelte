@@ -65,16 +65,14 @@
       </div>
     </div>
 
-    <div class="flex flex-end items-center space-x-4">
-      <div>
-        <CreatePlaylistButton
-          on:click={() => {
-            if ($page.url.pathname !== '/') {
-              goto('/')
-            }
-          }}
-        />
-      </div>
+    <div class="flex flex-end items-center space-x-4 pl-3">
+      <CreatePlaylistButton
+        on:click={() => {
+          if ($page.url.pathname !== '/') {
+            goto('/')
+          }
+        }}
+      />
       <Divider />
       <div class="inline-flex space-x-2">
         <SquareButton type="button" on:click={toggleDarkMode} aria-label="Toggle Dark Mode">
