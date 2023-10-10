@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Download data from API
-        run: ./api.sh
+        run: ./src/load.sh
       - name: Build /docs
         run: npm run build
       - name: Upload artifact
