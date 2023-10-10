@@ -13,9 +13,9 @@
   const structuredData = {
     '@context': 'https://schema.org/',
     '@type': 'TelevisionChannel',
+    image: channel.logo,
     identifier: channel.id,
     name: channel.name,
-    image: channel.logo,
     alternateName: channel.alt_names.map(value => ({ '@value': value })),
     genre: channel._categories.map(category => ({ '@value': category.name })),
     sameAs: channel.website
