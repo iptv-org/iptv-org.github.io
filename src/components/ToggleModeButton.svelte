@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte'
   import SquareButton from './SquareButton.svelte'
 
   let dark = false
@@ -14,6 +15,15 @@
       localStorage.theme = 'dark'
     }
   }
+
+  onMount(() => {
+    let mode = localStorage.theme || 'light'
+    if (mode === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      dark = true
+    } else {
+      dark = false
+    }
+  })
 </script>
 
 <SquareButton on:click={toggleDarkMode} aria-label="Toggle Dark Mode">

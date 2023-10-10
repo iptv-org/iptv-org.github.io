@@ -1,6 +1,5 @@
 <script>
   import { query, hasQuery, search } from '~/store'
-  import { onMount } from 'svelte'
   import SearchFieldMini from './SearchFieldMini.svelte'
   import Divider from './Divider.svelte'
   import CreatePlaylistButton from './CreatePlaylistButton.svelte'
@@ -17,15 +16,6 @@
     hasQuery.set(false)
     search('')
   }
-
-  onMount(() => {
-    let mode = localStorage.theme || 'light'
-    if (mode === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      dark = true
-    } else {
-      dark = false
-    }
-  })
 </script>
 
 <nav
