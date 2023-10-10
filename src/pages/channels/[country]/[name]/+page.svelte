@@ -52,7 +52,7 @@
           class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
         >
           <div class="w-1/3 overflow-hidden">
-            <h3 class="text-l font-medium text-gray-900 dark:text-white">Streams</h3>
+            <h2 class="text-l font-medium text-gray-900 dark:text-white">Streams</h2>
           </div>
         </div>
         <div class="overflow-y-auto overflow-x-hidden w-full p-6">
