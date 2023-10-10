@@ -17,7 +17,7 @@
     type="button"
     on:click={copy}
     class="relative flex items-center p-1 text-xs text-gray-500 dark:text-gray-100"
-    area-label="Copy to Clipboard"
+    aria-label="Copy to Clipboard"
   >
     <svg
       class="w-5 h-5"

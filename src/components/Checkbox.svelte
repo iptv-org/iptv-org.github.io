@@ -14,7 +14,7 @@
 {#if selected}
   <button
     class="w-12 h-12 rounded-full text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center justify-center"
-    area-label="Unselect"
+    aria-label="Unselect"
     on:click={() => toggle(false)}
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -28,7 +28,7 @@
 {:else if indeterminate}
   <button
     class="w-12 h-12 rounded-full text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 flex items-center justify-center"
-    area-label="Unselect"
+    aria-label="Unselect"
     on:click={() => toggle(false)}
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -42,7 +42,7 @@
 {:else}
   <button
     class="w-12 h-12 rounded-full text-gray-200 hover:text-gray-400 dark:text-gray-700 dark:hover:text-gray-600 transition-colors duration-200 flex items-center justify-center"
-    area-label="Select"
+    aria-label="Select"
     on:click={() => toggle(true)}
   >
     <svg

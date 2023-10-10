@@ -23,7 +23,7 @@
   }
 </script>
 
-<ActionButton on:click={onClick} disabled={!$selected.length} area-label="Download Playlist">
+<ActionButton on:click={onClick} disabled={!$selected.length} aria-label="Download Playlist">
   <span class="inline">
     <svg
       fill="currentColor"

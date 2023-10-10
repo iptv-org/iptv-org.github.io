@@ -13,7 +13,7 @@
     downloadMode.set(true)
     dispatch('click')
   }}
-  area-label="Create Playlist"
+  aria-label="Create Playlist"
 >
   <span class="inline">
     <svg

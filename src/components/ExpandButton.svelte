@@ -12,7 +12,7 @@
     expanded = !expanded
     dispatch('click', { state: expanded })
   }}
-  area-label={expanded ? 'Collapse' : 'Expand'}
+  aria-label={expanded ? 'Collapse' : 'Expand'}
 >
   <svg
     class="w-4 h-4"

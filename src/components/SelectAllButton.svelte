@@ -14,7 +14,7 @@
 </script>
 
 {#if isAllSelected}
-  <OutlineButton on:click={deselectAll} area-label="Deselect All ({$selected.length})">
+  <OutlineButton on:click={deselectAll} aria-label="Deselect All ({$selected.length})">
     <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@
     <span class="hidden sm:inline">Deselect All ({$selected.length})</span>
   </OutlineButton>
 {:else}
-  <OutlineButton on:click={selectAll} area-label="Select All ({$filteredChannels.length})">
+  <OutlineButton on:click={selectAll} aria-label="Select All ({$filteredChannels.length})">
     <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
