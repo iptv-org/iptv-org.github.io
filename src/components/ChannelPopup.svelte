@@ -9,6 +9,12 @@
 
   const { close } = getContext('simple-modal')
 
+  window.onpopstate = event => {
+    if (event.target.location.pathname === '/') {
+      close()
+    }
+  }
+
   const closePopup = () => {
     close()
   }
