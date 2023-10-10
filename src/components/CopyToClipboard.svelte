@@ -16,7 +16,7 @@
   <button
     type="button"
     on:click={copy}
-    class="relative flex items-center p-1 text-xs text-gray-500 dark:text-gray-100"
+    class="relative flex items-center justify-center text-xs text-gray-500 dark:text-gray-100 w-7 h-7"
     aria-label="Copy to Clipboard"
   >
     <svg
