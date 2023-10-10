@@ -1,4 +1,4 @@
-# iptv-org.github.io
+# iptv-org.github.io [![update](https://github.com/iptv-org/database/actions/workflows/update.yml/badge.svg)](https://github.com/iptv-org/database/actions/workflows/update.yml)
 
 ## Developing
 
