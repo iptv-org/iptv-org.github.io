@@ -1,7 +1,6 @@
 <script>
   import { getContext } from 'svelte'
   import StreamsPopup from './StreamsPopup.svelte'
-  import GuidesPopup from './GuidesPopup.svelte'
   import ChannelPopup from './ChannelPopup.svelte'
   import Checkbox from './Checkbox.svelte'
   import { downloadMode, selected, query } from '~/store'
@@ -22,12 +21,6 @@
   const onClose = () => {
     window.history.pushState({}, `iptv-org`, prevUrl)
   }
-  const showGuides = () =>
-    open(
-      GuidesPopup,
-      { title: channel.name },
-      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
-    )
   const showStreams = () =>
     open(
       StreamsPopup,

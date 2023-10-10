@@ -1,5 +1,4 @@
 <script>
-  import GuideItem from '~/components/GuideItem.svelte'
   import StreamItem from '~/components/StreamItem.svelte'
   import HTMLPreview from '~/components/HTMLPreview.svelte'
   import EditButton from '~/components/EditButton.svelte'
