@@ -1,4 +1,4 @@
-name: Deploy site to Pages
+name: update
 on:
   push:
     branches: [$default-branch]
