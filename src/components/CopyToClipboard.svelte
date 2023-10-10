@@ -12,24 +12,12 @@
   }
 </script>
 
-<style>
-  .tooltip::after {
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    border-width: 7px;
-    border-style: solid;
-    transform: translate3d(0, -7px, 0px);
-    border-color: transparent transparent transparent black;
-  }
-</style>
-
-<Clipboard text="{text}" on:copy="{onSuccess}" let:copy>
+<Clipboard {text} on:copy={onSuccess} let:copy>
   <button
     type="button"
-    on:click="{copy}"
+    on:click={copy}
     class="relative flex items-center p-1 text-xs text-gray-500 dark:text-gray-100"
+    area-label="Copy to Clipboard"
   >
     <svg
       class="w-5 h-5"
@@ -48,10 +36,23 @@
     <span class="hidden">Copy to Clipboard</span>
     <div
       role="tooltip"
-      class:hidden="{!showTooltip}"
+      class:hidden={!showTooltip}
       class="tooltip inline-block absolute right-10 top-0 py-2 px-3 text-xs text-gray-100 rounded-md bg-black"
     >
       Copied!
     </div>
   </button>
 </Clipboard>
+
+<style>
+  .tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    border-width: 7px;
+    border-style: solid;
+    transform: translate3d(0, -7px, 0px);
+    border-color: transparent transparent transparent black;
+  }
+</style>
