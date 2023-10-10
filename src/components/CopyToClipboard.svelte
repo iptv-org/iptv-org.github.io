@@ -1,5 +1,5 @@
 <script>
-  import Clipboard from 'svelte-clipboard'
+  import Clipboard from '~/components/Clipboard.svelte'
 
   export let text
   let showTooltip = false
