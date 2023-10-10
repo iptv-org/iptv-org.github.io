@@ -7,7 +7,7 @@
 </script>
 
 <button
-  class="w-4 h-4 flex justify-center align-middle text-gray-500 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-600 shrink-0"
+  class="w-7 h-7 flex justify-center align-middle text-gray-500 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-600 shrink-0 items-center"
   on:click={() => {
     expanded = !expanded
     dispatch('click', { state: expanded })
