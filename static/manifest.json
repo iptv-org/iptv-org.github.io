@@ -1,6 +1,7 @@
 {
-  "short_name": "iptv-org",
   "name": "iptv-org",
+  "short_name": "iptv-org",
+  "description": "User editable database for TV channels",
   "start_url": "/",
   "id": "/",
   "icons": [

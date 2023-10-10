@@ -13,6 +13,7 @@
 
 <svelte:head>
   <title>{channel && channel.name ? `${channel.name} • iptv-org` : 'iptv-org'}</title>
+  <meta name="description" content="A detailed description of {channel.name}." />
 </svelte:head>
 
 <header class="fixed z-40 w-full min-w-[360px] top-0">
