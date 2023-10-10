@@ -1,5 +1,4 @@
 <script>
-  import { redirect } from '@sveltejs/kit'
   import { page } from '$app/stores'
   import { onMount } from 'svelte'
 
