@@ -44,5 +44,5 @@
     </svg>
   </span>
 
-  <span class="hidden sm:inline">Download Playlist</span>
+  <span class="hidden md:inline">Download Playlist</span>
 </ActionButton>

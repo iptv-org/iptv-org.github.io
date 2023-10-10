@@ -8,9 +8,9 @@
 </script>
 
 <ActionButton
-  disabled={$downloadMode}
+  active={$downloadMode}
   on:click={() => {
-    downloadMode.set(true)
+    downloadMode.set(!$downloadMode)
     dispatch('click')
   }}
   aria-label="Create Playlist"
@@ -57,5 +57,5 @@
         stroke-width="32"
       /></svg
     >
-  </span><span class="hidden sm:inline">Create Playlist</span>
+  </span><span class="hidden md:inline">Create Playlist</span>
 </ActionButton>

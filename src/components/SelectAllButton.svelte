@@ -29,7 +29,7 @@
         />
       </svg>
     </span>
-    <span class="hidden sm:inline">Deselect All ({$selected.length})</span>
+    <span class="hidden md:inline">Deselect All ({$selected.length})</span>
   </OutlineButton>
 {:else}
   <OutlineButton on:click={selectAll} aria-label="Select All ({$filteredChannels.length})">
@@ -48,6 +48,6 @@
       </svg>
     </span>
 
-    <span class="hidden sm:inline">Select All ({$filteredChannels.length})</span>
+    <span class="hidden md:inline">Select All ({$filteredChannels.length})</span>
   </OutlineButton>
 {/if}
