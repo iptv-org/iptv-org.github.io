@@ -17,7 +17,7 @@
 </script>
 
 <slot {copy} />
-<textarea bind:this={textarea} value={text} aria-hidden="true" />
+<textarea bind:this={textarea} value={text} aria-hidden="true" tabindex="-1" />
 
 <style>
   textarea {
