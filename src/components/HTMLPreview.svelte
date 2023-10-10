@@ -82,17 +82,6 @@
   function norm(value) {
     return value.includes(' ') ? `"${value}"` : value
   }
-
-  function searchBy(q) {
-    if ($query !== q) {
-      query.set(q)
-      hasQuery.set(true)
-      setTimeout(() => {
-        goto('/')
-      }, 0)
-    }
-    close()
-  }
 </script>
 
 <table class="table-fixed w-full">
@@ -115,22 +104,24 @@
                 class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
               />
             {:else if field.type === 'link'}
-              <button
-                on:click={() => searchBy(field.value.query)}
+              <a
+                href="/?q={field.value.query}"
+                on:click={() => close()}
                 class="underline hover:text-blue-500"
               >
                 {field.value.label}
-              </button>
+              </a>
             {:else if field.type === 'link[]'}
               {#each field.value as value, i}
                 {#if i > 0}<span>,&nbsp; </span>
                 {/if}
-                <button
-                  on:click={() => searchBy(value.query)}
+                <a
+                  href="/?q={value.query}"
+                  on:click={() => close()}
                   class="underline hover:text-blue-500"
                 >
                   {value.label}
-                </button>
+                </a>
               {/each}
             {:else if field.type === 'external_link'}
               <a

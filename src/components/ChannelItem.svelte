@@ -4,7 +4,7 @@
   import GuidesPopup from './GuidesPopup.svelte'
   import ChannelPopup from './ChannelPopup.svelte'
   import Checkbox from './Checkbox.svelte'
-  import { downloadMode, selected } from '~/store'
+  import { downloadMode, selected, query } from '~/store'
   import { fade } from 'svelte/transition'
 
   export let channel
@@ -13,14 +13,14 @@
 
   const [name, country] = channel.id.split('.')
 
-  let currLocation
   const { open } = getContext('simple-modal')
+  let prevUrl = '/'
   const onOpened = () => {
-    currLocation = window.location.href
+    prevUrl = window.location.href
     window.history.pushState({}, `${channel.name} • iptv-org`, `/channels/${country}/${name}`)
   }
-  const onClosed = () => {
-    window.history.pushState({}, `iptv-org`, currLocation || '/')
+  const onClose = () => {
+    window.history.pushState({}, `iptv-org`, prevUrl)
   }
   const showGuides = () =>
     open(
@@ -39,7 +39,7 @@
       ChannelPopup,
       { channel },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
-      { onOpened, onClosed }
+      { onOpened, onClose }
     )
   }
 

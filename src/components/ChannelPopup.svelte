@@ -4,9 +4,10 @@
   import Divider from '~/components/Divider.svelte'
   import SquareButton from '~/components/SquareButton.svelte'
   import { getContext } from 'svelte'
-  const { close } = getContext('simple-modal')
 
   export let channel
+
+  const { close } = getContext('simple-modal')
 
   const closePopup = () => {
     close()

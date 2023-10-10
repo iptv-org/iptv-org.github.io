@@ -31,9 +31,8 @@
   const unsubscribe = filteredChannels.subscribe(reset)
   onDestroy(unsubscribe)
 
-  $: visible = _countries.slice(0, limit)
-
-  $: grouped = _.groupBy($filteredChannels, 'country')
+  $: visibleCountries = _countries.slice(0, limit)
+  $: groupedByCountry = _.groupBy($filteredChannels, 'country')
 
   function loadMore({ detail }) {
     let { loaded, complete } = detail
@@ -51,40 +50,24 @@
   }
 
   onMount(async () => {
-    const params = new URLSearchParams(window.location.search)
-    const q = params.get('q')
-    if (q) {
-      setPageTitle(q)
-      query.set(q)
-      hasQuery.set(true)
-    }
-
     if (!$channels.length) {
       await fetchChannels()
     }
     _countries = Object.values($countries)
     isLoading = false
-
-    if ($hasQuery) {
-      search($query)
-    }
-
-    window.onpopstate = event => {
-      const q = event.state.q
-      if (q) {
-        setPageTitle(q)
-        query.set(q)
-        hasQuery.set(true)
-        search($query)
-      } else {
-        setPageTitle(null)
-        hasQuery.set(false)
-      }
-    }
+    search($query)
   })
 
   afterNavigate(() => {
-    setSearchParam('q', $query)
+    const q = $page.url.searchParams.get('q')
+    if (q) {
+      setPageTitle(q)
+      query.set(q)
+      hasQuery.set(true)
+    } else {
+      setPageTitle(null)
+      hasQuery.set(false)
+    }
     search($query)
   })
 
@@ -121,9 +104,12 @@
           loading...
         </div>
       {/if}
-      {#each visible as country (country.code)}
-        {#if grouped[country.code] && grouped[country.code].length > 0}
-          <CountryItem bind:country bind:channels={grouped[country.code]} bind:hasQuery={$hasQuery}
+      {#each visibleCountries as country (country.code)}
+        {#if groupedByCountry[country.code] && groupedByCountry[country.code].length > 0}
+          <CountryItem
+            bind:country
+            bind:channels={groupedByCountry[country.code]}
+            bind:hasQuery={$hasQuery}
           ></CountryItem>
         {/if}
       {/each}
