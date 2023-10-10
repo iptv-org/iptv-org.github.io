@@ -1,6 +1,6 @@
 <script>
   import { downloadMode } from '~/store'
-  import DefaultButton from '~/components/DefaultButton.svelte'
+  import OutlineButton from '~/components/OutlineButton.svelte'
   import ActionButton from '~/components/ActionButton.svelte'
   import { createEventDispatcher } from 'svelte'
 

@@ -1,5 +1,5 @@
 <script>
-  import DefaultButton from '~/components/DefaultButton.svelte'
+  import OutlineButton from '~/components/OutlineButton.svelte'
   import { selected, filteredChannels } from '~/store'
 
   $: isAllSelected = $selected.length === $filteredChannels.length
@@ -14,8 +14,8 @@
 </script>
 
 {#if isAllSelected}
-  <DefaultButton on:click={deselectAll} area-label="Deselect All ({$selected.length})">
-    <span class="inline">
+  <OutlineButton on:click={deselectAll} area-label="Deselect All ({$selected.length})">
+    <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -30,10 +30,10 @@
       </svg>
     </span>
     <span class="hidden sm:inline">Deselect All ({$selected.length})</span>
-  </DefaultButton>
+  </OutlineButton>
 {:else}
-  <DefaultButton on:click={selectAll} area-label="Select All ({$filteredChannels.length})">
-    <span class="inline">
+  <OutlineButton on:click={selectAll} area-label="Select All ({$filteredChannels.length})">
+    <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -49,5 +49,5 @@
     </span>
 
     <span class="hidden sm:inline">Select All ({$filteredChannels.length})</span>
-  </DefaultButton>
+  </OutlineButton>
 {/if}

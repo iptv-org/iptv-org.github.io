@@ -89,12 +89,12 @@
     {#each fieldset as field}
       <tr>
         <td class="align-top w-[11rem]">
-          <div class="flex pr-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400">
+          <div class="flex pr-4 py-1 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
             {field.name}
           </div>
         </td>
         <td class="align-top">
-          <div class="flex py-1 text-sm text-gray-700 dark:text-gray-100 flex-wrap">
+          <div class="flex py-1 text-sm text-gray-800 dark:text-gray-100 flex-wrap">
             {#if field.type === 'image'}
               <img
                 src={field.value}
