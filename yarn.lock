@@ -14,11 +14,6 @@
   dependencies:
     lodash "^4.17.21"
 
-"@iarna/toml@^2.2.5":
-  version "2.2.5"
-  resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
-  integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
-
 "@jridgewell/sourcemap-codec@^1.4.15":
   version "1.4.15"
   resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz"
@@ -79,42 +74,10 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.21.tgz"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@sveltejs/adapter-auto@next":
-  version "1.0.0-next.33"
-  resolved "https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-1.0.0-next.33.tgz"
-  integrity sha512-FVEBSw5XIYCrqMPY2VGmaGyT4ZvbahcdQJ613O4lgAoafRdUy7ZaE8GoeDmCJxtTUsqhAQUFu7jx9IIhz+QrsQ==
-  dependencies:
-    "@sveltejs/adapter-cloudflare" "1.0.0-next.16"
-    "@sveltejs/adapter-netlify" "1.0.0-next.51"
-    "@sveltejs/adapter-vercel" "1.0.0-next.47"
-
-"@sveltejs/adapter-cloudflare@1.0.0-next.16":
-  version "1.0.0-next.16"
-  resolved "https://registry.npmjs.org/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-1.0.0-next.16.tgz"
-  integrity sha512-ripTRtOasAtxDJEIF3kwwji/9WHfX069i5LuRwGUzOi4/cbcGfgV1RFBVfo/8G6hr3ehqLeKCdloet1yTsp34A==
-  dependencies:
-    esbuild "^0.14.21"
-
-"@sveltejs/adapter-netlify@1.0.0-next.51":
-  version "1.0.0-next.51"
-  resolved "https://registry.npmjs.org/@sveltejs/adapter-netlify/-/adapter-netlify-1.0.0-next.51.tgz"
-  integrity sha512-P7/cW/0z8zd8J6DOI2yxKZG0+HRMMuzfOf0yzFXX0vRwBePhKlZ/H4qhTOo2NrCmj3Len545o+ugj5gyMXl1+g==
-  dependencies:
-    "@iarna/toml" "^2.2.5"
-    esbuild "^0.14.21"
-    tiny-glob "^0.2.9"
-
 "@sveltejs/adapter-static@^2.0.1":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@sveltejs/adapter-static/-/adapter-static-2.0.1.tgz"
   integrity sha512-o5/q3YwD/ErxYCFlK1v3ydvldyNKk1lh3oeyxn4mhz+Pkbx/uuxhzmbOpytTlp5aVqNHDVsb04xadUzOFCDDzw==
-
-"@sveltejs/adapter-vercel@1.0.0-next.47":
-  version "1.0.0-next.47"
-  resolved "https://registry.npmjs.org/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.47.tgz"
-  integrity sha512-VV3vP8KqL9XOc7xfQLVhXTM5jrTme+r1qJy98u5/dhAhkdjqrGDwAKo/s7MoB3rTYxLb2b8I4QxAaoz2Y2aIBg==
-  dependencies:
-    esbuild "^0.14.21"
 
 "@sveltejs/kit@^1.5.0", "@sveltejs/kit@^1.7.1":
   version "1.25.0"
@@ -374,37 +337,6 @@ emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
   integrity sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
-
-esbuild-darwin-64@0.14.27:
-  version "0.14.27"
-  resolved "https://registry.npmjs.org/esbuild-darwin-64/-/esbuild-darwin-64-0.14.27.tgz"
-  integrity sha512-czw/kXl/1ZdenPWfw9jDc5iuIYxqUxgQ/Q+hRd4/3udyGGVI31r29LCViN2bAJgGvQkqyLGVcG03PJPEXQ5i2g==
-
-esbuild@^0.14.21:
-  version "0.14.27"
-  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.14.27.tgz"
-  integrity sha512-MZQt5SywZS3hA9fXnMhR22dv0oPGh6QtjJRIYbgL1AeqAoQZE+Qn5ppGYQAoHv/vq827flj4tIJ79Mrdiwk46Q==
-  optionalDependencies:
-    esbuild-android-64 "0.14.27"
-    esbuild-android-arm64 "0.14.27"
-    esbuild-darwin-64 "0.14.27"
-    esbuild-darwin-arm64 "0.14.27"
-    esbuild-freebsd-64 "0.14.27"
-    esbuild-freebsd-arm64 "0.14.27"
-    esbuild-linux-32 "0.14.27"
-    esbuild-linux-64 "0.14.27"
-    esbuild-linux-arm "0.14.27"
-    esbuild-linux-arm64 "0.14.27"
-    esbuild-linux-mips64le "0.14.27"
-    esbuild-linux-ppc64le "0.14.27"
-    esbuild-linux-riscv64 "0.14.27"
-    esbuild-linux-s390x "0.14.27"
-    esbuild-netbsd-64 "0.14.27"
-    esbuild-openbsd-64 "0.14.27"
-    esbuild-sunos-64 "0.14.27"
-    esbuild-windows-32 "0.14.27"
-    esbuild-windows-64 "0.14.27"
-    esbuild-windows-arm64 "0.14.27"
 
 esbuild@^0.18.10:
   version "0.18.20"

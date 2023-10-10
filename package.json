@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@freearhey/search-js": "^0.1.1",
-    "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "^2.0.1",
     "@sveltejs/kit": "^1.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
