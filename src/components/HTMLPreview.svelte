@@ -73,8 +73,8 @@
     },
     {
       name: 'replaced_by',
-      type: 'channel',
-      value: data._replaced_by ? data._replaced_by.name : null
+      type: 'string',
+      value: data.replaced_by
     },
     { name: 'website', type: 'external_link', value: data.website }
   ].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
