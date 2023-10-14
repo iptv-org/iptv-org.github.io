@@ -27,7 +27,7 @@
 
 <svelte:head>
   <title>{channel && channel.name ? `${channel.name} • iptv-org` : 'iptv-org'}</title>
-  <meta name="description" content="A detailed description of {channel.name}." />
+  <meta name="description" content="Detailed description of {channel.name}." />
   {@html schema()}
 </svelte:head>
 
