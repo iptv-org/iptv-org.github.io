@@ -73,8 +73,8 @@
     },
     {
       name: 'replaced_by',
-      type: 'string',
-      value: data.replaced_by
+      type: 'link',
+      value: data.replaced_by ? { label: data.replaced_by, query: `id:${data.replaced_by}` } : null
     },
     { name: 'website', type: 'external_link', value: data.website }
   ].filter(f => (Array.isArray(f.value) ? f.value.length : f.value))
