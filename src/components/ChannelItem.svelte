@@ -96,22 +96,24 @@
           >
             {channel.displayName}
           </a>
-          {#if channel.is_closed}
-            <div
-              class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:text-gray-300 cursor-default rounded-full"
-              title="closed: {channel.closed}"
-            >
-              Closed
-            </div>
-          {/if}
-          {#if channel.is_blocked}
-            <div
-              class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 ml-1 mr-2 dark:text-gray-300 cursor-default rounded-full"
-              title="The channel has been added to our blocklist due to the claim of the copyright holder"
-            >
-              Blocked
-            </div>
-          {/if}
+          <div class="flex space-x-2">
+            {#if channel.is_closed}
+              <div
+                class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full"
+                title="closed: {channel.closed}"
+              >
+                Closed
+              </div>
+            {/if}
+            {#if channel.is_blocked}
+              <div
+                class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full"
+                title="The channel has been added to our blocklist due to the claim of the copyright holder"
+              >
+                Blocked
+              </div>
+            {/if}
+          </div>
         </div>
         {#if channel.alt_names.length}
           <div
