@@ -21,6 +21,7 @@ data.categories = _.keyBy(categories, 'id')
 data.streams = _.groupBy(_streams, 'channel')
 data.blocklist = _.groupBy(blocklist, 'channel')
 data.channels = _.keyBy(channels, channel => channel.id.toLowerCase())
+data.nameIndex = _.groupBy(channels, channel => channel.name.toLowerCase())
 
 export const csr = true
 export const ssr = true

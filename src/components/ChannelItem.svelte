@@ -16,7 +16,11 @@
   let prevUrl = '/'
   const onOpened = () => {
     prevUrl = window.location.href
-    window.history.pushState({}, `${channel.name} • iptv-org`, `/channels/${country}/${name}`)
+    window.history.pushState(
+      {},
+      `${channel.displayName} • iptv-org`,
+      `/channels/${country}/${name}`
+    )
   }
   const onClose = () => {
     window.history.pushState({}, `iptv-org`, prevUrl)
@@ -24,7 +28,7 @@
   const showStreams = () =>
     open(
       StreamsPopup,
-      { streams, title: channel.name },
+      { streams, title: channel.displayName },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
     )
   const showChannelData = () => {
@@ -74,7 +78,7 @@
           loading="lazy"
           referrerpolicy="no-referrer"
           src={channel.logo}
-          alt={channel.name}
+          alt={channel.displayName}
         />
       {/if}
     </div>
@@ -88,9 +92,9 @@
             href="/channels/{country}/{name}"
             tabindex="0"
             class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 line-clamp-1"
-            title={channel.name}
+            title={channel.displayName}
           >
-            {channel.name}
+            {channel.displayName}
           </a>
           {#if channel.is_closed}
             <div

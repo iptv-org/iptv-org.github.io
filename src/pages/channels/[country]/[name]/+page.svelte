@@ -26,8 +26,8 @@
 </script>
 
 <svelte:head>
-  <title>{channel && channel.name ? `${channel.name} • iptv-org` : 'iptv-org'}</title>
-  <meta name="description" content="Detailed description of {channel.name}." />
+  <title>{channel && channel.displayName ? `${channel.displayName} • iptv-org` : 'iptv-org'}</title>
+  <meta name="description" content="Detailed description of {channel.displayName}." />
   {@html schema()}
 </svelte:head>
 
@@ -50,7 +50,7 @@
           class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
         >
           <div class="w-1/3 overflow-hidden">
-            <h1 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h1>
+            <h1 class="text-l font-medium text-gray-900 dark:text-white">{channel.displayName}</h1>
           </div>
           <div class="inline-flex w-1/3 justify-end space-x-3">
             <EditButton {channel} />

@@ -139,6 +139,8 @@ async function loadAPI() {
       return []
     })
 
+  api.nameIndex = _.groupBy(api.channels, channel => channel.name.toLowerCase())
+
   return api
 }
 
@@ -162,6 +164,11 @@ export function transformChannel(channel, data) {
   channel.is_closed = !!channel.closed || !!channel.replaced_by
   channel.is_blocked = !!data.blocklist[channel.id]
   channel.streams = channel._streams.length
+
+  const isChannelNameRepeated = data.nameIndex[channel.name.toLowerCase()].length > 1
+  channel.displayName = isChannelNameRepeated
+    ? `${channel.name} (${channel._country.name})`
+    : channel.name
 
   return channel
 }

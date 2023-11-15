@@ -22,7 +22,7 @@
       class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
     >
       <div class="w-2/3 overflow-hidden">
-        <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.name}</h3>
+        <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.displayName}</h3>
       </div>
 
       <div class="inline-flex w-1/3 justify-end space-x-3 items-center">
