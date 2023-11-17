@@ -35,6 +35,8 @@
         </svg>
       </span></a
     >
-    <div class="text-right text-gray-400 text-sm w-full">{guide.site_name}</div>
+    <div class="text-right text-gray-400 text-sm w-full" title={guide.site_id}>
+      {guide.site_name}
+    </div>
   </div>
 </div>
