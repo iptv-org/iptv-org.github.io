@@ -54,6 +54,7 @@ export async function fetchChannels() {
       'closed',
       'replaced_by',
       'streams',
+      'guides',
       'is_nsfw',
       'is_closed',
       'is_blocked'
@@ -139,6 +140,16 @@ async function loadAPI() {
       return []
     })
 
+  api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
+    .then(r => r.json())
+    .then(data => (data.length ? data : []))
+    .then(data => _.sortBy(data, 'lang'))
+    .then(data => _.groupBy(data, 'channel'))
+    .catch(err => {
+      console.error(err)
+      return []
+    })
+
   api.nameIndex = _.groupBy(api.channels, channel => channel.name.toLowerCase())
 
   return api
@@ -146,6 +157,7 @@ async function loadAPI() {
 
 export function transformChannel(channel, data) {
   channel._streams = data.streams[channel.id] || []
+  channel._guides = data.guides[channel.id] || []
   channel._country = data.countries[channel.country]
   channel._subdivision = data.subdivisions[channel.subdivision]
   channel._languages = channel.languages.map(code => data.languages[code]).filter(i => i)
@@ -164,6 +176,7 @@ export function transformChannel(channel, data) {
   channel.is_closed = !!channel.closed || !!channel.replaced_by
   channel.is_blocked = !!data.blocklist[channel.id]
   channel.streams = channel._streams.length
+  channel.guides = channel._guides.length
 
   const isChannelNameRepeated = data.nameIndex[channel.name.toLowerCase()].length > 1
   channel.displayName = isChannelNameRepeated

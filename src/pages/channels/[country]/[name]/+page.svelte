@@ -1,4 +1,5 @@
 <script>
+  import GuideItem from '~/components/GuideItem.svelte'
   import StreamItem from '~/components/StreamItem.svelte'
   import HTMLPreview from '~/components/HTMLPreview.svelte'
   import EditButton from '~/components/EditButton.svelte'
@@ -9,6 +10,7 @@
   let isLoading = false
   let channel = data.channel
   let streams = channel ? channel._streams : []
+  let guides = channel ? channel._guides : []
 
   const structuredData = {
     '@context': 'https://schema.org/',
@@ -96,6 +98,24 @@
           <div class="space-y-2">
             {#each streams as stream}
               <StreamItem {stream} />
+            {/each}
+          </div>
+        </div>
+      </div>
+    {/if}
+    {#if guides.length}
+      <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
+        <div
+          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+        >
+          <div class="w-1/3 overflow-hidden">
+            <h2 class="text-l font-medium text-gray-900 dark:text-white">Guides</h2>
+          </div>
+        </div>
+        <div class="overflow-y-auto overflow-x-hidden w-full p-6">
+          <div class="dark:border-gray-700 rounded-md border border-gray-200">
+            {#each guides as guide, index}
+              <GuideItem {guide} {index} />
             {/each}
           </div>
         </div>
