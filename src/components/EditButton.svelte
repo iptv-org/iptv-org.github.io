@@ -1,5 +1,6 @@
 <script>
   import DefaultButton from '~/components/DefaultButton.svelte'
+  import qs from 'qs'
 
   export let channel
 
@@ -8,10 +9,35 @@
   const labels = 'channels:edit'
   const template = '__channels_edit.yml'
 
-  const editUrl = encodeURI(
-    `${endpoint}?labels=${labels}&template=${template}&title=${title}&id=${channel.id}`
-  )
+  let is_nsfw = null
+  if (channel.is_nsfw === true) is_nsfw = 'TRUE'
+  else if (channel.is_nsfw === false) is_nsfw = 'FALSE'
 
+  let params = {
+    labels,
+    template,
+    title,
+    id: channel.id,
+    name: channel.name,
+    alt_names: channel.alt_names.join(';'),
+    network: channel.network,
+    owners: channel.owners.join(';'),
+    country: channel.country,
+    subdivision: channel.subdivision,
+    city: channel.city,
+    broadcast_area: channel.broadcast_area.join(';'),
+    languages: channel.languages.join(';'),
+    categories: channel.categories.join(';'),
+    is_nsfw,
+    launched: channel.launched,
+    closed: channel.closed,
+    replaced_by: channel.replaced_by,
+    website: channel.website,
+    logo: channel.logo
+  }
+  params = qs.stringify(params)
+
+  const editUrl = `${endpoint}?${params}`
   function goToEdit() {
     window.open(editUrl, '_blank')
   }
