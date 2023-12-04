@@ -58,3 +58,6 @@ http://195.26.87.217/live.ts?channelId=29197&uid=7435&deviceMac=00:1A:79:51:4B:3
 https://himel~op@prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fallback/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="MLogo " tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Sony_Sports_Ten_1.png/revision/latest?cb=20221025083646" group-title="Sports Channels",Sony Sports 1 HD
 https://cdn.sajeeb.online/Sony-Ten-1-hd/mono.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="MLogo " tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/3ftgj11637160967.png" group-title="Sports Channels",SSC 1 HD
+https://af.ayassport.ir/hls2/ssc1.m3u8
+
