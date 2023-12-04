@@ -23,9 +23,9 @@ http://195.26.87.217/live.ts?channelId=101&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-5 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
 http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-6 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/NTV_%28Bangladesh%29_logo.svg/800px-NTV_%28Bangladesh%29_logo.svg.png" group-title="Bangladeshi Channels",NTV
-http://195.26.87.217/live.ts?channelId=112&uid=7435&deviceMac=00:1A:79:51:4B:3A
-#EXTINF:-7 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Bangladesh_Television_Logo.svg/800px-Bangladesh_Television_Logo.svg.png" group-title="Bangladeshi Channels",BTV
-https://archive.org/download
+https://link.com
+#EXTINF:-7 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/02/Ananda_TV_Logo.png" group-title="Bangladeshi Channels",Ananda TV
+http://195.26.87.217/live.ts?channelId=90255&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-8 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Rtv_bangladesh.svg/800px-Rtv_bangladesh.svg.png" group-title="Bangladeshi Channels",RTV
 http://195.26.87.217/live.ts?channelId=112&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-9 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSebh3TOXaSTlMURx1OyvU2Irp1ls4RpNtMzw&usqp=CAU" group-title="Bangladeshi Channels",RTV Music
