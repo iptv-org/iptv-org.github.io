@@ -10,10 +10,10 @@ https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extend
 https://dl.dropboxusercontent.com/scl/fi/u0ir9zvl7mg1ni5c8fudm/Chikni-Chameli-Best-Video-Agneepath-_-Katrina_-Hrithik-_-Shreya-_-Ajay-Atul-1080P_HD.mp4?rlkey=2ueuhttfby1k2jnv3luotctv5&dl=1.mkv
 #EXTINF:-6 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM0BMtZWn9NEd7NzCC_cmGKMgvwgF0Qmkg_A&usqp=CAU" group-title="Bengali WEB Series", Kya Dil Ne Kaha - New Version Sonng
 https://fastupload.io/en/c2SBgxTnOLop/P1Z8b935UOrLcng/b5OzdW28W3B8L/Kya%20Dil%20Ne%20Kaha%20-%20New%20Version%20Song%20_%20Cover%20_%20Latest%20Hindi%20Song%202022%20_%20Video%20Song%20_%20Ashwani%20Machal%28720P_HD%29.mp4
-#EXTINF:-7 tvg-id="sony.max" tvg-name="HQLogo" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/b6/Sony_Max_new.png" group-title="Indian Channels", Sony Max HD
-http://89.187.177.137:8081/SONYMAX/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/2/20/GTVBangladeshLogo.png" group-title="Bangladeshi Channels",G TV
 http://103.141.2.37:25461/live/web/web/592.m3u8
+#EXTINF:-7 tvg-id="sony.max" tvg-name="HQLogo" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/b6/Sony_Max_new.png" group-title="Indian Channels", Sony Max HD
+http://89.187.177.137:8081/SONYMAX/index.m3u8
 #EXTINF:-2 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BZYPd7Cw0h34N3DW7SbeDWuf53X2yvNOhw&usqp=CAU" group-title="Bangladeshi Channels",T Sports
 http://113.212.111.246:8080/hls/col12.m3u8
 #EXTINF:-3 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/b/be/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%8D%E0%A6%A4_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B_%E0%A7%A8.jpg" group-title="Bangladeshi Channels",Deepto TV
@@ -23,7 +23,7 @@ http://195.26.87.217/live.ts?channelId=101&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-5 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
 http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-6 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/NTV_%28Bangladesh%29_logo.svg/800px-NTV_%28Bangladesh%29_logo.svg.png" group-title="Bangladeshi Channels",NTV
-https://link.com
+http://195.26.87.217/live.ts?channelId=109&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-7 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/02/Ananda_TV_Logo.png" group-title="Bangladeshi Channels",Ananda TV
 http://195.26.87.217/live.ts?channelId=90255&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-8 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Rtv_bangladesh.svg/800px-Rtv_bangladesh.svg.png" group-title="Bangladeshi Channels",RTV
