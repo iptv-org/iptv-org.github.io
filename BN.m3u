@@ -17,9 +17,9 @@ http://89.187.177.137:8081/SONYMAX/index.m3u8
 #EXTINF:-2 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BZYPd7Cw0h34N3DW7SbeDWuf53X2yvNOhw&usqp=CAU" group-title="Sports Channels",T Sports
 http://113.212.111.246:8080/hls/col12.m3u8
 #EXTINF:-3 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/b/be/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%8D%E0%A6%A4_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B_%E0%A7%A8.jpg" group-title="Bangladeshi Channels",Deepto TV
-https://archive.org/download
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
 #EXTINF:-4 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/5/59/%E0%A6%AE%E0%A6%BE%E0%A6%9B%E0%A6%B0%E0%A6%BE%E0%A6%99%E0%A6%BE_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.png" group-title="Bangladeshi Channels",Maasranga TV
-http://195.26.87.217/live.ts?channelId=101&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
 #EXTINF:-5 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
 http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-6 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/NTV_%28Bangladesh%29_logo.svg/800px-NTV_%28Bangladesh%29_logo.svg.png" group-title="Bangladeshi Channels",NTV
@@ -41,7 +41,7 @@ http://195.26.87.217/live.ts?channelId=115&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-14 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2YVcRhXVs-AFNLMIc5PTki5YQcUzWk1Ymag&usqp=CAU" group-title="Bangladeshi Channels",SA TV
 http://195.26.87.217/live.ts?channelId=114&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-15 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/thumb/e/e3/%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF.svg/800px-%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF.svg.png" group-title="Bangladeshi Channels",Nagorik TV
-https://archive.org/download
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
 #EXTINF:-16 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Channel9_bd.svg/800px-Channel9_bd.svg.png" group-title="Bangladeshi Channels",Channel 9
 http://195.26.87.217/live.ts?channelId=88&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-17 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Boishakhi_TV_logo.svg/800px-Boishakhi_TV_logo.svg.png" group-title="Bangladeshi Channels",Boishakhi TV
