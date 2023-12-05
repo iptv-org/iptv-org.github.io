@@ -60,6 +60,11 @@ https://himel~op@prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fa
 https://cdn.sajeeb.online/Sony-Ten-1-hd/mono.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="MLogo " tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/3ftgj11637160967.png" group-title="Sports Channels",SSC 1 HD
 https://af.ayassport.ir/hls2/ssc1.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="MLogo " tvg-logo="https://secure-media1.hotstarext.com/t_web_hs_2x/r1/thumbs/PCTV/37/1000032137/PCTV-1000032137-hcdl.jpg" group-title="Bojhena Se Bojhena",Bojhena Se Bojhena - Watch Episode 4
-https://dl.dropboxusercontent.com/scl/fi/5vnj39wy82miloht9azoy/Bojhena-Se-Bojhena-Watch-Episode-6-Pakhi-arrives-in-Kolkata_Trim.mp4?rlkey=q5z6kfu0b0e3tczbzagjifb2d&dl=1.mkv
-
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVNgOEpgCL3Czy1np7jkugyhIm9jVnlnHDQ&usqp=CAU" group-title="Indian Channels",Colors HD
+http://144.217.70.181:9587/hin2/COLORSHD/index.m3u8?token=test
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://www.bizasialive.com/wp-content/uploads/2019/04/starpluslogo001.jpg" group-title="Indian Channels",Star Plus HD
+http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://static.toiimg.com/thumb/msid-98738864,imgsize-8010,width-400,resizemode-4/98738864.jpg" group-title="Sports Channels",Willow HD
+http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
+http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
