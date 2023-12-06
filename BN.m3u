@@ -1,4 +1,4 @@
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports " tvg-logo="https://www.tvarenasport.com/files/img/icons/chanel-01.png" group-title="Sports Channels",Arena Sports 1 HD
+#EXTINF:-0 tvg-id="GDrive.Us" tvg-name="arena.sports " tvg-logo="https://www.tvarenasport.com/files/img/icons/chanel-01.png" group-title="Sports Channels",Arena Sports 1 HD
 http://93.155.227.38:555/m3u8/arenasport1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9TPi7iPfASPF2zwg8YpT8KB7czRunv-i34g&usqp=CAU" group-title="Sports Channels",Arena Sports 2 HD
 http://93.155.227.38:555/m3u8/arenasport2.m3u8
@@ -102,6 +102,16 @@ https://dl.dropboxusercontent.com/scl/fi/ysbi2ngsfdlehii23v03x/The-Great-Seljuk-
 https://dl.dropboxusercontent.com/scl/fi/jbjsvbh6pelhvmoj1izxn/The-Great-Seljuk-S01-E20.mkv?rlkey=p3xj42vp0b8cqchbhzn3tpo6h&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E21 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/60ks7jtb26ore5dwq8wqe/The-Great-Seljuk-S01-E21.mkv?rlkey=jj91uexh3voy2edfah8fpqds2&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://image.tmdb.org/t/p/original//7pU1XQHEtGYvQspNVIOFgvIMxaH.jpg" group-title="Bengali Movies",Operation Sundarbans (2022)-Bengali WEB-DL 720p
+https://dl.dropboxusercontent.com/scl/fi/fvl6zamurvxr0smtjly8g/Operation-Sundarbans-2022-Bengali-720p.mkv?rlkey=y08d50knpyyf6g0kfm09zx0nv&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr9GF8DiAlRKgQiwqrW9i5mQkM01HHIt9_g&usqp=CAU" group-title="Bollywood Movies",Animal (2023) Hindi PreDVD 720p 1.6GB
+https://pixeldrain.com/api/file/2zBXuR7q?download.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://i.ibb.co/HtNNPpK/Inttelligent-2023-Bengali-Dubbed-ORG-WEB-DL-H264-AAC-1080p-720p-480p-Downloa.webp" group-title="Bangla Dubbed Movies",Inttelligent (2023) Bengali Dubbed ORG 720p 1GB
+https://dl.dropboxusercontent.com/scl/fi/yxn0yx3xbttu4gxiw7amf/Inttelligent-2023-Bengali-Dubbed-ORG-720p.mkv?rlkey=n4sbi0r3j0irus6d6r1tsptyl&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg" group-title="Bollywood Movies",Jawan (2023)-Extended Cut Hindi NF 720p
+https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extended-Cut-Hindi-NF-720p.mkv?rlkey=j73qpgmdxkb4j17zj6q9j63fm&dl=1.mkv
 
 
 
