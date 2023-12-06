@@ -11,10 +11,11 @@
 
   $: hasStreams = channels.filter(c => c.streams > 0)
 
+  $: expanded = country.expanded || (channels && channels.length > 0 && hasQuery)
   $: intersect = _.intersectionBy($selected, hasStreams, 'id')
-  $: expanded = country.expanded || (hasStreams && hasStreams.length > 0 && hasQuery)
-  $: isSelected = intersect.length === hasStreams.length
   $: isIndeterminate = intersect.length !== 0 && intersect.length < hasStreams.length
+  $: isDisabled = hasStreams.length === 0
+  $: isSelected = intersect.length === hasStreams.length && hasStreams.length > 0
 
   function onExpand() {
     country.expanded = !country.expanded
@@ -44,6 +45,7 @@
       >
         <Checkbox
           selected={isSelected}
+          disabled={isDisabled}
           indeterminate={isIndeterminate}
           on:change={onCheckboxChange}
         />
