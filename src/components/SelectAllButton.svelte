@@ -1,9 +1,8 @@
 <script>
   import OutlineButton from '~/components/OutlineButton.svelte'
-  import { selected, filteredChannels } from '~/store'
+  import { selected, filteredChannels, channels } from '~/store'
 
-  $: hasStreams = $filteredChannels.filter(c => c.streams > 0)
-
+  $: hasStreams = $channels.filter(c => c.streams > 0)
   $: isAllSelected = $selected.length === hasStreams.length
 
   function selectAll() {
