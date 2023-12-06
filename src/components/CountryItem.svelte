@@ -9,22 +9,22 @@
   export let channels = []
   export let hasQuery
 
-  $: intersect = _.intersectionBy($selected, channels, 'id')
-  $: expanded = country.expanded || (channels && channels.length > 0 && hasQuery)
-  $: isSelected = intersect.length === channels.length
-  $: isIndeterminate = intersect.length !== 0 && intersect.length < channels.length
+  $: hasStreams = channels.filter(c => c.streams > 0)
+
+  $: intersect = _.intersectionBy($selected, hasStreams, 'id')
+  $: expanded = country.expanded || (hasStreams && hasStreams.length > 0 && hasQuery)
+  $: isSelected = intersect.length === hasStreams.length
+  $: isIndeterminate = intersect.length !== 0 && intersect.length < hasStreams.length
 
   function onExpand() {
     country.expanded = !country.expanded
   }
 
   function onCheckboxChange(event) {
-    channels.forEach(channel => {
+    hasStreams.forEach(channel => {
       selected.update(arr => {
         if (event.detail.state) {
-          if (channel.streams > 0) {
-            arr.push(channel)
-          }
+          arr.push(channel)
         } else {
           arr = arr.filter(c => c.id !== channel.id)
         }
