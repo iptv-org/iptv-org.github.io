@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 vite build",
     "preview": "vite preview",
     "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
     "postinstall": "./src/load.sh"
