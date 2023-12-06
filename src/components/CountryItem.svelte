@@ -6,12 +6,12 @@
   import { fade } from 'svelte/transition'
 
   export let country
-  export let channels = []
+  export let channels
   export let hasQuery
 
-  $: hasStreams = channels.filter(c => c.streams > 0)
-
-  $: expanded = country.expanded || (channels && channels.length > 0 && hasQuery)
+  $: countryChannels = Array.isArray(channels) ? channels : []
+  $: hasStreams = countryChannels.filter(c => c.streams > 0)
+  $: expanded = country.expanded || (countryChannels && countryChannels.length > 0 && hasQuery)
   $: intersect = _.intersectionBy($selected, hasStreams, 'id')
   $: isIndeterminate = intersect.length !== 0 && intersect.length < hasStreams.length
   $: isDisabled = hasStreams.length === 0
