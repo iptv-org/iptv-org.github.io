@@ -84,72 +84,71 @@ export function setPageTitle(value) {
 async function loadAPI() {
   const api = {}
 
-  api.countries = await fetch('https://iptv-org.github.io/api/countries.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data =>
-      data.map(i => {
-        i.expanded = false
-        return i
-      })
-    )
-    .then(data => _.keyBy(data, 'code'))
-    .catch(console.error)
+  const [
+    countries,
+    regions,
+    subdivisions,
+    languages,
+    categories,
+    streams,
+    blocklist,
+    channels,
+    guides
+  ] = await Promise.all([
+    fetch('https://iptv-org.github.io/api/countries.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data =>
+        data.map(i => {
+          i.expanded = false
+          return i
+        })
+      )
+      .then(data => _.keyBy(data, 'code')),
+    fetch('https://iptv-org.github.io/api/regions.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.keyBy(data, 'code')),
+    fetch('https://iptv-org.github.io/api/subdivisions.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.keyBy(data, 'code')),
+    fetch('https://iptv-org.github.io/api/languages.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.keyBy(data, 'code')),
+    fetch('https://iptv-org.github.io/api/categories.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.keyBy(data, 'id')),
+    fetch('https://iptv-org.github.io/api/streams.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.groupBy(data, 'channel')),
+    fetch('https://iptv-org.github.io/api/blocklist.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => _.groupBy(data, 'channel')),
+    fetch('https://iptv-org.github.io/api/channels.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : [])),
+    fetch('https://iptv-org.github.io/api/guides.json')
+      .then(r => r.json())
+      .then(data => (data.length ? data : []))
+      .then(data => data.filter(guide => guide.channel))
+      .then(data => _.sortBy(data, 'lang'))
+      .then(data => _.groupBy(data, 'channel'))
+  ])
 
-  api.regions = await fetch('https://iptv-org.github.io/api/regions.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.keyBy(data, 'code'))
-    .catch(console.error)
-
-  api.subdivisions = await fetch('https://iptv-org.github.io/api/subdivisions.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.keyBy(data, 'code'))
-    .catch(console.error)
-
-  api.languages = await fetch('https://iptv-org.github.io/api/languages.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.keyBy(data, 'code'))
-    .catch(console.error)
-
-  api.categories = await fetch('https://iptv-org.github.io/api/categories.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.keyBy(data, 'id'))
-    .catch(console.error)
-
-  api.streams = await fetch('https://iptv-org.github.io/api/streams.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.groupBy(data, 'channel'))
-    .catch(console.error)
-
-  api.blocklist = await fetch('https://iptv-org.github.io/api/blocklist.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => _.groupBy(data, 'channel'))
-    .catch(console.error)
-
-  api.channels = await fetch('https://iptv-org.github.io/api/channels.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .catch(err => {
-      console.error(err)
-      return []
-    })
-
-  api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
-    .then(r => r.json())
-    .then(data => (data.length ? data : []))
-    .then(data => data.filter(guide => guide.channel))
-    .then(data => _.sortBy(data, 'lang'))
-    .then(data => _.groupBy(data, 'channel'))
-    .catch(err => {
-      console.error(err)
-      return []
-    })
+  api.countries = countries
+  api.regions = regions
+  api.subdivisions = subdivisions
+  api.languages = languages
+  api.categories = categories
+  api.streams = streams
+  api.blocklist = blocklist
+  api.channels = channels
+  api.guides = guides
 
   api.nameIndex = _.groupBy(api.channels, channel => channel.name.toLowerCase())
 
