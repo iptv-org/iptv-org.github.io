@@ -2,10 +2,12 @@
   import OutlineButton from '~/components/OutlineButton.svelte'
   import { selected, filteredChannels } from '~/store'
 
-  $: isAllSelected = $selected.length === $filteredChannels.length
+  $: hasStreams = $filteredChannels.filter(c => c.streams > 0)
+
+  $: isAllSelected = $selected.length === hasStreams.length
 
   function selectAll() {
-    selected.set($filteredChannels)
+    selected.set(hasStreams)
   }
 
   function deselectAll() {
@@ -14,7 +16,7 @@
 </script>
 
 {#if isAllSelected}
-  <OutlineButton on:click={deselectAll} aria-label="Deselect All ({$selected.length})">
+  <OutlineButton on:click={deselectAll} aria-label="Deselect All">
     <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -29,10 +31,10 @@
         />
       </svg>
     </span>
-    <span class="hidden md:inline">Deselect All ({$selected.length})</span>
+    <span class="hidden md:inline">Deselect All</span>
   </OutlineButton>
 {:else}
-  <OutlineButton on:click={selectAll} aria-label="Select All ({$filteredChannels.length})">
+  <OutlineButton on:click={selectAll} aria-label="Select All">
     <span class="text-gray-500 dark:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +50,6 @@
       </svg>
     </span>
 
-    <span class="hidden md:inline">Select All ({$filteredChannels.length})</span>
+    <span class="hidden md:inline">Select All</span>
   </OutlineButton>
 {/if}

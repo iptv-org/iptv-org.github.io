@@ -65,6 +65,7 @@
   }
 
   $: isSelected = !!$selected.find(c => c.id === channel.id)
+  $: isDisabled = channel.streams === 0
 </script>
 
 {#if $downloadMode}
@@ -72,7 +73,7 @@
     transition:fade={{ duration: 200 }}
     class="w-14 h-14 shrink-0 flex items-center absolute -left-14"
   >
-    <Checkbox selected={isSelected} on:change={onCheckboxChange} />
+    <Checkbox selected={isSelected} disabled={isDisabled} on:change={onCheckboxChange} />
   </div>
 {/if}
 <div

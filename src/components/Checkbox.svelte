@@ -5,6 +5,7 @@
 
   export let selected = false
   export let indeterminate = false
+  export let disabled = false
 
   function toggle(state) {
     dispatch('change', { state })
@@ -37,6 +38,16 @@
         d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
         clip-rule="evenodd"
       />
+    </svg>
+  </button>
+{:else if disabled}
+  <button
+    class="w-12 h-12 rounded-full text-gray-200 dark:text-gray-700 transition-colors duration-200 flex items-center justify-center"
+    aria-label="Disabled"
+    {disabled}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <circle cx="12" cy="12" r="3" />
     </svg>
   </button>
 {:else}

@@ -22,7 +22,9 @@
     channels.forEach(channel => {
       selected.update(arr => {
         if (event.detail.state) {
-          arr.push(channel)
+          if (channel.streams > 0) {
+            arr.push(channel)
+          }
         } else {
           arr = arr.filter(c => c.id !== channel.id)
         }
