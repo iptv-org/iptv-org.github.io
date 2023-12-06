@@ -3,7 +3,6 @@
   import BottomBar from '~/components/BottomBar.svelte'
   import Modal from 'svelte-simple-modal'
   import { page } from '$app/stores'
-  import InfiniteLoading from 'svelte-infinite-loading'
   import {
     fetchChannels,
     channels,
@@ -23,15 +22,8 @@
   import { afterNavigate } from '$app/navigation'
 
   let _countries = []
-  const initLimit = 10
-  let limit = initLimit
-  let infiniteId = +new Date()
   let isLoading = true
 
-  const unsubscribe = filteredChannels.subscribe(reset)
-  onDestroy(unsubscribe)
-
-  $: visibleCountries = _countries.slice(0, limit)
   $: groupedByCountry = _.groupBy($filteredChannels, 'country')
 
   function loadMore({ detail }) {
@@ -42,11 +34,6 @@
     } else {
       complete()
     }
-  }
-
-  function reset() {
-    infiniteId = +new Date()
-    limit = initLimit
   }
 
   onMount(async () => {
@@ -104,7 +91,7 @@
           loading...
         </div>
       {/if}
-      {#each visibleCountries as country (country.code)}
+      {#each _countries as country (country.code)}
         {#if groupedByCountry[country.code] && groupedByCountry[country.code].length > 0}
           <CountryItem
             bind:country
@@ -113,14 +100,6 @@
           ></CountryItem>
         {/if}
       {/each}
-      {#if !isLoading}
-        <InfiniteLoading on:infinite={loadMore} identifier={infiniteId} distance={500}>
-          <div slot="noResults"></div>
-          <div slot="noMore"></div>
-          <div slot="error"></div>
-          <div slot="spinner"></div>
-        </InfiniteLoading>
-      {/if}
     </section>
   </Modal>
 </main>
