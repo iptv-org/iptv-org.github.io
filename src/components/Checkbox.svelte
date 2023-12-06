@@ -41,15 +41,15 @@
     </svg>
   </button>
 {:else if disabled}
-  <button
+  <div
     class="w-12 h-12 rounded-full text-gray-200 dark:text-gray-700 transition-colors duration-200 flex items-center justify-center"
     aria-label="Disabled"
-    {disabled}
+    title="No link to the broadcast"
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
       <circle cx="12" cy="12" r="3" />
     </svg>
-  </button>
+  </div>
 {:else}
   <button
     class="w-12 h-12 rounded-full text-gray-200 hover:text-gray-400 dark:text-gray-700 dark:hover:text-gray-600 transition-colors duration-200 flex items-center justify-center"
