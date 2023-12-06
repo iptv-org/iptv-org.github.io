@@ -143,6 +143,7 @@ async function loadAPI() {
   api.guides = await fetch('https://iptv-org.github.io/api/guides.json')
     .then(r => r.json())
     .then(data => (data.length ? data : []))
+    .then(data => data.filter(guide => guide.channel))
     .then(data => _.sortBy(data, 'lang'))
     .then(data => _.groupBy(data, 'channel'))
     .catch(err => {
