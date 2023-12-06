@@ -7,7 +7,7 @@
   export let close = () => {}
 
   const fieldset = [
-    { name: 'logo', type: 'image', value: data.logo },
+    { name: 'logo', type: 'image', value: data.logo, alt: `${data.name} logo`, title: data.logo },
     { name: 'id', type: 'string', value: data.id },
     { name: 'name', type: 'string', value: data.name },
     { name: 'alt_names', type: 'string', value: data.alt_names.join(', ') },
@@ -98,7 +98,8 @@
             {#if field.type === 'image'}
               <img
                 src={field.value}
-                alt={field.name}
+                alt={field.alt}
+                title={field.title}
                 referrerpolicy="no-referrer"
                 class="border rounded-sm overflow-hidden border-gray-200 bg-[#e6e6e6]"
               />
