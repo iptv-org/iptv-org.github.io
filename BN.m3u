@@ -80,8 +80,18 @@ http://195.26.87.217/live.ts?channelId=80&uid=7435&deviceMac=00:1A:79:51:4B:3A
 http://195.26.87.217/live.ts?channelId=29197&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sports.18 " tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/07/Sports18_official_logo.png" group-title="Sports Channels",Sports 18
 https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fallback/Sports18_1_HD_voot_MOB-audio_131634_eng=131600-video=2906400.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://hotflixbd.com/uploads/tv_image/sm/ptv-sports.png" group-title="Sports Channels",PTV Sports HD
+https://cdn.sajeeb.online/PTV-Sports/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen2_HD.png" group-title="Sports Channels",Sony Sports 2 HD
+https://cdn.sajeeb.online/Sony-Ten-2-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen3_HD.png" group-title="Sports Channels",Sony Sports 3 HD
+https://cdn.sajeeb.online/Sony-Ten-3-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen4_HD.png" group-title="Sports Channels",Sony Sports 4 HD
+https://cdn.sajeeb.online/Sony-Ten-4-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen5_HD.png" group-title="Sports Channels",Sony Sports 5 HD
+https://cdn.sajeeb.online/Sony-Ten-5-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sony.s1 " tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Sony_Sports_Ten_1.png/revision/latest?cb=20221025083646" group-title="Sports Channels",Sony Sports 1 HD
-https://cdn.sajeeb.online/Sony-Ten-1-hd/mono.m3u8
+https://cdn.sajeeb.online/Sony-Ten-1-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ssc1.co " tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/3ftgj11637160967.png" group-title="Sports Channels",SSC 1 HD
 https://af.ayassport.ir/hls2/ssc1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="colors.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVNgOEpgCL3Czy1np7jkugyhIm9jVnlnHDQ&usqp=CAU" group-title="Indian Channels",Colors HD
