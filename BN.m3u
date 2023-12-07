@@ -82,6 +82,8 @@ http://195.26.87.217/live.ts?channelId=29197&uid=7435&deviceMac=00:1A:79:51:4B:3
 https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fallback/Sports18_1_HD_voot_MOB-audio_131634_eng=131600-video=2906400.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://hotflixbd.com/uploads/tv_image/sm/ptv-sports.png" group-title="Sports Channels",PTV Sports HD
 https://cdn.sajeeb.online/PTV-Sports/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sony.s1 " tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Sony_Sports_Ten_1.png/revision/latest?cb=20221025083646" group-title="Sports Channels",Sony Sports 1 HD
+https://cdn.sajeeb.online/Sony-Ten-1-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen2_HD.png" group-title="Sports Channels",Sony Sports 2 HD
 https://cdn.sajeeb.online/Sony-Ten-2-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen3_HD.png" group-title="Sports Channels",Sony Sports 3 HD
@@ -90,8 +92,6 @@ https://cdn.sajeeb.online/Sony-Ten-3-hd/tracks-v1a1/mono.m3u8?token=pagla
 https://cdn.sajeeb.online/Sony-Ten-4-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen5_HD.png" group-title="Sports Channels",Sony Sports 5 HD
 https://cdn.sajeeb.online/Sony-Ten-5-hd/tracks-v1a1/mono.m3u8?token=pagla
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sony.s1 " tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Sony_Sports_Ten_1.png/revision/latest?cb=20221025083646" group-title="Sports Channels",Sony Sports 1 HD
-https://cdn.sajeeb.online/Sony-Ten-1-hd/tracks-v1a1/mono.m3u8?token=pagla
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ssc1.co " tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/3ftgj11637160967.png" group-title="Sports Channels",SSC 1 HD
 https://af.ayassport.ir/hls2/ssc1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="colors.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVNgOEpgCL3Czy1np7jkugyhIm9jVnlnHDQ&usqp=CAU" group-title="Indian Channels",Colors HD
@@ -102,6 +102,8 @@ http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E02 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/znibr0l1w3kcn6utb97ir/The-Great-Seljuk-S01-E02.mkv?rlkey=2k9hcrxeybeffvvu5s8all2x8&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E03 - The Great Seljuk 720P 250MB
@@ -134,8 +136,6 @@ https://dl.dropboxusercontent.com/scl/fi/ysbi2ngsfdlehii23v03x/The-Great-Seljuk-
 https://dl.dropboxusercontent.com/scl/fi/jbjsvbh6pelhvmoj1izxn/The-Great-Seljuk-S01-E20.mkv?rlkey=p3xj42vp0b8cqchbhzn3tpo6h&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E21 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/60ks7jtb26ore5dwq8wqe/The-Great-Seljuk-S01-E21.mkv?rlkey=jj91uexh3voy2edfah8fpqds2&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
-https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://image.tmdb.org/t/p/original//7pU1XQHEtGYvQspNVIOFgvIMxaH.jpg" group-title="Bengali Movies",Operation Sundarbans (2022)-Bengali WEB-DL 720p
 https://dl.dropboxusercontent.com/scl/fi/fvl6zamurvxr0smtjly8g/Operation-Sundarbans-2022-Bengali-720p.mkv?rlkey=y08d50knpyyf6g0kfm09zx0nv&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr9GF8DiAlRKgQiwqrW9i5mQkM01HHIt9_g&usqp=CAU" group-title="Bollywood Movies",Animal (2023) Hindi PreDVD 720p 1.6GB
