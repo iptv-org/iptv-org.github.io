@@ -1,4 +1,26 @@
-#EXTINF:-0 tvg-id="GDrive.Us" tvg-name="arena.sports " tvg-logo="https://www.tvarenasport.com/files/img/icons/chanel-01.png" group-title="Sports Channels",Arena Sports 1 HD
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sports_News_ar.png" group-title="Sports Channels",BeIN Sports News
+http://31.42.184.158:2082/star2023/star2023/243349
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e5/BeIN_SPORTS_Global_logo_2017.jpg" group-title="Sports Channels",BeIN Sports Global
+http://31.42.184.158:2082/star2023/star2023/243350
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-13097.logowik.com.webp" group-title="Sports Channels",BeIN Sports 1
+http://31.42.184.158:2082/star2023/star2023/243351
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-25584.logowik.com.webp" group-title="Sports Channels",BeIN Sports 2
+http://31.42.184.158:2082/star2023/star2023/243352
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-31536.logowik.com.webp" group-title="Sports Channels",BeIN Sports 3
+http://31.42.184.158:2082/star2023/star2023/243353
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjPd4bwB7TW5HZZBGAmcV6Mz2uVc4DUyTqjg&usqp=CAU" group-title="Sports Channels",BeIN Sports 4
+http://31.42.184.158:2082/star2023/star2023/243354
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHA2p2mJ2dkA_-7-w2JueKVgmI7PxzewuxZg&usqp=CAU" group-title="Sports Channels",BeIN Sports 5
+http://31.42.184.158:2082/star2023/star2023/243355
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZkq4NQAbtRIxv4oa-XT4VJ3F6ckyRQzjEg&usqp=CAU" group-title="Sports Channels",BeIN Sports 6
+http://31.42.184.158:2082/star2023/star2023/243356
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4rjD1o12vLUXj-JZpQEr-93h3VyCcQqsFQ&usqp=CAU" group-title="Sports Channels",BeIN Sports 7
+http://31.42.184.158:2082/star2023/star2023/243357
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://www.nadirsat.com/Packages_files/HD8-1.png" group-title="Sports Channels",BeIN Sports 8
+http://31.42.184.158:2082/star2023/star2023/243358
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTerszTf_BckI6beYcPhJoKYLvXi7jQ8eqvtw&usqp=CAU" group-title="Sports Channels",BeIN Sports 9
+http://31.42.184.158:2082/star2023/star2023/243359
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports " tvg-logo="https://www.tvarenasport.com/files/img/icons/chanel-01.png" group-title="Sports Channels",Arena Sports 1 HD
 http://93.155.227.38:555/m3u8/arenasport1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9TPi7iPfASPF2zwg8YpT8KB7czRunv-i34g&usqp=CAU" group-title="Sports Channels",Arena Sports 2 HD
 http://93.155.227.38:555/m3u8/arenasport2.m3u8
