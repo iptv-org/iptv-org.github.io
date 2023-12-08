@@ -11,9 +11,11 @@
   <div class="w-full">
     <label for="search-input" class="sr-only">Search</label>
     <div class="relative w-full">
-      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+      <div
+        class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-500 dark:text-gray-400"
+      >
         <svg
-          class="w-4 h-4 text-gray-500 dark:text-gray-400"
+          class="w-5 h-5"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +31,7 @@
         type="search"
         id="search-input"
         bind:value={$query}
-        class="bg-gray-50 border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-9 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        class="bg-gray-50 border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-10 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search"
       />
     </div>
