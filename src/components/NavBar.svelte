@@ -1,5 +1,6 @@
 <script>
   import { query, hasQuery, search } from '~/store'
+  import SearchButton from './SearchButton.svelte'
   import SearchFieldMini from './SearchFieldMini.svelte'
   import Divider from './Divider.svelte'
   import CreatePlaylistButton from './CreatePlaylistButton.svelte'
@@ -15,6 +16,10 @@
     query.set('')
     hasQuery.set(false)
     search('')
+  }
+
+  function scrollToTop() {
+    document.body.scrollIntoView()
   }
 </script>
 
@@ -43,13 +48,24 @@
     </div>
 
     <div class="flex flex-end items-center space-x-4 pl-3">
-      <CreatePlaylistButton
-        on:click={() => {
-          if ($page.url.pathname !== '/') {
-            goto('/')
-          }
-        }}
-      />
+      <div class="inline-flex space-x-2">
+        {#if withSearch}
+          <div class="block sm:hidden">
+            <SearchButton
+              on:click={() => {
+                scrollToTop()
+              }}
+            />
+          </div>
+        {/if}
+        <CreatePlaylistButton
+          on:click={() => {
+            if ($page.url.pathname !== '/') {
+              goto('/')
+            }
+          }}
+        />
+      </div>
       <Divider />
       <div class="inline-flex space-x-2">
         <ToggleModeButton />
