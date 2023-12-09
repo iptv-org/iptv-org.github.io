@@ -8,6 +8,8 @@ https://storage.googleapis.com/hzwgsrhrau/mux_video_ts/index-1.m3u8
 https://af.ayassport.ir/hls2/ssc1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://www.nfbangladesh.com/wp-content/uploads/2022/06/sony-logo.jpg" group-title="Live Events",SonyLiv 1 HD
 https://jiotv.pp.ua/app/strmm.php?cid=162&id=Ten_HD_MOB-audio_98835_eng=98800-video=1173600.m3u8&e=.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXZAX1VZ8EqM-AWFraveM0geU0nuF33QbJ4Q&usqp=CAU" group-title="Sports Channels",Sports 18 Hindi
+https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sports_News_ar.png" group-title="Sports Channels",BeIN Sports News
 http://31.42.184.158:2082/star2023/star2023/243349
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e5/BeIN_SPORTS_Global_logo_2017.jpg" group-title="Sports Channels",BeIN Sports Global
@@ -112,6 +114,10 @@ http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 750MB 720P
+https://dl.dropboxusercontent.com/scl/fi/tqwfjb9wo6r568dk8yy87/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-720p.mkv?rlkey=inkf9qzlenvh8yw4u82m85a7d&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/ZT8x6k0/player-poster-web-782143001702056119.png" group-title="Toffee Exclusive",S02 E02 - Dirilis Ertugrul WEB-DL 750MB 720P
+https://dl.dropboxusercontent.com/scl/fi/tqwfjb9wo6r568dk8yy87/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-720p.mkv?rlkey=inkf9qzlenvh8yw4u82m85a7d&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E02 - The Great Seljuk 720P 250MB
@@ -154,6 +160,5 @@ https://pixeldrain.com/api/file/2zBXuR7q?download.mkv
 https://dl.dropboxusercontent.com/scl/fi/yxn0yx3xbttu4gxiw7amf/Inttelligent-2023-Bengali-Dubbed-ORG-720p.mkv?rlkey=n4sbi0r3j0irus6d6r1tsptyl&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg" group-title="Bollywood Movies",Jawan (2023)-Extended Cut Hindi NF 720p
 https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extended-Cut-Hindi-NF-720p.mkv?rlkey=j73qpgmdxkb4j17zj6q9j63fm&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXZAX1VZ8EqM-AWFraveM0geU0nuF33QbJ4Q&usqp=CAU" group-title="Sports Channels",Sports 18 Hindi
-https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/index.m3u8
+
 
