@@ -114,9 +114,9 @@ http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 750MB 720P
-https://dl.dropboxusercontent.com/scl/fi/tqwfjb9wo6r568dk8yy87/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-720p.mkv?rlkey=inkf9qzlenvh8yw4u82m85a7d&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/ZT8x6k0/player-poster-web-782143001702056119.png" group-title="Toffee Exclusive",S02 E02 - Dirilis Ertugrul WEB-DL 750MB 720P
+https://dl.dropboxusercontent.com/scl/fi/tqwfjb9wo6r568dk8yy87/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-720p.mkv?rlkey=inkf9qzlenvh8yw4u82m85a7d&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 750MB 720P
 https://dl.dropboxusercontent.com/scl/fi/tqwfjb9wo6r568dk8yy87/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-720p.mkv?rlkey=inkf9qzlenvh8yw4u82m85a7d&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
