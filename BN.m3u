@@ -58,6 +58,8 @@ https://sagar-live.msr-sagar.repl.co/channel/UCATUkaOHwO9EP_W87zCiPbA.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
 http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 http://103.141.2.37:25461/live/web/web/592.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Aath_new.png" group-title="Indian Channels",Sony Aath 
+http://103.141.2.37:25461/web/web/591
 #EXTINF:-1 tvg-id="sony.max" tvg-name="sony.liv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/b6/Sony_Max_new.png" group-title="Indian Channels", Sony Max HD
 http://89.187.177.137:8081/SONYMAX/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tsports.hd" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BZYPd7Cw0h34N3DW7SbeDWuf53X2yvNOhw&usqp=CAU" group-title="Sports Channels",T Sports
@@ -166,5 +168,3 @@ https://pixeldrain.com/api/file/2zBXuR7q?download.mkv
 https://dl.dropboxusercontent.com/scl/fi/yxn0yx3xbttu4gxiw7amf/Inttelligent-2023-Bengali-Dubbed-ORG-720p.mkv?rlkey=n4sbi0r3j0irus6d6r1tsptyl&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg" group-title="Bollywood Movies",Jawan (2023)-Extended Cut Hindi NF 720p
 https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extended-Cut-Hindi-NF-720p.mkv?rlkey=j73qpgmdxkb4j17zj6q9j63fm&dl=1.mkv
-
-
