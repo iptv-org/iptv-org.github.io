@@ -53,6 +53,8 @@ https://247c.mrgamingstreams.com/mrgamingbtsport1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq1vRIzeMg_pzAb-M26FQbUsyKQvAZvVV1Mw&usqp=CAU" group-title="Sports Channels",Star Sports 1 HD
 https://freeiptv25.bdiptv24.repl.co/live/bdix/StarSports1HD.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="gtv.hd" tvg-logo="https://upload.wikimedia.org/wikipedia/en/2/20/GTVBangladeshLogo.png" group-title="Sports Channels",G TV
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Independent.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Independent_Television_Logo.svg/800px-Independent_Television_Logo.svg.png" group-title="Bangladeshi Channels",Independent 
+https://sagar-live.msr-sagar.repl.co/channel/UCATUkaOHwO9EP_W87zCiPbA.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
 http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 http://103.141.2.37:25461/live/web/web/592.m3u8
@@ -75,9 +77,9 @@ http://195.26.87.217/live.ts?channelId=90301&uid=7435&deviceMac=00:1A:79:51:4B:3
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="atn.bangla" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ATN_Bangla.svg/800px-ATN_Bangla.svg.png" group-title="Bangladeshi Channels",ATN Bangla
 http://195.26.87.217/live.ts?channelId=81&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel24logo.svg/800px-Channel24logo.svg.png" group-title="Bangladeshi Channels",Channel 24
-http://195.26.87.217/live.ts?channelId=87&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://sagar-live.msr-sagar.repl.co/channel/UCHLqIOMPk20w-6cFgkA90jw.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="jumona.tv" tvg-logo="https://lh3.googleusercontent.com/YQP7FBUcon-G5tN4gern0sAs9cxredbeDG7UTnSHgau39W6v9v7MToQiRE4mVM9JYzg" group-title="Bangladeshi Channels",Jamuna TV
-http://195.26.87.217/live.ts?channelId=100&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://sagar-live.msr-sagar.repl.co/channel/UCN6sm8iHiPd0cnoUardDAnw.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="somoy.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/thumb/f/f6/%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg/578px-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg.png?20140510052050" group-title="Bangladeshi Channels",Somoy TV
 http://195.26.87.217/live.ts?channelId=115&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sa.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2YVcRhXVs-AFNLMIc5PTki5YQcUzWk1Ymag&usqp=CAU" group-title="Bangladeshi Channels",SA TV
