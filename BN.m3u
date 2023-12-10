@@ -60,7 +60,7 @@ http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 http://103.141.2.37:25461/live/web/web/592.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Aath_new.png" group-title="Bengali Channels",Sony Aath 
 http://103.141.2.37:25461/web/web/591
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Aath_new.png" group-title="Bengali Channels",Discovery Bangla 
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/Pz2YN8s/20231210-153712.jpg" group-title="Bengali Channels",Discovery Bangla 
 http://103.141.2.37:25461/web/web/567
 #EXTINF:-1 tvg-id="sony.max" tvg-name="sony.liv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/b6/Sony_Max_new.png" group-title="Indian Channels", Sony Max HD
 http://89.187.177.137:8081/SONYMAX/index.m3u8
