@@ -14,6 +14,8 @@ https://storage.googleapis.com/hzwgsrhrau/mux_video_ts/index-1.m3u8
 https://af.ayassport.ir/hls2/ssc1.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://www.nfbangladesh.com/wp-content/uploads/2022/06/sony-logo.jpg" group-title="Live Events",SonyLiv 1 HD
 https://jiotv.pp.ua/app/strmm.php?cid=162&id=Ten_HD_MOB-audio_98835_eng=98800-video=1173600.m3u8&e=.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-iilpA0bdtgxmThsbarYcVIf9s-m7_4gg_g&usqp=CAU" group-title="Sports Channels",Sky Sports Cricket 
+http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2090.ts
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXZAX1VZ8EqM-AWFraveM0geU0nuF33QbJ4Q&usqp=CAU" group-title="Sports Channels",Sports 18 Hindi
 https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sports_News_ar.png" group-title="Sports Channels",BeIN Sports News
@@ -83,7 +85,7 @@ http://195.26.87.217/live.ts?channelId=90301&uid=7435&deviceMac=00:1A:79:51:4B:3
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="atn.bangla" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ATN_Bangla.svg/800px-ATN_Bangla.svg.png" group-title="Bangladeshi Channels",ATN Bangla
 http://195.26.87.217/live.ts?channelId=81&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel24logo.svg/800px-Channel24logo.svg.png" group-title="Bangladeshi Channels",Channel 24
-https://sagar-live.msr-sagar.repl.co/channel/UCHLqIOMPk20w-6cFgkA90jw.m3u8
+http://195.26.87.217/live.ts?channelId=87&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="jumona.tv" tvg-logo="https://lh3.googleusercontent.com/YQP7FBUcon-G5tN4gern0sAs9cxredbeDG7UTnSHgau39W6v9v7MToQiRE4mVM9JYzg" group-title="Bangladeshi Channels",Jamuna TV
 https://sagar-live.msr-sagar.repl.co/channel/UCN6sm8iHiPd0cnoUardDAnw.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="somoy.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/thumb/f/f6/%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg/578px-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg.png?20140510052050" group-title="Bangladeshi Channels",Somoy TV
@@ -126,6 +128,8 @@ http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/CP3xB9J/web-thumb-landscape-original-poster-774612001702188584.png" group-title="Toffee Exclusive",S02 E03 - Dirilis Ertugrul WEB-DL 300MB 480P
+https://dl.dropboxusercontent.com/scl/fi/lkvvw7h75gqzc5nxtq0iu/Dirilis-Ertugrul-2023-S02E03-Bengali-Dubbed-ORG-480p.mkv?rlkey=sxb589fwwp36hgy7odznqqj26&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/ZT8x6k0/player-poster-web-782143001702056119.png" group-title="Toffee Exclusive",S02 E02 - Dirilis Ertugrul WEB-DL 350MB 480P
 https://dl.dropboxusercontent.com/scl/fi/1wi2bncbgfyeskvjbky1x/Dirilis-Ertugrul-2023-S02E02-Bengali-Dubbed-ORG-480p.mkv?rlkey=wam2ihbhzpjntkkhd2n5oexfh&dl=0.mp4
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 350MB 480P
