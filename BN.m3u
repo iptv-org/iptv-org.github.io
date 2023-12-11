@@ -1,3 +1,67 @@
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/qdj3CFp/20231210-180733.jpg" group-title="Notice",Refresh m3u link and enjoy more movies, series & tv channels 
+https://archive.org/download/Piyash_Ahmed-file_store_Bangladesh/InShot_20231210_181835803.mp4
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="cricket.live" tvg-logo="https://i.ibb.co/5WHqBhp/Ind-vs-Sa.jpg" group-title="Live Events",IND 🆚 SA T20
+https://freeiptv25.bdiptv24.repl.co/live/bdix/StarSports1HD.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://i.ibb.co/19J2xxZ/laliga6363-logowik-com.webp" group-title="Live Events",LaLiga
+https://prod-ent-live-gm.jiocinema.com/hls/live/2099846/hd_akamai_merged_avc_eng_laliga_m3_091223/mobile_master.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://i.ibb.co/68D9pqc/20231209-065422.jpg" group-title="Live Events",Serie A
+https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fallback/Sports18_1_HD_voot_MOB-audio_131634_eng=131600-video=2906400.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="server.org" tvg-logo="https://i.ibb.co/v4HL6kj/20231209-065244.jpg" group-title="Live Events",Liga Portugal
+https://jiotv.pp.ua/app/strmm.php?cid=162&id=Ten_HD_MOB-audio_98835_eng=98800-video=1173600.m3u8&e=.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="epl.org" tvg-logo="https://i.ibb.co/KXc9cz3/20231209-064613.jpg" group-title="Live Events",Premier League
+https://storage.googleapis.com/hzwgsrhrau/mux_video_ts/index-1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="RSL.ORG" tvg-logo="https://i.ibb.co/mT89T6W/20231209-063849.png" group-title="Live Events",Saudi Pro League
+https://af.ayassport.ir/hls2/ssc1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://www.nfbangladesh.com/wp-content/uploads/2022/06/sony-logo.jpg" group-title="Live Events",SonyLiv 1 HD
+https://jiotv.pp.ua/app/strmm.php?cid=162&id=Ten_HD_MOB-audio_98835_eng=98800-video=1173600.m3u8&e=.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-iilpA0bdtgxmThsbarYcVIf9s-m7_4gg_g&usqp=CAU" group-title="Sports Channels",Sky Sports Cricket 
+http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2090.ts
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.com" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXZAX1VZ8EqM-AWFraveM0geU0nuF33QbJ4Q&usqp=CAU" group-title="Sports Channels",Sports 18 Hindi
+https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/index.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sports_News_ar.png" group-title="Sports Channels",BeIN Sports News
+http://31.42.184.158:2082/star2023/star2023/243349
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e5/BeIN_SPORTS_Global_logo_2017.jpg" group-title="Sports Channels",BeIN Sports Global
+http://31.42.184.158:2082/star2023/star2023/243350
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-13097.logowik.com.webp" group-title="Sports Channels",BeIN Sports 1
+http://31.42.184.158:2082/star2023/star2023/243351
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-25584.logowik.com.webp" group-title="Sports Channels",BeIN Sports 2
+http://31.42.184.158:2082/star2023/star2023/243352
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://logowik.com/content/uploads/images/bein-sports-31536.logowik.com.webp" group-title="Sports Channels",BeIN Sports 3
+http://31.42.184.158:2082/star2023/star2023/243353
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjPd4bwB7TW5HZZBGAmcV6Mz2uVc4DUyTqjg&usqp=CAU" group-title="Sports Channels",BeIN Sports 4
+http://31.42.184.158:2082/star2023/star2023/243354
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHA2p2mJ2dkA_-7-w2JueKVgmI7PxzewuxZg&usqp=CAU" group-title="Sports Channels",BeIN Sports 5
+http://31.42.184.158:2082/star2023/star2023/243355
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZkq4NQAbtRIxv4oa-XT4VJ3F6ckyRQzjEg&usqp=CAU" group-title="Sports Channels",BeIN Sports 6
+http://31.42.184.158:2082/star2023/star2023/243356
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4rjD1o12vLUXj-JZpQEr-93h3VyCcQqsFQ&usqp=CAU" group-title="Sports Channels",BeIN Sports 7
+http://31.42.184.158:2082/star2023/star2023/243357
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://www.nadirsat.com/Packages_files/HD8-1.png" group-title="Sports Channels",BeIN Sports 8
+http://31.42.184.158:2082/star2023/star2023/243358
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bein.org" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTerszTf_BckI6beYcPhJoKYLvXi7jQ8eqvtw&usqp=CAU" group-title="Sports Channels",BeIN Sports 9
+http://31.42.184.158:2082/star2023/star2023/243359
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports " tvg-logo="https://www.tvarenasport.com/files/img/icons/chanel-01.png" group-title="Sports Channels",Arena Sports 1 HD
+http://93.155.227.38:555/m3u8/arenasport1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9TPi7iPfASPF2zwg8YpT8KB7czRunv-i34g&usqp=CAU" group-title="Sports Channels",Arena Sports 2 HD
+http://93.155.227.38:555/m3u8/arenasport2.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://static.wixstatic.com/media/a03863_bf31a949c61842e98d5ff7a4a10083dd~mv2.png/v1/fill/w_420,h_235,al_c,lg_1,q_85,enc_auto/Arena-Sport-3-removebg-preview.png" group-title="Sports Channels",Arena Sports 3 HD
+http://93.155.227.38:555/m3u8/arenasport3.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzJ-SPKf7OzQuxSMJncfStq68JBlXSixBJGQ&usqp=CAU" group-title="Sports Channels",Arena Sports 4 HD
+http://93.155.227.38:555/m3u8/arenasport4.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="arena.sports" tvg-logo="https://ewsat.com/img/ARENA_SPORT_5.png" group-title="Sports Channels",Arena Sports 5 HD
+http://93.155.227.38:555/m3u8/arenasport5.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="dubai.sports" tvg-logo="https://www.choueirigroup.com/uploads/portfolio/portfolio_1920px_1080px/dubaisport-9910fff93c543f6a89807b0b3e6cb312.jpeg" group-title="Sports Channels",Dubai Sports 2
+https://mo3ad@dmitwlvvll.cdn.mangomolo.com:443/dubaisportshd/smil:dubaisportshd.smil/chunklist_b1600000.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tnt.org" tvg-logo="https://assets.tv24.co/channels/tnt-sports-1-l.webp" group-title="Sports Channels",TNT Sports 1
+https://247c.mrgamingstreams.com/mrgamingbtsport1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq1vRIzeMg_pzAb-M26FQbUsyKQvAZvVV1Mw&usqp=CAU" group-title="Sports Channels",Star Sports 1 HD
+https://freeiptv25.bdiptv24.repl.co/live/bdix/StarSports1HD.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="gtv.hd" tvg-logo="https://upload.wikimedia.org/wikipedia/en/2/20/GTVBangladeshLogo.png" group-title="Sports Channels",G TV
+http://103.141.2.37:25461/live/web/web/592.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Independent.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Independent_Television_Logo.svg/800px-Independent_Television_Logo.svg.png" group-title="Bangladeshi Channels",Independent 
+https://sagar-live.msr-sagar.repl.co/channel/UCATUkaOHwO9EP_W87zCiPbA.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/800px-Channel-i.svg.png" group-title="Bangladeshi Channels",Chennel i
+http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/25mw5gG/H-Ou-n2-VGlj-Yg2-FGco-JOi-Whue2-R5o-PGrs-YNZ4-Fz-H0g-WJPC6-Up-E3-Few-Fa-Ct-Qy-HJya-ZVb6h7-IKQ-s900-c.jpg" group-title="Bengali Channels",Colors Bangla
 http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2284.ts
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/wC3G4Hp/images-q-tbn-ANd9-Gc-Sx-ZRa5mpvsr-Cg-Kxi732-K7-PGk-Kq2mt3-Se-Mk3-Q-usqp-CAU.jpg" group-title="Bengali Channels",Zee Bangla
@@ -8,3 +72,117 @@ http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2287.ts
 http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2281.ts
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/mCT0qRN/images-q-tbn-ANd9-Gc-Si-Ae-ZMPD5-RFKfe-NVlp-Jb54-Tfp9p97t-SZ2-OPA-usqp-CAU.jpg" group-title="Bengali Channels",Jalsha Movies
 http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2282.ts
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Aath_new.png" group-title="Bengali Channels",Sony Aath 
+http://103.141.2.37:25461/web/web/591
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/Pz2YN8s/20231210-153712.jpg" group-title="Bengali Channels",Discovery Bangla 
+http://103.141.2.37:25461/web/web/567
+#EXTINF:-1 tvg-id="sony.max" tvg-name="sony.liv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/b6/Sony_Max_new.png" group-title="Indian Channels", Sony Max HD
+http://89.187.177.137:8081/SONYMAX/index.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tsports.hd" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BZYPd7Cw0h34N3DW7SbeDWuf53X2yvNOhw&usqp=CAU" group-title="Sports Channels",T Sports
+http://113.212.111.246:8080/hls/col12.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="deepto.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/b/be/%E0%A6%A6%E0%A7%80%E0%A6%AA%E0%A7%8D%E0%A6%A4_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B_%E0%A7%A8.jpg" group-title="Bangladeshi Channels",Deepto TV
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="maasranga.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/5/59/%E0%A6%AE%E0%A6%BE%E0%A6%9B%E0%A6%B0%E0%A6%BE%E0%A6%99%E0%A6%BE_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.png" group-title="Bangladeshi Channels",Maasranga TV
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ntv.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/NTV_%28Bangladesh%29_logo.svg/800px-NTV_%28Bangladesh%29_logo.svg.png" group-title="Bangladeshi Channels",NTV
+http://195.26.87.217/live.ts?channelId=109&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ananda.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/02/Ananda_TV_Logo.png" group-title="Bangladeshi Channels",Ananda TV
+http://195.26.87.217/live.ts?channelId=90255&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="rtv.org" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Rtv_bangladesh.svg/800px-Rtv_bangladesh.svg.png" group-title="Bangladeshi Channels",RTV
+http://195.26.87.217/live.ts?channelId=112&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="rtv.music" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSebh3TOXaSTlMURx1OyvU2Irp1ls4RpNtMzw&usqp=CAU" group-title="Bangladeshi Channels",RTV Music
+http://195.26.87.217/live.ts?channelId=90301&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="atn.bangla" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ATN_Bangla.svg/800px-ATN_Bangla.svg.png" group-title="Bangladeshi Channels",ATN Bangla
+http://195.26.87.217/live.ts?channelId=81&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel24logo.svg/800px-Channel24logo.svg.png" group-title="Bangladeshi Channels",Channel 24
+http://195.26.87.217/live.ts?channelId=87&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="jumona.tv" tvg-logo="https://lh3.googleusercontent.com/YQP7FBUcon-G5tN4gern0sAs9cxredbeDG7UTnSHgau39W6v9v7MToQiRE4mVM9JYzg" group-title="Bangladeshi Channels",Jamuna TV
+https://sagar-live.msr-sagar.repl.co/channel/UCN6sm8iHiPd0cnoUardDAnw.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="somoy.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/thumb/f/f6/%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg/578px-%E0%A6%B8%E0%A6%AE%E0%A6%AF%E0%A6%BC_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg.png?20140510052050" group-title="Bangladeshi Channels",Somoy TV
+http://195.26.87.217/live.ts?channelId=115&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sa.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2YVcRhXVs-AFNLMIc5PTki5YQcUzWk1Ymag&usqp=CAU" group-title="Bangladeshi Channels",SA TV
+http://195.26.87.217/live.ts?channelId=114&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="nagorik.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/bn/thumb/e/e3/%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF.svg/800px-%E0%A6%A8%E0%A6%BE%E0%A6%97%E0%A6%B0%E0%A6%BF%E0%A6%95_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF.svg.png" group-title="Bangladeshi Channels",Nagorik TV
+https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel9.bn" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Channel9_bd.svg/800px-Channel9_bd.svg.png" group-title="Bangladeshi Channels",Channel 9
+http://195.26.87.217/live.ts?channelId=88&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="boishakhi.tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Boishakhi_TV_logo.svg/800px-Boishakhi_TV_logo.svg.png" group-title="Bangladeshi Channels",Boishakhi TV
+http://195.26.87.217/live.ts?channelId=86&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bijoy.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmS7CvhXL8IhnYb727GdQJb3zgJiAQv0aUVg&usqp=CAU" group-title="Bangladeshi Channels",Bijoy TV
+http://195.26.87.217/live.ts?channelId=85&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="asian.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlwujSIHrn1p56CP6N3Mb5NCL9OL-3f6nNKA&usqp=CAU" group-title="Bangladeshi Channels",Asian TV
+http://195.26.87.217/live.ts?channelId=80&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="dvc.co" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/9/9f/DBC_News_logo.png" group-title="Bangladeshi Channels",DBC News
+http://195.26.87.217/live.ts?channelId=29197&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sports.18 " tvg-logo="https://upload.wikimedia.org/wikipedia/en/0/07/Sports18_official_logo.png" group-title="Sports Channels",Sports 18
+https://prod-ent-live-gm.jiocinema.com/bpk-tv/Sports18_1_HD_voot_MOB/Fallback/Sports18_1_HD_voot_MOB-audio_131634_eng=131600-video=2906400.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://hotflixbd.com/uploads/tv_image/sm/ptv-sports.png" group-title="Sports Channels",PTV Sports HD
+https://cdn.sajeeb.online/PTV-Sports/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sony.s1 " tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Sony_Sports_Ten_1.png/revision/latest?cb=20221025083646" group-title="Sports Channels",Sony Sports 1 HD
+https://cdn.sajeeb.online/Sony-Ten-1-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen2_HD.png" group-title="Sports Channels",Sony Sports 2 HD
+https://cdn.sajeeb.online/Sony-Ten-2-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen3_HD.png" group-title="Sports Channels",Sony Sports 3 HD
+https://cdn.sajeeb.online/Sony-Ten-3-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen4_HD.png" group-title="Sports Channels",Sony Sports 4 HD
+https://cdn.sajeeb.online/Sony-Ten-4-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sonyliv.org" tvg-logo="https://dtat2ks7dludr.cloudfront.net/spnsportsindia/channel_logos/SONY_SportsTen5_HD.png" group-title="Sports Channels",Sony Sports 5 HD
+https://cdn.sajeeb.online/Sony-Ten-5-hd/tracks-v1a1/mono.m3u8?token=pagla
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ssc1.co " tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/3ftgj11637160967.png" group-title="Sports Channels",SSC 1 HD
+https://af.ayassport.ir/hls2/ssc1.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="colors.tv" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbVNgOEpgCL3Czy1np7jkugyhIm9jVnlnHDQ&usqp=CAU" group-title="Indian Channels",Colors HD
+http://144.217.70.181:9587/hin2/COLORSHD/index.m3u8?token=test
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.plus" tvg-logo="https://www.bizasialive.com/wp-content/uploads/2019/04/starpluslogo001.jpg" group-title="Indian Channels",Star Plus HD
+http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="willow.tv" tvg-logo="https://static.toiimg.com/thumb/msid-98738864,imgsize-8010,width-400,resizemode-4/98738864.jpg" group-title="Sports Channels",Willow HD
+http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
+http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/CP3xB9J/web-thumb-landscape-original-poster-774612001702188584.png" group-title="Toffee Exclusive",S02 E03 - Dirilis Ertugrul WEB-DL 300MB 480P
+https://dl.dropboxusercontent.com/scl/fi/lkvvw7h75gqzc5nxtq0iu/Dirilis-Ertugrul-2023-S02E03-Bengali-Dubbed-ORG-480p.mkv?rlkey=sxb589fwwp36hgy7odznqqj26&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/ZT8x6k0/player-poster-web-782143001702056119.png" group-title="Toffee Exclusive",S02 E02 - Dirilis Ertugrul WEB-DL 350MB 480P
+https://dl.dropboxusercontent.com/scl/fi/1wi2bncbgfyeskvjbky1x/Dirilis-Ertugrul-2023-S02E02-Bengali-Dubbed-ORG-480p.mkv?rlkey=wam2ihbhzpjntkkhd2n5oexfh&dl=0.mp4
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 350MB 480P
+https://dl.dropboxusercontent.com/scl/fi/b3pvso87vrh0w3i26vzz9/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-480p.mkv?rlkey=5lbwk74omf4y4n0kbw2c1t5fe&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E02 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/znibr0l1w3kcn6utb97ir/The-Great-Seljuk-S01-E02.mkv?rlkey=2k9hcrxeybeffvvu5s8all2x8&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E03 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/q53i4y1i0kb88t38qpf7t/The-Great-Seljuk-S01-E03.mkv?rlkey=t4kid5bhpdgez2k4em63drb6v&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E04-05 - The Great Seljuk 1080P 1.2GB
+https://dl.dropboxusercontent.com/scl/fi/2a6toa1fdb5jy5isiyzql/The-Great-Seljuk-2022-S01-E04-05-1080P.mkv?rlkey=s6ohlo2w0knvx1lu2nok1ucw2&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E06 - The Great Seljuk 1080P 600MB
+https://dl.dropboxusercontent.com/scl/fi/jdob5hq3b83gg7youll6i/The-Great-Seljuk-2022-S01-E06-1080P.mkv?rlkey=1ck8y85c38peh50homt4eplcm&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E07 - The Great Seljuk 600MB
+https://dl.dropboxusercontent.com/scl/fi/x7nrxj4j8qs1drjtdwlnb/The-Great-Seljuk-2022-S01-E07-1080P.mkv?rlkey=hgb8fvpgvrv3y8nmwkgtnjdph&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E08 - The Great Seljuk 720P 250MB
+https://dl.dropboxusercontent.com/scl/fi/sk73e0yqocrb506kbgfwe/The-Great-Seljuk-S01-E08.mkv?rlkey=homt6cgphc4i54te6hoo0aain&dl=1.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E09-11 - The Great Seljuk (1080P_FHD) 1.8GB
+https://dl.dropboxusercontent.com/scl/fi/cu1iclddlglcgt6ls6z60/The-Great-Seljuk-2022-S01-E09-11-1080P.mkv?rlkey=h1tmqbjsip5urdzveh5a6qqn2&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E12 - The Great Seljuk (1080P_FHD) 600MB
+https://dl.dropboxusercontent.com/scl/fi/y7j9pd5hyd9n1a2kxlnx1/The-Great-Seljuk-2022-S01-E12-1080P.mkv?rlkey=l441o8tno7gckm1gazko27kxy&dl=0.mkv 
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E13 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/2k3hy9u9cc3lxwgeixkyo/The-Great-Seljuk-S01-E13.mkv?rlkey=lf5dxss6bmtmp84ccntiu97ix&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E14 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/pd7jq4p4o9vremxtxuz2k/The-Great-Seljuk-S01-E14.mkv?rlkey=122bqpcmfuus548egylgn7xht&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E15 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/ubpn8uhvyjapas9z6s48w/The-Great-Seljuk-S01-E15.mkv?rlkey=fkl48i7yie7jboyqfs70tnugv&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E16 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/6w7og235lgqvzhwxshy5q/The-Great-Seljuk-S01-E16.mkv?rlkey=knnqodlw7dyx0vbdwxqura0j9&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E17-18 - The Great Seljuk (480P_HD) 350MB
+https://dl.dropboxusercontent.com/scl/fi/u0dqeys6ud42iahgo03w2/The-Great-Seljuk-S01-E17-E18.mkv?rlkey=dqyx4sple883m09wqf2voniu5&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E19 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/ysbi2ngsfdlehii23v03x/The-Great-Seljuk-S01-E19.mkv?rlkey=28zwtlx9c5di37e7ebvwdpa9c&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E20 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/jbjsvbh6pelhvmoj1izxn/The-Great-Seljuk-S01-E20.mkv?rlkey=p3xj42vp0b8cqchbhzn3tpo6h&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E21 - The Great Seljuk (720P_HD) 300MB
+https://dl.dropboxusercontent.com/scl/fi/60ks7jtb26ore5dwq8wqe/The-Great-Seljuk-S01-E21.mkv?rlkey=jj91uexh3voy2edfah8fpqds2&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://image.tmdb.org/t/p/original//7pU1XQHEtGYvQspNVIOFgvIMxaH.jpg" group-title="Bengali Movies",Operation Sundarbans (2022)-Bengali WEB-DL 720p
+https://dl.dropboxusercontent.com/scl/fi/fvl6zamurvxr0smtjly8g/Operation-Sundarbans-2022-Bengali-720p.mkv?rlkey=y08d50knpyyf6g0kfm09zx0nv&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNr9GF8DiAlRKgQiwqrW9i5mQkM01HHIt9_g&usqp=CAU" group-title="Bollywood Movies",Animal (2023) Hindi PreDVD 720p 1.6GB
+https://pixeldrain.com/api/file/2zBXuR7q?download.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://i.ibb.co/HtNNPpK/Inttelligent-2023-Bengali-Dubbed-ORG-WEB-DL-H264-AAC-1080p-720p-480p-Downloa.webp" group-title="Bangla Dubbed Movies",Inttelligent (2023) Bengali Dubbed ORG 720p 1GB
+https://dl.dropboxusercontent.com/scl/fi/yxn0yx3xbttu4gxiw7amf/Inttelligent-2023-Bengali-Dubbed-ORG-720p.mkv?rlkey=n4sbi0r3j0irus6d6r1tsptyl&dl=0.mkv
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg" group-title="Bollywood Movies",Jawan (2023)-Extended Cut Hindi NF 720p
+https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extended-Cut-Hindi-NF-720p.mkv?rlkey=j73qpgmdxkb4j17zj6q9j63fm&dl=1.mkv
