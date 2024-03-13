@@ -1,4 +1,4 @@
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/qdj3CFp/20231210-180733.jpg" group-title="Notice",Refresh m3u link and enjoy more movies, series & tv channels 
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://i.ibb.co/qdj3CFp/20231210-180733.jpg" group-title="Notice",update m3u playlist and enjoy more content
 https://dl.dropboxusercontent.com/scl/fi/i58vzve5b2qmziegzhgmo/playlists.mkv?rlkey=v17pfyurw7oxh5izi13bhacwr&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="cricket.live" tvg-logo="https://i.ibb.co/5WHqBhp/Ind-vs-Sa.jpg" group-title="Live Events",IND 🆚 SA T20
 http://103.2.153.38/trans1sd/smil:starsports1.smil/chunklist.m3u8
@@ -138,45 +138,39 @@ http://144.217.70.181:9587/hin2/STARPLUSHD/index.m3u8?token=test
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="astro.cric" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png" group-title="Sports Channels",Astro Cricket HD
 http://195.26.87.217/live?channelId=26034&deviceMac=00:1A:79:33:E9:41
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/CP3xB9J/web-thumb-landscape-original-poster-774612001702188584.png" group-title="Toffee Exclusive",S02 E03 - Dirilis Ertugrul WEB-DL 300MB 480P
-https://dl.dropboxusercontent.com/scl/fi/lkvvw7h75gqzc5nxtq0iu/Dirilis-Ertugrul-2023-S02E03-Bengali-Dubbed-ORG-480p.mkv?rlkey=sxb589fwwp36hgy7odznqqj26&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/ZT8x6k0/player-poster-web-782143001702056119.png" group-title="Toffee Exclusive",S02 E02 - Dirilis Ertugrul WEB-DL 350MB 480P
-https://dl.dropboxusercontent.com/scl/fi/1wi2bncbgfyeskvjbky1x/Dirilis-Ertugrul-2023-S02E02-Bengali-Dubbed-ORG-480p.mkv?rlkey=wam2ihbhzpjntkkhd2n5oexfh&dl=0.mp4
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Dirilis.Org" tvg-logo="https://i.ibb.co/rMHv5sJ/web-thumb-landscape-original-poster-263008001701969801.png" group-title="Toffee Exclusive",S02 E01 - Dirilis Ertugrul WEB-DL 350MB 480P
-https://dl.dropboxusercontent.com/scl/fi/b3pvso87vrh0w3i26vzz9/Dirilis-Ertugrul-2023-S02E01-Bengali-Dubbed-ORG-480p.mkv?rlkey=5lbwk74omf4y4n0kbw2c1t5fe&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive", S01 E01 - The Great Seljuk 720P 250MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)", S01 E01 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/x5puhwgz0hsu5oof94ugc/The-Great-Seljuk-S01-E01.mkv?rlkey=8s0shiea2zrsponzfivav98zp&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E02 - The Great Seljuk 720P 250MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E02 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/znibr0l1w3kcn6utb97ir/The-Great-Seljuk-S01-E02.mkv?rlkey=2k9hcrxeybeffvvu5s8all2x8&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E03 - The Great Seljuk 720P 250MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E03 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/q53i4y1i0kb88t38qpf7t/The-Great-Seljuk-S01-E03.mkv?rlkey=t4kid5bhpdgez2k4em63drb6v&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E04-05 - The Great Seljuk 1080P 1.2GB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E04-05 - The Great Seljuk 1080P 1.2GB
 https://dl.dropboxusercontent.com/scl/fi/2a6toa1fdb5jy5isiyzql/The-Great-Seljuk-2022-S01-E04-05-1080P.mkv?rlkey=s6ohlo2w0knvx1lu2nok1ucw2&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E06 - The Great Seljuk 1080P 600MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E06 - The Great Seljuk 1080P 600MB
 https://dl.dropboxusercontent.com/scl/fi/jdob5hq3b83gg7youll6i/The-Great-Seljuk-2022-S01-E06-1080P.mkv?rlkey=1ck8y85c38peh50homt4eplcm&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E07 - The Great Seljuk 600MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E07 - The Great Seljuk 600MB
 https://dl.dropboxusercontent.com/scl/fi/x7nrxj4j8qs1drjtdwlnb/The-Great-Seljuk-2022-S01-E07-1080P.mkv?rlkey=hgb8fvpgvrv3y8nmwkgtnjdph&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="Toffee Exclusive",S01 E08 - The Great Seljuk 720P 250MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://backoffice.channel24bd.tv/media/imgAll/2022January/seljuk-002-1641528164.jpg" group-title="The Great Seljuk (Bengali)",S01 E08 - The Great Seljuk 720P 250MB
 https://dl.dropboxusercontent.com/scl/fi/sk73e0yqocrb506kbgfwe/The-Great-Seljuk-S01-E08.mkv?rlkey=homt6cgphc4i54te6hoo0aain&dl=1.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E09-11 - The Great Seljuk (1080P_FHD) 1.8GB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E09-11 - The Great Seljuk (1080P_FHD) 1.8GB
 https://dl.dropboxusercontent.com/scl/fi/cu1iclddlglcgt6ls6z60/The-Great-Seljuk-2022-S01-E09-11-1080P.mkv?rlkey=h1tmqbjsip5urdzveh5a6qqn2&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E12 - The Great Seljuk (1080P_FHD) 600MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E12 - The Great Seljuk (1080P_FHD) 600MB
 https://dl.dropboxusercontent.com/scl/fi/y7j9pd5hyd9n1a2kxlnx1/The-Great-Seljuk-2022-S01-E12-1080P.mkv?rlkey=l441o8tno7gckm1gazko27kxy&dl=0.mkv 
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E13 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E13 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/2k3hy9u9cc3lxwgeixkyo/The-Great-Seljuk-S01-E13.mkv?rlkey=lf5dxss6bmtmp84ccntiu97ix&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E14 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E14 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/pd7jq4p4o9vremxtxuz2k/The-Great-Seljuk-S01-E14.mkv?rlkey=122bqpcmfuus548egylgn7xht&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E15 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E15 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/ubpn8uhvyjapas9z6s48w/The-Great-Seljuk-S01-E15.mkv?rlkey=fkl48i7yie7jboyqfs70tnugv&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E16 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E16 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/6w7og235lgqvzhwxshy5q/The-Great-Seljuk-S01-E16.mkv?rlkey=knnqodlw7dyx0vbdwxqura0j9&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E17-18 - The Great Seljuk (480P_HD) 350MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E17-18 - The Great Seljuk (480P_HD) 350MB
 https://dl.dropboxusercontent.com/scl/fi/u0dqeys6ud42iahgo03w2/The-Great-Seljuk-S01-E17-E18.mkv?rlkey=dqyx4sple883m09wqf2voniu5&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E19 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E19 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/ysbi2ngsfdlehii23v03x/The-Great-Seljuk-S01-E19.mkv?rlkey=28zwtlx9c5di37e7ebvwdpa9c&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E20 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E20 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/jbjsvbh6pelhvmoj1izxn/The-Great-Seljuk-S01-E20.mkv?rlkey=p3xj42vp0b8cqchbhzn3tpo6h&dl=0.mkv
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="Toffee Exclusive",S01 E21 - The Great Seljuk (720P_HD) 300MB
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://i.ibb.co/3Rs7fw6/20231206-075853.jpg" group-title="The Great Seljuk (Bengali)",S01 E21 - The Great Seljuk (720P_HD) 300MB
 https://dl.dropboxusercontent.com/scl/fi/60ks7jtb26ore5dwq8wqe/The-Great-Seljuk-S01-E21.mkv?rlkey=jj91uexh3voy2edfah8fpqds2&dl=0.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hlogo" tvg-logo="https://image.tmdb.org/t/p/original//7pU1XQHEtGYvQspNVIOFgvIMxaH.jpg" group-title="Bengali Movies",Operation Sundarbans (2022)-Bengali WEB-DL 720p
 https://dl.dropboxusercontent.com/scl/fi/fvl6zamurvxr0smtjly8g/Operation-Sundarbans-2022-Bengali-720p.mkv?rlkey=y08d50knpyyf6g0kfm09zx0nv&dl=0.mkv
@@ -187,6 +181,5 @@ https://dl.dropboxusercontent.com/scl/fi/yxn0yx3xbttu4gxiw7amf/Inttelligent-2023
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HQLogo" tvg-logo="https://assets.gadgets360cdn.com/pricee/assets/product/202206/Jawan-poster_1655912386.jpg" group-title="Bollywood Movies",Jawan (2023)-Extended Cut Hindi NF 720p
 https://dl.dropboxusercontent.com/scl/fi/0q4l6g18z66dg32djp43v/Jawan-2023-Extended-Cut-Hindi-NF-720p.mkv?rlkey=j73qpgmdxkb4j17zj6q9j63fm&dl=1.mkv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="non" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw0kDm0nltnCuOdNIWDTT9-2Ckau3kRhpvYg&usqp=CAU" group-title="Live Events",Arundhati (2014) - Bengali Web DL Hotstar
-https://filetolink.thebosshacker.online/direct/5586/2f6710dda3b81481e17688e46504bea4.mkv?hash=aebb41
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/7/76/AliBaba_Dastaan_E_Kabul.jpg" group-title="Ali Baba Dastaan-E-Kabul Chapter 1",Ali Baba Dastaan-e-Kabul - Episode 1
-https://archive.org/download/in-shot-20240307-203845047/InShot_20240307_203845047.mp4
+Vvvvvvv
+
