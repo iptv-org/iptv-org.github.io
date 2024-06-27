@@ -1,4 +1,8 @@
-EXTINF:-1 tvg-id="GDrive.Us" tvg-name="vision.tv" tvg-logo="https://tinyurl.com/visiontvbd" group-title="Bangladeshi Channels",Bangla Vision 
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Boishakhi.tv" tvg-logo="https://tinyurl.com/yddb5ew4" group-title="Bangladeshi Channels",Boishakhi TV
+https://tinyurl.com/boishakibd
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channls.tv" tvg-logo="https://tinyurl.com/8h5xwde6" group-title="Bangladeshi Channels",Channel S
+https://tinyurl.com/chnnlshd
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="vision.tv" tvg-logo="https://tinyurl.com/visiontvbd" group-title="Bangladeshi Channels",Bangla Vision 
 https://tinyurl.com/mr49npss
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://tinyurl.com/mu2r3pbm" group-title="Sports Channels",Sky Sports Cricket 
 http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2090.ts
@@ -46,8 +50,8 @@ https://freeiptv25.bdiptv24.repl.co/live/bdix/StarSports1HD.m3u8
 http://103.141.2.37:25461/live/web/web/592.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Independent.tv" tvg-logo="https://tinyurl.com/4c692y6b" group-title="Bangladeshi Channels",Independent 
 https://sagar-live.msr-sagar.repl.co/channel/UCATUkaOHwO9EP_W87zCiPbA.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://tinyurl.com/bum38ej8" group-title="Bangladeshi Channels",Chennel i
-http://195.26.87.217/live.ts?channelId=89&uid=7435&deviceMac=00:1A:79:51:4B:3A
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://tinyurl.com/bum38ej8" group-title="Bangladeshi Channels",Channel I
+https://tinyurl.com/ChnnlIhd
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://tinyurl.com/5d4d2wtx" group-title="Bengali Channels",Colors Bangla
 http://watchindia.net:8880/live/dharm23/qVir1fHdBn/2284.ts
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://tinyurl.com/bdzzcw57" group-title="Bengali Channels",Zee Bangla
@@ -67,9 +71,9 @@ http://89.187.177.137:8081/SONYMAX/index.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tsports.hd" tvg-logo="https://tinyurl.com/3p3v3ksj" group-title="Sports Channels",T Sports
 http://113.212.111.246:8080/hls/col12.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="deepto.tv" tvg-logo="https://tinyurl.com/bdheruby" group-title="Bangladeshi Channels",Deepto TV
-https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+https://tinyurl.com/deeptohd
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="maasranga.tv" tvg-logo="https://tinyurl.com/mwex27tu" group-title="Bangladeshi Channels",Maasranga TV
-https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+https://tinyurl.com/maasranga
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ntv.org" tvg-logo="https://tinyurl.com/3mkn7sdp" group-title="Bangladeshi Channels",NTV
 http://195.26.87.217/live.ts?channelId=109&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ananda.tv" tvg-logo="https://tinyurl.com/bddxwxtm" group-title="Bangladeshi Channels",Ananda TV
@@ -79,7 +83,7 @@ http://195.26.87.217/live.ts?channelId=112&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="rtv.music" tvg-logo="https://tinyurl.com/jbsfms72" group-title="Bangladeshi Channels",RTV Music
 http://195.26.87.217/live.ts?channelId=90301&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="atn.bangla" tvg-logo="https://tinyurl.com/mtjpcxxp" group-title="Bangladeshi Channels",ATN Bangla
-http://195.26.87.217/live.ts?channelId=81&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://tinyurl.com/53hax3ck
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.24" tvg-logo="https://tinyurl.com/4n9wwya8" group-title="Bangladeshi Channels",Channel 24
 http://195.26.87.217/live.ts?channelId=87&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="jumona.tv" tvg-logo="https://tinyurl.com/r423zc2w" group-title="Bangladeshi Channels",Jamuna TV
@@ -87,15 +91,15 @@ https://sagar-live.msr-sagar.repl.co/channel/UCN6sm8iHiPd0cnoUardDAnw.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="somoy.tv" tvg-logo="https://tinyurl.com/49tzzyw6" group-title="Bangladeshi Channels",Somoy TV
 http://195.26.87.217/live.ts?channelId=115&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sa.tv" tvg-logo="https://tinyurl.com/7yst3pjk" group-title="Bangladeshi Channels",SA TV
-http://195.26.87.217/live.ts?channelId=114&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://tinyurl.com/ycxyv9dr
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="nagorik.tv" tvg-logo="https://tinyurl.com/2tkd7bdj" group-title="Bangladeshi Channels",Nagorik TV
-https://dl.dropboxusercontent.com/scl/fi/4gn03qq6m2zqmu9ps1b2u/InShot_20231205_215427833.mp4?rlkey=g6ohdj6ufzqoj4pygaj1tkwln&dl=1.m3u8
+https://tinyurl.com/36up2buv
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel9.bn" tvg-logo="https://tinyurl.com/ceu836k9" group-title="Bangladeshi Channels",Channel 9
-http://195.26.87.217/live.ts?channelId=88&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://tinyurl.com/4mewr7dd
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="boishakhi.tv" tvg-logo="https://tinyurl.com/yddb5ew4" group-title="Bangladeshi Channels",Boishakhi TV
 http://195.26.87.217/live.ts?channelId=86&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="bijoy.tv" tvg-logo="https://tinyurl.com/4zwa7pdd" group-title="Bangladeshi Channels",Bijoy TV
-http://195.26.87.217/live.ts?channelId=85&uid=7435&deviceMac=00:1A:79:51:4B:3A
+https://tinyurl.com/466d2895
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="asian.tv" tvg-logo="https://tinyurl.com/prn3t85c" group-title="Bangladeshi Channels",Asian TV
 http://195.26.87.217/live.ts?channelId=80&uid=7435&deviceMac=00:1A:79:51:4B:3A
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="dvc.co" tvg-logo="https://tinyurl.com/hmjm73fm" group-title="Bangladeshi Channels",DBC News
