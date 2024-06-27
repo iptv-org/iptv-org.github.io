@@ -47,9 +47,15 @@ http://lifetvbd.xyz:8080/6262758855/6262758855/254
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tnt.org" tvg-logo="https://tinyurl.com/3vnkyvej" group-title="Sports Channels",TNT Sports 1
 http://lifetvbd.xyz:8080/6262758855/6262758855/270
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://tinyurl.com/bzza86jh" group-title="Sports Channels",Star Sports 1 HD
-https://freeiptv25.bdiptv24.repl.co/live/bdix/StarSports1HD.m3u8
+http://lifetvbd.xyz:8080/6262758855/6262758855/135
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://tinyurl.com/274yd8nu" group-title="Sports Channels",Star Sports 1 Hindi
+http://lifetvbd.xyz:8080/6262758855/6262758855/143
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://tinyurl.com/2caw585d" group-title="Sports Channels",Star Sports 2 HD
+http://lifetvbd.xyz:8080/6262758855/6262758855/53
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="star.sports" tvg-logo="https://tinyurl.com/2ebdd8kz" group-title="Sports Channels",Star Sports 3 HD
+http://lifetvbd.xyz:8080/6262758855/6262758855/134 
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="gtv.hd" tvg-logo="https://tinyurl.com/wppm33nm" group-title="Sports Channels",G TV
-http://103.141.2.37:25461/live/web/web/592.m3u8
+http://lifetvbd.xyz:8080/6262758855/6262758855/1686
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Independent.tv" tvg-logo="https://tinyurl.com/4c692y6b" group-title="Bangladeshi Channels",Independent 
 https://tinyurl.com/indipennews 
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="channel.i" tvg-logo="https://tinyurl.com/bum38ej8" group-title="Bangladeshi Channels",Channel I
@@ -70,7 +76,7 @@ https://tinyurl.com/4p6h6u5z
 https://tinyurl.com/y33322ns
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="www.org" tvg-logo="https://tinyurl.com/49a9x8ee" group-title="Bengali Channels",Discovery English
 http://lifetvbd.xyz:8080/6262758855/6262758855/2835
-#EXTINF:-1 tvg-id="sony.max" tvg-name="sony.liv" tvg-logo="https://tinyurl.com/234pjxh9" group-title="Hindi Channels", Sony Max HD
+#EXTINF:-1 tvg-id="sony.max" tvg-name="sony.liv" tvg-logo="https://tinyurl.com/234pjxh9" group-title="Indian Channels", Sony Max HD
 https://tinyurl.com/44nx6b73
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tsports.hd" tvg-logo="https://tinyurl.com/3p3v3ksj" group-title="Sports Channels",T Sports Akash
 http://113.212.111.246:8080/hls/col12.m3u8
@@ -110,3 +116,7 @@ http://195.26.87.217/live.ts?channelId=80&uid=7435&deviceMac=00:1A:79:51:4B:3A
 https://tinyurl.com/dvcnews
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sports.18 " tvg-logo="https://tinyurl.com/mu9sjn4p" group-title="Sports Channels",Sports 18
 http://lifetvbd.xyz:8080/6262758855/6262758855/148
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sports.18 " tvg-logo="https://tinyurl.com/nhabxj34" group-title="Sports Channels",Sports18 2
+http://lifetvbd.xyz:8080/6262758855/6262758855/5623
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="sports.18 " tvg-logo="https://tinyurl.com/bdhuz4pr" group-title="Sports Channels",Sports18 3
+http://lifetvbd.xyz:8080/6262758855/6262758855/5624
