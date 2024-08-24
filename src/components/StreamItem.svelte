@@ -1,9 +1,12 @@
 <script>
+  import { text } from 'svelte/internal';
   import CopyToClipboard from './CopyToClipboard.svelte'
+  import StreamPlayer from './StreamPlayer.svelte'
   import ExpandButton from './ExpandButton.svelte'
   import JsonDataViewer from './JsonDataViewer.svelte'
 
   export let stream
+  export let title
 
   let expanded = false
 </script>
@@ -46,6 +49,9 @@
     </div>
     <div class="flex shrink-0">
       <CopyToClipboard text={stream.url} />
+    </div>
+    <div>
+      <StreamPlayer text={stream.url} name={title} />
     </div>
   </div>
   {#if expanded}

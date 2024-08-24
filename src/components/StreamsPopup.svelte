@@ -39,7 +39,7 @@
     <div class="overflow-y-auto overflow-x-hidden w-full">
       <div class="p-6 space-y-2">
         {#each streams as stream}
-          <StreamItem {stream} />
+          <StreamItem stream={stream} title={title}/>
         {/each}
       </div>
     </div>
