@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f8fafc" />
+    <link rel="manifest" crossorigin="use-credentials" href="./manifest.json" />
+    
+		<link rel="modulepreload" href="./_app/immutable/entry/start.4ed77b91.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.4a72436c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.41668775.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.c5e09962.js">
+  </head>
+  <body>
+    <div style="display: contents">
+			<script>
+				{
+					__sveltekit_14gi5uk = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.4ed77b91.js"),
+						import("./_app/immutable/entry/app.c5e09962.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+
+					if ('serviceWorker' in navigator) {
+						addEventListener('load', function () {
+							navigator.serviceWorker.register('./service-worker.js');
+						});
+					}
+				}
+			</script>
+		</div>
+  </body>
+</html>

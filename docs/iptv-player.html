@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPTV - Loading...</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="player">Loading...</div>
+
+  <script src="https://cdn.jwplayer.com/libraries/OTr036Wj.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const streamUrl = urlParams.get('url');
+    const title = urlParams.get('channel');
+
+    if (title) {
+      document.title = `IPTV - ${title}`;
+      window.history.pushState({}, '', 'iptv-player=' + decodeURIComponent(title).replace(/ /g, "-").toLowerCase());
+    }
+
+    if (streamUrl) {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://cdn.jwplayer.com/libraries/OTr036Wj.js';
+      document.head.appendChild(script);
+
+      script.onload = function () {
+        const playerInstance = jwplayer('player').setup({
+          file: decodeURIComponent(streamUrl),
+          cast: {},
+          title: title || "IPTV Stream",
+          repeat: true,
+          autostart: true,
+          logo: {
+            file: "https://avatars.githubusercontent.com/u/55937028?s=200&v=4",
+            link: "https://github.com/iptv-org",
+            position: "top-left",
+            margin: "10"
+          }
+        });
+
+        playerInstance.on('error', function () {
+          console.error("Signal lost.");
+          alert("Signal lost.");
+        });
+      };
+    } else {
+      console.error("No stream URL provided.");
+      alert("No stream URL provided.");
+    }
+  </script>
+
+</body>
+
+</html>
