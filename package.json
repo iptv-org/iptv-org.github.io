@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "NODE_OPTIONS=--max_old_space_size=4096 vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
-    "postinstall": "./src/load.sh"
+    "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs"
   },
   "devDependencies": {
     "@freearhey/search-js": "^0.1.1",
