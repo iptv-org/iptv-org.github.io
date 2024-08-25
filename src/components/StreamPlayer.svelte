@@ -12,7 +12,7 @@
   }
 
   function openPlayerPage() {
-    window.open(`https://rmunate.github.io/iptv-org.github.io/iptv-player.html?url=${encodeURIComponent(text)}&channel=${encodeURIComponent(name)}`, "popup", "width=1280,height=720");
+    window.open(`https://iptv-org.github.io/iptv-player.html?url=${encodeURIComponent(text)}&channel=${encodeURIComponent(name)}`, "popup", "width=1280,height=720");
   }
 </script>
 
