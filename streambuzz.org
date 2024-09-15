@@ -4,3 +4,5 @@ https://dl.dropboxusercontent.com/scl/fi/2w922tgqke0e6tye1x6o5/notice1.mkv?rlkey
 https://arydigital.aryzap.com/63923927907d8c7976dad922e1574be6/66e63841/v1/0183ea2408f90b8ed5941a38bc72/0183ea24302d0b8ed5941a38bc75/main.m3u8|referer=https://live.arydigital.tv/
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HUM Tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/Hum_TV_2013.png" group-title="Entertainment",HUM Tv HD
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Bangla Music Songs" tvg-logo="https://img.youtube.com/vi/_cznLGgWsgE/maxresdefault.jpg" group-title="Bangla Music Songs",Akta Monar Manus Chai _ Emon Khan _ Official Music Video _ Bangla New Song 2019_ ( HD )
+https://dl.dropboxusercontent.com/scl/fi/lm51yivcavojll6kxfuez/Akta-Monar-Manus-Chai-_-Emon-Khan-_-Official-Music-Video-_-Bangla-New-Song-2019_-HD.mp4?rlkey=hd7a4ors9ocmfq95q1idghcii&st=pdak1j8z&dl=0
