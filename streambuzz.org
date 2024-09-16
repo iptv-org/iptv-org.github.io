@@ -6,3 +6,5 @@ https://arydigital.aryzap.com/63923927907d8c7976dad922e1574be6/66e63841/v1/0183e
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Bangla Music Songs" tvg-logo="https://img.youtube.com/vi/_cznLGgWsgE/maxresdefault.jpg" group-title="Bangla Music Songs",Akta Monar Manus Chai _ Emon Khan _ Official Music Video _ Bangla New Song 2019_ ( HD )
 https://dl.dropboxusercontent.com/scl/fi/lm51yivcavojll6kxfuez/Akta-Monar-Manus-Chai-_-Emon-Khan-_-Official-Music-Video-_-Bangla-New-Song-2019_-HD.mp4?rlkey=hd7a4ors9ocmfq95q1idghcii&st=pdak1j8z&dl=0
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Hindi Music Songs" tvg-logo="https://img.youtube.com/vi/P0NfnFYpENo/maxresdefault.jpg" group-title="Hindi Music Songs",BAARISHEIN Song _ Arko Feat. Atif Aslam  _ Nushrat Bharucha _ New Romantic Song 2019 _ T-Series(2K_HD)
+https://dl.dropboxusercontent.com/scl/fi/ccurf0s2c82uonn82q7m5/BAARISHEIN-Song-_-Arko-Feat.-Atif-Aslam-_-Nushrat-Bharucha-_-New-Romantic-Song-2019-_-T-Series-2K_HD.webm?rlkey=5tt2wqc9opmfa2qk2tbo3xta8&st=i3nu3o4u&dl=0
