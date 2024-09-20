@@ -1,6 +1,6 @@
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="Notice For Users" tvg-logo="https://www.dropbox.com/scl/fi/8wyhq90hmsap7z01lo4c5/20240914_085448.jpg?rlkey=3dcwarz1x34h2t2pucay3e0fm&st=i0hobgsv&dl=1" group-title="Notice",Notice For Users
 https://dl.dropboxusercontent.com/scl/fi/2w922tgqke0e6tye1x6o5/notice1.mkv?rlkey=ifqx31wqk4u6dh4gffx5v539f&st=ich7feig&dl=0
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ARY Digital" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ary_Digital_Logo.png/895px-Ary_Digital_Logo.png" group-title="Entertainment",ARY Digital 
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="ARY Digital" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ary_Digital_Logo.png/895px-Ary_Digital_Logo.png" group-title="Pakistan",ARY Digital 
 http://125.209.88.166:45793/BRN/AryDigital.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HUM Tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/Hum_TV_2013.png" group-title="Entertainment",HUM Tv HD
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HUM Tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/Hum_TV_2013.png" group-title="Pakistan",HUM Tv HD
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
