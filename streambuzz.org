@@ -4,3 +4,23 @@ https://dl.dropboxusercontent.com/scl/fi/2w922tgqke0e6tye1x6o5/notice1.mkv?rlkey
 http://125.209.88.166:45793/BRN/AryDigital.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="HUM Tv" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/Hum_TV_2013.png" group-title="Pakistan",HUM Tv HD
 https://g4wlkwx8l23a-hls-live.5centscdn.com/HUM/271ddf829afeece44d8732757fba1a66.sdp/playlist_dvr.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/r5mBJLG/images-q-tbn-ANd9-Gc-Q5-Pw-K06m-Eg7-Fc-G2dfn-BShc0-L2-UI4-Wzzb4uhm-O7m-IFc1-Wp-Pp-Rw8yqy-EVd-Q-s-10.jpg" group-title="Pakistan",PTV HOME
+http://125.209.88.166:45793/BRN/PtvHome.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/h25RgcL/20240921-151846.jpg" group-title="Pakistan",Geo Kahani
+http://125.209.88.166:45793/BRN/GeoKahani.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/hD62tmz/images-q-tbn-ANd9-Gc-Rfe-Tky-G3wag8qpel-LYd-F-sy-Ut-JLaupho-G4wt-I-JSw-UGDtp0p-CEt1-Qmhc-s-10.jpg" group-title="Pakistan",Geo Tez
+http://125.209.88.166:45793/BRN/GeoTez.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5f/PtvnewsHD.png" group-title="Pakistan",PTV News
+http://125.209.88.166:45793/BRN/PTVNews.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/6bMLqdj/images-q-tbn-ANd9-Gc-Q0djl-F4m-m-B0-VXruvt8-JWuuk-Sb-Fn-A2-OOEQQ-usqp-CAU.jpg" group-title="Pakistan",92 News
+http://125.209.88.166:45793/BRN/92News.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/JF9mXxC/20240921-152517.jpg" group-title="Pakistan",8XM
+http://125.209.88.166:45793/BRN/8XM.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/28HZNDn/images-q-tbn-ANd9-Gc-Tn-Ju-Ma-IGK0-Ra-Zsicnes-TI3-M9-Tge-X9yf-Mx-Ts-Ex-Rgd-S7ee-A2ficbxt-RX5b-Lq-s-1.jpg" group-title="Pakistan",Geo Super
+http://125.209.88.166:45793/BRN/GeoSuper.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/FWbjY9H/Qhs1jcoc-O2-Fenx-F7j5-DBVn-3l-QV3c-Phns-JCfeo3f-Av-EPzds-Ux1-RCb8-Ka956-B-ZEh-AA8.png" group-title="Pakistan",A Sports
+http://125.209.88.166:45793/BRN/ArySports.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/fDVXRSC/images-q-tbn-ANd9-Gc-T4sao4-QMr-W4-QCor-CZq1-Su0l-V-C8j-N7-IXw-Jb-CAt7-Vfw-FIFUaj-Cdlvq5a-QJj-s-10.jpg" group-title="Pakistan",PTV Sports
+http://125.209.88.166:45793/BRN/PTVSports.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://upload.wikimedia.org/wikipedia/en/1/12/Ten_Sports_Logo.png" group-title="Pakistan",Ten Sports
+http://125.209.88.166:45793/BRN/TenSports.stream/playlist.m3u8
