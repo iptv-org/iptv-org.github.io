@@ -24,7 +24,7 @@ http://125.209.88.166:45793/BRN/ArySports.stream/playlist.m3u8
 http://125.209.88.166:45793/BRN/PTVSports.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://upload.wikimedia.org/wikipedia/en/1/12/Ten_Sports_Logo.png" group-title="Pakistan",Ten Sports
 http://125.209.88.166:45793/BRN/TenSports.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/ZXXymGC/images-q-tbn-ANd9-Gc-Rn-OY1y-C0-O-nu-FGd-Mz-Ghv-AK9-L3-Jn-YD6-UJw3-q-ABYy-Xe1c-Qj31b-NDQim-Xo-s-10.jpg" group-title="Qatar",BEIN Sports 1
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/ZXXymGC/images-q-tbn-ANd9-Gc-Rn-OY1y-C0-O-nu-FGd-Mz-Ghv-AK9-L3-Jn-YD6-UJw3-q-ABYy-Xe1c-Qj31b-NDQim-Xo-s-10.jpg" group-title="Sports",BEIN Sports 1
 http://125.209.88.166:45793/BRN/beINSP11.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/1Lp7ktb/images-q-tbn-ANd9-Gc-TZKXn-NMVm-KXzq-VMcyu-ZL6-WKl-Mb-KNZIpk8-JXx79-TXRn-Ajikf-FONErg-WVR-e-s-10.jpg" group-title="Sports",BEIN Sports 2
 http://125.209.88.166:45793/BRN/beINSP12.stream/playlist.m3u8
