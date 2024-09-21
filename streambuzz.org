@@ -18,9 +18,9 @@ http://125.209.88.166:45793/BRN/92News.stream/playlist.m3u8
 http://125.209.88.166:45793/BRN/8XM.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/28HZNDn/images-q-tbn-ANd9-Gc-Tn-Ju-Ma-IGK0-Ra-Zsicnes-TI3-M9-Tge-X9yf-Mx-Ts-Ex-Rgd-S7ee-A2ficbxt-RX5b-Lq-s-1.jpg" group-title="Pakistan",Geo Super
 http://125.209.88.166:45793/BRN/GeoSuper.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/FWbjY9H/Qhs1jcoc-O2-Fenx-F7j5-DBVn-3l-QV3c-Phns-JCfeo3f-Av-EPzds-Ux1-RCb8-Ka956-B-ZEh-AA8.png" group-title="Pakistan",A Sports
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/FWbjY9H/Qhs1jcoc-O2-Fenx-F7j5-DBVn-3l-QV3c-Phns-JCfeo3f-Av-EPzds-Ux1-RCb8-Ka956-B-ZEh-AA8.png" group-title="Sports",A Sports
 http://125.209.88.166:45793/BRN/ArySports.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/fDVXRSC/images-q-tbn-ANd9-Gc-T4sao4-QMr-W4-QCor-CZq1-Su0l-V-C8j-N7-IXw-Jb-CAt7-Vfw-FIFUaj-Cdlvq5a-QJj-s-10.jpg" group-title="Pakistan",PTV Sports
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/fDVXRSC/images-q-tbn-ANd9-Gc-T4sao4-QMr-W4-QCor-CZq1-Su0l-V-C8j-N7-IXw-Jb-CAt7-Vfw-FIFUaj-Cdlvq5a-QJj-s-10.jpg" group-title="Sports",PTV Sports
 http://125.209.88.166:45793/BRN/PTVSports.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://upload.wikimedia.org/wikipedia/en/1/12/Ten_Sports_Logo.png" group-title="Pakistan",Ten Sports
 http://125.209.88.166:45793/BRN/TenSports.stream/playlist.m3u8
