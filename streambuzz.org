@@ -30,3 +30,7 @@ http://125.209.88.166:45793/BRN/beINSP11.stream/playlist.m3u8
 http://125.209.88.166:45793/BRN/beINSP12.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnmARvuMfF8-YUV7TzCE8McellmWSzx0R6_mqvs_z7DJDA2NRWusCYQGaA&s=10" group-title="Sports",Willow Cricket
 https://cdn2.hotflix-bd.online/willow-cricket/tracks-v1a1/mono.m3u8?remote=2401%3A1900%3A80f7%3A5511%3A%3A1&token=d2a5a974cf5dd7cd4dbe5a169624b212b9b46246-a486cc42f76eda96413d7c144388be93-1726922579-1726911779
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://i.ibb.co.com/BVSxrGw/images-q-tbn-ANd9-Gc-Tc-L1-Zf-Ai-Mcm7-Ns-Wyb-Z1-KJo9il-UUt-Rfs4-S9u-MLTklkn-N2ub-Wq-U4-UW2cu-U4-s-10.jpg" group-title="Sports",Sky Sports Cricket
+https://cdn.hotflix-bd.online:443/sky-sports-cricket/tracks-v1a1/mono.m3u8?remote=2401%3A1900%3A80f7%3A5511%3A%3A1&token=74632a8660c5856ba7998b5348286d02077ecc69-24020da4106746192adcfa251791a9c5-1726923360-1726912560
+#EXTINF:-1 tvg-id="GDrive.Us" tvg-name="tvg" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK1KJKdg6GrZGAwgajW3nbLK9Tqgz4TPEO39HdIOPxOKAtZLAnaCUhUM0s&s=10" group-title="Sports",S Cricket 
+https://cdn.hotflix-bd.online:443/s-cricket/tracks-v1a1/mono.m3u8?remote=2401%3A1900%3A80f7%3A5511%3A%3A1&token=c9f70a2bf34eeb3adc7374a998bfa9343db8fe99-f2a86c48bd92c185cc3fc9d603c2bdb4-1726923562-1726912762
