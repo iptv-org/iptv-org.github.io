@@ -3,6 +3,8 @@
   import EditButton from '~/components/EditButton.svelte'
   import Divider from '~/components/Divider.svelte'
   import CloseButton from '~/components/CloseButton.svelte'
+  import BlockedBadge from './BlockedBadge.svelte'
+  import ClosedBadge from './ClosedBadge.svelte'
   import { getContext } from 'svelte'
 
   export let channel
@@ -26,20 +28,10 @@
           <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.displayName}</h3>
           <div class="flex space-x-2">
             {#if channel.is_closed}
-              <div
-                class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full h-6"
-                title="closed: {channel.closed}"
-              >
-                Closed
-              </div>
+              <ClosedBadge {channel} />
             {/if}
             {#if channel.is_blocked}
-              <div
-                class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full h-6"
-                title="The channel has been added to our blocklist due to the claim of the copyright holder"
-              >
-                Blocked
-              </div>
+              <BlockedBadge {channel} />
             {/if}
           </div>
         </div>
