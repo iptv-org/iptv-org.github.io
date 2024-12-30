@@ -28,6 +28,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.2.7",
     "transliteration": "^2.2.0",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "sveltejs-tippy": "^3.0.0"
   }
 }
