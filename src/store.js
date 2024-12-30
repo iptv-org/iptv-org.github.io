@@ -177,6 +177,9 @@ export function transformChannel(channel, data) {
   channel.is_blocked = !!data.blocklist[channel.id]
   channel.streams = channel._streams.length
   channel.guides = channel._guides.length
+  channel.blocklist_records = Array.isArray(data.blocklist[channel.id])
+    ? data.blocklist[channel.id]
+    : []
 
   const isChannelNameRepeated = data.nameIndex[channel.name.toLowerCase()].length > 1
   channel.displayName = isChannelNameRepeated
