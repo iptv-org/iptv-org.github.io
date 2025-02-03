@@ -70,17 +70,17 @@
   $: isDisabled = channel.streams === 0
 </script>
 
-{#if $downloadMode}
-  <div
-    transition:fade={{ duration: 200 }}
-    class="w-14 h-14 shrink-0 flex items-center absolute -left-14"
-  >
-    <Checkbox selected={isSelected} disabled={isDisabled} on:change={onCheckboxChange} />
-  </div>
-{/if}
 <div
   class="border-b last:border-b-0 border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:dark:bg-gray-700 h-16 flex items-center relative"
 >
+  {#if $downloadMode}
+    <div
+      transition:fade={{ duration: 200 }}
+      class="w-14 h-14 shrink-0 flex items-center"
+    >
+      <Checkbox selected={isSelected} disabled={isDisabled} on:change={onCheckboxChange} />
+    </div>
+  {/if}
   <div class="px-4 sm:pl-10 sm:pr-16 w-36 sm:w-52 flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
       {#if channel.logo}

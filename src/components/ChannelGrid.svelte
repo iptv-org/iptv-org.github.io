@@ -1,4 +1,5 @@
 <script>
+  import VirtualList from '@sveltejs/svelte-virtual-list'
   import ChannelItem from './ChannelItem.svelte'
 
   export let channels = []
@@ -27,9 +28,9 @@
           </div>
         </div>
         <div class="bg-white dark:bg-gray-800">
-          {#each channels as channel (channel.id)}
-            <ChannelItem bind:channel />
-          {/each}
+          <VirtualList height="80vh" items={channels} let:item>
+            <ChannelItem channel={item} />
+          </VirtualList>
         </div>
       </div>
     </div>
