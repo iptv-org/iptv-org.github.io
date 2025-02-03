@@ -7,7 +7,7 @@
     "build": "NODE_OPTIONS=--max_old_space_size=4096 vite build",
     "preview": "vite preview",
     "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
-    "postinstall": "./src/load.sh"
+    "postinstall": "node ./src/load.js"
   },
   "devDependencies": {
     "@freearhey/search-js": "^0.1.1",
@@ -30,5 +30,11 @@
     "tailwindcss": "^3.2.7",
     "transliteration": "^2.2.0",
     "validator": "^13.11.0"
+  },
+  "dependencies": {
+    "@freearhey/core": "^0.5.1",
+    "axios": "^1.7.9",
+    "cli-progress": "^3.12.0",
+    "numeral": "^2.0.6"
   }
 }
