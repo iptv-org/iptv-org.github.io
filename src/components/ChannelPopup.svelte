@@ -21,7 +21,7 @@
 <div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self={close}>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
-      class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+      class="flex justify-between items-center py-3 pl-5 pr-3 md:pr-4 rounded-t border-b dark:border-gray-700"
     >
       <div class="w-2/3 overflow-hidden">
         <div class="flex items-center space-x-3">
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="inline-flex w-1/3 justify-end space-x-3 items-center">
+      <div class="inline-flex w-1/3 justify-end space-x-2 items-center">
         <EditButton {channel} />
         <Divider />
         <CloseButton on:click={close} />

@@ -65,6 +65,7 @@
 <svelte:head>
   <title>iptv-org</title>
   <meta name="description" content="iptv-org is user editable database for TV channels" />
+  <link rel="canonical" href="https://iptv-org.github.io/" />
 </svelte:head>
 
 <header
@@ -83,7 +84,7 @@
     closeButton={false}
   >
     <section class="max-w-5xl mx-auto px-2 pt-24 sm:pt-32 pb-20 overflow-hidden min-h-full">
-      <SearchField bind:isLoading bind:found={$filteredChannels.length}></SearchField>
+      <SearchField bind:isLoading bind:found={$filteredChannels.length} />
       {#if isLoading}
         <div
           class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
@@ -97,7 +98,7 @@
             bind:country
             bind:channels={groupedByCountry[country.code]}
             bind:hasQuery={$hasQuery}
-          ></CountryItem>
+          />
         {/if}
       {/each}
     </section>
