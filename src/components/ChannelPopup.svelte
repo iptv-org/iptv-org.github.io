@@ -18,7 +18,12 @@
   }
 </script>
 
-<div class="relative px-2 py-24 flex justify-center" on:keypress on:click|self={close}>
+<div
+  class="relative px-2 py-24 flex justify-center"
+  role="presentation"
+  on:keypress
+  on:click|self={close}
+>
   <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-[820px]">
     <div
       class="flex justify-between items-center py-3 pl-5 pr-3 md:pr-4 rounded-t border-b dark:border-gray-700"

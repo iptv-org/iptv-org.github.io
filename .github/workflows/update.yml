@@ -17,16 +17,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        if: ${{ !env.ACT }}
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        if: ${{ !env.ACT }}
+        uses: actions/configure-pages@v5
       - name: Restore cache
-        uses: actions/cache@v3
+        if: ${{ !env.ACT }}
+        uses: actions/cache@v4
         with:
           path: |
             docs
@@ -36,11 +39,10 @@ jobs:
             ${{ runner.os }}-svelte-build-
       - name: Install dependencies
         run: npm install
-      - name: Download data from API
-        run: ./src/load.sh
       - name: Build /docs
         run: npm run build
       - name: Upload artifact
+        if: ${{ !env.ACT }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
@@ -52,5 +54,6 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
+        if: ${{ !env.ACT }}
         id: deployment
         uses: actions/deploy-pages@v4
