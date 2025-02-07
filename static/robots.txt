@@ -1,4 +1,25 @@
 User-agent: *
 Allow: /
 
+User-Agent: TurnitinBot
+Disallow: /
+
+User-Agent: NPBot
+Disallow: /
+
+User-Agent: AcademicBotRTU
+Disallow: /
+
+User-Agent: SlySearch
+Disallow: /
+
+User-Agent: BLEXBot
+Disallow: /
+
+User-agent: CheckMarkNetwork/1.0 (+https://www.checkmarknetwork.com/spider.html)
+Disallow: /
+
+User-agent: BrandVerity/1.0
+Disallow: /
+
 Sitemap: https://iptv-org.github.io/sitemap.xml
