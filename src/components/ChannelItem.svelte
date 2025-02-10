@@ -6,7 +6,7 @@
   import Checkbox from './Checkbox.svelte'
   import BlockedBadge from './BlockedBadge.svelte'
   import ClosedBadge from './ClosedBadge.svelte'
-  import { downloadMode, selected, query } from '~/store'
+  import { downloadMode, selected } from '~/store'
   import { fade } from 'svelte/transition'
 
   export let channel
