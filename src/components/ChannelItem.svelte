@@ -81,7 +81,7 @@
 <div
   class="border-b last:border-b-0 border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:dark:bg-gray-700 h-16 flex items-center relative"
 >
-  <div class="px-4 sm:pl-10 sm:pr-16 w-36 sm:w-52 flex shrink-0 items-center justify-center">
+  <div class="px-4 sm:pl-10 sm:pr-16 w-36 sm:w-[200px] flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
       {#if channel.logo}
         <img
@@ -127,7 +127,7 @@
       </div>
     </div>
   </div>
-  <div class="w-52 px-2 sm:w-80">
+  <div class="w-52 px-2 sm:w-[280px]">
     <div>
       <code
         class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
@@ -135,7 +135,7 @@
       >
     </div>
   </div>
-  <div class="w-40 px-6 sm:w-[150px]">
+  <div class="w-56 pr-5 sm:w-[206px]">
     <div class="text-right flex justify-end space-x-3 items-center">
       {#if guides.length}
         <button
