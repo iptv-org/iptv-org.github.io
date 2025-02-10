@@ -94,7 +94,7 @@
       {/if}
     </div>
   </div>
-  <div class="w-[216px] px-2 sm:w-80 shrink-0">
+  <div class="w-[216px] sm:w-80 px-2 shrink-0">
     <div>
       <div class="text-left">
         <div class="flex space-x-2 items-center">
@@ -127,7 +127,7 @@
       </div>
     </div>
   </div>
-  <div class="w-52 px-2 sm:w-[280px]">
+  <div class="w-52 sm:w-[280px] px-2">
     <div>
       <code
         class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
