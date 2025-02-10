@@ -62,9 +62,9 @@
       </h3>
       <CloseButton on:click={close} />
     </div>
-    <div class="overflow-y-auto overflow-x-hidden w-full">
-      <div class="p-6 text-gray-800 dark:text-white">
-        <table class="w-full">
+    <div class="overflow-y-auto overflow-x-scroll w-full scrollbar-hide">
+      <div class="text-gray-800 dark:text-white p-6 inline-block">
+        <table>
           <thead>
             <tr>
               <th class="border p-2 dark:border-gray-700 font-semibold">Query</th>
@@ -74,13 +74,14 @@
           <tbody class="text-left">
             {#each examples as example}
               <tr class="even:bg-gray-50 even:dark:bg-gray-700">
-                <td class="border dark:border-gray-700 px-3 py-3 whitespace-nowrap">
+                <td class="border dark:border-gray-700 px-3 py-3 whitespace-nowrap min-w-[220px]">
                   <code
                     class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
                     >{example.query}</code
                   >
                 </td>
-                <td class="border dark:border-gray-700 px-4 py-3">{example.result}</td>
+                <td class="border dark:border-gray-700 px-4 py-3 min-w-[260px]">{example.result}</td
+                >
               </tr>
             {/each}
           </tbody>

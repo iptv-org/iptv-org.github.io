@@ -86,17 +86,17 @@
   }
 </script>
 
-<table class="table-fixed">
+<table class="table-fixed w-full">
   <tbody>
     {#each fieldset as field}
-      <tr>
-        <td class="align-top w-[11rem]">
-          <div class="flex pr-4 pb-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+      <tr class="overflow-hidden">
+        <td class="align-top w-[140px] sm:w-[180px]">
+          <div class="flex pr-5 pb-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
             {field.name}
           </div>
         </td>
-        <td class="align-top">
-          <div class="flex pb-3 text-sm text-gray-800 dark:text-gray-100 flex-wrap">
+        <td class="align-top w-full overflow-hidden">
+          <div class="flex pb-3 text-sm text-gray-800 dark:text-gray-100">
             {#if field.type === 'image'}
               <img
                 src={field.value}
@@ -110,6 +110,7 @@
                 href="/?q={field.value.query}"
                 on:click={() => close()}
                 class="underline hover:text-blue-500"
+                title={field.value.label}
               >
                 {field.value.label}
               </a>
@@ -121,6 +122,7 @@
                   href="/?q={value.query}"
                   on:click={() => close()}
                   class="underline hover:text-blue-500"
+                  title={value.label}
                 >
                   {value.label}
                 </a>
@@ -128,30 +130,15 @@
             {:else if field.type === 'external_link'}
               <a
                 href={field.value}
-                class="underline hover:text-blue-500 inline-flex align-middle whitespace-nowrap"
+                class="underline hover:text-blue-500 truncate"
                 target="_blank"
                 rel="noopener noreferrer"
-                >{field.value}<span
-                  class="inline-flex items-center pl-1 text-sm font-semibold text-gray-400 rounded-full"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </span></a
+                title={field.value}>{field.value}</a
               >
+            {:else if field.name === 'id'}
+              <span class="truncate" title={field.value}>{field.value}</span>
             {:else}
-              {field.value}
+              <span title={field.value}>{field.value}</span>
             {/if}
           </div>
         </td>
