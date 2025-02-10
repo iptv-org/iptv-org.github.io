@@ -94,7 +94,7 @@
       {/if}
     </div>
   </div>
-  <div class="w-52 px-2 sm:w-80 shrink-0">
+  <div class="w-[216px] px-2 sm:w-80 shrink-0">
     <div>
       <div class="text-left">
         <div class="flex space-x-2 items-center">
