@@ -12,7 +12,7 @@
   }
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col bg-white dark:bg-gray-800">
   <div class="overflow-y-auto scrollbar-hide">
     <div class="inline-block min-w-full align-middle">
       <div class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -34,18 +34,18 @@
             </div>
           </div>
         </div>
-        <div class="bg-white dark:bg-gray-800">
+        <div>
           {#each channelsDisplay as channel (channel.id)}
             <ChannelItem bind:channel />
           {/each}
-          {#if channelsDisplay.length < channels.length}
-            <button
-              class="flex items-center justify-center h-12 w-full text-blue-500 dark:text-blue-400 hover:bg-gray-50 hover:dark:bg-gray-700 focus-visible:outline-0"
-              on:click={showMore}>Show More</button
-            >
-          {/if}
         </div>
       </div>
     </div>
   </div>
+  {#if channelsDisplay.length < channels.length}
+    <button
+      class="flex border-t border-gray-200 dark:border-gray-700 items-center justify-center h-12 w-full text-blue-500 dark:text-blue-400 hover:bg-gray-50 hover:dark:bg-gray-700 focus-visible:outline-0"
+      on:click={showMore}>Show More</button
+    >
+  {/if}
 </div>
