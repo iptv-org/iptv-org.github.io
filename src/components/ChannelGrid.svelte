@@ -18,14 +18,14 @@
       <div class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
         <div class="bg-gray-50 dark:bg-gray-700">
           <div class="flex">
-            <div class="w-36 sm:w-52 shrink-0"></div>
+            <div class="w-36 sm:w-[200px] shrink-0"></div>
             <div
-              class="py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 w-52 sm:w-80 shrink-0"
+              class="w-[216px] sm:w-80 py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 shrink-0"
             >
               Name
             </div>
             <div
-              class="py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400 w-48 sm:w-80"
+              class="w-52 sm:w-[280px] py-3 px-2 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase dark:text-gray-400"
             >
               ID
             </div>
