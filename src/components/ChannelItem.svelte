@@ -102,7 +102,7 @@
             on:click|preventDefault={showChannelData}
             href="/channels/{country}/{name}"
             tabindex="0"
-            class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 line-clamp-1"
+            class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 truncate whitespace-nowrap"
             title={channel.displayName}
           >
             {channel.displayName}
