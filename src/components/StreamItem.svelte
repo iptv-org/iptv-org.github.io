@@ -18,7 +18,7 @@
     <div class="flex space-x-3 items-center max-w-[90%] w-full">
       <ExpandButton on:click={event => (expanded = event.detail.state)} />
       <a
-        class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[85%] w-full"
+        class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[80%] w-full"
         href={stream.url}
         title={stream.url}
         target="_blank"
