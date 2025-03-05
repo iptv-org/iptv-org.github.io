@@ -14,7 +14,6 @@ export const downloadMode = writable(false)
 
 let searchIndex = {}
 export function search(q) {
-  console.log('.')
   if (!q) {
     filteredChannels.set(get(channels))
     hasQuery.set(false)
@@ -53,6 +52,7 @@ export async function fetchChannels() {
       'launched',
       'closed',
       'replaced_by',
+      'website',
       'streams',
       'guides',
       'is_nsfw',
