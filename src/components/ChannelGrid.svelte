@@ -35,7 +35,7 @@
           </div>
         </div>
         <div>
-          {#each channelsDisplay as channel (channel.id)}
+          {#each channelsDisplay as channel}
             <ChannelItem bind:channel />
           {/each}
         </div>
