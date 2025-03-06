@@ -43,7 +43,8 @@
       result:
         'Finds channels that have been added to our blocklist due to the claim of the copyright holder.'
     },
-    { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' }
+    { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' },
+    { query: 'guides:>0', result: 'Finds channels that have guides.' }
   ]
 </script>
 
