@@ -11,13 +11,24 @@
 
   const blocklistRefs = channel.blocklist_records
     .map(record => {
-      const parts = record.ref.split('/')
-      const issueId = parts.pop()
-      const prefix = /issues|pull/.test(record.ref) ? '#' : ''
+      let refName
+
+      const isIssue = /issues|pull/.test(record.ref)
+      const isAttachment = /github\.zendesk\.com\/attachments\/token/.test(record.ref)
+      if (isIssue) {
+        const parts = record.ref.split('/')
+        const issueId = parts.pop()
+        refName = `#${issueId}`
+      } else if (isAttachment) {
+        const [, filename] = record.ref.match(/\?name=(.*)/) || [null, undefined]
+        refName = filename
+      } else {
+        refName = record.ref.split('/').pop()
+      }
 
       reason = record.reason
 
-      return `<a class="underline" target="_blank" rel="noreferrer" href="${record.ref}">${prefix}${issueId}</a>`
+      return `<a class="underline" target="_blank" rel="noreferrer" href="${record.ref}">${refName}</a>`
     })
     .join(', ')
 </script>
