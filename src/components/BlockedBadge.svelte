@@ -13,7 +13,7 @@
     .map(record => {
       const parts = record.ref.split('/')
       const issueId = parts.pop()
-      const prefix = record.ref.includes('/issues/') ? '#' : ''
+      const prefix = /issues|pull/.test(record.ref) ? '#' : ''
 
       reason = record.reason
 
