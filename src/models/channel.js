@@ -41,4 +41,10 @@ export class Channel {
     this._guides = data.guides || []
     this._blocklistRecords = data.blocklistRecords || []
   }
+
+  toObject() {
+    const { ...object } = this
+
+    return object
+  }
 }

@@ -85,6 +85,61 @@ export function setPageTitle(value) {
   }
 }
 
+export function createChannel(data, api) {
+  let broadcastArea = []
+  let regionCountries = []
+
+  data.broadcast_area.forEach(areaCode => {
+    const [type, code] = areaCode.split('/')
+    switch (type) {
+      case 'c':
+        const country = api.countries[code]
+        if (country) broadcastArea.push({ type, code: country.code, name: country.name })
+        break
+      case 'r':
+        const region = api.regions[code]
+        if (region) {
+          broadcastArea.push({ type, code: region.code, name: region.name })
+          regionCountries = [
+            ...regionCountries,
+            ...region.countries.map(code => api.countries[code]).filter(Boolean)
+          ]
+        }
+        break
+      case 's':
+        const subdivision = api.subdivisions[code]
+        if (subdivision)
+          broadcastArea.push({ type, code: subdivision.code, name: subdivision.name })
+        break
+    }
+  })
+
+  return new Channel({
+    id: data.id,
+    name: data.name,
+    altNames: data.alt_names,
+    network: data.network,
+    owners: data.owners,
+    city: data.city,
+    country: api.countries[data.country],
+    subdivision: api.subdivisions[data.subdivision],
+    languages: data.languages.map(code => api.languages[code]).filter(Boolean),
+    categories: data.categories.map(id => api.categories[id]).filter(Boolean),
+    isNSFW: data.is_nsfw,
+    launched: data.launched,
+    closed: data.closed,
+    replacedBy: data.replaced_by,
+    website: data.website,
+    logo: data.logo,
+    streams: api.streams[data.id],
+    guides: api.guides[data.id],
+    blocklistRecords: api.blocklist[data.id],
+    hasUniqueName: api.nameIndex[data.name.toLowerCase()].length === 1,
+    broadcastArea,
+    regionCountries
+  })
+}
+
 async function loadAPI() {
   const api = {}
 
@@ -157,61 +212,6 @@ async function loadAPI() {
   api.nameIndex = _.groupBy(api.channels, channel => channel.name.toLowerCase())
 
   return api
-}
-
-function createChannel(data, api) {
-  let broadcastArea = []
-  let regionCountries = []
-
-  data.broadcast_area.forEach(areaCode => {
-    const [type, code] = areaCode.split('/')
-    switch (type) {
-      case 'c':
-        const country = api.countries[code]
-        if (country) broadcastArea.push({ type, code: country.code, name: country.name })
-        break
-      case 'r':
-        const region = api.regions[code]
-        if (region) {
-          broadcastArea.push({ type, code: region.code, name: region.name })
-          regionCountries = [
-            ...regionCountries,
-            ...region.countries.map(code => api.countries[code]).filter(Boolean)
-          ]
-        }
-        break
-      case 's':
-        const subdivision = api.subdivisions[code]
-        if (subdivision)
-          broadcastArea.push({ type, code: subdivision.code, name: subdivision.name })
-        break
-    }
-  })
-
-  return new Channel({
-    id: data.id,
-    name: data.name,
-    altNames: data.alt_names,
-    network: data.network,
-    owners: data.owners,
-    city: data.city,
-    country: api.countries[data.country],
-    subdivision: api.subdivisions[data.subdivision],
-    languages: data.languages.map(code => api.languages[code]).filter(Boolean),
-    categories: data.categories.map(id => api.categories[id]).filter(Boolean),
-    isNSFW: data.is_nsfw,
-    launched: data.launched,
-    closed: data.closed,
-    replacedBy: data.replaced_by,
-    website: data.website,
-    logo: data.logo,
-    streams: api.streams[data.id],
-    guides: api.guides[data.id],
-    blocklistRecords: api.blocklist[data.id],
-    hasUniqueName: api.nameIndex[data.name.toLowerCase()].length === 1,
-    broadcastArea,
-    regionCountries
-  })
 }
 
 function getStreams() {
