@@ -8,6 +8,7 @@
   import ClosedBadge from './ClosedBadge.svelte'
   import { downloadMode, selected } from '~/store'
   import { fade } from 'svelte/transition'
+  import { pushState } from '$app/navigation'
 
   export let channel
 
@@ -21,10 +22,10 @@
   let prevUrl = '/'
   const onOpened = () => {
     prevUrl = window.location.href
-    window.history.pushState({}, `${displayName} • iptv-org`, `/channels/${country}/${name}`)
+    pushState(`/channels/${country}/${name}`, {})
   }
   const onClose = () => {
-    window.history.pushState({}, `iptv-org`, prevUrl)
+    pushState(prevUrl, {})
   }
   const showGuides = () =>
     open(

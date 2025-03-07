@@ -4,6 +4,7 @@ import sj from '@freearhey/search-js'
 import _ from 'lodash'
 import { browser } from '$app/environment'
 import { Channel } from './models'
+import { pushState } from '$app/navigation'
 
 export const query = writable('')
 export const hasQuery = writable(false)
@@ -68,15 +69,13 @@ export async function fetchChannels() {
 }
 
 export function setSearchParam(key, value) {
-  if (window.history.pushState) {
-    let query = key && value ? `?${key}=${value}` : ''
-    query = query.replace(/\+/g, '%2B')
-    const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}${query}`
-    const state = {}
-    state[key] = value
-    window.history.pushState(state, '', url)
-    setPageTitle(value)
-  }
+  let query = key && value ? `?${key}=${value}` : ''
+  query = query.replace(/\+/g, '%2B')
+  const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}${query}`
+  const state = {}
+  state[key] = value
+  pushState(url, state)
+  setPageTitle(value)
 }
 
 export function setPageTitle(value) {
