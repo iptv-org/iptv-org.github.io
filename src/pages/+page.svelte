@@ -81,7 +81,7 @@
           loading...
         </div>
       {/if}
-      {#each _countries as country (country.code)}
+      {#each _countries as country, idx (country)}
         {#if groupedByCountry[country.code] && groupedByCountry[country.code].length > 0}
           <CountryItem
             bind:country
