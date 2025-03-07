@@ -6,7 +6,7 @@
   export let channel
 
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
-  const title = `Edit: ${channel.displayName}`
+  const title = `Edit: ${channel._displayName}`
   const labels = 'channels:edit'
   const template = '__channels_edit.yml'
 

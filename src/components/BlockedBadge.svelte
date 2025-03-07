@@ -9,7 +9,7 @@
     nsfw: 'The channel has been added to our blocklist due to NSFW content'
   }
 
-  const blocklistRefs = channel.blocklist_records
+  const blocklistRefs = channel._blocklistRecords
     .map(record => {
       let refName
 

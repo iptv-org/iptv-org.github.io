@@ -30,7 +30,7 @@
     >
       <div class="w-2/3 overflow-hidden">
         <div class="flex items-center space-x-3">
-          <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel.displayName}</h3>
+          <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel._displayName}</h3>
           <div class="flex space-x-2">
             {#if channel.is_closed}
               <ClosedBadge {channel} />

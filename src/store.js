@@ -3,6 +3,7 @@ import { Playlist, Link } from 'iptv-playlist-generator'
 import sj from '@freearhey/search-js'
 import _ from 'lodash'
 import { browser } from '$app/environment'
+import { Channel } from './models'
 
 export const query = writable('')
 export const hasQuery = writable(false)
@@ -32,7 +33,7 @@ export async function fetchChannels() {
 
   countries.set(api.countries)
 
-  let _channels = api.channels.map(c => transformChannel(c, api))
+  let _channels = api.channels.map(c => createChannel(c, api))
 
   channels.set(_channels)
   filteredChannels.set(_channels)
@@ -41,13 +42,17 @@ export async function fetchChannels() {
       'id',
       'name',
       'alt_names',
+      'alt_name',
       'network',
+      'owner',
       'owners',
       'country',
       'subdivision',
       'city',
       'broadcast_area',
+      'language',
       'languages',
+      'category',
       'categories',
       'launched',
       'closed',
@@ -155,38 +160,59 @@ async function loadAPI() {
   return api
 }
 
-export function transformChannel(channel, data) {
-  channel._streams = data.streams[channel.id] || []
-  channel._guides = data.guides[channel.id] || []
-  channel._country = data.countries[channel.country]
-  channel._subdivision = data.subdivisions[channel.subdivision]
-  channel._languages = channel.languages.map(code => data.languages[code]).filter(i => i)
-  channel._categories = channel.categories.map(id => data.categories[id]).filter(i => i)
-  channel._broadcast_area = channel.broadcast_area.map(value => {
-    const [type, code] = value.split('/')
+function createChannel(data, api) {
+  let broadcastArea = []
+  let regionCountries = []
+
+  data.broadcast_area.forEach(areaCode => {
+    const [type, code] = areaCode.split('/')
     switch (type) {
       case 'c':
-        return { type, ...data.countries[code] }
+        const country = api.countries[code]
+        if (country) broadcastArea.push({ type, code: country.code, name: country.name })
+        break
       case 'r':
-        return { type, ...data.regions[code] }
+        const region = api.regions[code]
+        if (region) {
+          broadcastArea.push({ type, code: region.code, name: region.name })
+          regionCountries = [
+            ...regionCountries,
+            ...region.countries.map(code => api.countries[code]).filter(Boolean)
+          ]
+        }
+        break
       case 's':
-        return { type, ...data.subdivisions[code] }
+        const subdivision = api.subdivisions[code]
+        if (subdivision)
+          broadcastArea.push({ type, code: subdivision.code, name: subdivision.name })
+        break
     }
   })
-  channel.is_closed = !!channel.closed || !!channel.replaced_by
-  channel.is_blocked = !!data.blocklist[channel.id]
-  channel.streams = channel._streams.length
-  channel.guides = channel._guides.length
-  channel.blocklist_records = Array.isArray(data.blocklist[channel.id])
-    ? data.blocklist[channel.id]
-    : []
 
-  const isChannelNameRepeated = data.nameIndex[channel.name.toLowerCase()].length > 1
-  channel.displayName = isChannelNameRepeated
-    ? `${channel.name} (${channel._country.name})`
-    : channel.name
-
-  return channel
+  return new Channel({
+    id: data.id,
+    name: data.name,
+    altNames: data.alt_names,
+    network: data.network,
+    owners: data.owners,
+    city: data.city,
+    country: api.countries[data.country],
+    subdivision: api.subdivisions[data.subdivision],
+    languages: data.languages.map(code => api.languages[code]).filter(Boolean),
+    categories: data.categories.map(id => api.categories[id]).filter(Boolean),
+    isNSFW: data.is_nsfw,
+    launched: data.launched,
+    closed: data.closed,
+    replacedBy: data.replaced_by,
+    website: data.website,
+    logo: data.logo,
+    streams: api.streams[data.id],
+    guides: api.guides[data.id],
+    blocklistRecords: api.blocklist[data.id],
+    hasUniqueName: api.nameIndex[data.name.toLowerCase()].length === 1,
+    broadcastArea,
+    regionCountries
+  })
 }
 
 function getStreams() {

@@ -8,9 +8,10 @@
   export let data
 
   let isLoading = false
-  let channel = data.channel
-  let streams = channel ? channel._streams : []
-  let guides = channel ? channel._guides : []
+  const channel = data.channel
+  const streams = channel ? channel._streams : []
+  const guides = channel ? channel._guides : []
+  const displayName = channel._displayName
 
   const structuredData = {
     '@context': 'https://schema.org/',
@@ -28,8 +29,8 @@
 </script>
 
 <svelte:head>
-  <title>{channel && channel.displayName ? `${channel.displayName} • iptv-org` : 'iptv-org'}</title>
-  <meta name="description" content="Detailed description of {channel.displayName}." />
+  <title>{channel && displayName ? `${displayName} • iptv-org` : 'iptv-org'}</title>
+  <meta name="description" content="Detailed description of {displayName}." />
   {@html schema()}
 </svelte:head>
 
@@ -54,7 +55,7 @@
           <div class="w-2/3 overflow-hidden">
             <div class="flex space-x-3">
               <h1 class="text-l font-medium text-gray-900 dark:text-white">
-                {channel.displayName}
+                {displayName}
               </h1>
               <div class="flex items-center space-x-2">
                 {#if channel.is_closed}

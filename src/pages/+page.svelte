@@ -23,7 +23,7 @@
   let _countries = []
   let isLoading = true
 
-  $: groupedByCountry = _.groupBy($filteredChannels, 'country')
+  $: groupedByCountry = _.groupBy($filteredChannels, channel => channel._country.code)
 
   onMount(async () => {
     if (!$channels.length) {
