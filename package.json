@@ -35,6 +35,7 @@
     "postcss": "^8.5.1",
     "prettier-plugin-svelte": "^3.3.3",
     "qs": "^6.11.2",
+    "svelte": "^5.22.6",
     "svelte-simple-modal": "^2.0.0",
     "svelte-sitemap": "^2.6.0",
     "sveltejs-tippy": "^3.0.0",
