@@ -14,7 +14,7 @@ beforeEach(async () => {
 describe('search', () => {
   it('return all channels by default', () => {
     const results = get(filteredChannels)
-    expect(results.length).toBe(14)
+    expect(results.length).toBe(15)
   })
 
   it('returns empty list if there is no such channel', () => {
@@ -110,7 +110,7 @@ describe('search', () => {
     })
   })
 
-  it('can find channels by country', () => {
+  it('can find channels by country code', () => {
     search('country:DO')
 
     const results = get(filteredChannels)
@@ -174,7 +174,7 @@ describe('search', () => {
     search('website:.')
 
     const results = get(filteredChannels)
-    expect(results.length).toBe(13)
+    expect(results.length).toBe(14)
     expect(results[0]).toMatchObject({
       id: '002RadioTV.do'
     })
@@ -251,6 +251,56 @@ describe('search', () => {
     expect(results.length).toBe(1)
     expect(results[0]).toMatchObject({
       id: 'SEN502.us'
+    })
+  })
+
+  it('can find channel by broadcast area name', () => {
+    search('broadcast_area:"dominican republic"')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: '002RadioTV.do'
+    })
+  })
+
+  it('can find channel by country name', () => {
+    search('country:"dominican republic"')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: '002RadioTV.do'
+    })
+  })
+
+  it('can find channel by region code', () => {
+    search('broadcast_area:r/EUR')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: 'ORF2Europe.at'
+    })
+  })
+
+  it('can find channel by region name', () => {
+    search('broadcast_area:europe')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: 'ORF2Europe.at'
+    })
+  })
+
+  it('can find channel by country name from broadcast region', () => {
+    search('broadcast_area:france')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(3)
+    expect(results[2]).toMatchObject({
+      id: 'ORF2Europe.at'
     })
   })
 })

@@ -375,5 +375,32 @@
     "replaced_by": null,
     "website": "https://calgary.ctvnews.ca/",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/CTV_logo_2018.svg/512px-CTV_logo_2018.svg.png"
+  },
+  {
+    "id": "ORF2Europe.at",
+    "name": "ORF 2 Europe",
+    "alt_names": [],
+    "network": "ORF",
+    "owners": [
+      "ORF"
+    ],
+    "country": "AT",
+    "subdivision": "AT-8",
+    "city": "Vienna",
+    "broadcast_area": [
+      "r/EUR"
+    ],
+    "languages": [
+      "deu"
+    ],
+    "categories": [
+      "culture"
+    ],
+    "is_nsfw": false,
+    "launched": "2004-07-05",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://tv.orf.at/",
+    "logo": "https://i.imgur.com/Hmcl4qR.png"
   }
 ]
