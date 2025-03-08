@@ -94,7 +94,7 @@
           </div>
         </td>
         <td class="align-top w-full overflow-hidden">
-          <div class="flex pb-3 text-sm text-gray-800 dark:text-gray-100">
+          <div class="pb-3 text-sm text-gray-800 dark:text-gray-100">
             {#if field.type === 'image'}
               <img
                 src={field.value}
