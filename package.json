@@ -14,7 +14,8 @@
   "jest": {
     "transform": {},
     "moduleNameMapper": {
-      "^\\$app/environment$": "<rootDir>/tests/__mocks__/$app/environment.js"
+      "^\\$app/environment$": "<rootDir>/tests/__mocks__/$app/environment.js",
+      "^\\$app/navigation$": "<rootDir>/tests/__mocks__/$app/navigation.js"
     }
   },
   "devDependencies": {
