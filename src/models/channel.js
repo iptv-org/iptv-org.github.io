@@ -30,8 +30,8 @@ export class Channel {
     this.guides = Array.isArray(data.guides) ? data.guides.length : 0
     this.is_blocked = Array.isArray(data.blocklistRecords) && data.blocklistRecords.length > 0
 
-    this._hasUniqueName = data._hasUniqueName
-    this._displayName = data._hasUniqueName ? data.name : `${data.name} (${data.country?.name})`
+    this._hasUniqueName = data.hasUniqueName
+    this._displayName = data.hasUniqueName ? data.name : `${data.name} (${data.country?.name})`
     this._country = data.country
     this._subdivision = data.subdivision || null
     this._languages = data.languages
