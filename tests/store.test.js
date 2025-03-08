@@ -303,6 +303,16 @@ describe('search', () => {
       id: 'ORF2Europe.at'
     })
   })
+
+  it('can find channel by display name from the guides', () => {
+    search('La Liga HD')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: 'LaLiganaZap.ao'
+    })
+  })
 })
 
 function mockFetch() {

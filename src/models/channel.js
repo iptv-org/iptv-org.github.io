@@ -1,5 +1,9 @@
 export class Channel {
   constructor(data) {
+    const _streams = Array.isArray(data.streams) ? data.streams : []
+    const _guides = Array.isArray(data.guides) ? data.guides : []
+    const _blocklistRecords = Array.isArray(data.blocklistRecords) ? data.blocklistRecords : []
+
     this.id = data.id
     this.name = data.name
     this.alt_names = this.alt_name = data.altNames
@@ -26,9 +30,9 @@ export class Channel {
     this.replaced_by = data.replacedBy
     this.website = data.website
     this.logo = data.logo
-    this.streams = Array.isArray(data.streams) ? data.streams.length : 0
-    this.guides = Array.isArray(data.guides) ? data.guides.length : 0
-    this.is_blocked = Array.isArray(data.blocklistRecords) && data.blocklistRecords.length > 0
+    this.streams = _streams.length
+    this.guides = _guides.length
+    this.is_blocked = _blocklistRecords.length > 0
 
     this._hasUniqueName = data.hasUniqueName
     this._displayName = data.hasUniqueName ? data.name : `${data.name} (${data.country?.name})`
@@ -37,9 +41,10 @@ export class Channel {
     this._languages = data.languages
     this._categories = data.categories
     this._broadcastArea = data.broadcastArea
-    this._streams = data.streams || []
-    this._guides = data.guides || []
-    this._blocklistRecords = data.blocklistRecords || []
+    this._streams = _streams
+    this._guides = _guides
+    this._blocklistRecords = _blocklistRecords
+    this._guideNames = _guides.map(guide => guide.site_name).filter(Boolean)
   }
 
   toObject() {
