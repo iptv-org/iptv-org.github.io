@@ -313,6 +313,16 @@ describe('search', () => {
       id: 'LaLiganaZap.ao'
     })
   })
+
+  it('can find channel by stream url', () => {
+    search('https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8')
+
+    const results = get(filteredChannels)
+    expect(results.length).toBe(1)
+    expect(results[0]).toMatchObject({
+      id: 'XtremaCartoons.ar'
+    })
+  })
 })
 
 function mockFetch() {
