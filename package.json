@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@freearhey/core": "^0.5.1",
-    "@freearhey/search-js": "^0.1.1",
+    "@freearhey/search-js": "^0.1.2",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/kit": "^2.17.1",
     "@tailwindcss/line-clamp": "^0.4.2",

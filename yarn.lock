@@ -297,10 +297,10 @@
     run-script-os "^1.1.6"
     signale "^1.4.0"
 
-"@freearhey/search-js@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@freearhey/search-js/-/search-js-0.1.1.tgz"
-  integrity sha512-nmXhqBg5lh6GxMT2g1hgmSc/pbXGw0P4ZxXaPt/cnuZYtvPHSo0CPOF65iNC9LEqvrrnLig4RFlG1dBDPNAU0g==
+"@freearhey/search-js@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@freearhey/search-js/-/search-js-0.1.2.tgz"
+  integrity sha512-F2o+xpGCXOK4OsZfKEHfXNNkAZmny2eBnPOp+P0iyV20ja7gJGfTFaEc6okcuEo6OB6P7LnSxTvISkoArFtlfg==
   dependencies:
     lodash "^4.17.21"
 
