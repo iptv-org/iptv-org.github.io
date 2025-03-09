@@ -120,7 +120,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels that are broadcast from the same region', () => {
+  it('can find channels that are broadcast from the same region', () => {
     search('subdivision:AR-W')
 
     const results = get(filteredChannels)
@@ -130,7 +130,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels that are broadcast from the same city', () => {
+  it('can find channels that are broadcast from the same city', () => {
     search('city:Corrientes')
 
     const results = get(filteredChannels)
@@ -140,7 +140,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels that are broadcast in the same region', () => {
+  it('can find channels that are broadcast in the same region', () => {
     search('broadcast_area:s/AR-W')
 
     const results = get(filteredChannels)
@@ -150,7 +150,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels that are broadcast in the same language', () => {
+  it('can find channels that are broadcast in the same language', () => {
     search('languages:spa')
 
     const results = get(filteredChannels)
@@ -160,7 +160,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels that have the same category', () => {
+  it('can find channels that have the same category', () => {
     search('categories:lifestyle')
 
     const results = get(filteredChannels)
@@ -170,7 +170,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels with website', () => {
+  it('can find channels with website', () => {
     search('website:.')
 
     const results = get(filteredChannels)
@@ -180,7 +180,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all channels marked as NSFW', () => {
+  it('can find channels marked as NSFW', () => {
     search('is_nsfw:true')
 
     const results = get(filteredChannels)
@@ -190,7 +190,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all closed channels', () => {
+  it('can find closed channels', () => {
     search('is_closed:true')
 
     const results = get(filteredChannels)
@@ -200,7 +200,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all blocked channels', () => {
+  it('can find blocked channels', () => {
     search('is_blocked:true')
 
     const results = get(filteredChannels)
@@ -210,7 +210,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all the channels that have streams', () => {
+  it('can find channels that have streams', () => {
     search('streams:>0')
 
     const results = get(filteredChannels)
@@ -220,7 +220,7 @@ describe('search', () => {
     })
   })
 
-  it('can find all the channels that have guides', () => {
+  it('can find channels that have guides', () => {
     search('guides:>0')
 
     const results = get(filteredChannels)
