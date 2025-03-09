@@ -64,7 +64,8 @@ export async function fetchChannels() {
       'is_nsfw',
       'is_closed',
       'is_blocked',
-      '_guideNames'
+      '_guideNames',
+      '_streamUrls'
     ]
   })
 }
