@@ -45,6 +45,7 @@ export class Channel {
     this._guides = _guides
     this._blocklistRecords = _blocklistRecords
     this._guideNames = _guides.map(guide => guide.site_name).filter(Boolean)
+    this._streamUrls = _streams.map(stream => stream.url).filter(Boolean)
   }
 
   toObject() {
