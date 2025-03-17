@@ -1,0 +1,406 @@
+[
+  {
+    "id": "002RadioTV.do",
+    "name": "002 Radio TV",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "DO",
+    "subdivision": null,
+    "city": "Santo Domingo",
+    "broadcast_area": [
+      "c/DO"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "categories": [
+      "general"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.002radio.com/",
+    "logo": "https://i.imgur.com/7oNe8xj.png"
+  },
+  {
+    "id": "01TV.fr",
+    "name": "01 TV",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "FR",
+    "subdivision": null,
+    "city": "Boulogne",
+    "broadcast_area": [
+      "c/FR"
+    ],
+    "languages": [
+      "fra"
+    ],
+    "categories": [
+      "education",
+      "news"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.01net.com/tag/01nettv/",
+    "logo": "https://i.imgur.com/RMucFq8.png"
+  },
+  {
+    "id": "FashionTVJohannesburg.fr",
+    "name": "FashionTV Johannesburg",
+    "alt_names": [],
+    "network": null,
+    "owners": [
+      "Michel Adam Lisowski"
+    ],
+    "country": "FR",
+    "subdivision": null,
+    "city": "Paris",
+    "broadcast_area": [
+      "c/FR"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "categories": [
+      "lifestyle"
+    ],
+    "is_nsfw": false,
+    "launched": "2000-10-01",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.fashiontv.com/",
+    "logo": "https://i.imgur.com/6u4tZn6.png"
+  },
+  {
+    "id": "XtremaCartoons.ar",
+    "name": "Xtrema Cartoons",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "AR",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/AR"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "categories": [
+      "animation",
+      "kids"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://xtrematv.com/",
+    "logo": "https://i.imgur.com/X2d8y4e.png"
+  },
+  {
+    "id": "XtremaRetroCartoons.ar",
+    "name": "Xtrema Retro Cartoons",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "AR",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/AR"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "categories": [
+      "animation"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": null,
+    "logo": "https://i.imgur.com/60ylWbQ.png"
+  },
+  {
+    "id": "TV1.dz",
+    "name": "TV1",
+    "alt_names": [
+      "الجزائرية الأولى",
+      "Algerian Television",
+      "التلفزيون الجزائري",
+      "The Terrestrial Channel",
+      "القناة الأرضية"
+    ],
+    "network": null,
+    "owners": [
+      "EPTV"
+    ],
+    "country": "DZ",
+    "subdivision": null,
+    "city": "Algiers",
+    "broadcast_area": [
+      "c/DZ"
+    ],
+    "languages": [
+      "ara",
+      "fra"
+    ],
+    "categories": [
+      "general"
+    ],
+    "is_nsfw": false,
+    "launched": "1956-12-24",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.entv.dz/",
+    "logo": "https://i.imgur.com/F0DOrxX.png"
+  },
+  {
+    "id": "K11UUD1.as",
+    "name": "K11UU-D1",
+    "alt_names": [],
+    "network": "Hope Channel",
+    "owners": [
+      "American Samoa Adventist Media Ministry Inc"
+    ],
+    "country": "AS",
+    "subdivision": null,
+    "city": "Pago Pago",
+    "broadcast_area": [
+      "c/AS"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "categories": [
+      "religious"
+    ],
+    "is_nsfw": false,
+    "launched": "2003-10-14",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://asamtv.org/",
+    "logo": "https://i.imgur.com/NQD8Zer.png"
+  },
+  {
+    "id": "13MaxTelevision.ar",
+    "name": "13Max Television",
+    "alt_names": [
+      "13Max Televisión"
+    ],
+    "network": null,
+    "owners": [
+      "Río Paraná TV SRL"
+    ],
+    "country": "AR",
+    "subdivision": "AR-W",
+    "city": "Corrientes",
+    "broadcast_area": [
+      "s/AR-W"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "categories": [
+      "general"
+    ],
+    "is_nsfw": false,
+    "launched": "1965-01-01",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://live-tv-channels.org/livetv/ar-13-max-tv.html",
+    "logo": "https://i.imgur.com/QvF4l2t.png"
+  },
+  {
+    "id": "Bizarre.al",
+    "name": "Bizarre",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "AL",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/AL"
+    ],
+    "languages": [
+      "sqi"
+    ],
+    "categories": [
+      "xxx"
+    ],
+    "is_nsfw": true,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "http://www.tring.al/",
+    "logo": "https://i.imgur.com/vpS477d.png"
+  },
+  {
+    "id": "AynaTV.af",
+    "name": "Ayna TV",
+    "alt_names": [],
+    "network": null,
+    "owners": [
+      "Abdul Rashid Dostum"
+    ],
+    "country": "AF",
+    "subdivision": null,
+    "city": "Kabul",
+    "broadcast_area": [
+      "c/AF"
+    ],
+    "languages": [
+      "pus"
+    ],
+    "categories": [
+      "general"
+    ],
+    "is_nsfw": false,
+    "launched": "2004-01-01",
+    "closed": "2022-02-16",
+    "replaced_by": null,
+    "website": "http://www.ayna.af/",
+    "logo": "https://i.imgur.com/2tHlT5Q.png"
+  },
+  {
+    "id": "LaLiganaZap.ao",
+    "name": "LaLiga na Zap",
+    "alt_names": [],
+    "network": null,
+    "owners": [
+      "ZAP Angola"
+    ],
+    "country": "AO",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/AO"
+    ],
+    "languages": [
+      "por"
+    ],
+    "categories": [
+      "sports"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.zap.co.ao/",
+    "logo": "https://i.imgur.com/NWFShcJ.png"
+  },
+  {
+    "id": "SEN502.us",
+    "name": "SEN 502",
+    "alt_names": [
+      "TV2 Sports"
+    ],
+    "network": null,
+    "owners": [],
+    "country": "US",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/US"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "categories": [
+      "sports"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.senetwork.tv/",
+    "logo": "https://i.imgur.com/cEGW3pw.png"
+  },
+  {
+    "id": "SEN550.us",
+    "name": "SEN 550",
+    "alt_names": [],
+    "network": null,
+    "owners": [],
+    "country": "US",
+    "subdivision": null,
+    "city": null,
+    "broadcast_area": [
+      "c/US"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "categories": [
+      "sports"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://www.senetwork.tv/",
+    "logo": "https://i.imgur.com/T4vLkeH.png"
+  },
+  {
+    "id": "CFCNTV2.ca",
+    "name": "CFCN-TV-2",
+    "alt_names": [],
+    "network": "CTV",
+    "owners": [
+      "Bell Media"
+    ],
+    "country": "CA",
+    "subdivision": "CA-AB",
+    "city": "Banff",
+    "broadcast_area": [
+      "s/CA-AB"
+    ],
+    "languages": [
+      "eng"
+    ],
+    "categories": [
+      "general"
+    ],
+    "is_nsfw": false,
+    "launched": null,
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://calgary.ctvnews.ca/",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/CTV_logo_2018.svg/512px-CTV_logo_2018.svg.png"
+  },
+  {
+    "id": "ORF2Europe.at",
+    "name": "ORF 2 Europe",
+    "alt_names": [],
+    "network": "ORF",
+    "owners": [
+      "ORF"
+    ],
+    "country": "AT",
+    "subdivision": "AT-8",
+    "city": "Vienna",
+    "broadcast_area": [
+      "r/EUR"
+    ],
+    "languages": [
+      "deu"
+    ],
+    "categories": [
+      "culture"
+    ],
+    "is_nsfw": false,
+    "launched": "2004-07-05",
+    "closed": null,
+    "replaced_by": null,
+    "website": "https://tv.orf.at/",
+    "logo": "https://i.imgur.com/Hmcl4qR.png"
+  }
+]

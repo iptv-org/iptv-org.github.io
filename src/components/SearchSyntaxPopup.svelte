@@ -15,12 +15,12 @@
       result: 'Find channels that have "Nat Geo" in the name.'
     },
     {
-      query: 'alt_names:חינוכית',
+      query: 'alt_name:חינוכית',
       result: 'Finds channels whose alternative name contains "חינוכית".'
     },
     { query: 'network:ABC', result: 'Finds all channels operated by the ABC Network.' },
     {
-      query: 'owners:^$',
+      query: 'owner:^$',
       result: 'Finds channels that have no owner listed.'
     },
     { query: 'country:GY', result: 'Finds all channels that are broadcast from Guyana.' },
@@ -30,8 +30,8 @@
     },
     { query: 'city:"San Francisco"', result: 'Finds all channels broadcast from San Francisco.' },
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
-    { query: 'languages:fra', result: 'Find channels that are broadcast in French.' },
-    { query: 'categories:news', result: 'Finds all the news channels.' },
+    { query: 'language:fra', result: 'Find channels that are broadcast in French.' },
+    { query: 'category:news', result: 'Finds all the news channels.' },
     { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
     { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     {
@@ -43,7 +43,8 @@
       result:
         'Finds channels that have been added to our blocklist due to the claim of the copyright holder.'
     },
-    { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' }
+    { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' },
+    { query: 'guides:>0', result: 'Finds channels that have guides.' }
   ]
 </script>
 

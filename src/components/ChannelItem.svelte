@@ -8,11 +8,13 @@
   import ClosedBadge from './ClosedBadge.svelte'
   import { downloadMode, selected } from '~/store'
   import { fade } from 'svelte/transition'
+  import { pushState } from '$app/navigation'
 
   export let channel
 
   const guides = channel._guides
   const streams = channel._streams
+  const displayName = channel._displayName
 
   const [name, country] = channel.id.split('.')
 
@@ -20,25 +22,21 @@
   let prevUrl = '/'
   const onOpened = () => {
     prevUrl = window.location.href
-    window.history.pushState(
-      {},
-      `${channel.displayName} • iptv-org`,
-      `/channels/${country}/${name}`
-    )
+    pushState(`/channels/${country}/${name}`, {})
   }
   const onClose = () => {
-    window.history.pushState({}, `iptv-org`, prevUrl)
+    pushState(prevUrl, {})
   }
   const showGuides = () =>
     open(
       GuidesPopup,
-      { guides, title: channel.displayName },
+      { guides, title: displayName },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
     )
   const showStreams = () =>
     open(
       StreamsPopup,
-      { streams, title: channel.displayName },
+      { streams, title: displayName },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
     )
   const showChannelData = () => {
@@ -89,7 +87,7 @@
           loading="lazy"
           referrerpolicy="no-referrer"
           src={channel.logo}
-          alt={channel.displayName}
+          alt={displayName}
         />
       {/if}
     </div>
@@ -103,9 +101,9 @@
             href="/channels/{country}/{name}"
             tabindex="0"
             class="font-normal text-gray-600 dark:text-white hover:underline hover:text-blue-500 truncate whitespace-nowrap"
-            title={channel.displayName}
+            title={displayName}
           >
-            {channel.displayName}
+            {displayName}
           </a>
           <div class="flex space-x-2">
             {#if channel.is_closed}

@@ -10,12 +10,11 @@
     countries,
     filteredChannels,
     query,
-    setSearchParam,
     setPageTitle,
     downloadMode,
     search
   } from '~/store'
-  import { onMount, onDestroy } from 'svelte'
+  import { onMount } from 'svelte'
   import CountryItem from '~/components/CountryItem.svelte'
   import SearchField from '~/components/SearchField.svelte'
   import _ from 'lodash'
@@ -24,17 +23,7 @@
   let _countries = []
   let isLoading = true
 
-  $: groupedByCountry = _.groupBy($filteredChannels, 'country')
-
-  function loadMore({ detail }) {
-    let { loaded, complete } = detail
-    if (limit < _countries.length) {
-      limit++
-      loaded()
-    } else {
-      complete()
-    }
-  }
+  $: groupedByCountry = _.groupBy($filteredChannels, channel => channel._country.code)
 
   onMount(async () => {
     if (!$channels.length) {
@@ -92,7 +81,7 @@
           loading...
         </div>
       {/if}
-      {#each _countries as country (country.code)}
+      {#each _countries as country, idx (country)}
         {#if groupedByCountry[country.code] && groupedByCountry[country.code].length > 0}
           <CountryItem
             bind:country

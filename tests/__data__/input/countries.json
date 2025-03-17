@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "languages": [
+      "spa"
+    ],
+    "flag": "🇩🇴"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "languages": [
+      "fra"
+    ],
+    "flag": "🇫🇷"
+  }
+]

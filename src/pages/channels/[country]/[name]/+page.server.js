@@ -1,4 +1,4 @@
-import { transformChannel } from '~/store'
+import { createChannel } from '~/store'
 import _ from 'lodash'
 import channels from '~/data/channels.json'
 import countries from '~/data/countries.json'
@@ -47,6 +47,6 @@ export function load({ params }) {
   let channel = data.channels[id]
 
   return {
-    channel: channel ? transformChannel(channel, data) : null
+    channel: channel ? createChannel(channel, data).toObject() : null
   }
 }

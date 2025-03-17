@@ -1,7 +1,5 @@
 <script>
   import dayjs from 'dayjs'
-  import { goto } from '$app/navigation'
-  import { query, hasQuery, setSearchParam } from '~/store'
 
   export let data
   export let close = () => {}
@@ -19,7 +17,7 @@
     {
       name: 'owners',
       type: 'link[]',
-      value: data.owners.map(value => ({ label: value, query: `owners:${norm(value)}` }))
+      value: data.owners.map(value => ({ label: value, query: `owner:${norm(value)}` }))
     },
     {
       name: 'country',
@@ -41,7 +39,7 @@
     {
       name: 'broadcast_area',
       type: 'link[]',
-      value: data._broadcast_area.map(v => ({
+      value: data._broadcastArea.map(v => ({
         label: v.name,
         query: `broadcast_area:${v.type}/${v.code}`
       }))
@@ -49,12 +47,12 @@
     {
       name: 'languages',
       type: 'link[]',
-      value: data._languages.map(v => ({ label: v.name, query: `languages:${v.code}` }))
+      value: data._languages.map(v => ({ label: v.name, query: `language:${v.code}` }))
     },
     {
       name: 'categories',
       type: 'link[]',
-      value: data._categories.map(v => ({ label: v.name, query: `categories:${v.id}` }))
+      value: data._categories.map(v => ({ label: v.name, query: `category:${v.id}` }))
     },
     {
       name: 'is_nsfw',
@@ -96,7 +94,7 @@
           </div>
         </td>
         <td class="align-top w-full overflow-hidden">
-          <div class="flex pb-3 text-sm text-gray-800 dark:text-gray-100">
+          <div class="pb-3 text-sm text-gray-800 dark:text-gray-100">
             {#if field.type === 'image'}
               <img
                 src={field.value}
