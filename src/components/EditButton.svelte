@@ -8,7 +8,7 @@
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const title = `Edit: ${channel._displayName}`
   const labels = 'channels:edit'
-  const template = '__channels_edit.yml'
+  const template = '2_channels_edit.yml'
 
   let is_nsfw = null
   if (channel.is_nsfw === true) is_nsfw = 'TRUE'
