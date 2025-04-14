@@ -1,0 +1,130 @@
+[
+  {
+    "channel": "002RadioTV.do",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "c/DO"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "XtremaCartoons.ar",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "c/DO"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "LaLiganaZap.ao",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "c/DO"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "13MaxTelevision.ar",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "s/AR-W"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "spa"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "TV1.dz",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "c/JP"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "SEN502.us",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "s/US-CA"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "fra"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "ORF2.at",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "r/EUR"
+    ],
+    "timezones": [
+      "America/Santo_Domingo"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "video_format": "480i"
+  },
+  {
+    "channel": "Bizarre.al",
+    "id": "SD",
+    "name": "SD",
+    "is_main": true,
+    "broadcast_area": [
+      "c/AL"
+    ],
+    "timezones": [
+      "Europe/London"
+    ],
+    "languages": [
+      "ita"
+    ],
+    "video_format": "576i"
+  }
+]
