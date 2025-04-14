@@ -8,6 +8,7 @@
     "dev": "vite dev --host",
     "build": "NODE_OPTIONS=--max_old_space_size=4096 vite build",
     "preview": "vite preview --host",
+    "prepare": "svelte-kit sync",
     "postinstall": "npm run api:load",
     "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
     "test": "vitest"
