@@ -1,31 +1,30 @@
-<script>
-  import { onMount } from 'svelte'
+<script lang="ts">
+  import type { JsonDataViewerField } from '~/types/jsonDataViewerField'
   import { JsonView } from '@zerodevx/svelte-json-view'
 
-  export let data
-  let dark = false
-
-  let fieldset = []
-  for (let key in data) {
-    if (key.startsWith('_')) continue
-    fieldset.push({
-      name: key,
-      value: data[key]
-    })
-  }
-
-  onMount(() => {
-    if (
-      localStorage.getItem('color-theme') === 'light' ||
-      (!('color-theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      dark = false
-    } else {
-      dark = true
-    }
-  })
+  export let fieldset: JsonDataViewerField[] = []
 </script>
+
+<table class="table-fixed w-full dark:text-white">
+  <tbody>
+    {#each fieldset as field}
+      <tr>
+        <td
+          class="w-[7rem] md:w-[11rem] px-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400 align-top"
+        >
+          {field.name}
+        </td>
+        <td class="px-4 py-1 text-sm text-gray-600 dark:text-gray-100 align-top value break-words">
+          {#if Array.isArray(field.value) && field.value.length}
+            <JsonView json={field.value} />
+          {:else}
+            <code>{JSON.stringify(field.value)}</code>
+          {/if}
+        </td>
+      </tr>
+    {/each}
+  </tbody>
+</table>
 
 <style>
   :global(.value .val),
@@ -59,24 +58,3 @@
     color: #9ca3b0;
   }
 </style>
-
-<table class="table-fixed w-full dark:text-white">
-  <tbody>
-    {#each fieldset as field}
-    <tr>
-      <td
-        class="w-[7rem] md:w-[11rem] px-4 py-1 text-sm text-gray-400 whitespace-nowrap dark:text-gray-400 align-top"
-      >
-        {field.name}
-      </td>
-      <td class="px-4 py-1 text-sm text-gray-600 dark:text-gray-100 align-top value break-words">
-        {#if Array.isArray(field.value) && field.value.length}
-        <JsonView json="{field.value}" />
-        {:else}
-        <code>{JSON.stringify(field.value)}</code>
-        {/if}
-      </td>
-    </tr>
-    {/each}
-  </tbody>
-</table>

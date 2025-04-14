@@ -1,12 +1,11 @@
-<script>
-  import CloseButton from '~/components/CloseButton.svelte'
+<script lang="ts">
+  import { Popup, CloseButton, CodeBlock, Card } from '~/components'
+  import type { Context } from 'svelte-simple-modal'
   import { getContext } from 'svelte'
 
-  export let title = 'Search syntax'
+  const { close } = getContext<Context>('simple-modal')
 
-  const { close } = getContext('simple-modal')
-
-  let examples = [
+  const examples = [
     { query: 'cat', result: 'Finds channels that have "cat" in their descriptions.' },
     { query: 'cat dog', result: 'Finds channels that have "cat" AND "dog" in their descriptions.' },
     { query: 'cat,dog', result: 'Finds channels that have "cat" OR "dog" in their descriptions.' },
@@ -30,8 +29,13 @@
     },
     { query: 'city:"San Francisco"', result: 'Finds all channels broadcast from San Francisco.' },
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
+    {
+      query: 'timezone:Asia/Kabul',
+      result: 'Find channels that are broadcast in the time zone Asia/Kabul.'
+    },
     { query: 'language:fra', result: 'Find channels that are broadcast in French.' },
     { query: 'category:news', result: 'Finds all the news channels.' },
+    { query: 'video_format:1080p', result: 'Find channels that are broadcast in 1080p.' },
     { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
     { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     {
@@ -43,51 +47,32 @@
       result:
         'Finds channels that have been added to our blocklist due to the claim of the copyright holder.'
     },
+    { query: 'feeds:>1', result: 'Finds channels with more than 1 feed.' },
     { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' },
     { query: 'guides:>0', result: 'Finds channels that have guides.' }
   ]
 </script>
 
-<div
-  class="relative px-2 py-20 flex justify-center"
-  role="presentation"
-  on:keypress
-  on:click|self={close}
->
-  <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
-    <div
-      class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+<Popup onClose={close}>
+  <Card
+    ><div
+      slot="headerLeft"
+      class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center"
     >
-      <h3 class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center">
-        {title}
-      </h3>
-      <CloseButton on:click={close} />
+      Search syntax
     </div>
-    <div class="overflow-y-auto overflow-x-scroll w-full scrollbar-hide">
-      <div class="text-gray-800 dark:text-white p-6 inline-block">
-        <table>
-          <thead>
-            <tr>
-              <th class="border p-2 dark:border-gray-700 font-semibold">Query</th>
-              <th class="border p-2 dark:border-gray-700 font-semibold">Result</th>
-            </tr>
-          </thead>
-          <tbody class="text-left">
-            {#each examples as example}
-              <tr class="even:bg-gray-50 even:dark:bg-gray-700">
-                <td class="border dark:border-gray-700 px-3 py-3 whitespace-nowrap min-w-[220px]">
-                  <code
-                    class="break-words text-sm text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-700 px-2 py-1 rounded-sm select-all cursor-text font-mono"
-                    >{example.query}</code
-                  >
-                </td>
-                <td class="border dark:border-gray-700 px-4 py-3 min-w-[260px]">{example.result}</td
-                >
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
+    <div slot="headerRight">
+      <CloseButton onClick={() => close()} />
     </div>
-  </div>
-</div>
+    <div slot="body" class="text-gray-800 dark:text-white pt-2.5 w-full">
+      {#each examples as example}
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 py-5 w-full flex flex-col items-start gap-2 px-5"
+        >
+          <CodeBlock>{example.query}</CodeBlock>
+          <div class="px-1">{example.result}</div>
+        </div>
+      {/each}
+    </div></Card
+  >
+</Popup>

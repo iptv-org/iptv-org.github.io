@@ -1,95 +1,124 @@
-<script>
-  import ChannelGrid from './ChannelGrid.svelte'
-  import Checkbox from './Checkbox.svelte'
-  import { downloadMode, selected } from '~/store'
-  import _ from 'lodash'
+<script lang="ts">
+  import { downloadMode, selected, hasQuery, searchResults, isReady } from '~/store'
+  import { ChannelGrid, Checkbox } from '~/components'
+  import { Collection } from '@freearhey/core/browser'
+  import { Channel, Country } from '~/models'
   import { fade } from 'svelte/transition'
+  import * as Icon from '~/icons'
 
-  export let country
-  export let channels
-  export let hasQuery
+  export let country: Country
 
-  $: countryChannels = Array.isArray(channels) ? channels : []
-  $: hasStreams = countryChannels.filter(c => c.streams > 0)
-  $: expanded = country.expanded || (countryChannels && countryChannels.length > 0 && hasQuery)
-  $: intersect = _.intersectionBy($selected, hasStreams, 'id')
-  $: isIndeterminate = intersect.length !== 0 && intersect.length < hasStreams.length
-  $: isDisabled = hasStreams.length === 0
-  $: isSelected = intersect.length === hasStreams.length && hasStreams.length > 0
+  let isDisabled = false
+  let isSelected = false
+  let isIndeterminate = false
+  let isExpanded = false
 
-  function onExpand() {
-    country.expanded = !country.expanded
+  const channels: Collection = country.getChannels()
+  const channelsWithStreams: Collection = country.getChannelsWithStreams()
+  let filteredChannelsWithStreams: Collection = channelsWithStreams
+  let filteredChannels: Collection = channels
+  let selectedChannels: Collection = $selected
+
+  searchResults.subscribe((_searchResults: Collection) => {
+    onSearchResultsChange(_searchResults)
+  })
+
+  function onSearchResultsChange(_searchResults: Collection) {
+    isExpanded = false
+    if ($hasQuery) {
+      if ($isReady) isExpanded = true
+
+      if (_searchResults.isEmpty()) {
+        filteredChannels = new Collection()
+      } else {
+        filteredChannels = channels.intersectsBy(_searchResults, (channel: Channel) => channel.id)
+      }
+    } else {
+      filteredChannels = channels
+    }
+
+    filteredChannelsWithStreams = filteredChannels.filter((channel: Channel) =>
+      channel.hasStreams()
+    )
+
+    updateState()
   }
 
-  function onCheckboxChange(event) {
-    hasStreams.forEach(channel => {
-      selected.update(arr => {
-        if (event.detail.state) {
-          arr.push(channel)
-        } else {
-          arr = arr.filter(c => c.id !== channel.id)
-        }
+  selected.subscribe((_selected: Collection) => {
+    selectedChannels = _selected
+    updateState()
+  })
 
-        return arr
-      })
-    })
+  function updateState() {
+    const selectedCountryChannels = filteredChannels.intersectsBy(
+      selectedChannels,
+      (channel: Channel) => channel.id
+    )
+    isDisabled = filteredChannelsWithStreams.isEmpty()
+    isSelected =
+      selectedCountryChannels.count() === filteredChannelsWithStreams.count() &&
+      filteredChannelsWithStreams.notEmpty()
+    isIndeterminate = selectedCountryChannels.count() > 0
+  }
+
+  function selectAll(state: boolean) {
+    if (state) {
+      const _selected = $selected.concat(filteredChannelsWithStreams)
+      selected.set(_selected)
+    } else {
+      const _selected = $selected.filter((channel: Channel) => channel.countryCode !== country.code)
+      selected.set(_selected)
+    }
+  }
+
+  function toggleExpanded() {
+    isExpanded = !isExpanded
   }
 </script>
 
-<div class="mb-2 md:mb-3" class:pl-14={$downloadMode} style="transition: padding-left 100ms">
-  <h2 id="accordion-heading-{country.code}" class="flex relative">
-    {#if $downloadMode}
-      <div
-        transition:fade={{ duration: 200 }}
-        class="w-14 h-14 shrink-0 flex items-center absolute -left-14"
+{#if filteredChannels.notEmpty()}
+  <div class="mb-2 md:mb-3" class:pl-14={$downloadMode} style="transition: padding-left 100ms">
+    <div id="accordion-heading-{country.code}" class="flex relative">
+      {#if $downloadMode}
+        <div
+          transition:fade={{ duration: 200 }}
+          class="w-12 h-13 shrink-0 flex items-center absolute -left-14"
+        >
+          <Checkbox
+            selected={isSelected}
+            disabled={isDisabled}
+            indeterminate={isIndeterminate}
+            onChange={selectAll}
+          />
+        </div>
+      {/if}
+      <button
+        onclick={toggleExpanded}
+        type="button"
+        class="flex items-center focus:ring-0 dark:focus:ring-gray-800 justify-between h-13 pl-3.5 pr-4 w-full font-medium text-left border border-gray-200 dark:border-primary-750 text-gray-500 dark:text-white bg-white dark:bg-primary-810 cursor-pointer"
+        class:rounded-t-md={isExpanded}
+        class:rounded-md={!isExpanded}
+        class:border-b-transparent={isExpanded}
+        class:dark:border-b-transparent={isExpanded}
+        aria-expanded={isExpanded}
+        aria-controls="accordion-body-{country.code}"
       >
-        <Checkbox
-          selected={isSelected}
-          disabled={isDisabled}
-          indeterminate={isIndeterminate}
-          on:change={onCheckboxChange}
-        />
+        <span>{country.flagEmoji}&nbsp;{country.name}</span>
+        <div class="text-gray-400" class:rotate-180={isExpanded}>
+          <Icon.Expand size={20} />
+        </div>
+      </button>
+    </div>
+    {#if isExpanded}
+      <div
+        class="relative"
+        id="accordion-body-{country.code}"
+        aria-labelledby="accordion-heading-{country.code}"
+      >
+        <div class="border border-gray-200 dark:border-primary-750 rounded-b-md">
+          <ChannelGrid channels={filteredChannels} />
+        </div>
       </div>
     {/if}
-    <button
-      on:click={onExpand}
-      type="button"
-      class="flex items-center focus:ring-0 dark:focus:ring-gray-800 justify-between p-4 w-full font-medium text-left border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-800"
-      class:rounded-t-md={expanded}
-      class:rounded-md={!expanded}
-      class:border-b-0={expanded}
-      aria-expanded={expanded}
-      aria-controls="accordion-body-{country.code}"
-    >
-      <span>{country.flag}&nbsp;{country.name}</span>
-      {#if !hasQuery}
-        <svg
-          class:rotate-180={expanded}
-          class="w-6 h-6 shrink-0"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      {/if}
-    </button>
-  </h2>
-  {#if expanded}
-    <div
-      class="relative"
-      id="accordion-body-{country.code}"
-      aria-labelledby="accordion-heading-{country.code}"
-    >
-      <div
-        class="border border-gray-200 dark:border-gray-700 dark:bg-gray-900 rounded-b-md overflow-hidden"
-      >
-        <ChannelGrid bind:channels />
-      </div>
-    </div>
-  {/if}
-</div>
+  </div>
+{/if}

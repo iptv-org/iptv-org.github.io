@@ -1,52 +1,35 @@
-<script>
-  import CloseButton from '~/components/CloseButton.svelte'
-  import StreamItem from '~/components/StreamItem.svelte'
+<script lang="ts">
+  import { CloseButton, StreamItem, Popup, Card } from '~/components'
+  import { Collection } from '@freearhey/core/browser'
+  import type { Context } from 'svelte-simple-modal'
   import { getContext } from 'svelte'
+  import * as Icon from '~/icons'
 
-  export let streams = []
+  export let streams: Collection = new Collection()
   export let title = 'Streams'
 
-  const { close } = getContext('simple-modal')
+  const { close } = getContext<Context>('simple-modal')
 </script>
 
-<div
-  class="relative px-2 py-32 flex justify-center"
-  role="presentation"
-  on:keypress
-  on:click|self={close}
->
-  <div class="relative bg-white rounded-md shadow dark:bg-gray-800 w-full max-w-2xl">
+<Popup onClose={() => close()} wrapperClass="flex justify-center p-2 pt-16 sm:py-44 z-50">
+  <Card>
     <div
-      class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+      slot="headerLeft"
+      class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center"
     >
-      <h3 class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center">
-        <span
-          class="inline-flex items-center pr-2 text-sm font-semibold text-gray-500 dark:text-gray-100 rounded-full"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"
-            />
-          </svg>
-        </span>{title}
-      </h3>
-      <CloseButton on:click={close} />
+      <span
+        class="inline-flex items-center pr-2 text-sm font-semibold text-gray-500 dark:text-gray-100 rounded-full"
+      >
+        <Icon.Stream size={21} />
+      </span>{title}
     </div>
-    <div class="overflow-y-auto overflow-x-hidden w-full">
-      <div class="p-6 space-y-2">
-        {#each streams as stream}
-          <StreamItem {stream} />
-        {/each}
-      </div>
+    <div slot="headerRight">
+      <CloseButton onClick={() => close()} />
     </div>
-  </div>
-</div>
+    <div slot="body" class="flex flex-col gap-2 p-2 sm:p-5">
+      {#each streams.all() as stream, index (stream.getUUID())}
+        <StreamItem {stream} />
+      {/each}
+    </div>
+  </Card>
+</Popup>

@@ -1,76 +1,120 @@
 <script>
   import { query, hasQuery, search } from '~/store'
-  import SearchButton from './SearchButton.svelte'
-  import SearchFieldMini from './SearchFieldMini.svelte'
-  import Divider from './Divider.svelte'
-  import CreatePlaylistButton from './CreatePlaylistButton.svelte'
-  import ToggleModeButton from './ToggleModeButton.svelte'
-  import GitHubButton from './GitHubButton.svelte'
+  import { setSearchParam } from '~/utils'
   import { goto } from '$app/navigation'
-  import { page } from '$app/stores'
+  import {
+    CreatePlaylistButton,
+    ToggleModeButton,
+    GitHubButton,
+    SearchButton,
+    SearchField,
+    Logo
+  } from '~/components'
 
-  export let withSearch = false
+  export let version = 'default'
+  export let onSearchButtonClick = () => {}
 
-  function reset() {
-    document.body.scrollIntoView()
-    query.set('')
-    hasQuery.set(false)
-    search('')
-  }
+  let scrollY = 0
+  let input
 
   function scrollToTop() {
     document.body.scrollIntoView()
   }
+
+  function reset() {
+    scrollToTop()
+    query.set('')
+    setSearchParam('q', '')
+    hasQuery.set(false)
+    isSearching.set(true)
+    setTimeout(() => {
+      search('')
+    }, 0)
+  }
+
+  function focusOnInput() {
+    if (input) input.focus()
+  }
 </script>
 
-<nav
-  class="bg-white border-b border-gray-200 py-2.5 dark:border-gray-700 dark:bg-gray-800 w-full h-[61px]"
->
-  <div class="flex justify-between items-center mx-auto px-3 w-full max-w-6xl">
-    <div class="flex flex-start items-center sm:basis-88 shrink">
-      <a
-        href="/"
-        on:click={() => {
-          reset()
-        }}
-        class="flex mr-6"
-      >
-        <span
-          class="text-[1.15rem] text-[#24292f] self-center font-semibold whitespace-nowrap dark:text-white font-mono"
-          >/iptv-org</span
-        >
-      </a>
-      <div class="hidden sm:block w-full">
-        {#if withSearch}
-          <SearchFieldMini />
-        {/if}
-      </div>
-    </div>
+<svelte:window bind:scrollY />
 
-    <div class="flex flex-end items-center space-x-4 pl-3">
-      <div class="inline-flex space-x-2">
-        {#if withSearch}
+{#if version === 'default'}
+  <nav
+    class="py-2.5 w-full h-[61px] bg-[#f8fafc] dark:bg-primary-850 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700"
+    class:border-b={scrollY > 0}
+  >
+    <div class="flex justify-between items-center mx-auto px-3 w-full max-w-7xl">
+      <div class="flex flex-start items-center sm:basis-120 shrink">
+        <a href="/" class="pr-2" onclick={reset}>
+          <Logo />
+        </a>
+        <div class="hidden sm:block w-full">
+          {#if scrollY > 150}
+            <SearchField
+              version="mini"
+              bind:this={input}
+              onClear={() => {
+                query.set('')
+                focusOnInput()
+              }}
+              onSubmit={() => {
+                goto(`/?q=${$query}`)
+              }}
+            />
+          {/if}
+        </div>
+      </div>
+
+      <div class="inline-flex sm:space-x-1">
+        {#if scrollY > 150}
           <div class="block sm:hidden">
             <SearchButton
-              on:click={() => {
+              onClick={() => {
                 scrollToTop()
+                onSearchButtonClick()
               }}
             />
           </div>
         {/if}
-        <CreatePlaylistButton
-          on:click={() => {
-            if ($page.url.pathname !== '/') {
-              goto('/')
-            }
-          }}
-        />
-      </div>
-      <Divider />
-      <div class="inline-flex space-x-2">
+        <CreatePlaylistButton />
         <ToggleModeButton />
         <GitHubButton />
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+{:else if version === 'channelPage'}
+  <nav
+    class="py-2.5 w-full h-[61px] bg-[#f8fafc] dark:bg-primary-850 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700"
+    class:border-b={scrollY > 0}
+  >
+    <div class="flex justify-between items-center mx-auto px-3 w-full max-w-7xl">
+      <div class="flex flex-start items-center sm:basis-120 shrink">
+        <a href="/" class="pr-2" onclick={reset}>
+          <Logo />
+        </a>
+        <div class="hidden sm:block w-full">
+          <SearchField
+            version="mini"
+            onClear={reset}
+            onSubmit={() => {
+              goto(`/?q=${$query}`)
+            }}
+          />
+        </div>
+      </div>
+
+      <div class="inline-flex sm:space-x-1">
+        <div class="block sm:hidden">
+          <SearchButton
+            onClick={() => {
+              goto('/')
+            }}
+          />
+        </div>
+        <ToggleModeButton />
+        <GitHubButton />
+      </div>
+    </div>
+  </nav>
+{/if}

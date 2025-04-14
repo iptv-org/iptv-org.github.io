@@ -1,42 +1,30 @@
-<script>
-  export let guide
+<script lang="ts">
+  import { Guide } from '~/models'
+  import * as Icon from '~/icons'
 
-  const url = `https://${guide.site}`
+  export let guide: Guide
 </script>
 
 <div
-  class="w-full inline-flex justify-between px-4 border-b-[1px] dark:border-gray-700 last:border-0"
+  class="w-full inline-flex justify-between px-4 border-b-[1px] border-gray-200 dark:border-gray-700 last:border-0"
 >
   <div class="flex space-x-4 items-center w-full min-h-11 py-3">
-    <div class="text-gray-400 w-8 text-sm">{guide.lang}</div>
+    <div class="text-gray-400 w-8 text-sm">{guide.languageCode}</div>
     <a
-      class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[50%] w-full"
-      href={url}
-      title={url}
+      class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-100 hover:text-blue-500 hover:underline inline-flex align-middle max-w-[50%] w-full items-center space-x-1"
+      href={guide.getUrl()}
+      title={guide.getUrl()}
       target="_blank"
       rel="noreferrer"
     >
-      <span class="truncate">{guide.site}</span><span
-        class="inline-flex items-center pl-1 font-semibold text-gray-500 rounded-full"
+      <span class="truncate">{guide.siteDomain}</span><span
+        class="text-sm text-gray-400 dark:text-gray-500"
       >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          ></path>
-        </svg>
+        <Icon.ExternalLink size={16} />
       </span></a
     >
-    <div class="text-right text-gray-400 text-sm w-full" title={guide.site_id}>
-      {guide.site_name}
+    <div class="text-right text-gray-400 text-sm w-full" title={guide.siteId}>
+      {guide.siteName}
     </div>
   </div>
 </div>

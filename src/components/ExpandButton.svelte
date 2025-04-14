@@ -1,27 +1,20 @@
-<script>
-  import { createEventDispatcher } from 'svelte'
+<script lang="ts">
+  import IconButton from './IconButton.svelte'
+  import * as Icon from '~/icons'
 
-  const dispatch = createEventDispatcher()
-
-  let expanded = false
+  export let expanded = false
+  export let onClick = (state: boolean) => {}
 </script>
 
-<button
-  class="w-7 h-7 flex justify-center align-middle text-gray-500 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-600 shrink-0 items-center"
-  on:click={() => {
+<IconButton
+  onClick={() => {
     expanded = !expanded
-    dispatch('click', { state: expanded })
+    onClick(expanded)
   }}
+  size={32}
   aria-label={expanded ? 'Collapse' : 'Expand'}
 >
-  <svg
-    class="w-4 h-4"
-    class:rotate-90={expanded}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-  </svg>
-</button>
+  <div class:rotate-180={expanded}>
+    <Icon.Expand size={20} />
+  </div>
+</IconButton>
