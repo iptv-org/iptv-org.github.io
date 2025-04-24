@@ -1,7 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "tailwind-scrollbar-hide";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-950: hsl(219, 23%, 5%);
+  --color-primary-900: hsl(219, 23%, 10%);
+  --color-primary-890: hsl(219, 23%, 11%);
+  --color-primary-880: hsl(219, 23%, 12%);
+  --color-primary-870: hsl(219, 23%, 13%);
+  --color-primary-860: hsl(219, 23%, 14%);
+  --color-primary-850: hsl(219, 23%, 15%);
+  --color-primary-840: hsl(219, 23%, 16%);
+  --color-primary-830: hsl(219, 23%, 17%);
+  --color-primary-820: hsl(219, 23%, 18%);
+  --color-primary-810: hsl(219, 23%, 19%);
+  --color-primary-800: hsl(219, 23%, 20%);
+  --color-primary-790: hsl(219, 23%, 21%);
+  --color-primary-780: hsl(219, 23%, 22%);
+  --color-primary-770: hsl(219, 23%, 23%);
+  --color-primary-760: hsl(219, 23%, 24%);
+  --color-primary-750: hsl(219, 23%, 25%);
+  --color-primary-740: hsl(219, 23%, 26%);
+  --color-primary-730: hsl(219, 23%, 27%);
+  --color-primary-720: hsl(219, 23%, 28%);
+  --color-primary-710: hsl(219, 23%, 29%);
+  --color-primary-700: hsl(219, 23%, 30%);
+  --color-primary-650: hsl(219, 23%, 35%);
+  --color-primary-600: hsl(219, 23%, 40%);
+  --color-primary-500: hsl(219, 23%, 50%);
+  --color-primary-400: hsl(219, 23%, 60%);
+  --color-primary-300: hsl(219, 23%, 70%);
+  --color-primary-200: hsl(219, 23%, 80%);
+  --color-primary-100: hsl(219, 23%, 90%);
+  --color-primary-50: hsl(219, 23%, 95%);
+}
 
 html {
   overflow-y: scroll;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }

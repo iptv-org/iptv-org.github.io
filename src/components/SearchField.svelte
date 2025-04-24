@@ -1,68 +1,70 @@
-<script>
-  import { getContext } from 'svelte'
-  import { query, search, setSearchParam } from '~/store'
-  import SearchSyntaxPopup from './SearchSyntaxPopup.svelte'
+<script lang="ts">
+  import { query, isSearching } from '~/store'
+  import * as Icon from '~/icons'
 
-  const { open } = getContext('simple-modal')
+  export let version = 'default'
+  export let onClear = () => {}
+  export let onSubmit = () => {}
 
-  export let found = 0
-  export let isLoading = true
+  let input: HTMLElement
 
-  function onSubmit() {
-    setSearchParam('q', $query)
-    search($query)
+  export function blur() {
+    if (input) input.blur()
   }
 
-  const showSearchSyntax = () => {
-    open(
-      SearchSyntaxPopup,
-      {},
-      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
-    )
+  export function focus() {
+    if (input) input.focus()
   }
 </script>
 
-<form class="mb-5" on:submit|preventDefault={onSubmit}>
-  <div>
-    <label for="search-input" class="sr-only">Search</label>
-    <div class="relative mt-1">
-      <div
-        class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-500 dark:text-gray-400"
-      >
-        <svg
-          class="w-5 h-5"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </div>
-      <input
-        type="search"
-        id="search-input"
-        bind:value={$query}
-        class="bg-white border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-        placeholder="Search for channels"
-      />
+<form
+  onsubmit={event => {
+    event.preventDefault()
+    blur()
+    onSubmit()
+  }}
+  autocomplete="off"
+  class:w-full={version === 'mini'}
+>
+  <label for="search-input" class="sr-only">Search</label>
+  <div class="relative" class:w-full={version === 'mini'}>
+    <div
+      class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-500 dark:text-gray-400"
+    >
+      {#if $isSearching}
+        <Icon.Spinner size={20} />
+      {:else}
+        <Icon.Search size={20} />
+      {/if}
     </div>
-    <div class="mt-2 flex justify-between px-1">
-      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-[2px]"
-        >Found&nbsp;
-        <span class:animate-spin={isLoading}>{!isLoading ? found.toLocaleString() : '/'}</span>
-        &nbsp;channel(s)</span
-      >
-      <button
-        type="button"
-        on:click|preventDefault={showSearchSyntax}
-        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-[2px]"
-      >
-        Search syntax
-      </button>
+    <input
+      type="search"
+      id="search-input"
+      bind:this={input}
+      bind:value={$query}
+      class:h-10.5={version === 'default'}
+      class:h-9.5={version === 'mini'}
+      class="bg-white border border-gray-300 text-gray-900 outline-blue-500 text-sm rounded-md block w-full pl-10 py-2 px-1.5 dark:bg-primary-750 dark:border-primary-700 dark:placeholder-gray-400 dark:text-white placeholder-gray-400"
+      placeholder="Search"
+    />
+    <div
+      class="absolute right-0 top-0 pr-1 text-gray-400 flex items-center"
+      class:h-10.5={version === 'default'}
+      class:h-9.5={version === 'mini'}
+    >
+      {#if $query.length}
+        <button
+          type="reset"
+          onmousedown={event => {
+            event.preventDefault()
+            onClear()
+          }}
+          class="cursor-pointer w-6 h-6"
+          title="Clear"
+        >
+          <Icon.Clear size={16} />
+        </button>
+      {/if}
     </div>
   </div>
 </form>

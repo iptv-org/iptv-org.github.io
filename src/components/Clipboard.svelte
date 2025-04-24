@@ -1,9 +1,8 @@
 <script>
-  import { onMount, tick, createEventDispatcher } from 'svelte'
-
-  const dispatch = createEventDispatcher()
+  import { tick } from 'svelte'
 
   export let text
+  export let onCopy = () => {}
 
   let textarea
 
@@ -12,7 +11,7 @@
     document.execCommand('Copy')
     await tick()
     textarea.blur()
-    dispatch('copy')
+    onCopy()
   }
 </script>
 

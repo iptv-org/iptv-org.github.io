@@ -1,126 +1,136 @@
-<script>
-  import GuideItem from '~/components/GuideItem.svelte'
-  import StreamItem from '~/components/StreamItem.svelte'
-  import HTMLPreview from '~/components/HTMLPreview.svelte'
-  import EditButton from '~/components/EditButton.svelte'
-  import NavBar from '~/components/NavBar.svelte'
+<script lang="ts">
+  import { Collection } from '@freearhey/core/browser'
+  import { toast } from '@zerodevx/svelte-toast'
+  import { Channel, Feed } from '~/models'
+  import * as Icon from '~/icons'
+  import {
+    ChannelRemoveButton,
+    ShareChannelButton,
+    ChannelEditButton,
+    CopyLinkButton,
+    FeedAddButton,
+    BlockedBadge,
+    HTMLPreview,
+    ClosedBadge,
+    FeedItem,
+    NavBar,
+    Card,
+    Menu
+  } from '~/components'
 
   export let data
 
-  let isLoading = false
-  const channel = data.channel
-  const streams = channel ? channel._streams : []
-  const guides = channel ? channel._guides : []
-  const displayName = channel._displayName
+  const isTouchDevice =
+    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
 
-  const structuredData = {
-    '@context': 'https://schema.org/',
-    '@type': 'TelevisionChannel',
-    image: channel.logo,
-    identifier: channel.id,
-    name: channel.name,
-    alternateName: channel.alt_names.map(value => ({ '@value': value })),
-    genre: channel._categories.map(category => ({ '@value': category.name })),
-    sameAs: channel.website
+  const channel: Channel = new Channel().deserialize(data.channel)
+  let feeds = channel ? channel.getFeeds() : new Collection()
+
+  feeds = feeds.orderBy(
+    [(feed: Feed) => (feed.isMain ? 1 : 0), (feed: Feed) => feed.id],
+    ['desc', 'asc']
+  )
+
+  let isLoading = false
+
+  function schema() {
+    return `<script type="application/ld+json">${JSON.stringify(
+      channel.getStructuredData()
+    )}<\/script>`
   }
-  const schema = () => {
-    return `<script type="application/ld+json">${JSON.stringify(structuredData)}<\/script>`
+
+  let isFeedMenuOpened = false
+  function closeFeedMenu() {
+    isFeedMenuOpened = false
+  }
+
+  let isChannelMenuOpened = false
+  function closeChannelMenu() {
+    isChannelMenuOpened = false
+  }
+
+  function onLinkCopy() {
+    toast.push('Link copied to clipboard')
+    closeChannelMenu()
   }
 </script>
 
 <svelte:head>
-  <title>{channel && displayName ? `${displayName} • iptv-org` : 'iptv-org'}</title>
-  <meta name="description" content="Detailed description of {displayName}." />
+  <title>{channel ? `${channel.getUniqueName()} • iptv-org` : 'iptv-org'}</title>
+  <meta name="description" content="Detailed description of {channel.getUniqueName()}." />
   {@html schema()}
 </svelte:head>
 
 <header class="fixed z-40 w-full min-w-[360px] top-0">
-  <NavBar withSearch />
+  <NavBar version="channelPage" />
 </header>
 
-<main class="bg-slate-50 dark:bg-[#1d232e] min-h-screen min-w-[360px] pt-16">
-  <section class="container max-w-[820px] mx-auto px-2 pt-6 pb-20 flex-col space-y-4">
-    {#if isLoading}
-      <div
-        class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
-      >
-        loading...
-      </div>
-    {/if}
-    {#if channel}
-      <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
+{#if channel}
+  <main class="bg-slate-50 dark:bg-primary-850 min-h-screen min-w-[360px] pt-16">
+    <section class="container max-w-3xl mx-auto px-2 pt-1 sm:pt-6 pb-20 flex-col space-y-4">
+      {#if isLoading}
         <div
-          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
+          class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
         >
-          <div class="w-2/3 overflow-hidden">
-            <div class="flex space-x-3">
-              <h1 class="text-l font-medium text-gray-900 dark:text-white">
-                {displayName}
-              </h1>
-              <div class="flex items-center space-x-2">
-                {#if channel.is_closed}
-                  <div
-                    class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full h-6"
-                    title="closed: {channel.closed}"
-                  >
-                    Closed
-                  </div>
-                {/if}
-                {#if channel.is_blocked}
-                  <div
-                    class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full h-6"
-                    title="The channel has been added to our blocklist due to the claim of the copyright holder"
-                  >
-                    Blocked
-                  </div>
-                {/if}
-              </div>
+          loading...
+        </div>
+      {/if}
+      {#if channel}
+        <Card border>
+          <div slot="headerLeft">
+            <div class="text-l font-medium text-gray-900 dark:text-white sm:pl-1 space-x-1">
+              <span>{channel.getDisplayName()}</span>
+              {#if channel.isClosed()}
+                <ClosedBadge {channel} />
+              {/if}
+              {#if channel.isBlocked()}
+                <BlockedBadge {channel} />
+              {/if}
             </div>
           </div>
-          <div class="inline-flex w-1/3 justify-end space-x-3">
-            <EditButton {channel} />
+          <div slot="headerRight" class="inline-flex w-30 justify-end">
+            {#if isTouchDevice}
+              <ShareChannelButton {channel} />
+            {/if}
+            <Menu bind:isOpened={isChannelMenuOpened}>
+              <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
+              <ChannelEditButton {channel} onClick={closeChannelMenu} />
+              <ChannelRemoveButton {channel} onClick={closeChannelMenu} />
+            </Menu>
           </div>
-        </div>
-        <div class="overflow-y-auto overflow-x-hidden w-full p-10">
-          <HTMLPreview data={channel} />
-        </div>
-      </div>
-    {/if}
-    {#if streams.length}
-      <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
-        <div
-          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
-        >
-          <div class="w-1/3 overflow-hidden">
-            <h2 class="text-l font-medium text-gray-900 dark:text-white">Streams</h2>
+          <div slot="body">
+            <div class="pt-4 pb-3 px-4 sm:py-9 sm:px-11">
+              <HTMLPreview fieldset={channel.getFieldset()} />
+            </div>
           </div>
-        </div>
-        <div class="overflow-y-auto overflow-x-hidden w-full p-6">
-          <div class="space-y-2">
-            {#each streams as stream}
-              <StreamItem {stream} />
-            {/each}
+        </Card>
+      {/if}
+      {#if channel.hasFeeds()}
+        <Card border>
+          <div slot="headerLeft">
+            <div
+              class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center space-x-1"
+            >
+              <span class="text-gray-500 dark:text-gray-100">
+                <Icon.Feed size={21} />
+              </span>
+              <span>Feeds</span>
+            </div>
           </div>
-        </div>
-      </div>
-    {/if}
-    {#if guides.length}
-      <div class="border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-800 bg-white">
-        <div
-          class="flex justify-between items-center py-3 pl-5 pr-4 rounded-t border-b dark:border-gray-700"
-        >
-          <div class="w-1/3 overflow-hidden">
-            <h2 class="text-l font-medium text-gray-900 dark:text-white">Guides</h2>
+          <div slot="headerRight">
+            <Menu bind:isOpened={isFeedMenuOpened}>
+              <FeedAddButton {channel} onClick={closeFeedMenu} />
+            </Menu>
           </div>
-        </div>
-        <div class="overflow-y-auto overflow-x-hidden w-full p-6">
-          <div class="dark:border-gray-700 rounded-md border border-gray-200">
-            {#each guides as guide, index}
-              <GuideItem {guide} {index} />
-            {/each}
+          <div slot="body">
+            <div class="flex flex-col gap-2 p-2 sm:p-5">
+              {#each feeds.all() as feed, index (feed.getUUID())}
+                <FeedItem {feed} />
+              {/each}
+            </div>
           </div>
-        </div>
-      </div>
-    {/if}
-  </section>
-</main>
+        </Card>
+      {/if}
+    </section>
+  </main>
+{/if}

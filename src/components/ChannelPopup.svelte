@@ -1,57 +1,72 @@
-<script>
-  import HTMLPreview from '~/components/HTMLPreview.svelte'
-  import EditButton from '~/components/EditButton.svelte'
-  import Divider from '~/components/Divider.svelte'
-  import CloseButton from '~/components/CloseButton.svelte'
-  import BlockedBadge from './BlockedBadge.svelte'
-  import ClosedBadge from './ClosedBadge.svelte'
+<script lang="ts">
+  import type { Context } from 'svelte-simple-modal'
+  import { toast } from '@zerodevx/svelte-toast'
   import { getContext } from 'svelte'
+  import { Channel } from '~/models'
+  import {
+    ChannelRemoveButton,
+    ShareChannelButton,
+    ChannelEditButton,
+    CopyLinkButton,
+    BlockedBadge,
+    CloseButton,
+    ClosedBadge,
+    HTMLPreview,
+    Popup,
+    Card,
+    Menu
+  } from '~/components'
 
-  export let channel
+  export let channel: Channel
 
-  const { close } = getContext('simple-modal')
+  const isTouchDevice =
+    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+
+  const { close } = getContext<Context>('simple-modal')
 
   window.onpopstate = event => {
     if (event.target.location.pathname === '/') {
       close()
     }
   }
+
+  let isMenuOpened = false
+  function closeMenu() {
+    isMenuOpened = false
+  }
+
+  function onLinkCopy() {
+    toast.push('Link copied to clipboard')
+    closeMenu()
+  }
 </script>
 
-<div
-  class="relative px-2 pt-20 pb-24 flex justify-center"
-  role="presentation"
-  on:keypress
-  on:click|self={close}
->
-  <div class="relative bg-white rounded-lg shadow dark:bg-gray-800 w-full max-w-[820px]">
-    <div
-      class="flex justify-between items-center py-3 pl-5 pr-3 md:pr-4 rounded-t border-b dark:border-gray-700"
-    >
-      <div class="w-2/3 overflow-hidden">
-        <div class="flex items-center space-x-3">
-          <h3 class="text-l font-medium text-gray-900 dark:text-white">{channel._displayName}</h3>
-          <div class="flex space-x-2">
-            {#if channel.is_closed}
-              <ClosedBadge {channel} />
-            {/if}
-            {#if channel.is_blocked}
-              <BlockedBadge {channel} />
-            {/if}
-          </div>
-        </div>
-      </div>
-
-      <div class="inline-flex w-1/3 justify-end space-x-2 items-center">
-        <EditButton {channel} />
-        <Divider />
-        <CloseButton on:click={close} />
+<Popup onClose={close}>
+  <Card>
+    <div slot="headerLeft">
+      <div class="text-l font-medium text-gray-900 dark:text-white sm:pl-1 space-x-1">
+        <span>{channel.getDisplayName()}</span>
+        {#if channel.isClosed()}
+          <ClosedBadge {channel} />
+        {/if}
+        {#if channel.isBlocked()}
+          <BlockedBadge {channel} />
+        {/if}
       </div>
     </div>
-    <div class="overflow-y-auto overflow-x-scroll max-w-full scrollbar-hide">
-      <div class="inline-table px-5 py-5 sm:py-10 sm:px-12">
-        <HTMLPreview data={channel} {close} />
-      </div>
+    <div slot="headerRight" class="inline-flex w-30 shrink-0 items-center justify-end">
+      {#if isTouchDevice}
+        <ShareChannelButton {channel} />
+      {/if}
+      <Menu bind:isOpened={isMenuOpened}>
+        <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
+        <ChannelEditButton {channel} onClick={closeMenu} />
+        <ChannelRemoveButton {channel} onClick={closeMenu} />
+      </Menu>
+      <CloseButton onClick={close} />
     </div>
-  </div>
-</div>
+    <div slot="body" class="pt-4 pb-3 px-4 sm:py-9 sm:px-11">
+      <HTMLPreview fieldset={channel.getFieldset()} onClick={close} />
+    </div>
+  </Card>
+</Popup>

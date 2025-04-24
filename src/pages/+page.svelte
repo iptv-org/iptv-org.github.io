@@ -1,56 +1,98 @@
-<script>
-  import NavBar from '~/components/NavBar.svelte'
-  import BottomBar from '~/components/BottomBar.svelte'
-  import Modal from 'svelte-simple-modal'
-  import { page } from '$app/stores'
+<script lang="ts">
+  import { NavBar, BottomBar, CountryItem, SearchField, SearchSyntaxPopup } from '~/components'
+  import { setPageTitle, setSearchParam } from '~/utils'
+  import { Collection } from '@freearhey/core/browser'
+  import type { Context } from 'svelte-simple-modal'
+  import { ApiClient, DataProcessor } from '~/core'
+  import { afterNavigate } from '$app/navigation'
+  import { onMount, getContext } from 'svelte'
+  import { page } from '$app/state'
   import {
-    fetchChannels,
+    searchResults,
+    downloadMode,
+    isSearching,
+    countries,
+    isLoading,
     channels,
     hasQuery,
-    countries,
-    filteredChannels,
-    query,
-    setPageTitle,
-    downloadMode,
-    search
+    loadData,
+    isReady,
+    search,
+    query
   } from '~/store'
-  import { onMount } from 'svelte'
-  import CountryItem from '~/components/CountryItem.svelte'
-  import SearchField from '~/components/SearchField.svelte'
-  import _ from 'lodash'
-  import { afterNavigate } from '$app/navigation'
 
-  let _countries = []
-  let isLoading = true
+  const { open } = getContext<Context>('simple-modal')
 
-  $: groupedByCountry = _.groupBy($filteredChannels, channel => channel._country.code)
+  let found = $channels.count()
+  searchResults.subscribe((results: Collection) => {
+    found = results.count()
+  })
 
   onMount(async () => {
-    if (!$channels.length) {
-      await fetchChannels()
+    if ($channels.isEmpty()) {
+      const client = new ApiClient()
+      const processor = new DataProcessor()
+      await loadData({ client, processor })
     }
-    _countries = Object.values($countries)
-    isLoading = false
-    search($query)
+
+    isLoading.set(false)
+    isSearching.set(true)
+    setTimeout(() => {
+      search($query)
+    }, 0)
+    isReady.set(true)
   })
 
   afterNavigate(() => {
-    const q = $page.url.searchParams.get('q')
+    const q = page.url.searchParams.get('q')
+
     if (q) {
-      setPageTitle(q)
       query.set(q)
       hasQuery.set(true)
+      setPageTitle(q)
     } else {
-      setPageTitle(null)
       hasQuery.set(false)
+      setPageTitle(null)
     }
-    search($query)
+
+    if (!$isLoading) {
+      isSearching.set(true)
+      setTimeout(() => {
+        search($query)
+      }, 0)
+    }
   })
 
-  let scrollTop = 0
+  let scrollY = 0
+
+  function showSearchSyntax() {
+    open(
+      SearchSyntaxPopup,
+      {},
+      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+    )
+  }
+
+  let searchField: SearchField
+  function focusOnSearchField() {
+    if (searchField) searchField.focus()
+  }
+
+  function onSearch() {
+    setSearchParam('q', $query)
+    isSearching.set(true)
+    setTimeout(() => {
+      search($query)
+    }, 0)
+  }
+
+  function resetSearch() {
+    query.set('')
+    focusOnSearchField()
+  }
 </script>
 
-<svelte:window bind:scrollY={scrollTop} />
+<svelte:window bind:scrollY />
 <svelte:head>
   <title>iptv-org</title>
   <meta name="description" content="iptv-org is user editable database for TV channels" />
@@ -58,40 +100,42 @@
 </svelte:head>
 
 <header
-  class:absolute={scrollTop <= 150}
-  class:fixed={scrollTop > 150}
-  class="z-40 w-full min-w-[360px] flex items-center"
-  style="top: {scrollTop > 150 && scrollTop <= 210 ? scrollTop - 210 : 0}px"
+  class:absolute={scrollY <= 150}
+  class:fixed={scrollY > 150}
+  class="z-20 w-full min-w-[360px] flex items-center"
+  style="top: {scrollY > 150 && scrollY <= 210 ? scrollY - 210 : 0}px"
 >
-  <NavBar withSearch={scrollTop > 150} />
+  <NavBar onSearchButtonClick={focusOnSearchField} />
 </header>
 
-<main class="bg-slate-50 dark:bg-[#1d232e] min-h-screen min-w-[360px]">
-  <Modal
-    unstyled={true}
-    classBg="fixed top-0 left-0 z-40 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-auto"
-    closeButton={false}
-  >
-    <section class="max-w-5xl mx-auto px-2 pt-24 sm:pt-32 pb-20 overflow-hidden min-h-full">
-      <SearchField bind:isLoading bind:found={$filteredChannels.length} />
-      {#if isLoading}
-        <div
-          class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
-        >
-          loading...
-        </div>
-      {/if}
-      {#each _countries as country, idx (country)}
-        {#if groupedByCountry[country.code] && groupedByCountry[country.code].length > 0}
-          <CountryItem
-            bind:country
-            bind:channels={groupedByCountry[country.code]}
-            bind:hasQuery={$hasQuery}
-          />
-        {/if}
-      {/each}
-    </section>
-  </Modal>
+<main class="bg-slate-50 dark:bg-primary-850 min-h-screen min-w-[360px]">
+  <section class="max-w-5xl mx-auto px-2 pt-16 sm:pt-20 pb-20 overflow-hidden min-h-full">
+    <SearchField bind:this={searchField} onSubmit={onSearch} onClear={resetSearch} />
+    <div class="pt-2 pb-6 flex justify-between px-1">
+      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-[2px]"
+        >Found&nbsp;
+        <span class:animate-spin={$isLoading}>{!$isLoading ? found.toLocaleString() : '/'}</span>
+        &nbsp;channel(s)</span
+      >
+      <button
+        type="button"
+        on:click|preventDefault={showSearchSyntax}
+        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-[2px] cursor-pointer"
+      >
+        Search syntax
+      </button>
+    </div>
+    {#if $isLoading}
+      <div
+        class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
+      >
+        loading...
+      </div>
+    {/if}
+    {#each $countries.all() as country (country.code)}
+      <CountryItem {country} />
+    {/each}
+  </section>
 </main>
 
 {#if $downloadMode}

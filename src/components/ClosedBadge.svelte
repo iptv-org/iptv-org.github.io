@@ -1,17 +1,19 @@
-<script>
+<script lang="ts">
+  import Badge from '~/components/Badge.svelte'
   import tippy from 'sveltejs-tippy'
+  import { Channel } from '~/models'
 
-  export let channel
+  export let channel: Channel
 </script>
 
-<div
-  class="text-gray-500 border-[1px] border-gray-200 text-xs inline-flex items-center px-2.5 py-0.5 dark:text-gray-300 cursor-default rounded-full"
-  use:tippy={{
-    content: `closed: ${channel.closed}`,
-    allowHTML: true,
-    placement: 'right',
-    interactive: true
-  }}
->
-  Closed
-</div>
+<Badge>
+  <div
+    use:tippy={{
+      content: `closed: ${channel.closedDateString}`,
+      allowHTML: true,
+      interactive: true
+    }}
+  >
+    Closed
+  </div>
+</Badge>
