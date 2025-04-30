@@ -157,10 +157,10 @@
   resolved "https://registry.npmjs.org/@sveltejs/adapter-static/-/adapter-static-3.0.8.tgz"
   integrity sha512-YaDrquRpZwfcXbnlDsSrBQNCChVOT9MGuSg+dMAyfsAa1SmiAhrA5jUYUiIMC59G92kIbY/AaQOWcBdq+lh+zg==
 
-"@sveltejs/kit@^2.0.0", "@sveltejs/kit@^2.20.4":
-  version "2.20.4"
-  resolved "https://registry.npmjs.org/@sveltejs/kit/-/kit-2.20.4.tgz"
-  integrity sha512-B3Y1mb1Qjt57zXLVch5tfqsK/ebHe6uYTcFSnGFNwRpId3+fplLgQK6Z2zhDVBezSsPuhDq6Pry+9PA88ocN6Q==
+"@sveltejs/kit@^2.0.0", "@sveltejs/kit@^2.20.7":
+  version "2.20.7"
+  resolved "https://registry.npmjs.org/@sveltejs/kit/-/kit-2.20.7.tgz"
+  integrity sha512-dVbLMubpJJSLI4OYB+yWYNHGAhgc2bVevWuBjDj8jFUXIJOAnLwYP3vsmtcgoxNGUXoq0rHS5f7MFCsryb6nzg==
   dependencies:
     "@types/cookie" "^0.6.0"
     cookie "^0.6.0"
