@@ -1,20 +1,16 @@
 <script lang="ts">
   import type { Context } from 'svelte-simple-modal'
-  import { toast } from '@zerodevx/svelte-toast'
   import { getContext } from 'svelte'
   import { page } from '$app/state'
   import * as Icon from '~/icons'
   import { Feed } from '~/models'
   import {
-    FeedRemoveButton,
-    CopyLinkButton,
-    FeedEditButton,
     ExpandButton,
     StreamsPopup,
     HTMLPreview,
     GuidesPopup,
     CodeBlock,
-    Menu
+    FeedMenu
   } from '~/components'
 
   export let feed: Feed
@@ -28,7 +24,7 @@
   function showGuides() {
     modal.open(
       GuidesPopup,
-      { guides: feed.getGuides(), title: 'Guides' },
+      { feed },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
     )
   }
@@ -36,7 +32,7 @@
   function showStreams() {
     modal.open(
       StreamsPopup,
-      { streams: feed.getStreams(), title: 'Streams' },
+      { feed },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
     )
   }
@@ -44,16 +40,6 @@
   function _onClose() {
     modal.close()
     onClose()
-  }
-
-  let isMenuOpened = false
-  function closeMenu() {
-    isMenuOpened = false
-  }
-
-  function onLinkCopy() {
-    toast.push('Link copied to clipboard')
-    closeMenu()
   }
 </script>
 
@@ -86,23 +72,19 @@
             <button
               onclick={showGuides}
               class="text-sm text-gray-400 inline-flex space-x-1 flex items-center hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer"
-              title="Streams"
+              title="Guides"
             >
               <Icon.Guide size={20} />
               <div>{feed.getGuides().count()}</div>
             </button>
           {/if}
         </div>
-        <Menu bind:isOpened={isMenuOpened}>
-          <CopyLinkButton link={feed.getPageUrl()} onCopy={onLinkCopy} />
-          <FeedEditButton {feed} onClick={closeMenu} />
-          <FeedRemoveButton {feed} onClick={closeMenu} />
-        </Menu>
+        <FeedMenu {feed} />
       </div>
     </div>
   </div>
   {#if isExpanded}
-    <div class="w-full flex px-6 py-6">
+    <div class="w-full flex px-6 pt-5 pb-2">
       <HTMLPreview fieldset={feed.getFieldset()} onClick={_onClose} />
     </div>
   {/if}

@@ -272,6 +272,10 @@ export class Channel {
     return broadcastArea.uniqBy((broadcastArea: BroadcastArea) => broadcastArea.code)
   }
 
+  getFeedNames(): Collection {
+    return this.getFeeds().map((feed: Feed) => feed.name)
+  }
+
   getSearchable(): ChannelSearchable {
     return {
       id: this.id,
@@ -308,7 +312,8 @@ export class Channel {
       _broadcastLocationNames: this.getBroadcastLocationNames().all(),
       _countryName: this.getCountryName(),
       _guideSiteNames: this.getGuideSiteNames().all(),
-      _streamUrls: this.getStreamUrls().all()
+      _streamUrls: this.getStreamUrls().all(),
+      _feedNames: this.getFeedNames().all()
     }
   }
 

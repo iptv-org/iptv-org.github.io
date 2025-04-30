@@ -1,4 +1,6 @@
 export { default as Add } from './Add.svelte'
+export { default as AddCircle } from './AddCircle.svelte'
+export { default as Alert } from './Alert.svelte'
 export { default as CheckboxChecked } from './CheckboxChecked.svelte'
 export { default as CheckboxDisabled } from './CheckboxDisabled.svelte'
 export { default as CheckboxIndeterminate } from './CheckboxIndeterminate.svelte'

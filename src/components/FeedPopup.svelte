@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Popup, Card, Menu, FeedAddButton, CloseButton } from '~/components'
+  import { Popup, Card, FeedAddIconButton, CloseButton } from '~/components'
   import { Collection } from '@freearhey/core/browser'
   import type { Context } from 'svelte-simple-modal'
   import type { Channel, Feed } from '~/models'
@@ -17,11 +17,6 @@
   )
 
   const { close } = getContext<Context>('simple-modal')
-
-  let isMenuOpened = false
-  function closeMenu() {
-    isMenuOpened = false
-  }
 </script>
 
 <Popup onClose={close}>
@@ -37,9 +32,7 @@
       </span>{channel.getDisplayName()}
     </div>
     <div slot="headerRight" class="inline-flex">
-      <Menu bind:isOpened={isMenuOpened}>
-        <FeedAddButton {channel} onClick={closeMenu} />
-      </Menu>
+      <FeedAddIconButton {channel} />
       <CloseButton onClick={close} />
     </div>
 
