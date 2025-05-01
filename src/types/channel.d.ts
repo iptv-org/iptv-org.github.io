@@ -40,6 +40,7 @@ export type ChannelSearchable = {
   _countryName: string
   _guideSiteNames: string[]
   _streamUrls: string[]
+  _feedNames: string[]
 }
 
 export type ChannelSerializedData = {
@@ -60,6 +61,7 @@ export type ChannelSerializedData = {
   launchedDate?: string
   closedDateString?: string
   closedDate?: string
+  replacedByStreamId?: string
   replacedByChannelId?: string
   websiteUrl?: string
   logoUrl: string

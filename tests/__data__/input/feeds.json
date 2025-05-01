@@ -49,8 +49,8 @@
   },
   {
     "channel": "13MaxTelevision.ar",
-    "id": "SD",
-    "name": "SD",
+    "id": "Panregional",
+    "name": "Panregional",
     "is_main": true,
     "broadcast_area": [
       "s/AR-W"

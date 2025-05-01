@@ -11,7 +11,7 @@
   const params = qs.stringify({
     labels: 'feeds:remove',
     template: '6_feeds_remove.yml',
-    title: `Edit: ${feed.getDisplayName()}`,
+    title: `Remove: ${feed.getDisplayName()}`,
     feed_id: feed.id,
     channel_id: feed.channelId
   })

@@ -6,6 +6,8 @@
   import { selected } from '~/store'
   import * as Icon from '~/icons'
 
+  export let variant = 'default'
+
   const playlistCreator = new PlaylistCreator()
 
   function onClick() {
@@ -52,7 +54,7 @@
   disabled={!$selected.count()}
   aria-label="Download Playlist"
   title="Download Playlist"
-  variant="light"
+  {variant}
 >
   <Icon.Download size={16} />
 </IconButton>

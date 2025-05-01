@@ -1,20 +1,16 @@
 <script lang="ts">
   import type { Context } from 'svelte-simple-modal'
-  import { toast } from '@zerodevx/svelte-toast'
   import { getContext } from 'svelte'
   import { Channel } from '~/models'
   import {
-    ChannelRemoveButton,
     ShareChannelButton,
-    ChannelEditButton,
-    CopyLinkButton,
     BlockedBadge,
     CloseButton,
     ClosedBadge,
+    ChannelMenu,
     HTMLPreview,
     Popup,
-    Card,
-    Menu
+    Card
   } from '~/components'
 
   export let channel: Channel
@@ -28,16 +24,6 @@
     if (event.target.location.pathname === '/') {
       close()
     }
-  }
-
-  let isMenuOpened = false
-  function closeMenu() {
-    isMenuOpened = false
-  }
-
-  function onLinkCopy() {
-    toast.push('Link copied to clipboard')
-    closeMenu()
   }
 </script>
 
@@ -58,11 +44,7 @@
       {#if isTouchDevice}
         <ShareChannelButton {channel} />
       {/if}
-      <Menu bind:isOpened={isMenuOpened}>
-        <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
-        <ChannelEditButton {channel} onClick={closeMenu} />
-        <ChannelRemoveButton {channel} onClick={closeMenu} />
-      </Menu>
+      <ChannelMenu {channel} />
       <CloseButton onClick={close} />
     </div>
     <div slot="body" class="pt-4 pb-3 px-4 sm:py-9 sm:px-11">

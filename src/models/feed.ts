@@ -86,6 +86,10 @@ export class Feed {
     return this
   }
 
+  getStreamId(): string {
+    return `${this.channelId}@${this.id}`
+  }
+
   getUUID(): string {
     return this.channelId + this.id
   }

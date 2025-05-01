@@ -5,4 +5,5 @@ export type HTMLPreviewField = {
   name: string
   type: string
   value: HTMLPreviewImage | HTMLPreviewLink | HTMLPreviewLink[] | HTMLPreviewExternalLink | string
+  title?: string
 }

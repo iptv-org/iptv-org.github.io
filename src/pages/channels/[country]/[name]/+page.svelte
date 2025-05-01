@@ -7,8 +7,8 @@
     ChannelRemoveButton,
     ShareChannelButton,
     ChannelEditButton,
+    FeedAddIconButton,
     CopyLinkButton,
-    FeedAddButton,
     BlockedBadge,
     HTMLPreview,
     ClosedBadge,
@@ -118,9 +118,7 @@
             </div>
           </div>
           <div slot="headerRight">
-            <Menu bind:isOpened={isFeedMenuOpened}>
-              <FeedAddButton {channel} onClick={closeFeedMenu} />
-            </Menu>
+            <FeedAddIconButton {channel} />
           </div>
           <div slot="body">
             <div class="flex flex-col gap-2 p-2 sm:p-5">
