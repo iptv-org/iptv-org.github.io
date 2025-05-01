@@ -11,7 +11,7 @@
   const params = qs.stringify({
     labels: 'channels:remove',
     template: '3_channels_remove.yml',
-    title: `Edit: ${channel.getUniqueName()}`,
+    title: `Remove: ${channel.getUniqueName()}`,
     id: channel.id
   })
 
