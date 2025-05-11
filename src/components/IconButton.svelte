@@ -3,9 +3,11 @@
   export let variant = 'default'
   export let size = 40
 
-  let className = 'rounded-lg text-sm flex items-center justify-center cursor-pointer shrink-0'
-  if (variant === 'light') className += ' hover:bg-primary-810 text-gray-300'
-  else className += ' hover:bg-gray-100 dark:hover:bg-primary-750 text-gray-400'
+  let className =
+    'rounded-lg text-sm flex items-center justify-center cursor-pointer shrink-0 text-gray-400'
+  if (variant === 'dark') className += ' hover:bg-primary-750'
+  else if (variant === 'light') className += ' hover:bg-gray-100'
+  else className += ' hover:bg-gray-100 dark:hover:bg-primary-750'
 </script>
 
 <button

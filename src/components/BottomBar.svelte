@@ -13,14 +13,14 @@
         {$selected.count()} selected
       </div>
       <div class="flex space-x-1 sm:space-x-2 items-center">
-        <ResetButton />
-        <SelectAllButton />
-        <DownloadButton />
+        <ResetButton variant="dark" />
+        <SelectAllButton variant="dark" />
+        <DownloadButton variant="dark" />
         <CloseButton
           onClick={() => {
             downloadMode.set(false)
           }}
-          variant="light"
+          variant="dark"
         />
       </div>
     </div>

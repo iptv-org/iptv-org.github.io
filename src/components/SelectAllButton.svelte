@@ -5,6 +5,8 @@
   import { Channel } from '~/models'
   import * as Icon from '~/icons'
 
+  export let variant = 'default'
+
   const channelsWithStreams: Collection = $channels.filter((channel: Channel) =>
     channel.hasStreams()
   )
@@ -91,11 +93,11 @@
     <Icon.Spinner size={21} />
   </div>
 {:else if isAllSelected}
-  <IconButton onClick={deselectAll} aria-label="Deselect All" title="Deselect All" variant="light">
+  <IconButton onClick={deselectAll} aria-label="Deselect All" title="Deselect All" {variant}>
     <Icon.DeselectAll size={24} />
   </IconButton>
 {:else}
-  <IconButton onClick={selectAll} aria-label="Select All" title="Select All" variant="light">
+  <IconButton onClick={selectAll} aria-label="Select All" title="Select All" {variant}>
     <Icon.SelectAll size={24} />
   </IconButton>
 {/if}

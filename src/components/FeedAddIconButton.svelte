@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from '~/components/Button.svelte'
+  import IconButton from '~/components/IconButton.svelte'
   import type { Channel } from '~/models'
   import * as Icon from '~/icons'
   import qs from 'qs'
@@ -23,7 +23,6 @@
   }
 </script>
 
-<Button onClick={_onClick} label="Add Feed">
-  <Icon.Add slot="left" class="text-gray-400" size={19} />
-  <Icon.ExternalLink slot="right" class="text-gray-400 dark:text-gray-500" size={17} />
-</Button>
+<IconButton onClick={_onClick} title="Add Feed">
+  <Icon.AddCircle class="text-gray-400" size={20} />
+</IconButton>

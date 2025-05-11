@@ -1,12 +1,12 @@
 <script lang="ts">
   import { CloseButton, GuideItem, Popup, Card } from '~/components'
-  import { Collection } from '@freearhey/core/browser'
   import type { Context } from 'svelte-simple-modal'
+  import type { Feed } from '~/models'
   import { getContext } from 'svelte'
   import * as Icon from '~/icons'
 
+  export let feed: Feed
   export let title = 'Guides'
-  export let guides: Collection = new Collection()
 
   const { close } = getContext<Context>('simple-modal')
 </script>
@@ -29,7 +29,7 @@
     </div>
     <div slot="body" class="p-2 sm:p-5 w-full">
       <div class="dark:border-gray-700 rounded-md border border-gray-200">
-        {#each guides.all() as guide}
+        {#each feed.getGuides().all() as guide}
           <GuideItem {guide} />
         {/each}
       </div>
