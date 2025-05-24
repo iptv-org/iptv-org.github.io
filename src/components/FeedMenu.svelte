@@ -2,6 +2,7 @@
   import { toast } from '@zerodevx/svelte-toast'
   import type { Feed } from '~/models'
   import {
+    RequestLinkButton,
     FeedRemoveButton,
     StreamAddButton,
     CopyLinkButton,
@@ -25,6 +26,9 @@
 <Menu bind:isOpened={isMenuOpened}>
   <CopyLinkButton link={feed.getPageUrl()} onCopy={onLinkCopy} />
   <StreamAddButton {feed} onClick={closeMenu} />
+  {#if !feed.hasStreams()}
+    <RequestLinkButton {feed} onClick={closeMenu} />
+  {/if}
   <FeedEditButton {feed} onClick={closeMenu} />
   <FeedRemoveButton {feed} onClick={closeMenu} />
 </Menu>
