@@ -333,6 +333,15 @@ describe('search', () => {
       id: 'Bizarre.al'
     })
   })
+
+  it('can find channels by stream id', () => {
+    let results = searchEngine.search('13MaxTelevision.ar@Panregional')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: '13MaxTelevision.ar'
+    })
+  })
 })
 
 function loadJson(filepath) {
