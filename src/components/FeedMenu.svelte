@@ -25,8 +25,10 @@
 
 <Menu bind:isOpened={isMenuOpened}>
   <CopyLinkButton link={feed.getPageUrl()} onCopy={onLinkCopy} />
-  <StreamAddButton {feed} onClick={closeMenu} />
-  {#if !feed.hasStreams()}
+  {#if !feed.channel.isBlocked()}
+    <StreamAddButton {feed} onClick={closeMenu} />
+  {/if}
+  {#if !feed.hasStreams() && !feed.channel.isBlocked()}
     <RequestLinkButton {feed} onClick={closeMenu} />
   {/if}
   <FeedEditButton {feed} onClick={closeMenu} />
