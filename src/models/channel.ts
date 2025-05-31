@@ -276,6 +276,10 @@ export class Channel {
     return this.getFeeds().map((feed: Feed) => feed.name)
   }
 
+  getStreamIds(): Collection {
+    return this.getFeeds().map((feed: Feed) => feed.getStreamId())
+  }
+
   getSearchable(): ChannelSearchable {
     return {
       id: this.id,
@@ -313,7 +317,8 @@ export class Channel {
       _countryName: this.getCountryName(),
       _guideSiteNames: this.getGuideSiteNames().all(),
       _streamUrls: this.getStreamUrls().all(),
-      _feedNames: this.getFeedNames().all()
+      _feedNames: this.getFeedNames().all(),
+      _streamIds: this.getStreamIds().all()
     }
   }
 

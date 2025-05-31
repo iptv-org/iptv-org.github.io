@@ -41,6 +41,7 @@ export type ChannelSearchable = {
   _guideSiteNames: string[]
   _streamUrls: string[]
   _feedNames: string[]
+  _streamIds: string[]
 }
 
 export type ChannelSerializedData = {
