@@ -242,14 +242,14 @@ export class Channel {
     return broadcastLocationNames.uniq()
   }
 
-  getVideoFormats(): Collection {
-    let videoFormats = new Collection()
+  getFormats(): Collection {
+    let formats = new Collection()
 
     this.getFeeds().forEach((feed: Feed) => {
-      videoFormats.add(feed.videoFormat)
+      formats.add(feed.format)
     })
 
-    return videoFormats.uniq()
+    return formats.uniq()
   }
 
   getTimezoneIds(): Collection {
@@ -307,8 +307,8 @@ export class Channel {
       language: this.getLanguageCodes().all(),
       languages: this.getLanguageCodes().all(),
       broadcast_area: this.getBroadcastAreaCodes().all(),
-      video_format: this.getVideoFormats().all(),
-      video_formats: this.getVideoFormats().all(),
+      format: this.getFormats().all(),
+      formats: this.getFormats().all(),
       timezone: this.getTimezoneIds().all(),
       timezones: this.getTimezoneIds().all(),
       _languageNames: this.getLanguageNames().all(),
@@ -483,12 +483,12 @@ export class Channel {
         value: { label: this.isNSFW.toString(), query: `is_nsfw:${this.isNSFW.toString()}` }
       },
       {
-        name: 'video_formats',
+        name: 'formats',
         type: 'link[]',
-        value: this.getVideoFormats()
+        value: this.getFormats()
           .map((format: string) => ({
             label: format,
-            query: `video_format:${format}`
+            query: `format:${format}`
           }))
           .all()
       },

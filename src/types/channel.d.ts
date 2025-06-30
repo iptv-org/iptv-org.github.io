@@ -30,8 +30,8 @@ export type ChannelSearchable = {
   streams: number
   guides: number
   feeds: number
-  video_format: string[]
-  video_formats: string[]
+  format: string[]
+  formats: string[]
   timezone: string[]
   timezones: string[]
   _languageNames: string[]

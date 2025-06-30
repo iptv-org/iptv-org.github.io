@@ -35,7 +35,7 @@
     },
     { query: 'language:fra', result: 'Find channels that are broadcast in French.' },
     { query: 'category:news', result: 'Finds all the news channels.' },
-    { query: 'video_format:1080p', result: 'Find channels that are broadcast in 1080p.' },
+    { query: 'format:1080p', result: 'Find channels that are broadcast in 1080p.' },
     { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
     { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     {
