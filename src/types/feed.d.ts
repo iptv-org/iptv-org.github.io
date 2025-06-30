@@ -15,7 +15,7 @@ export type FeedSerializedData = {
   timezoneIds: string[]
   languageCodes: string[]
   languages: LanguageSerializedData[]
-  videoFormat: string
+  format: string
   streams: StreamSerializedData[]
   guides: GuideSerializedData[]
 }
@@ -28,5 +28,5 @@ export type FeedData = {
   broadcast_area: string[]
   timezones: string[]
   languages: string[]
-  video_format?: string
+  format?: string
 }

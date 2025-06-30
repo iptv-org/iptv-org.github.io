@@ -13,7 +13,7 @@
     "languages": [
       "spa"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "XtremaCartoons.ar",
@@ -29,7 +29,7 @@
     "languages": [
       "spa"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "LaLiganaZap.ao",
@@ -45,7 +45,7 @@
     "languages": [
       "spa"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "13MaxTelevision.ar",
@@ -61,7 +61,7 @@
     "languages": [
       "spa"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "TV1.dz",
@@ -77,7 +77,7 @@
     "languages": [
       "ita"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "SEN502.us",
@@ -93,7 +93,7 @@
     "languages": [
       "fra"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "ORF2.at",
@@ -109,7 +109,7 @@
     "languages": [
       "ita"
     ],
-    "video_format": "480i"
+    "format": "480i"
   },
   {
     "channel": "Bizarre.al",
@@ -125,6 +125,6 @@
     "languages": [
       "ita"
     ],
-    "video_format": "576i"
+    "format": "576i"
   }
 ]
