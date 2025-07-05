@@ -14,8 +14,11 @@ import {
   Country,
   Stream,
   Guide,
-  Feed
+  Feed,
+  Logo
 } from '.'
+import type { LogoSerializedData } from '~/types/logo'
+import { normalize } from '~/utils'
 
 export class Channel {
   id: string
@@ -38,9 +41,9 @@ export class Channel {
   replacedByStreamId?: string
   replacedByChannelId?: string
   websiteUrl?: string
-  logoUrl: string
   blocklistRecords: Collection = new Collection()
   feeds: Collection = new Collection()
+  logos: Collection = new Collection()
   hasUniqueName: boolean = true
 
   constructor(data?: ChannelData) {
@@ -64,7 +67,6 @@ export class Channel {
     const [replacedByChannelId] = data.replaced_by ? data.replaced_by.split('@') : [undefined]
     this.replacedByChannelId = replacedByChannelId
     this.websiteUrl = data.website
-    this.logoUrl = data.logo
   }
 
   withCountry(countriesKeyByCode: Dictionary): this {
@@ -95,6 +97,12 @@ export class Channel {
 
   withFeeds(feedsGroupedByChannelId: Dictionary): this {
     this.feeds = new Collection(feedsGroupedByChannelId.get(this.id))
+
+    return this
+  }
+
+  withLogos(logosGroupedByChannelId: Dictionary): this {
+    this.logos = new Collection(logosGroupedByChannelId.get(this.id))
 
     return this
   }
@@ -217,8 +225,6 @@ export class Channel {
   }
 
   getFeeds(): Collection {
-    if (!this.feeds) return new Collection()
-
     return this.feeds
   }
 
@@ -280,6 +286,43 @@ export class Channel {
     return this.getFeeds().map((feed: Feed) => feed.getStreamId())
   }
 
+  getLogos(): Collection {
+    function feed(logo: Logo): number {
+      if (!logo.feed) return 1
+      if (logo.feed.isMain) return 1
+
+      return 0
+    }
+
+    function format(logo: Logo): number {
+      const levelByFormat = { SVG: 2, PNG: 1, APNG: 1, WebP: 1, AVIF: 1, JPEG: 0, GIF: 0 }
+
+      return levelByFormat[logo.format] || 0
+    }
+
+    function size(logo: Logo): number {
+      return Math.abs(512 - logo.width) + Math.abs(512 - logo.height)
+    }
+
+    return this.logos.orderBy([feed, format, size], ['desc', 'desc', 'asc'], false)
+  }
+
+  getLogo(): Logo | undefined {
+    return this.getLogos().first()
+  }
+
+  getLogoUrls(): Collection {
+    return this.getLogos().map((logo: Logo) => logo.url)
+  }
+
+  hasLogo(): boolean {
+    return this.getLogos().notEmpty()
+  }
+
+  getLogoUrl(): string {
+    return this.hasLogo() ? this.getLogo().url : ''
+  }
+
   getSearchable(): ChannelSearchable {
     return {
       id: this.id,
@@ -302,6 +345,7 @@ export class Channel {
       is_closed: this.isClosed(),
       is_blocked: this.isBlocked(),
       feeds: this.getFeeds().count(),
+      logos: this.getLogos().count(),
       streams: this.getStreams().count(),
       guides: this.getGuides().count(),
       language: this.getLanguageCodes().all(),
@@ -318,11 +362,14 @@ export class Channel {
       _guideSiteNames: this.getGuideSiteNames().all(),
       _streamUrls: this.getStreamUrls().all(),
       _feedNames: this.getFeedNames().all(),
-      _streamIds: this.getStreamIds().all()
+      _streamIds: this.getStreamIds().all(),
+      _logoUrls: this.getLogoUrls().all()
     }
   }
 
-  serialize(props = { withFeeds: true }): ChannelSerializedData {
+  serialize(props: { [key: string]: boolean } = {}): ChannelSerializedData {
+    props = { withFeeds: true, withLogos: true, ...props }
+
     return {
       id: this.id,
       name: this.name,
@@ -344,13 +391,17 @@ export class Channel {
       replacedByStreamId: this.replacedByStreamId,
       replacedByChannelId: this.replacedByChannelId,
       websiteUrl: this.websiteUrl,
-      logoUrl: this.logoUrl,
       blocklistRecords: this.blocklistRecords
         .map((blocklistRecord: BlocklistRecord) => blocklistRecord.serialize())
         .all(),
       feeds: props.withFeeds
         ? this.getFeeds()
             .map((feed: Feed) => feed.serialize())
+            .all()
+        : [],
+      logos: props.withLogos
+        ? this.getLogos()
+            .map((logo: Logo) => logo.serialize({ withChannel: false, withFeed: false }))
             .all()
         : [],
       hasUniqueName: this.hasUniqueName
@@ -379,12 +430,14 @@ export class Channel {
     this.replacedByStreamId = data.replacedByStreamId
     this.replacedByChannelId = data.replacedByChannelId
     this.websiteUrl = data.websiteUrl
-    this.logoUrl = data.logoUrl
     this.blocklistRecords = new Collection(data.blocklistRecords).map(
       (data: BlocklistRecordSerializedData) => new BlocklistRecord().deserialize(data)
     )
     this.feeds = new Collection(data.feeds).map((data: FeedSerializedData) =>
       new Feed().deserialize(data)
+    )
+    this.logos = new Collection(data.logos).map((data: LogoSerializedData) =>
+      new Logo().deserialize(data)
     )
     this.hasUniqueName = data.hasUniqueName
 
@@ -393,14 +446,13 @@ export class Channel {
 
   getFieldset(): HTMLPreviewField[] {
     return [
+      { name: 'id', type: 'string', value: { text: this.id, title: this.id } },
+      { name: 'name', type: 'string', value: { text: this.name, title: this.name } },
       {
-        name: 'logo',
-        type: 'image',
-        value: { src: this.logoUrl, alt: `${this.name} logo`, title: this.logoUrl }
+        name: 'alt_names',
+        type: 'string[]',
+        value: this.altNames.map(altName => ({ text: altName, title: altName })).all()
       },
-      { name: 'id', type: 'string', value: this.id, title: this.id },
-      { name: 'name', type: 'string', value: this.name, title: this.name },
-      { name: 'alt_names', type: 'string[]', value: this.altNames.all() },
       {
         name: 'network',
         type: 'link',
@@ -495,14 +547,22 @@ export class Channel {
       {
         name: 'launched',
         type: 'string',
-        value: this.launchedDate ? this.launchedDate.format('D MMMM YYYY') : null,
-        title: this.launchedDateString
+        value: this.launchedDate
+          ? {
+              text: this.launchedDate.format('D MMMM YYYY'),
+              title: this.launchedDateString
+            }
+          : null
       },
       {
         name: 'closed',
         type: 'string',
-        value: this.closedDate ? this.closedDate.format('D MMMM YYYY') : null,
-        title: this.closedDateString
+        value: this.closedDate
+          ? {
+              text: this.closedDate.format('D MMMM YYYY'),
+              title: this.closedDateString
+            }
+          : null
       },
       {
         name: 'replaced_by',
@@ -530,7 +590,7 @@ export class Channel {
     return {
       '@context': 'https://schema.org/',
       '@type': 'TelevisionChannel',
-      image: this.logoUrl,
+      image: this.getLogoUrl(),
       identifier: this.id,
       name: this.name,
       alternateName: this.altNames.map((name: string) => ({ '@value': name })),
@@ -538,10 +598,4 @@ export class Channel {
       sameAs: this.websiteUrl
     }
   }
-}
-
-function normalize(value: string) {
-  value = value.includes(' ') ? `"${value}"` : value
-
-  return encodeURIComponent(value)
 }

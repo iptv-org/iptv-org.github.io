@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Context } from 'svelte-simple-modal'
+  import Modal from 'svelte-simple-modal'
   import { getContext } from 'svelte'
   import { Channel } from '~/models'
   import {
@@ -9,6 +10,7 @@
     ClosedBadge,
     ChannelMenu,
     HTMLPreview,
+    LogoPreview,
     Popup,
     Card
   } from '~/components'
@@ -47,7 +49,14 @@
       <ChannelMenu {channel} />
       <CloseButton onClick={close} />
     </div>
-    <div slot="body" class="pt-4 pb-3 px-4 sm:py-9 sm:px-11">
+    <div slot="body" class="pt-3 pb-4 px-4 sm:pb-7 sm:px-11 sm:pt-6 flex-col space-y-5">
+      <Modal
+        unstyled={true}
+        classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
+        closeButton={false}
+      >
+        <LogoPreview {channel} />
+      </Modal>
       <HTMLPreview fieldset={channel.getFieldset()} onClick={close} />
     </div>
   </Card>

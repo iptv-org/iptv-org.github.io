@@ -10,7 +10,7 @@
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const params = qs.stringify({
     labels: 'feeds:edit',
-    template: '5_feeds_edit.yml',
+    template: '05_feeds_edit.yml',
     title: `Edit: ${feed.getDisplayName()}`,
     feed_id: feed.id,
     channel_id: feed.channelId

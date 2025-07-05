@@ -15,8 +15,10 @@
     FeedItem,
     NavBar,
     Card,
-    Menu
+    Menu,
+    LogoPreview
   } from '~/components'
+  import Modal from 'svelte-simple-modal'
 
   export let data
 
@@ -99,7 +101,14 @@
             </Menu>
           </div>
           <div slot="body">
-            <div class="pt-4 pb-3 px-4 sm:py-9 sm:px-11">
+            <div class="py-3 px-4 sm:pb-7 sm:px-11 sm:pt-6 flex-col space-y-5">
+              <Modal
+                unstyled={true}
+                classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
+                closeButton={false}
+              >
+                <LogoPreview {channel} />
+              </Modal>
               <HTMLPreview fieldset={channel.getFieldset()} />
             </div>
           </div>
@@ -122,8 +131,8 @@
           </div>
           <div slot="body">
             <div class="flex flex-col gap-2 p-2 sm:p-5">
-              {#each feeds.all() as feed, index (feed.getUUID())}
-                <FeedItem {feed} />
+              {#each feeds.all() as feed (feed.getUUID())}
+                <FeedItem {channel} {feed} />
               {/each}
             </div>
           </div>

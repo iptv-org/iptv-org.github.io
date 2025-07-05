@@ -1,6 +1,6 @@
 <script lang="ts">
   import { NavBar, BottomBar, CountryItem, SearchField, SearchSyntaxPopup } from '~/components'
-  import { setPageTitle, setSearchParam } from '~/utils'
+  import { setPageTitle, setSearchParam } from '~/navigation'
   import { Collection } from '@freearhey/core/browser'
   import type { Context } from 'svelte-simple-modal'
   import { ApiClient, DataProcessor } from '~/core'

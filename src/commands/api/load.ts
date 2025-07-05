@@ -35,6 +35,7 @@ async function main() {
   const requests = [
     dataLoader.download('channels.json'),
     dataLoader.download('feeds.json'),
+    dataLoader.download('logos.json'),
     dataLoader.download('categories.json'),
     dataLoader.download('countries.json'),
     dataLoader.download('regions.json'),

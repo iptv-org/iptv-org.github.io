@@ -1,6 +1,6 @@
 import { Collection, type Dictionary } from '@freearhey/core/browser'
 import type { FeedData, FeedSerializedData } from '~/types/feed'
-import { Guide, Stream, Language, BroadcastArea, Channel } from './'
+import { Guide, Stream, Language, BroadcastArea, Channel, Logo } from './'
 import type { HTMLPreviewField } from '~/types/htmlPreviewField'
 
 export class Feed {
@@ -17,6 +17,7 @@ export class Feed {
   format: string
   streams?: Collection
   guides?: Collection
+  logos: Collection = new Collection()
 
   constructor(data?: FeedData) {
     if (!data) return
@@ -35,6 +36,12 @@ export class Feed {
     if (!this.channelId) return this
 
     this.channel = channelsKeyById.get(this.channelId)
+
+    return this
+  }
+
+  withLogos(logosGroupedByStreamId: Dictionary): this {
+    this.logos = new Collection(logosGroupedByStreamId.get(`${this.channelId}@${this.id}`))
 
     return this
   }
@@ -98,6 +105,36 @@ export class Feed {
     if (!this.broadcastArea) return new Collection()
 
     return this.broadcastArea
+  }
+
+  getLogos(): Collection {
+    function format(logo: Logo): number {
+      const levelByFormat = { SVG: 2, PNG: 1, APNG: 1, WebP: 1, AVIF: 1, JPEG: 0, GIF: 0 }
+
+      return levelByFormat[logo.format] || 0
+    }
+
+    function size(logo: Logo): number {
+      return Math.abs(512 - logo.width) + Math.abs(512 - logo.height)
+    }
+
+    return this.logos.orderBy([format, size], ['desc', 'asc'], false)
+  }
+
+  getLogo(): Logo | undefined {
+    return this.getLogos().first()
+  }
+
+  getLogoUrls(): Collection {
+    return this.getLogos().map((logo: Logo) => logo.url)
+  }
+
+  hasLogo(): boolean {
+    return this.getLogos().notEmpty()
+  }
+
+  getLogoUrl(): string {
+    return this.hasLogo() ? this.getLogo().url : ''
   }
 
   getBroadcastLocationCodes(): Collection {
@@ -169,13 +206,12 @@ export class Feed {
 
   getFieldset(): HTMLPreviewField[] {
     return [
-      { name: 'id', type: 'string', value: this.id, title: this.id },
-      { name: 'name', type: 'string', value: this.name, title: this.name },
+      { name: 'id', type: 'string', value: { text: this.id, title: this.id } },
+      { name: 'name', type: 'string', value: { text: this.name, title: this.name } },
       {
         name: 'is_main',
         type: 'string',
-        value: this.isMain.toString(),
-        title: this.isMain.toString()
+        value: { text: this.isMain.toString(), title: this.isMain.toString() }
       },
       {
         name: 'broadcast_area',
@@ -215,10 +251,15 @@ export class Feed {
     ]
   }
 
-  serialize(): FeedSerializedData {
+  serialize(props: { [key: string]: boolean } = {}): FeedSerializedData {
+    props = { withChannel: true, withLogos: true, ...props }
+
     return {
       channelId: this.channelId,
-      channel: this.channel ? this.channel.serialize({ withFeeds: false }) : null,
+      channel:
+        this.channel && props.withChannel
+          ? this.channel.serialize({ withFeeds: false, withLogos: false })
+          : null,
       id: this.id,
       name: this.name,
       isMain: this.isMain,
@@ -232,6 +273,11 @@ export class Feed {
         .map((language: Language) => language.serialize())
         .all(),
       format: this.format,
+      logos: props.withLogos
+        ? this.getLogos()
+            .map((logo: Logo) => logo.serialize({ withFeed: false }))
+            .all()
+        : [],
       streams: this.getStreams()
         .map((stream: Stream) => stream.serialize())
         .all(),
@@ -255,6 +301,7 @@ export class Feed {
     this.languageCodes = new Collection(data.languageCodes)
     this.languages = new Collection(data.languages).map(data => new Language().deserialize(data))
     this.format = data.format
+    this.logos = new Collection(data.logos).map(data => new Logo().deserialize(data))
     this.streams = new Collection(data.streams).map(data => new Stream().deserialize(data))
     this.guides = new Collection(data.guides).map(data => new Guide().deserialize(data))
 

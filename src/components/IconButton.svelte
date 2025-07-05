@@ -7,6 +7,7 @@
     'rounded-lg text-sm flex items-center justify-center cursor-pointer shrink-0 text-gray-400'
   if (variant === 'dark') className += ' hover:bg-primary-750'
   else if (variant === 'light') className += ' hover:bg-gray-100'
+  else if (variant === 'overlay') className += ' hover:bg-white/10'
   else className += ' hover:bg-gray-100 dark:hover:bg-primary-750'
 </script>
 
