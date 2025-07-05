@@ -20,6 +20,7 @@ beforeEach(async () => {
 
   mockAxios.onGet(`categories.json`).reply(200, loadJson('categories.json'))
   mockAxios.onGet(`countries.json`).reply(200, loadJson('countries.json'))
+  mockAxios.onGet(`logos.json`).reply(200, loadJson('logos.json'))
   mockAxios.onGet(`languages.json`).reply(200, loadJson('languages.json'))
   mockAxios.onGet(`blocklist.json`).reply(200, loadJson('blocklist.json'))
   mockAxios.onGet(`timezones.json`).reply(200, loadJson('timezones.json'))
@@ -340,6 +341,24 @@ describe('search', () => {
     expect(results.count()).toBe(1)
     expect(results.first()).toMatchObject({
       id: '13MaxTelevision.ar'
+    })
+  })
+
+  it('can find channels by logo url', () => {
+    let results = searchEngine.search('https://i.imgur.com/aR5q6mA.png')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: '002RadioTV.do'
+    })
+  })
+
+  it('can find channels that do not have a logo', () => {
+    let results = searchEngine.search('logos:0')
+
+    expect(results.count()).toBe(13)
+    expect(results.first()).toMatchObject({
+      id: '01TV.fr'
     })
   })
 })
