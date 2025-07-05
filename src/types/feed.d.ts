@@ -3,6 +3,7 @@ import type { LanguageSerializedData } from './language'
 import type { StreamSerializedData } from './stream'
 import type { GuideSerializedData } from './guide'
 import type { ChannelSerializedData } from './channel'
+import type { LogoSerializedData } from './logo'
 
 export type FeedSerializedData = {
   channelId: string
@@ -15,9 +16,10 @@ export type FeedSerializedData = {
   timezoneIds: string[]
   languageCodes: string[]
   languages: LanguageSerializedData[]
-  videoFormat: string
+  format: string
   streams: StreamSerializedData[]
   guides: GuideSerializedData[]
+  logos: LogoSerializedData[]
 }
 
 export type FeedData = {
@@ -28,5 +30,5 @@ export type FeedData = {
   broadcast_area: string[]
   timezones: string[]
   languages: string[]
-  video_format?: string
+  format?: string
 }

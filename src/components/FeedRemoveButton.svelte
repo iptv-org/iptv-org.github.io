@@ -10,7 +10,7 @@
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const params = qs.stringify({
     labels: 'feeds:remove',
-    template: '6_feeds_remove.yml',
+    template: '06_feeds_remove.yml',
     title: `Remove: ${feed.getDisplayName()}`,
     feed_id: feed.id,
     channel_id: feed.channelId

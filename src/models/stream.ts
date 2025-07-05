@@ -79,7 +79,7 @@ export class Stream {
     link.title = this.getDisplayName()
     link.attrs = {
       'tvg-id': this.getId(),
-      'tvg-logo': this.channel.logoUrl,
+      'tvg-logo': this.channel.getLogoUrl(),
       'group-title': this.channel
         .getCategories()
         .map((category: Category) => category.name)
@@ -102,15 +102,19 @@ export class Stream {
 
   getFieldset(): HTMLPreviewField[] {
     return [
-      { name: 'url', type: 'string', value: this.url, title: this.url },
+      { name: 'url', type: 'string', value: { text: this.url, title: this.url } },
       this.referrer
-        ? { name: 'referrer', type: 'string', value: this.referrer, title: this.referrer }
+        ? { name: 'referrer', type: 'string', value: { text: this.referrer, title: this.referrer } }
         : null,
       this.userAgent
-        ? { name: 'user_agent', type: 'string', value: this.userAgent, title: this.userAgent }
+        ? {
+            name: 'user_agent',
+            type: 'string',
+            value: { text: this.userAgent, title: this.userAgent }
+          }
         : null,
       this.quality
-        ? { name: 'quality', type: 'string', value: this.quality, title: this.quality }
+        ? { name: 'quality', type: 'string', value: { text: this.quality, title: this.quality } }
         : null
     ]
   }

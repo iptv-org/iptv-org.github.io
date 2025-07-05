@@ -1,6 +1,6 @@
 <script>
-  import { query, hasQuery, search } from '~/store'
-  import { setSearchParam } from '~/utils'
+  import { query, hasQuery, search, isSearching } from '~/store'
+  import { setSearchParam } from '~/navigation'
   import { goto } from '$app/navigation'
   import {
     CreatePlaylistButton,

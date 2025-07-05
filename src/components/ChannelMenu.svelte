@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { ChannelRemoveButton, ChannelEditButton, CopyLinkButton, Menu } from '~/components'
+  import {
+    ChannelRemoveButton,
+    ChannelEditButton,
+    CopyLinkButton,
+    LogoAddButton,
+    Menu
+  } from '~/components'
   import { toast } from '@zerodevx/svelte-toast'
   import type { Channel } from '~/models'
 
@@ -18,6 +24,9 @@
 
 <Menu bind:isOpened={isMenuOpened}>
   <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
+  {#if !channel.hasLogo()}
+    <LogoAddButton {channel} onClick={closeMenu} />
+  {/if}
   <ChannelEditButton {channel} onClick={closeMenu} />
   <ChannelRemoveButton {channel} onClick={closeMenu} />
 </Menu>

@@ -1,25 +1,6 @@
-import { ApiClient } from './apiClient'
-import { Collection } from '@freearhey/core/browser'
+import type { ApiClient } from './apiClient'
 import type { DataProcessor } from './dataProcessor'
-
-export type DataLoaderProps = {
-  client: ApiClient
-  processor: DataProcessor
-  storage?: any
-  progressBar?: any
-}
-
-export type DataLoaderData = {
-  channels: Collection
-  countries: Collection
-  regions: Collection
-  languages: Collection
-  subdivisions: Collection
-  categories: Collection
-  streams: Collection
-  guides: Collection
-  blocklistRecords: Collection
-}
+import type { DataLoaderData, DataLoaderProps } from '../types/dataLoader'
 
 export class DataLoader {
   client: ApiClient
@@ -38,6 +19,7 @@ export class DataLoader {
     const [
       countries,
       regions,
+      logos,
       subdivisions,
       languages,
       categories,
@@ -50,6 +32,7 @@ export class DataLoader {
     ] = await Promise.all([
       this.fetch('countries.json'),
       this.fetch('regions.json'),
+      this.fetch('logos.json'),
       this.fetch('subdivisions.json'),
       this.fetch('languages.json'),
       this.fetch('categories.json'),
@@ -64,6 +47,7 @@ export class DataLoader {
     return this.processor.process({
       countries,
       regions,
+      logos,
       subdivisions,
       languages,
       categories,
@@ -80,6 +64,7 @@ export class DataLoader {
     const [
       countries,
       regions,
+      logos,
       subdivisions,
       languages,
       categories,
@@ -92,6 +77,7 @@ export class DataLoader {
     ] = await Promise.all([
       this.storage.load('countries.json'),
       this.storage.load('regions.json'),
+      this.storage.load('logos.json'),
       this.storage.load('subdivisions.json'),
       this.storage.load('languages.json'),
       this.storage.load('categories.json'),
@@ -106,6 +92,7 @@ export class DataLoader {
     return this.processor.process({
       countries,
       regions,
+      logos,
       subdivisions,
       languages,
       categories,

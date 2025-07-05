@@ -7,6 +7,7 @@
     StreamAddButton,
     CopyLinkButton,
     FeedEditButton,
+    LogoAddButton,
     Menu
   } from '~/components'
 
@@ -25,7 +26,10 @@
 
 <Menu bind:isOpened={isMenuOpened}>
   <CopyLinkButton link={feed.getPageUrl()} onCopy={onLinkCopy} />
-  {#if !feed.channel.isBlocked() && !feed.channel.isClosed()}
+  {#if !feed.hasLogo()}
+    <LogoAddButton channel={feed.channel} {feed} onClick={closeMenu} />
+  {/if}
+  {#if !feed.hasStreams() && !feed.channel.isBlocked() && !feed.channel.isClosed()}
     <StreamAddButton {feed} onClick={closeMenu} />
   {/if}
   {#if !feed.hasStreams() && !feed.channel.isBlocked() && !feed.channel.isClosed()}

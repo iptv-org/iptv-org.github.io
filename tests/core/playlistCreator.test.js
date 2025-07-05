@@ -10,6 +10,7 @@ describe('PlaylistCreator', () => {
     const { streams } = dataProcessor.process({
       streams: loadJson('streams.json'),
       channels: loadJson('channels.json'),
+      logos: loadJson('logos.json'),
       feeds: loadJson('feeds.json'),
       categories: loadJson('categories.json')
     })

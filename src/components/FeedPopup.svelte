@@ -43,7 +43,7 @@
         closeButton={false}
       >
         {#each feeds.all() as feed, index (feed.getUUID())}
-          <FeedItem {feed} onClose={close} />
+          <FeedItem {channel} {feed} onClose={close} />
         {/each}
       </Modal>
     </div>

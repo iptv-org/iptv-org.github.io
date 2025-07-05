@@ -1,18 +1,21 @@
 <script lang="ts">
   import type { Context } from 'svelte-simple-modal'
+  import Modal from 'svelte-simple-modal'
   import { getContext } from 'svelte'
   import { page } from '$app/state'
   import * as Icon from '~/icons'
-  import { Feed } from '~/models'
+  import { Channel, Feed } from '~/models'
   import {
     ExpandButton,
     StreamsPopup,
     HTMLPreview,
     GuidesPopup,
+    LogoPreview,
     CodeBlock,
     FeedMenu
   } from '~/components'
 
+  export let channel: Channel
   export let feed: Feed
   export let onClose = () => {}
 
@@ -84,7 +87,14 @@
     </div>
   </div>
   {#if isExpanded}
-    <div class="w-full flex px-6 pt-5 pb-2">
+    <div class="w-full px-6 pt-5 pb-2 flex-col space-y-5">
+      <Modal
+        unstyled={true}
+        classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
+        closeButton={false}
+      >
+        <LogoPreview {channel} {feed} />
+      </Modal>
       <HTMLPreview fieldset={feed.getFieldset()} onClick={_onClose} />
     </div>
   {/if}

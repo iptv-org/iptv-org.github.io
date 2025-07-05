@@ -21,8 +21,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.002radio.com/",
-    "logo": "https://i.imgur.com/7oNe8xj.png"
+    "website": "https://www.002radio.com/"
   },
   {
     "id": "01TV.fr",
@@ -47,8 +46,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.01net.com/tag/01nettv/",
-    "logo": "https://i.imgur.com/RMucFq8.png"
+    "website": "https://www.01net.com/tag/01nettv/"
   },
   {
     "id": "FashionTVJohannesburg.fr",
@@ -74,8 +72,7 @@
     "launched": "2000-10-01",
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.fashiontv.com/",
-    "logo": "https://i.imgur.com/6u4tZn6.png"
+    "website": "https://www.fashiontv.com/"
   },
   {
     "id": "XtremaCartoons.ar",
@@ -100,8 +97,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://xtrematv.com/",
-    "logo": "https://i.imgur.com/X2d8y4e.png"
+    "website": "https://xtrematv.com/"
   },
   {
     "id": "XtremaRetroCartoons.ar",
@@ -125,8 +121,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": null,
-    "logo": "https://i.imgur.com/60ylWbQ.png"
+    "website": null
   },
   {
     "id": "TV1.dz",
@@ -159,8 +154,7 @@
     "launched": "1956-12-24",
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.entv.dz/",
-    "logo": "https://i.imgur.com/F0DOrxX.png"
+    "website": "https://www.entv.dz/"
   },
   {
     "id": "K11UUD1.as",
@@ -186,8 +180,7 @@
     "launched": "2003-10-14",
     "closed": null,
     "replaced_by": null,
-    "website": "https://asamtv.org/",
-    "logo": "https://i.imgur.com/NQD8Zer.png"
+    "website": "https://asamtv.org/"
   },
   {
     "id": "13MaxTelevision.ar",
@@ -215,8 +208,7 @@
     "launched": "1965-01-01",
     "closed": null,
     "replaced_by": null,
-    "website": "https://live-tv-channels.org/livetv/ar-13-max-tv.html",
-    "logo": "https://i.imgur.com/QvF4l2t.png"
+    "website": "https://live-tv-channels.org/livetv/ar-13-max-tv.html"
   },
   {
     "id": "Bizarre.al",
@@ -240,8 +232,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "http://www.tring.al/",
-    "logo": "https://i.imgur.com/vpS477d.png"
+    "website": "http://www.tring.al/"
   },
   {
     "id": "AynaTV.af",
@@ -267,8 +258,7 @@
     "launched": "2004-01-01",
     "closed": "2022-02-16",
     "replaced_by": null,
-    "website": "http://www.ayna.af/",
-    "logo": "https://i.imgur.com/2tHlT5Q.png"
+    "website": "http://www.ayna.af/"
   },
   {
     "id": "LaLiganaZap.ao",
@@ -294,8 +284,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.zap.co.ao/",
-    "logo": "https://i.imgur.com/NWFShcJ.png"
+    "website": "https://www.zap.co.ao/"
   },
   {
     "id": "SEN502.us",
@@ -321,8 +310,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.senetwork.tv/",
-    "logo": "https://i.imgur.com/cEGW3pw.png"
+    "website": "https://www.senetwork.tv/"
   },
   {
     "id": "SEN550.us",
@@ -346,8 +334,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://www.senetwork.tv/",
-    "logo": "https://i.imgur.com/T4vLkeH.png"
+    "website": "https://www.senetwork.tv/"
   },
   {
     "id": "CFCNTV2.ca",
@@ -373,8 +360,7 @@
     "launched": null,
     "closed": null,
     "replaced_by": null,
-    "website": "https://calgary.ctvnews.ca/",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/CTV_logo_2018.svg/512px-CTV_logo_2018.svg.png"
+    "website": "https://calgary.ctvnews.ca/"
   },
   {
     "id": "ORF2.at",
@@ -400,7 +386,6 @@
     "launched": "2004-07-05",
     "closed": null,
     "replaced_by": null,
-    "website": "https://tv.orf.at/",
-    "logo": "https://i.imgur.com/Hmcl4qR.png"
+    "website": "https://tv.orf.at/"
   }
 ]

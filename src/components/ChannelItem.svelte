@@ -81,14 +81,17 @@
 >
   <div class="px-4 sm:pl-10 sm:pr-16 w-28 sm:w-[200px] flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
-      {#if channel.logoUrl}
+      {#if channel.hasLogo()}
         <img
           class="block align-middle mx-auto max-w-20 max-h-[2.75rem] text-sm text-gray-400 dark:text-gray-600 cursor-defaults"
           loading="lazy"
           referrerpolicy="no-referrer"
-          src={channel.logoUrl}
+          src={channel.getLogoUrl()}
           alt={channel.getDisplayName()}
+          title={channel.getLogoUrl()}
         />
+      {:else}
+        <Icon.NoImage size={25} class="text-gray-400" />
       {/if}
     </div>
   </div>
