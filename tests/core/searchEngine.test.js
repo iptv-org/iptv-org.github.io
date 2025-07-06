@@ -317,7 +317,7 @@ describe('search', () => {
   })
 
   it('can find channels by video format', () => {
-    let results = searchEngine.search('video_format:576i')
+    let results = searchEngine.search('format:576i')
 
     expect(results.count()).toBe(1)
     expect(results.first()).toMatchObject({

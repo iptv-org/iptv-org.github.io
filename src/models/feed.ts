@@ -14,7 +14,7 @@ export class Feed {
   timezoneIds: Collection
   languageCodes: Collection
   languages?: Collection
-  videoFormat: string
+  format: string
   streams?: Collection
   guides?: Collection
 
@@ -28,7 +28,7 @@ export class Feed {
     this.broadcastAreaCodes = new Collection(data.broadcast_area)
     this.timezoneIds = new Collection(data.timezones)
     this.languageCodes = new Collection(data.languages)
-    this.videoFormat = data.video_format
+    this.format = data.format
   }
 
   withChannel(channelsKeyById: Dictionary): this {
@@ -208,9 +208,9 @@ export class Feed {
           .all()
       },
       {
-        name: 'video_format',
+        name: 'format',
         type: 'link',
-        value: { label: this.videoFormat, query: `video_format:${this.videoFormat}` }
+        value: { label: this.format, query: `format:${this.format}` }
       }
     ]
   }
@@ -231,7 +231,7 @@ export class Feed {
       languages: this.getLanguages()
         .map((language: Language) => language.serialize())
         .all(),
-      videoFormat: this.videoFormat,
+      format: this.format,
       streams: this.getStreams()
         .map((stream: Stream) => stream.serialize())
         .all(),
@@ -254,7 +254,7 @@ export class Feed {
     this.timezoneIds = new Collection(data.timezoneIds)
     this.languageCodes = new Collection(data.languageCodes)
     this.languages = new Collection(data.languages).map(data => new Language().deserialize(data))
-    this.videoFormat = data.videoFormat
+    this.format = data.format
     this.streams = new Collection(data.streams).map(data => new Stream().deserialize(data))
     this.guides = new Collection(data.guides).map(data => new Guide().deserialize(data))
 
