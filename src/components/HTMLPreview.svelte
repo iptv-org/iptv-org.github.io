@@ -62,17 +62,18 @@
                   >
                 </div>
               {:else if field.name === 'id'}
-                <span class="break-all" title={field.value.toString()}>{field.value}</span>
+                <span class="break-all" title={field.value.text.toString()}>{field.value.text}</span
+                >
               {:else if field.type === 'string[]'}
                 <div class="overflow-hidden text-ellipsis">
                   {#each field.value as value, i}
                     {#if i > 0}<span>,&nbsp; </span>
                     {/if}
-                    <span title={value.toString()}>{value}</span>
+                    <span title={value.text.toString()}>{value.text}</span>
                   {/each}
                 </div>
               {:else if field.type === 'string'}
-                <span class="break-words" title={field.title}>{field.value}</span>
+                <span class="break-words" title={field.value.title}>{field.value.text}</span>
               {/if}
             </div>
           </td>

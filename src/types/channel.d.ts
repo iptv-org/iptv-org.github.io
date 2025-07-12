@@ -2,6 +2,7 @@ import type { BlocklistRecordSerializedData } from './blocklistRecord'
 import type { CategorySerializedData } from './category'
 import type { CountrySerializedData } from './country'
 import type { FeedSerializedData } from './feed'
+import type { LogoSerializedData } from './logo'
 import type { SubdivisionSerializedData } from './subdivision'
 
 export type ChannelSearchable = {
@@ -30,6 +31,7 @@ export type ChannelSearchable = {
   streams: number
   guides: number
   feeds: number
+  logos: number
   format: string[]
   formats: string[]
   timezone: string[]
@@ -42,6 +44,7 @@ export type ChannelSearchable = {
   _streamUrls: string[]
   _feedNames: string[]
   _streamIds: string[]
+  _logoUrls: string[]
 }
 
 export type ChannelSerializedData = {
@@ -65,9 +68,9 @@ export type ChannelSerializedData = {
   replacedByStreamId?: string
   replacedByChannelId?: string
   websiteUrl?: string
-  logoUrl: string
   blocklistRecords: BlocklistRecordSerializedData[]
   feeds: FeedSerializedData[]
+  logos: LogoSerializedData[]
   hasUniqueName: boolean
 }
 
@@ -86,5 +89,4 @@ export type ChannelData = {
   closed: string
   replaced_by: string
   website: string
-  logo: string
 }

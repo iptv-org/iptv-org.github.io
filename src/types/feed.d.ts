@@ -3,6 +3,7 @@ import type { LanguageSerializedData } from './language'
 import type { StreamSerializedData } from './stream'
 import type { GuideSerializedData } from './guide'
 import type { ChannelSerializedData } from './channel'
+import type { LogoSerializedData } from './logo'
 
 export type FeedSerializedData = {
   channelId: string
@@ -18,6 +19,7 @@ export type FeedSerializedData = {
   format: string
   streams: StreamSerializedData[]
   guides: GuideSerializedData[]
+  logos: LogoSerializedData[]
 }
 
 export type FeedData = {

@@ -9,7 +9,8 @@ import {
   Channel,
   Guide,
   BlocklistRecord,
-  Feed
+  Feed,
+  Logo
 } from '../models'
 
 export class DataProcessor {
@@ -42,6 +43,8 @@ export class DataProcessor {
     const languages = new Collection(data.languages).map(data => new Language(data))
     const languagesKeyByCode = languages.keyBy((language: Language) => language.code)
 
+    let logos = new Collection(data.logos).map(data => new Logo(data))
+
     let feeds = new Collection(data.feeds).map(data =>
       new Feed(data)
         .withStreams(streamsGroupedByStreamId)
@@ -64,9 +67,18 @@ export class DataProcessor {
     const channelsKeyById = channels.keyBy((channel: Channel) => channel.id)
     const channelsGroupedByName = channels.groupBy((channel: Channel) => channel.name)
 
-    channels = channels.map((channel: Channel) => channel.setHasUniqueName(channelsGroupedByName))
+    logos = logos.map((logo: Logo) => logo.withChannel(channelsKeyById).withFeed(feedsKeyById))
 
-    feeds = feeds.map((feed: Feed) => feed.withChannel(channelsKeyById))
+    const logosGroupedByChannelId = logos.groupBy((logo: Logo) => logo.channelId)
+    const logosGroupedByStreamId = logos.groupBy((logo: Logo) => logo.getStreamId())
+
+    channels = channels.map((channel: Channel) =>
+      channel.setHasUniqueName(channelsGroupedByName).withLogos(logosGroupedByChannelId)
+    )
+
+    feeds = feeds.map((feed: Feed) =>
+      feed.withChannel(channelsKeyById).withLogos(logosGroupedByStreamId)
+    )
 
     streams = streams.map((stream: Stream) =>
       stream.withChannel(channelsKeyById).withFeed(feedsKeyById)
@@ -85,7 +97,8 @@ export class DataProcessor {
       streams,
       blocklistRecords,
       channels,
-      guides
+      guides,
+      logos
     }
   }
 }

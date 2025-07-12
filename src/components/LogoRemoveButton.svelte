@@ -1,25 +1,27 @@
 <script lang="ts">
   import Button from '~/components/Button.svelte'
-  import type { Channel } from '~/models'
+  import type { Logo } from '~/models'
   import * as Icon from '~/icons'
   import qs from 'qs'
 
-  export let channel: Channel
+  export let logo: Logo
   export let onClick = () => {}
 
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const params = qs.stringify({
-    labels: 'channels:remove',
-    template: '03_channels_remove.yml',
-    title: `Remove: ${channel.getUniqueName()}`,
-    id: channel.id
+    labels: 'logos:remove',
+    template: '09_logos_remove.yml',
+    title: `Remove: ${logo.getDisplayName()} Logo`,
+    feed_id: logo.feedId,
+    channel_id: logo.channelId,
+    logo_url: logo.url
   })
 
   const url = `${endpoint}?${params}`
 
   function _onClick() {
-    onClick()
     window.open(url, '_blank')
+    onClick()
   }
 </script>
 

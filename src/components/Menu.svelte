@@ -4,6 +4,7 @@
   import * as Icon from '~/icons'
 
   export let isOpened = false
+  export let variant = 'default'
 
   function toggleMenu() {
     isOpened = !isOpened
@@ -15,7 +16,7 @@
 </script>
 
 <div class="relative" use:clickOutside on:outside={closeMenu}>
-  <IconButton onClick={toggleMenu} aria-label="Menu" title="Menu">
+  <IconButton onClick={toggleMenu} aria-label="Menu" title="Menu" {variant}>
     <Icon.Menu size={16} />
   </IconButton>
 

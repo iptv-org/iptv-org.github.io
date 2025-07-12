@@ -48,6 +48,7 @@
         'Finds channels that have been added to our blocklist due to the claim of the copyright holder.'
     },
     { query: 'feeds:>1', result: 'Finds channels with more than 1 feed.' },
+    { query: 'logos:0', result: 'Finds channels that do not have a logo.' },
     { query: 'streams:<2', result: 'Finds channels with less than 2 streams.' },
     { query: 'guides:>0', result: 'Finds channels that have guides.' }
   ]

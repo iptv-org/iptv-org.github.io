@@ -10,7 +10,7 @@
   const endpoint = 'https://github.com/iptv-org/database/issues/new'
   const params = qs.stringify({
     labels: 'feeds:add',
-    template: '4_feeds_add.yml',
+    template: '04_feeds_add.yml',
     title: `Add: ${channel.name} Feed`,
     channel_id: channel.id
   })
