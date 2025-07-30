@@ -41,8 +41,10 @@ export type ChannelSearchable = {
   _broadcastLocationNames: string[]
   _countryName: string
   _guideSiteNames: string[]
+  _streamTitles: string[]
   _streamUrls: string[]
   _feedNames: string[]
+  _feedAltNames: string[]
   _streamIds: string[]
   _logoUrls: string[]
 }

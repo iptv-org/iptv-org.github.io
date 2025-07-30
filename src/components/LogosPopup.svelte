@@ -14,7 +14,7 @@
   const { close } = getContext<Context>('simple-modal')
 </script>
 
-<Popup onClose={close} wrapperClass="flex justify-center p-2 pt-14 sm:py-44 z-50">
+<Popup onClose={close} wrapperClass="flex justify-center p-2 pt-14 pb-20 sm:py-44 z-50">
   <Card>
     <div
       slot="headerLeft"
