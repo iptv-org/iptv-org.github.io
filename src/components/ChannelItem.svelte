@@ -77,7 +77,7 @@
   </div>
 {/if}
 <div
-  class="border-b last:border-b-0 last:rounded-b-md border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-primary-750 min-h-16 sm:h-16 py-2 flex items-center relative"
+  class="border-b last:border-b-0 last:rounded-b-md border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-primary-750 min-h-16 sm:h-16 py-2 flex items-center relative sm:overflow-x-scroll scrollbar-hide"
 >
   <div class="px-4 sm:pl-10 sm:pr-16 w-28 sm:w-[200px] flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
@@ -126,10 +126,10 @@
       </div>
     {/if}
   </div>
-  <div class="w-54 sm:w-[280px] px-4 hidden sm:flex">
+  <div class="w-54 sm:w-[280px] px-4 hidden lg:flex sm:shrink-0">
     <CodeBlock>{channel.id}</CodeBlock>
   </div>
-  <div class="sm:w-full px-3 sm:pl-4 sm:pr-5">
+  <div class="sm:w-full px-3 sm:pl-4 sm:pr-5 sm:w-20">
     <div class="text-right flex justify-end space-x-3 items-center">
       {#if channel.hasFeeds()}
         <button

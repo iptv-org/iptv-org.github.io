@@ -220,6 +220,10 @@ export class Channel {
     return this.getGuides().map((guide: Guide) => guide.siteName)
   }
 
+  getStreamTitles(): Collection {
+    return this.getStreams().map((stream: Stream) => stream.title)
+  }
+
   getStreamUrls(): Collection {
     return this.getStreams().map((stream: Stream) => stream.url)
   }
@@ -280,6 +284,16 @@ export class Channel {
 
   getFeedNames(): Collection {
     return this.getFeeds().map((feed: Feed) => feed.name)
+  }
+
+  getFeedAltNames(): Collection {
+    let altNames = new Collection()
+
+    this.getFeeds().forEach((feed: Feed) => {
+      altNames = altNames.concat(feed.altNames)
+    })
+
+    return altNames.uniq()
   }
 
   getStreamIds(): Collection {
@@ -360,8 +374,10 @@ export class Channel {
       _broadcastLocationNames: this.getBroadcastLocationNames().all(),
       _countryName: this.getCountryName(),
       _guideSiteNames: this.getGuideSiteNames().all(),
+      _streamTitles: this.getStreamTitles().all(),
       _streamUrls: this.getStreamUrls().all(),
       _feedNames: this.getFeedNames().all(),
+      _feedAltNames: this.getFeedAltNames().all(),
       _streamIds: this.getStreamIds().all(),
       _logoUrls: this.getLogoUrls().all()
     }

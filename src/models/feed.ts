@@ -8,6 +8,7 @@ export class Feed {
   channel: Channel
   id: string
   name: string
+  altNames: Collection
   isMain: boolean
   broadcastAreaCodes: Collection
   broadcastArea?: Collection
@@ -25,6 +26,7 @@ export class Feed {
     this.channelId = data.channel
     this.id = data.id
     this.name = data.name
+    this.altNames = new Collection(data.alt_names)
     this.isMain = data.is_main
     this.broadcastAreaCodes = new Collection(data.broadcast_area)
     this.timezoneIds = new Collection(data.timezones)
@@ -209,6 +211,11 @@ export class Feed {
       { name: 'id', type: 'string', value: { text: this.id, title: this.id } },
       { name: 'name', type: 'string', value: { text: this.name, title: this.name } },
       {
+        name: 'alt_names',
+        type: 'string[]',
+        value: this.altNames.map(altName => ({ text: altName, title: altName })).all()
+      },
+      {
         name: 'is_main',
         type: 'string',
         value: { text: this.isMain.toString(), title: this.isMain.toString() }
@@ -248,7 +255,9 @@ export class Feed {
         type: 'link',
         value: { label: this.format, query: `format:${this.format}` }
       }
-    ]
+    ].filter((field: HTMLPreviewField) =>
+      Array.isArray(field.value) ? field.value.length : field.value
+    )
   }
 
   serialize(props: { [key: string]: boolean } = {}): FeedSerializedData {
@@ -262,6 +271,7 @@ export class Feed {
           : null,
       id: this.id,
       name: this.name,
+      altNames: this.altNames.all(),
       isMain: this.isMain,
       broadcastAreaCodes: this.broadcastAreaCodes.all(),
       broadcastArea: this.getBroadcastArea()
@@ -292,6 +302,7 @@ export class Feed {
     this.channel = data.channel ? new Channel().deserialize(data.channel) : undefined
     this.id = data.id
     this.name = data.name
+    this.altNames = new Collection(data.altNames)
     this.isMain = data.isMain
     this.broadcastAreaCodes = new Collection(data.broadcastAreaCodes)
     this.broadcastArea = new Collection(data.broadcastArea).map(data =>

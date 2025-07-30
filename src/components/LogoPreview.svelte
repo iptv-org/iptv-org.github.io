@@ -10,7 +10,7 @@
 
   const hasLogo = feed ? feed.hasLogo() : channel.hasLogo()
   const displayName = feed ? feed.getDisplayName() : channel.getDisplayName()
-  const logoUrl = feed ? feed.getLogoUrl() : channel.getLogoUrl()
+  const logo = feed ? feed.getLogo() : channel.getLogo()
 
   const { open } = getContext<Context>('simple-modal')
 
@@ -31,11 +31,12 @@
       title="Logos"
     >
       <img
-        src={logoUrl}
+        src={logo.url}
         alt={`${displayName} logo`}
-        title={logoUrl}
+        title={logo.url}
         referrerpolicy="no-referrer"
-        class="bg-gray-100 text-sm text-gray-400 dark:text-gray-600 max-h-full max-w-full rounded-sm overflow-hidden"
+        class="bg-gray-100 text-sm text-gray-400 dark:text-gray-600 rounded-sm overflow-hidden max-h-full"
+        style:max-width={logo.width ? `${logo.width}px` : ''}
       />
     </button>
     <div class="absolute bottom-1 right-1 pointer-events-none">

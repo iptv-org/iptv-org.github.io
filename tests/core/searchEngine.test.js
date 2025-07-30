@@ -361,6 +361,24 @@ describe('search', () => {
       id: '01TV.fr'
     })
   })
+
+  it('can find channel by feed alternative name', () => {
+    let results = searchEngine.search('Pancréole')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: '13MaxTelevision.ar'
+    })
+  })
+
+  it('can find channel by stream title', () => {
+    let results = searchEngine.search('Abu Dhabi Aloula')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: 'XtremaCartoons.ar'
+    })
+  })
 })
 
 function loadJson(filepath) {

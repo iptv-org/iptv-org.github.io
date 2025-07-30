@@ -51,6 +51,7 @@
     "channel": "13MaxTelevision.ar",
     "id": "Panregional",
     "name": "Panregional",
+    "alt_names": ["Pancréole"],
     "is_main": true,
     "broadcast_area": [
       "s/AR-W"

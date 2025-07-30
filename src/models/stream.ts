@@ -9,6 +9,7 @@ import type { Feed } from './feed'
 export class Stream {
   channelId?: string
   feedId?: string
+  title: string
   url: string
   referrer?: string
   userAgent?: string
@@ -21,6 +22,7 @@ export class Stream {
 
     this.channelId = data.channel
     this.feedId = data.feed
+    this.title = data.title
     this.url = data.url
     this.referrer = data.referrer
     this.userAgent = data.user_agent
@@ -102,6 +104,7 @@ export class Stream {
 
   getFieldset(): HTMLPreviewField[] {
     return [
+      { name: 'title', type: 'string', value: { text: this.title, title: this.title } },
       { name: 'url', type: 'string', value: { text: this.url, title: this.url } },
       this.referrer
         ? { name: 'referrer', type: 'string', value: { text: this.referrer, title: this.referrer } }
@@ -123,6 +126,7 @@ export class Stream {
     return {
       channelId: this.channelId,
       feedId: this.feedId,
+      title: this.title,
       url: this.url,
       referrer: this.referrer,
       userAgent: this.userAgent,
@@ -133,6 +137,7 @@ export class Stream {
   deserialize(data: StreamSerializedData): this {
     this.channelId = data.channelId
     this.feedId = data.feedId
+    this.title = data.title
     this.url = data.url
     this.referrer = data.referrer
     this.userAgent = data.userAgent
