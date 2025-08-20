@@ -1,6 +1,5 @@
 import type { ApiClient } from '../core/apiClient'
 import type { DataProcessor } from '../core/dataProcessor'
-import type { Collection } from '@freearhey/core/browser'
 
 export type DataLoaderProps = {
   client: ApiClient
@@ -10,14 +9,17 @@ export type DataLoaderProps = {
 }
 
 export type DataLoaderData = {
-  channels: Collection
-  countries: Collection
-  regions: Collection
-  logos: Collection
-  languages: Collection
-  subdivisions: Collection
-  categories: Collection
-  streams: Collection
-  guides: Collection
-  blocklistRecords: Collection
+  channels: Record<string, any>[]
+  countries: Record<string, any>[]
+  regions: Record<string, any>[]
+  logos: Record<string, any>[]
+  languages: Record<string, any>[]
+  subdivisions: Record<string, any>[]
+  categories: Record<string, any>[]
+  streams: Record<string, any>[]
+  guides: Record<string, any>[]
+  feeds: Record<string, any>[]
+  timezones: Record<string, any>[]
+  blocklist: Record<string, any>[]
+  cities: Record<string, any>[]
 }

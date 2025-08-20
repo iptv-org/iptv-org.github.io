@@ -1,3 +1,5 @@
+import type { DataProcessorData } from '~/types/dataProcessor'
+import type { DataLoaderData } from '~/types/dataLoader'
 import { Collection } from '@freearhey/core/browser'
 import {
   Country,
@@ -9,6 +11,7 @@ import {
   Channel,
   Guide,
   BlocklistRecord,
+  City,
   Feed,
   Logo
 } from '../models'
@@ -16,7 +19,7 @@ import {
 export class DataProcessor {
   constructor() {}
 
-  process(data) {
+  process(data: DataLoaderData): DataProcessorData {
     const categories = new Collection(data.categories).map(data => new Category(data))
     const categoriesKeyById = categories.keyBy((category: Category) => category.id)
 
@@ -25,6 +28,9 @@ export class DataProcessor {
 
     const subdivisions = new Collection(data.subdivisions).map(data => new Subdivision(data))
     const subdivisionsKeyByCode = subdivisions.keyBy((subdivision: Subdivision) => subdivision.code)
+
+    const cities = new Collection(data.cities).map(data => new City(data))
+    const citiesKeyByCode = cities.keyBy((city: City) => city.code)
 
     const regions = new Collection(data.regions).map(data => new Region(data))
     const regionsKeyByCode = regions.keyBy((region: Region) => region.code)
@@ -50,7 +56,13 @@ export class DataProcessor {
         .withStreams(streamsGroupedByStreamId)
         .withGuides(guidesGroupedByStreamId)
         .withLanguages(languagesKeyByCode)
-        .withBroadcastArea(countriesKeyByCode, subdivisionsKeyByCode, regionsKeyByCode, regions)
+        .withBroadcastArea(
+          countriesKeyByCode,
+          subdivisionsKeyByCode,
+          regionsKeyByCode,
+          regions,
+          citiesKeyByCode
+        )
     )
     const feedsGroupedByChannelId = feeds.groupBy((feed: Feed) => feed.channelId)
     const feedsKeyById = feeds.keyBy((feed: Feed) => feed.id)
@@ -98,7 +110,8 @@ export class DataProcessor {
       blocklistRecords,
       channels,
       guides,
-      logos
+      logos,
+      cities
     }
   }
 }

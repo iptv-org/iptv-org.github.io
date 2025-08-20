@@ -44,7 +44,8 @@ async function main() {
     dataLoader.download('languages.json'),
     dataLoader.download('streams.json'),
     dataLoader.download('guides.json'),
-    dataLoader.download('blocklist.json')
+    dataLoader.download('blocklist.json'),
+    dataLoader.download('cities.json')
   ]
 
   await Promise.all(requests)
