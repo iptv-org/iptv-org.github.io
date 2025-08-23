@@ -86,7 +86,8 @@
     "name": "SD",
     "is_main": true,
     "broadcast_area": [
-      "s/US-CA"
+      "s/US-CA",
+      "ct/USLAX"
     ],
     "timezones": [
       "America/Santo_Domingo"

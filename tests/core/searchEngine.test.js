@@ -30,6 +30,7 @@ beforeEach(async () => {
   mockAxios.onGet(`guides.json`).reply(200, loadJson('guides.json'))
   mockAxios.onGet(`feeds.json`).reply(200, loadJson('feeds.json'))
   mockAxios.onGet(`subdivisions.json`).reply(200, loadJson('subdivisions.json'))
+  mockAxios.onGet(`cities.json`).reply(200, loadJson('cities.json'))
 
   const data = await dataLoader.load()
   const searchableData = data.channels.map(channel => channel.getSearchable())
@@ -377,6 +378,24 @@ describe('search', () => {
     expect(results.count()).toBe(1)
     expect(results.first()).toMatchObject({
       id: 'XtremaCartoons.ar'
+    })
+  })
+
+  it('can find channel by city code', () => {
+    let results = searchEngine.search('broadcast_area:ct/USLAX')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: 'SEN502.us'
+    })
+  })
+
+  it('can find channel by city name', () => {
+    let results = searchEngine.search('Los Angeles')
+
+    expect(results.count()).toBe(1)
+    expect(results.first()).toMatchObject({
+      id: 'SEN502.us'
     })
   })
 })

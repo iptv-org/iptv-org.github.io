@@ -1,6 +1,7 @@
 import type { ApiClient } from './apiClient'
 import type { DataProcessor } from './dataProcessor'
-import type { DataLoaderData, DataLoaderProps } from '../types/dataLoader'
+import type { DataLoaderProps } from '../types/dataLoader'
+import type { DataProcessorData } from '~/types/dataProcessor'
 
 export class DataLoader {
   client: ApiClient
@@ -15,7 +16,7 @@ export class DataLoader {
     this.processor = props.processor
   }
 
-  async load(): Promise<DataLoaderData> {
+  async load(): Promise<DataProcessorData> {
     const [
       countries,
       regions,
@@ -28,7 +29,8 @@ export class DataLoader {
       channels,
       feeds,
       timezones,
-      guides
+      guides,
+      cities
     ] = await Promise.all([
       this.fetch('countries.json'),
       this.fetch('regions.json'),
@@ -41,7 +43,8 @@ export class DataLoader {
       this.fetch('channels.json'),
       this.fetch('feeds.json'),
       this.fetch('timezones.json'),
-      this.fetch('guides.json')
+      this.fetch('guides.json'),
+      this.fetch('cities.json')
     ])
 
     return this.processor.process({
@@ -52,15 +55,16 @@ export class DataLoader {
       languages,
       categories,
       streams,
-      blocklist,
       channels,
       feeds,
       timezones,
-      guides
+      guides,
+      cities,
+      blocklist
     })
   }
 
-  async loadFromDisk(): Promise<DataLoaderData> {
+  async loadFromDisk(): Promise<DataProcessorData> {
     const [
       countries,
       regions,
@@ -73,7 +77,8 @@ export class DataLoader {
       channels,
       feeds,
       timezones,
-      guides
+      guides,
+      cities
     ] = await Promise.all([
       this.storage.load('countries.json'),
       this.storage.load('regions.json'),
@@ -86,7 +91,8 @@ export class DataLoader {
       this.storage.load('channels.json'),
       this.storage.load('feeds.json'),
       this.storage.load('timezones.json'),
-      this.storage.load('guides.json')
+      this.storage.load('guides.json'),
+      this.storage.load('cities.json')
     ])
 
     return this.processor.process({
@@ -101,7 +107,8 @@ export class DataLoader {
       channels,
       feeds,
       timezones,
-      guides
+      guides,
+      cities
     })
   }
 

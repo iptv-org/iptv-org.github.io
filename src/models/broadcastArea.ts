@@ -1,9 +1,10 @@
 import type { BroadcastAreaData, BroadcastAreaSerializedData } from '~/types/broadcastArea'
+import { type Dictionary, Collection } from '@freearhey/core/browser'
 import type { SubdivisionSerializedData } from '~/types/subdivision'
 import type { CountrySerializedData } from '~/types/country'
 import type { RegionSerializedData } from '~/types/region'
-import { type Dictionary, Collection } from '@freearhey/core/browser'
-import { Region, Country, Subdivision } from './'
+import { Region, Country, Subdivision, City } from './'
+import type { CitySerializedData } from '~/types/city'
 
 export class BroadcastArea {
   code: string
@@ -11,6 +12,7 @@ export class BroadcastArea {
   countries?: Collection
   subdivisions?: Collection
   regions?: Collection
+  cities?: Collection
 
   constructor(data?: BroadcastAreaData) {
     if (!data) return
@@ -21,7 +23,8 @@ export class BroadcastArea {
   withName(
     countriesKeyByCode: Dictionary,
     subdivisionsKeyByCode: Dictionary,
-    regionsKeyByCode: Dictionary
+    regionsKeyByCode: Dictionary,
+    citiesKeyByCode: Dictionary
   ): this {
     const [type, code] = this.code.split('/')
 
@@ -41,6 +44,11 @@ export class BroadcastArea {
         if (region) this.name = region.name
         break
       }
+      case 'ct': {
+        const city: City = citiesKeyByCode.get(code)
+        if (city) this.name = city.name
+        break
+      }
     }
 
     return this
@@ -50,13 +58,15 @@ export class BroadcastArea {
     countriesKeyByCode: Dictionary,
     subdivisionsKeyByCode: Dictionary,
     regionsKeyByCode: Dictionary,
-    regions: Collection
+    regions: Collection,
+    citiesKeyByCode: Dictionary
   ): this {
     const [type, code] = this.code.split('/')
 
     let _countries = new Collection()
     let _regions = new Collection()
     let _subdivisions = new Collection()
+    let _cities = new Collection()
 
     regions = regions.filter((region: Region) => region.code !== 'INT')
 
@@ -94,11 +104,18 @@ export class BroadcastArea {
         _regions.add(region)
         break
       }
+      case 'ct': {
+        const city: City = citiesKeyByCode.get(code)
+        if (!city) break
+        _cities.add(city)
+        break
+      }
     }
 
     this.countries = _countries.uniqBy((country: Country) => country.code)
     this.regions = _regions.uniqBy((region: Region) => region.code)
     this.subdivisions = _subdivisions.uniqBy((subdivision: Subdivision) => subdivision.code)
+    this.cities = _cities.uniqBy((city: City) => city.code)
 
     return this
   }
@@ -125,6 +142,12 @@ export class BroadcastArea {
     return this.subdivisions
   }
 
+  getCities(): Collection {
+    if (!this.cities) return new Collection()
+
+    return this.cities
+  }
+
   getLocationCodes(): Collection {
     let locationCodes = new Collection()
 
@@ -138,6 +161,10 @@ export class BroadcastArea {
 
     this.getSubdivisions().forEach((subdivision: Subdivision) => {
       locationCodes.add(subdivision.code)
+    })
+
+    this.getCities().forEach((city: City) => {
+      locationCodes.add(city.code)
     })
 
     return locationCodes
@@ -158,6 +185,10 @@ export class BroadcastArea {
       locationNames.add(subdivision.name)
     })
 
+    this.getCities().forEach((city: City) => {
+      locationNames.add(city.name)
+    })
+
     return locationNames
   }
 
@@ -173,6 +204,9 @@ export class BroadcastArea {
         .all(),
       regions: this.getRegions()
         .map((region: Region) => region.serialize())
+        .all(),
+      cities: this.getCities()
+        .map((city: City) => city.serialize())
         .all()
     }
   }
@@ -188,6 +222,9 @@ export class BroadcastArea {
     )
     this.regions = new Collection(data.regions).map((data: RegionSerializedData) =>
       new Region().deserialize(data)
+    )
+    this.cities = new Collection(data.cities).map((data: CitySerializedData) =>
+      new City().deserialize(data)
     )
 
     return this

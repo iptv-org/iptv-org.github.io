@@ -82,13 +82,20 @@ export class Feed {
     countriesKeyByCode: Dictionary,
     subdivisionsKeyByCode: Dictionary,
     regionsKeyByCode: Dictionary,
-    regions: Collection
+    regions: Collection,
+    citiesKeyByCode: Dictionary
   ): this {
     this.broadcastArea = this.broadcastAreaCodes
       .map((code: string) =>
         new BroadcastArea({ code })
-          .withName(countriesKeyByCode, subdivisionsKeyByCode, regionsKeyByCode)
-          .withLocations(countriesKeyByCode, subdivisionsKeyByCode, regionsKeyByCode, regions)
+          .withName(countriesKeyByCode, subdivisionsKeyByCode, regionsKeyByCode, citiesKeyByCode)
+          .withLocations(
+            countriesKeyByCode,
+            subdivisionsKeyByCode,
+            regionsKeyByCode,
+            regions,
+            citiesKeyByCode
+          )
       )
       .filter(Boolean)
 
