@@ -6,9 +6,6 @@ const config = {
     alias: {
       '~': 'src'
     },
-    files: {
-      routes: 'src/pages'
-    },
     adapter: adapter({
       pages: 'docs',
       assets: 'docs',
