@@ -13,11 +13,11 @@
     "prepare": "svelte-kit sync",
     "postinstall": "npm run api:load",
     "postbuild": "npx svelte-sitemap -d https://iptv-org.github.io -o docs",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "@freearhey/core": "^0.10.2",
-    "@freearhey/search-js": "^0.1.2",
+    "@freearhey/search-js": "^0.2.0",
     "@sveltejs/adapter-static": "^3.0.8",
     "@sveltejs/kit": "^2.26.1",
     "@tailwindcss/line-clamp": "^0.4.4",
