@@ -7,13 +7,17 @@
 </script>
 
 <Badge>
-  <div
-    use:tippy={{
-      content: `closed: ${channel.closedDateString}`,
-      allowHTML: true,
-      interactive: true
-    }}
-  >
+  {#if channel.closedDateString}
+    <div
+      use:tippy={{
+        content: `closed: ${channel.closedDateString}`,
+        allowHTML: true,
+        interactive: true
+      }}
+    >
+      Closed
+    </div>
+  {:else}
     Closed
-  </div>
+  {/if}
 </Badge>

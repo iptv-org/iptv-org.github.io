@@ -1,14 +1,15 @@
 import type { ChannelSearchable, ChannelSerializedData, ChannelData } from '../types/channel'
 import type { BlocklistRecordSerializedData } from '~/types/blocklistRecord'
+import { Collection, type Dictionary } from '@freearhey/core/browser'
 import type { HTMLPreviewField } from '../types/htmlPreviewField'
 import type { CategorySerializedData } from '~/types/category'
 import type { FeedSerializedData } from '~/types/feed'
-import { Collection, type Dictionary } from '@freearhey/core/browser'
+import type { LogoSerializedData } from '~/types/logo'
 import dayjs, { type Dayjs } from 'dayjs'
+import { normalize } from '~/utils'
 import {
   BlocklistRecord,
   BroadcastArea,
-  Subdivision,
   Category,
   Language,
   Country,
@@ -17,8 +18,6 @@ import {
   Feed,
   Logo
 } from '.'
-import type { LogoSerializedData } from '~/types/logo'
-import { normalize } from '~/utils'
 
 export class Channel {
   id: string
@@ -28,9 +27,6 @@ export class Channel {
   ownerNames: Collection = new Collection()
   countryCode: string
   country?: Country
-  subdivisionCode?: string
-  subdivision?: Subdivision
-  cityName?: string
   categoryIds: Collection = new Collection()
   categories: Collection = new Collection()
   isNSFW: boolean
@@ -55,8 +51,6 @@ export class Channel {
     this.networkName = data.network
     this.ownerNames = new Collection(data.owners)
     this.countryCode = data.country
-    this.subdivisionCode = data.subdivision
-    this.cityName = data.city
     this.categoryIds = new Collection(data.categories)
     this.isNSFW = data.is_nsfw
     this.launchedDateString = data.launched
@@ -71,14 +65,6 @@ export class Channel {
 
   withCountry(countriesKeyByCode: Dictionary): this {
     this.country = countriesKeyByCode.get(this.countryCode)
-
-    return this
-  }
-
-  withSubdivision(subdivisionsKeyByCode: Dictionary): this {
-    if (!this.subdivisionCode) return this
-
-    this.subdivision = subdivisionsKeyByCode.get(this.subdivisionCode)
 
     return this
   }
@@ -347,8 +333,6 @@ export class Channel {
       owner: this.ownerNames.all(),
       owners: this.ownerNames.all(),
       country: this.countryCode,
-      subdivision: this.subdivisionCode,
-      city: this.cityName,
       category: this.categoryIds.all(),
       categories: this.categoryIds.all(),
       launched: this.launchedDateString,
@@ -394,9 +378,6 @@ export class Channel {
       ownerNames: this.ownerNames.all(),
       countryCode: this.countryCode,
       country: this.country ? this.country.serialize() : null,
-      subdivisionCode: this.subdivisionCode,
-      subdivision: this.subdivision ? this.subdivision.serialize() : null,
-      cityName: this.cityName,
       categoryIds: this.categoryIds.all(),
       categories: this.categories.map((category: Category) => category.serialize()).all(),
       isNSFW: this.isNSFW,
@@ -432,8 +413,6 @@ export class Channel {
     this.ownerNames = new Collection(data.ownerNames)
     this.countryCode = data.countryCode
     this.country = new Country().deserialize(data.country)
-    this.subdivisionCode = data.subdivisionCode
-    this.cityName = data.cityName
     this.categoryIds = new Collection(data.categoryIds)
     this.categories = new Collection(data.categories).map((data: CategorySerializedData) =>
       new Category().deserialize(data)
@@ -492,18 +471,6 @@ export class Channel {
         value: this.country
           ? { label: this.country.name, query: `country:${this.country.code}` }
           : null
-      },
-      {
-        name: 'subdivision',
-        type: 'link',
-        value: this.subdivision
-          ? { label: this.subdivision.name, query: `subdivision:${this.subdivision.code}` }
-          : null
-      },
-      {
-        name: 'city',
-        type: 'link',
-        value: this.cityName ? { label: this.cityName, query: `city:${this.cityName}` } : null
       },
       {
         name: 'broadcast_area',
