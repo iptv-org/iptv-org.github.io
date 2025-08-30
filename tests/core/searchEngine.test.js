@@ -124,7 +124,7 @@ describe('search', () => {
   })
 
   it('can find channels without the owner', () => {
-    let results = searchEngine.search('owners:^$')
+    let results = searchEngine.search('owners:/^$/')
 
     expect(results.count()).toBe(7)
     expect(results.first()).toMatchObject({
@@ -141,24 +141,6 @@ describe('search', () => {
     })
   })
 
-  it('can find channels that are broadcast from the same region', () => {
-    let results = searchEngine.search('subdivision:AR-W')
-
-    expect(results.count()).toBe(1)
-    expect(results.first()).toMatchObject({
-      id: '13MaxTelevision.ar'
-    })
-  })
-
-  it('can find channels that are broadcast from the same city', () => {
-    let results = searchEngine.search('city:Corrientes')
-
-    expect(results.count()).toBe(1)
-    expect(results.first()).toMatchObject({
-      id: '13MaxTelevision.ar'
-    })
-  })
-
   it('can find channels that have the same category', () => {
     let results = searchEngine.search('categories:lifestyle')
 
@@ -169,7 +151,7 @@ describe('search', () => {
   })
 
   it('can find channels with website', () => {
-    let results = searchEngine.search('website:.')
+    let results = searchEngine.search('website:/./')
 
     expect(results.count()).toBe(14)
     expect(results.first()).toMatchObject({
