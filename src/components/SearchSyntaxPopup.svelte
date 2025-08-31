@@ -19,15 +19,10 @@
     },
     { query: 'network:ABC', result: 'Finds all channels operated by the ABC Network.' },
     {
-      query: 'owner:^$',
+      query: 'owner:/^$/',
       result: 'Finds channels that have no owner listed.'
     },
     { query: 'country:GY', result: 'Finds all channels that are broadcast from Guyana.' },
-    {
-      query: 'subdivision:FR-OCC',
-      result: 'Finds all channels that are broadcast from the French region of Occitanie.'
-    },
-    { query: 'city:"San Francisco"', result: 'Finds all channels broadcast from San Francisco.' },
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
     {
       query: 'timezone:Asia/Kabul',
@@ -36,7 +31,7 @@
     { query: 'language:fra', result: 'Find channels that are broadcast in French.' },
     { query: 'category:news', result: 'Finds all the news channels.' },
     { query: 'format:1080p', result: 'Find channels that are broadcast in 1080p.' },
-    { query: 'website:.', result: 'Finds channels that have a link to the official website.' },
+    { query: 'website:/./', result: 'Finds channels that have a link to the official website.' },
     { query: 'is_nsfw:true', result: 'Finds channels marked as NSFW.' },
     {
       query: 'is_closed:true',

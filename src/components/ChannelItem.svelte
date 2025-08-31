@@ -77,7 +77,7 @@
   </div>
 {/if}
 <div
-  class="border-b last:border-b-0 last:rounded-b-md border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-primary-750 min-h-16 sm:h-16 py-2 flex items-center relative sm:overflow-x-scroll scrollbar-hide"
+  class="border-b last:border-b-0 last:rounded-b-md border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-primary-750 min-h-16 sm:h-16 py-2 flex items-center relative"
 >
   <div class="px-4 sm:pl-10 sm:pr-16 w-28 sm:w-[200px] flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">

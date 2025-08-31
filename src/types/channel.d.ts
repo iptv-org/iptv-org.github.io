@@ -3,7 +3,6 @@ import type { CategorySerializedData } from './category'
 import type { CountrySerializedData } from './country'
 import type { FeedSerializedData } from './feed'
 import type { LogoSerializedData } from './logo'
-import type { SubdivisionSerializedData } from './subdivision'
 
 export type ChannelSearchable = {
   id: string
@@ -14,8 +13,6 @@ export type ChannelSearchable = {
   owner: string[]
   owners: string[]
   country: string
-  subdivision: string
-  city: string
   category: string[]
   categories: string[]
   launched: string
@@ -57,9 +54,6 @@ export type ChannelSerializedData = {
   ownerNames: string[]
   countryCode: string
   country?: CountrySerializedData
-  subdivisionCode?: string
-  subdivision?: SubdivisionSerializedData
-  cityName?: string
   categoryIds: string[]
   categories: CategorySerializedData[]
   isNSFW: boolean
@@ -83,8 +77,6 @@ export type ChannelData = {
   network: string
   owners: string[]
   country: string
-  subdivision: string
-  city: string
   categories: string[]
   is_nsfw: boolean
   launched: string

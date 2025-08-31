@@ -70,7 +70,6 @@ export class DataProcessor {
     let channels = new Collection(data.channels).map(data =>
       new Channel(data)
         .withCountry(countriesKeyByCode)
-        .withSubdivision(subdivisionsKeyByCode)
         .withCategories(categoriesKeyById)
         .withFeeds(feedsGroupedByChannelId)
         .withBlocklistRecords(blocklistRecordsGroupedByChannelId)
