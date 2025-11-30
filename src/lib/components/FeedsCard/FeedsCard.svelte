@@ -46,25 +46,3 @@
     </Modal>
   </div>
 </Card>
-
-<!-- variant === 'channelPage'  -->
-<!-- <Card border>
-  <div slot="headerLeft">
-    <div
-      class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center space-x-1"
-    >
-      <span class="text-gray-500 dark:text-gray-100">
-        <Icon.Feed size={21} />
-      </span>
-      <span>Feeds</span>
-    </div>
-  </div>
-  <div slot="headerRight">
-    <FeedAddIconButton {channel} />
-  </div>
-  <div slot="body">
-    <div class="flex flex-col gap-2 p-2 sm:p-5">
-      <FeedList {channel} {feeds} />
-    </div>
-  </div>
-</Card> -->
