@@ -1,7 +1,7 @@
 <script>
   import { SvelteToast } from '@zerodevx/svelte-toast'
   import Modal from 'svelte-simple-modal'
-  import '~/app.css'
+  import './+layout.css'
 
   const toastOptions = {
     duration: 2000,
