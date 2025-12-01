@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Badge } from '$lib/components'
   import { Channel } from '$lib/models'
-  import tippy from 'sveltejs-tippy'
+  import { tippy } from '$lib/actions'
 
   export let channel: Channel
 </script>

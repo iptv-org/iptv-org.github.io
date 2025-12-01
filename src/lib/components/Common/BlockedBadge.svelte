@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Channel, BlocklistRecord } from '$lib/models'
   import { Badge } from '$lib/components'
-  import tippy from 'sveltejs-tippy'
+  import { tippy } from '$lib/actions'
 
   export let channel: Channel
 

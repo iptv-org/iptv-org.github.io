@@ -1,5 +1,5 @@
 <script lang="ts">
-  import tippy from 'sveltejs-tippy'
+  import { tippy } from '$lib/actions'
   import * as Icon from '$lib/icons'
 
   interface Props {
