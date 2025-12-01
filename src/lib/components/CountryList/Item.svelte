@@ -4,15 +4,14 @@
   import { Channel, Country } from '$lib/models'
   import { fade } from 'svelte/transition'
   import * as sdk from '@iptv-org/sdk'
-  import * as Icon from '$lib/icons'
   import * as CountryList from './'
+  import * as Icon from 'svelte-flag-icons';
 
   interface Props {
     country: Country
   }
 
   const { country }: Props = $props()
-
   const channels = country.getChannels().all()
   let channelsToDisplay = $state(channels)
 
@@ -68,12 +67,8 @@
         class:border-b-transparent={isExpanded}
         class:dark:border-b-transparent={isExpanded}
         aria-expanded={isExpanded}
-        aria-controls="accordion-body-{country.code}"
       >
-        <span>{country.flag}&nbsp;{country.name}</span>
-        <div class="text-gray-400" class:rotate-180={isExpanded}>
-          <Icon.Expand size={20} />
-        </div>
+        <span class="flex items-center gap-2">{#if Icon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}{@const FlagIcon = Icon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}<FlagIcon size="20" />{/if}{country.name}</span>
       </button>
     </div>
     {#if isExpanded}

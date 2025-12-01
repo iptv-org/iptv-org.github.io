@@ -7,10 +7,11 @@
   import { onMount, getContext } from 'svelte'
   import { page } from '$app/state'
   import * as api from '$lib/api'
+  import type { CountryEncoded } from '$lib/types/country'
 
   const { open } = getContext<Context>('simple-modal')
 
-  let countries = $state([])
+  let countries: CountryEncoded[] = $state([])
   let isLoading = $state(true)
 
   onMount(async () => {
