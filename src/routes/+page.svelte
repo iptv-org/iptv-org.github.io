@@ -7,11 +7,11 @@
   import { onMount, getContext } from 'svelte'
   import { page } from '$app/state'
   import * as api from '$lib/api'
-  import type { CountryEncoded } from '$lib/types/country'
+  import { Country } from '$lib/models'
 
   const { open } = getContext<Context>('simple-modal')
 
-  let countries: CountryEncoded[] = $state([])
+  let countries: Country[] = $state([])
   let isLoading = $state(true)
 
   onMount(async () => {
@@ -19,7 +19,7 @@
 
     const data = await api.loadData()
 
-    countries = data.countries
+    countries = data.countries.map((c) => Country.decode(c))
 
     store.init(data)
 
@@ -92,7 +92,7 @@
   <section class="max-w-[960px] mx-auto px-2 pt-16 sm:pt-20 pb-20 overflow-hidden min-h-full">
     <SearchField bind:this={searchField} onSubmit={onSearch} onClear={resetSearch} />
     <div class="pt-2 pb-6 flex justify-between px-1">
-      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-[2px]"
+      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-0.5"
         >Found&nbsp;
         <span class:animate-spin={isLoading}
           >{!isLoading ? $searchResults.length.toLocaleString() : '/'}</span
@@ -102,7 +102,7 @@
       <button
         type="button"
         onclick={showSearchSyntax}
-        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-[2px] cursor-pointer"
+        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-0.5 cursor-pointer"
       >
         Search syntax
       </button>
