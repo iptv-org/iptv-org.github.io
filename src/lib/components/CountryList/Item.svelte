@@ -5,7 +5,8 @@
   import { fade } from 'svelte/transition'
   import * as sdk from '@iptv-org/sdk'
   import * as CountryList from './'
-  import * as Icon from 'svelte-flag-icons';
+  import * as FlagIcon from 'svelte-flag-icons'
+  import * as Icon from '$lib/icons'
 
   interface Props {
     country: Country
@@ -61,14 +62,17 @@
       <button
         onclick={toggleExpanded}
         type="button"
-        class="flex items-center focus:ring-0 dark:focus:ring-gray-800 justify-between h-13 pl-3.5 pr-4 w-full font-medium text-left border border-gray-200 dark:border-primary-750 text-gray-500 dark:text-white bg-white dark:bg-primary-810 cursor-pointer"
+        class="flex items-center focus:ring-0 focus:outline-none dark:focus:ring-gray-800 justify-between h-13 pl-3.5 pr-4 w-full font-medium text-left border border-gray-200 dark:border-primary-750 text-gray-500 dark:text-white bg-white dark:bg-primary-810 cursor-pointer"
         class:rounded-t-md={isExpanded}
         class:rounded-md={!isExpanded}
         class:border-b-transparent={isExpanded}
         class:dark:border-b-transparent={isExpanded}
         aria-expanded={isExpanded}
       >
-        <span class="flex items-center gap-2">{#if Icon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}{@const FlagIcon = Icon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}<FlagIcon size="20" />{/if}{country.name}</span>
+        <span class="flex items-center gap-2">{#if FlagIcon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}{@const Flag = FlagIcon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}<Flag size="20" />{/if}{country.name}</span>
+        <div class="text-gray-400" class:rotate-180={isExpanded}>
+          <Icon.Expand size={20} />
+        </div>
       </button>
     </div>
     {#if isExpanded}
