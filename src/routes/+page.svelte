@@ -19,7 +19,7 @@
 
     const data = await api.loadData()
 
-    countries = data.countries.map((c) => Country.decode(c))
+    countries = data.countries
 
     store.init(data)
 
