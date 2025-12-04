@@ -1,12 +1,12 @@
 <script lang="ts">
   import { searchResults, downloadMode, query, isSearchResultsReady } from '$lib/store'
+  import * as Flag from 'country-flag-icons/string/3x2'
   import { ChannelList } from '$lib/components'
   import { Channel, Country } from '$lib/models'
   import { fade } from 'svelte/transition'
   import * as sdk from '@iptv-org/sdk'
-  import * as CountryList from './'
-  import * as FlagIcon from 'svelte-flag-icons'
   import * as Icon from '$lib/icons'
+  import * as CountryList from './'
 
   interface Props {
     country: Country
@@ -69,7 +69,9 @@
         class:dark:border-b-transparent={isExpanded}
         aria-expanded={isExpanded}
       >
-        <span class="flex items-center gap-2">{#if FlagIcon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}{@const Flag = FlagIcon[country.code.charAt(0).toUpperCase() + country.code.charAt(1).toLowerCase()]}<Flag size="20" />{/if}{country.name}</span>
+        <span class="flex items-center space-x-2"
+          ><span class="w-4">{@html Flag[country.code]}</span><span>{country.name}</span></span
+        >
         <div class="text-gray-400" class:rotate-180={isExpanded}>
           <Icon.Expand size={20} />
         </div>
