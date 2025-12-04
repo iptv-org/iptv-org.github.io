@@ -16,6 +16,8 @@
   const channels = country.getChannels().all()
   let channelsToDisplay = $state(channels)
 
+  const flagSvg = country.code === 'UK' ? Flag['GB'] : Flag[country.code]
+
   let isExpanded = $state(false)
   function toggleExpanded() {
     isExpanded = !isExpanded
@@ -70,7 +72,7 @@
         aria-expanded={isExpanded}
       >
         <span class="flex items-center space-x-2"
-          ><span class="w-4">{@html Flag[country.code]}</span><span>{country.name}</span></span
+          ><span class="w-4">{@html flagSvg}</span><span>{country.name}</span></span
         >
         <div class="text-gray-400" class:rotate-180={isExpanded}>
           <Icon.Expand size={20} />
