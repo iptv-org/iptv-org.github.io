@@ -8,7 +8,10 @@ const config = {
       assets: 'docs',
       precompress: false,
       strict: true
-    })
+    }),
+    prerender: {
+      handleUnseenRoutes: 'warn'
+    }
   }
 }
 
