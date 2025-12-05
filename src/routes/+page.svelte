@@ -1,71 +1,54 @@
 <script lang="ts">
-  import { NavBar, BottomBar, CountryItem, SearchField, SearchSyntaxPopup } from '~/components'
-  import { setPageTitle, setSearchParam } from '~/navigation'
-  import { Collection } from '@freearhey/core/browser'
+  import { NavBar, BottomBar, CountryList, SearchField, SearchSyntaxPopup } from '$lib/components'
+  import store, { searchResults, query, downloadMode, updateSearchResults } from '$lib/store'
+  import { setPageTitle, setSearchParam } from '$lib/utils/navigation'
   import type { Context } from 'svelte-simple-modal'
-  import { ApiClient, DataProcessor } from '~/core'
   import { afterNavigate } from '$app/navigation'
   import { onMount, getContext } from 'svelte'
   import { page } from '$app/state'
-  import {
-    searchResults,
-    downloadMode,
-    isSearching,
-    countries,
-    isLoading,
-    channels,
-    hasQuery,
-    loadData,
-    isReady,
-    search,
-    query
-  } from '~/store'
+  import * as api from '$lib/api'
+  import { Country } from '$lib/models'
 
   const { open } = getContext<Context>('simple-modal')
 
-  let found = $channels.count()
-  searchResults.subscribe((results: Collection) => {
-    found = results.count()
-  })
+  let countries: Country[] = $state([])
+  let isLoading = $state(true)
 
   onMount(async () => {
-    if ($channels.isEmpty()) {
-      const client = new ApiClient()
-      const processor = new DataProcessor()
-      await loadData({ client, processor })
-    }
+    isLoading = true
 
-    isLoading.set(false)
-    isSearching.set(true)
-    setTimeout(() => {
-      search($query)
-    }, 0)
-    isReady.set(true)
+    const data = await api.loadData()
+
+    countries = data.countries
+
+    store.init(data)
+
+    isLoading = false
+
+    updateSearchResults()
   })
 
   afterNavigate(() => {
     const q = page.url.searchParams.get('q')
 
     if (q) {
-      query.set(q)
-      hasQuery.set(true)
+      query.set(decodeURIComponent(q))
       setPageTitle(q)
     } else {
-      hasQuery.set(false)
       setPageTitle(null)
     }
 
-    if (!$isLoading) {
-      isSearching.set(true)
-      setTimeout(() => {
-        search($query)
-      }, 0)
-    }
+    if (isLoading) return
+
+    setTimeout(() => {
+      updateSearchResults()
+    }, 0)
   })
 
-  let scrollY = 0
+  let scrollY = $state(0)
 
-  function showSearchSyntax() {
+  function showSearchSyntax(event) {
+    event.preventDefault()
     open(
       SearchSyntaxPopup,
       {},
@@ -80,10 +63,7 @@
 
   function onSearch() {
     setSearchParam('q', $query)
-    isSearching.set(true)
-    setTimeout(() => {
-      search($query)
-    }, 0)
+    updateSearchResults()
   }
 
   function resetSearch() {
@@ -109,32 +89,32 @@
 </header>
 
 <main class="bg-slate-50 dark:bg-primary-850 min-h-screen min-w-[360px]">
-  <section class="max-w-5xl mx-auto px-2 pt-16 sm:pt-20 pb-20 overflow-hidden min-h-full">
+  <section class="max-w-[960px] mx-auto px-2 pt-16 sm:pt-20 pb-20 overflow-hidden min-h-full">
     <SearchField bind:this={searchField} onSubmit={onSearch} onClear={resetSearch} />
     <div class="pt-2 pb-6 flex justify-between px-1">
-      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-[2px]"
+      <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-0.5"
         >Found&nbsp;
-        <span class:animate-spin={$isLoading}>{!$isLoading ? found.toLocaleString() : '/'}</span>
+        <span class:animate-spin={isLoading}
+          >{!isLoading ? $searchResults.length.toLocaleString() : '/'}</span
+        >
         &nbsp;channel(s)</span
       >
       <button
         type="button"
-        on:click|preventDefault={showSearchSyntax}
-        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-[2px] cursor-pointer"
+        onclick={showSearchSyntax}
+        class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono hover:underline hover:text-blue-500 dark:hover:text-blue-400 pt-0.5 cursor-pointer"
       >
         Search syntax
       </button>
     </div>
-    {#if $isLoading}
+    {#if isLoading}
       <div
         class="flex items-center justify-center w-full pt-1 pb-6 tracking-tight text-sm text-gray-500 dark:text-gray-400 font-mono"
       >
         loading...
       </div>
     {/if}
-    {#each $countries.all() as country (country.code)}
-      <CountryItem {country} />
-    {/each}
+    <CountryList {countries} />
   </section>
 </main>
 
