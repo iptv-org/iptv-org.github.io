@@ -13,6 +13,11 @@ const config = {
   preview: {
     https: true,
     port: 4000
+  },
+  build: {
+    rollupOptions: {
+      external: ['cli-progress', 'node:fs', 'node:path']
+    }
   }
 }
 
