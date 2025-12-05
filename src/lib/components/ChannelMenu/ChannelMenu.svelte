@@ -10,7 +10,9 @@
 
   const { channel }: Props = $props()
 
-  const logos = channel.getLogos()
+  function getLogos() {
+    return channel.getLogos()
+  }
 
   let menu: Menu
   function closeMenu() {
@@ -25,7 +27,7 @@
 
 <Menu bind:this={menu}>
   <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
-  {#if logos.isEmpty()}
+  {#if getLogos().isEmpty()}
     <ChannelMenu.AddLogoButton {channel} onClick={closeMenu} />
   {/if}
   <ChannelMenu.EditButton {channel} onClick={closeMenu} />

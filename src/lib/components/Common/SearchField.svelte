@@ -2,11 +2,15 @@
   import { query, isSearching } from '$lib/store'
   import * as Icon from '$lib/icons'
 
-  export let version = 'default'
-  export let onClear = () => {}
-  export let onSubmit = () => {}
+  interface Props {
+    version?: string
+    onClear?: () => void
+    onSubmit?: () => void
+  }
 
-  let input: HTMLElement
+  const { version = 'default', onClear = () => {}, onSubmit = () => {} }: Props = $props()
+
+  let input: HTMLInputElement = $state()
 
   export function blur() {
     if (input) input.blur()

@@ -1,13 +1,13 @@
 <script lang="ts">
   import { NavBar, BottomBar, CountryList, SearchField, SearchSyntaxPopup } from '$lib/components'
   import store, { searchResults, query, downloadMode, updateSearchResults } from '$lib/store'
-  import { setPageTitle, setSearchParam } from '$lib/utils/navigation'
+  import { setPageTitle, setSearchParam } from '$lib/navigation'
   import type { Context } from 'svelte-simple-modal'
   import { afterNavigate } from '$app/navigation'
   import { onMount, getContext } from 'svelte'
+  import { Country } from '$lib/models'
   import { page } from '$app/state'
   import * as api from '$lib/api'
-  import { Country } from '$lib/models'
 
   const { open } = getContext<Context>('simple-modal')
 
@@ -29,11 +29,11 @@
   })
 
   afterNavigate(() => {
-    const q = page.url.searchParams.get('q')
+    const searchQuery = page.url.searchParams.get('q')
 
-    if (q) {
-      query.set(decodeURIComponent(q))
-      setPageTitle(q)
+    if (searchQuery) {
+      query.set(decodeURIComponent(searchQuery))
+      setPageTitle(searchQuery)
     } else {
       setPageTitle(null)
     }

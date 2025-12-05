@@ -16,7 +16,11 @@
 
   const { country }: Props = $props()
 
-  const selectableFeeds = country.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  function getSelectableFeeds() {
+    return country.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  }
+
+  const selectableFeeds = getSelectableFeeds()
 
   searchResults.subscribe(() => {
     updateState()

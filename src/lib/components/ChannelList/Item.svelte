@@ -23,9 +23,16 @@
 
   const { channel }: Props = $props()
 
-  const logos = channel.getLogos()
-  const feeds = channel.getFeeds()
-  const channelLogo = logos.first()
+  function getLogos() {
+    return channel.getLogos()
+  }
+
+  function getFeeds() {
+    return channel.getFeeds()
+  }
+
+  const feeds = getFeeds()
+  const logo = getLogos().first()
 
   const { open } = getContext<Context>('simple-modal')
 
@@ -80,7 +87,7 @@
 >
   <div class="px-4 sm:pl-10 sm:pr-16 w-28 sm:w-[200px] flex shrink-0 items-center justify-center">
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
-      {#if channelLogo}
+      {#if logo}
         <button
           onclick={showLogos}
           class="cursor-pointer w-full relative flex justify-center items-center"
@@ -90,9 +97,9 @@
             class="block align-middle mx-auto max-w-20 max-h-[2.75rem] text-sm text-gray-400 dark:text-gray-600 cursor-defaults"
             loading="lazy"
             referrerpolicy="no-referrer"
-            src={channelLogo.url}
+            src={logo.url}
             alt={channel.name}
-            title={channelLogo.url}
+            title={logo.url}
           />
         </button>
       {:else}

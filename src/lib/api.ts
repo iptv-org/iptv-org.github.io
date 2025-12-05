@@ -1,4 +1,4 @@
-import { DATA_DIR } from '$lib/constants'
+import { DATA_DIR } from '../constants'
 import * as sdk from '@iptv-org/sdk'
 import {
   Channel,

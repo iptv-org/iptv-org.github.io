@@ -13,15 +13,18 @@
   }
 
   const { country }: Props = $props()
-  const channels = country.getChannels().all()
-  let channelsToDisplay = $state(channels)
 
-  const flagSvg = country.code === 'UK' ? Flag['GB'] : Flag[country.code]
-
-  let isExpanded = $state(false)
-  function toggleExpanded() {
-    isExpanded = !isExpanded
+  function getChannels() {
+    return country.getChannels()
   }
+
+  function getFlag() {
+    return country.code === 'UK' ? Flag['GB'] : Flag[country.code]
+  }
+
+  const channels = getChannels()
+
+  let channelsToDisplay = $state(channels.all())
 
   searchResults.subscribe(results => {
     if ($query) {
@@ -38,12 +41,19 @@
           },
           new Map<string, sdk.Types.ChannelSearchableData>()
         )
-        channelsToDisplay = channels.filter((channel: Channel) => !!resultsKeyById.has(channel.id))
+        channelsToDisplay = channels
+          .filter((channel: Channel) => !!resultsKeyById.has(channel.id))
+          .all()
       }
     } else {
-      channelsToDisplay = channels
+      channelsToDisplay = channels.all()
     }
   })
+
+  let isExpanded = $state(false)
+  function toggleExpanded() {
+    isExpanded = !isExpanded
+  }
 
   isSearchResultsReady.subscribe((value: boolean) => {
     isExpanded = $query && value
@@ -72,7 +82,7 @@
         aria-expanded={isExpanded}
       >
         <span class="flex items-center space-x-2"
-          ><span class="w-4">{@html flagSvg}</span><span>{country.name}</span></span
+          ><span class="w-4">{@html getFlag()}</span><span>{country.name}</span></span
         >
         <div class="text-gray-400" class:rotate-180={isExpanded}>
           <Icon.Expand size={20} />

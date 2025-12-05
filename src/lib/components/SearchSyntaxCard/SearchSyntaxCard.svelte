@@ -52,23 +52,26 @@
 </script>
 
 <Card
-  ><div
-    slot="headerLeft"
-    class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center"
-  >
-    Search syntax
-  </div>
-  <div slot="headerRight">
-    <CloseButton onClick={onClose} />
-  </div>
-  <div slot="body" class="text-gray-800 dark:text-white pt-2.5 w-full">
-    {#each examples as example (example.query)}
-      <div
-        class="border-t border-gray-200 dark:border-gray-700 py-5 w-full flex flex-col items-start gap-2 px-5"
-      >
-        <CodeBlock>{example.query}</CodeBlock>
-        <div class="px-1">{example.result}</div>
-      </div>
-    {/each}
-  </div></Card
+  >{#snippet headerLeft()}
+    <div class="text-l font-medium text-gray-800 dark:text-white inline-flex items-center">
+      Search syntax
+    </div>
+  {/snippet}
+  {#snippet headerRight()}
+    <div>
+      <CloseButton onClick={onClose} />
+    </div>
+  {/snippet}
+  {#snippet body()}
+    <div class="text-gray-800 dark:text-white pt-2.5 w-full">
+      {#each examples as example (example.query)}
+        <div
+          class="border-t border-gray-200 dark:border-gray-700 py-5 w-full flex flex-col items-start gap-2 px-5"
+        >
+          <CodeBlock>{example.query}</CodeBlock>
+          <div class="px-1">{example.result}</div>
+        </div>
+      {/each}
+    </div>
+  {/snippet}</Card
 >

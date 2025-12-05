@@ -2,7 +2,6 @@
   import type { Stream } from '$lib/models'
   import { Button } from '$lib/components'
   import * as Icon from '$lib/icons'
-  import qs from 'qs'
 
   interface Props {
     stream: Stream
@@ -11,18 +10,8 @@
 
   const { stream, onClick }: Props = $props()
 
-  const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
-  const params = qs.stringify({
-    labels: 'streams:edit',
-    template: '2_streams_edit.yml',
-    title: `Edit: ${stream.getDisplayName()}`,
-    stream_url: stream.url
-  })
-
-  const editUrl = `${endpoint}?${params}`
-
   function _onClick() {
-    window.open(editUrl, '_blank')
+    window.open(stream.getEditUrl(), '_blank')
     onClick()
   }
 </script>

@@ -2,7 +2,6 @@
   import type { Channel } from '$lib/models'
   import { Button } from '$lib/components'
   import * as Icon from '$lib/icons'
-  import qs from 'qs'
 
   interface Props {
     channel: Channel
@@ -11,19 +10,9 @@
 
   const { channel, onClick = () => {} }: Props = $props()
 
-  const endpoint = 'https://github.com/iptv-org/database/issues/new'
-  const params = qs.stringify({
-    labels: 'channels:remove',
-    template: '03_channels_remove.yml',
-    title: `Remove: ${channel.getUniqueName()}`,
-    id: channel.id
-  })
-
-  const url = `${endpoint}?${params}`
-
   function _onClick() {
     onClick()
-    window.open(url, '_blank')
+    window.open(channel.getRemoveUrl(), '_blank')
   }
 </script>
 

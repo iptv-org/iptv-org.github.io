@@ -3,7 +3,11 @@
   import { Channel } from '$lib/models'
   import { tippy } from '$lib/actions'
 
-  export let channel: Channel
+  interface Props {
+    channel: Channel
+  }
+
+  let { channel }: Props = $props()
 </script>
 
 <Badge>

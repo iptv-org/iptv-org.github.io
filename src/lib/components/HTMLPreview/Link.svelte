@@ -10,15 +10,14 @@
 
   const { value, onClick }: Props = $props()
 
-  const searchParams = new SvelteURLSearchParams()
-  searchParams.set('q', value.query)
+  function getUrl(): string {
+    const searchParams = new SvelteURLSearchParams()
+    searchParams.set('q', value.query)
+
+    return `${resolve('/')}?${searchParams.toString()}`
+  }
 </script>
 
-<a
-  href={`${resolve('/')}?${searchParams.toString()}`}
-  onclick={onClick}
-  class="underline hover:text-blue-400"
-  title={value.label}
->
+<a href={getUrl()} onclick={onClick} class="underline hover:text-blue-400" title={value.label}>
   {value.label}
 </a>

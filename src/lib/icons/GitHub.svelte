@@ -1,7 +1,15 @@
+<script lang="ts">
+  interface Props {
+    size: number
+  }
+
+  let { size, ...restProps }: Props = $props()
+</script>
+
 <svg
-  {...$$restProps}
-  width={$$props.size}
-  height={$$props.size}
+  {...restProps}
+  width={size}
+  height={size}
   aria-hidden="true"
   focusable="false"
   role="img"

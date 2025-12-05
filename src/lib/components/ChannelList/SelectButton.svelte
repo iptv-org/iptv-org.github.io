@@ -9,7 +9,11 @@
 
   const { channel }: Props = $props()
 
-  const selectableFeeds = channel.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  function getSelectableFeeds() {
+    return channel.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  }
+
+  const selectableFeeds = getSelectableFeeds()
 
   let isSelected = $state(false)
   let isDisabled = $state(false)

@@ -11,8 +11,15 @@
 
   const { feed, channel }: Props = $props()
 
-  const logos = feed.getLogos()
-  const streams = feed.getStreams()
+  function getLogos() {
+    return feed.getLogos()
+  }
+
+  function getStreams() {
+    return feed.getStreams()
+  }
+
+  const streams = getStreams()
 
   let menu: Menu
   function closeMenu() {
@@ -27,7 +34,7 @@
 
 <Menu bind:this={menu}>
   <CopyLinkButton link={feed.getPageUrl()} onCopy={onLinkCopy} />
-  {#if logos.isEmpty()}
+  {#if getLogos().isEmpty()}
     <FeedMenu.AddLogoButton {channel} {feed} onClick={closeMenu} />
   {/if}
   {#if streams.isEmpty() && !channel.isBlocked() && !channel.isClosed()}

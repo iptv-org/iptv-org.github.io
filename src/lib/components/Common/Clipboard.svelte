@@ -1,10 +1,9 @@
-<script>
+<script lang="ts">
   import { tick } from 'svelte'
 
-  export let text
-  export let onCopy = () => {}
+  const { text, onCopy = () => {}, children } = $props()
 
-  let textarea
+  let textarea: HTMLTextAreaElement = $state()
 
   async function copy() {
     textarea.select()
@@ -15,7 +14,7 @@
   }
 </script>
 
-<slot {copy} />
+{@render children?.({ copy })}
 <textarea bind:this={textarea} value={text} aria-hidden="true" tabindex="-1"></textarea>
 
 <style>

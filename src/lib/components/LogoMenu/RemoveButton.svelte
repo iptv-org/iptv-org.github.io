@@ -2,7 +2,6 @@
   import { Button } from '$lib/components'
   import type { Logo } from '$lib/models'
   import * as Icon from '$lib/icons'
-  import qs from 'qs'
 
   interface Props {
     logo: Logo
@@ -11,20 +10,8 @@
 
   const { logo, onClick = () => {} }: Props = $props()
 
-  const endpoint = 'https://github.com/iptv-org/database/issues/new'
-  const params = qs.stringify({
-    labels: 'logos:remove',
-    template: '09_logos_remove.yml',
-    title: `Remove: ${logo.getDisplayName()} Logo`,
-    feed_id: logo.feed,
-    channel_id: logo.channel,
-    logo_url: logo.url
-  })
-
-  const url = `${endpoint}?${params}`
-
   function _onClick() {
-    window.open(url, '_blank')
+    window.open(logo.getRemoveUrl(), '_blank')
     onClick()
   }
 </script>

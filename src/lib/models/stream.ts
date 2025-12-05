@@ -55,6 +55,30 @@ export class Stream extends sdk.Models.Stream {
     return this._feed
   }
 
+  getReportUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
+    const params = new URLSearchParams({
+      labels: 'streams:remove',
+      template: '3_streams_report.yml',
+      title: `Report: ${this.getDisplayName()}`,
+      stream_url: this.url
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getEditUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
+    const params = new URLSearchParams({
+      labels: 'streams:edit',
+      template: '2_streams_edit.yml',
+      title: `Edit: ${this.getDisplayName()}`,
+      stream_url: this.url
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
   getDisplayName(): string {
     const channel = this.getChannel()
     if (!channel) return ''

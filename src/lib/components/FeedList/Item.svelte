@@ -25,12 +25,27 @@
 
   const { channel, feed, onClose = () => {} }: Props = $props()
 
-  const streams = feed.getStreams()
-  const guides = feed.getGuides()
+  function getStreams() {
+    return feed.getStreams()
+  }
+
+  function getGuides() {
+    return feed.getGuides()
+  }
+
+  function isMain() {
+    return feed.is_main
+  }
+
+  function getId() {
+    return feed.id
+  }
+
+  const streams = getStreams()
+
+  const guides = getGuides()
 
   const modal = getContext<Context>('simple-modal')
-
-  const hash = page.url.hash.replace('#', '').toLowerCase()
 
   function showGuides() {
     modal.open(
@@ -53,7 +68,9 @@
     onClose()
   }
 
-  let isExpanded = $state((!hash && feed.is_main) || hash === feed.id.toLowerCase())
+  const hash = page.url.hash.replace('#', '')
+
+  let isExpanded = $state((!hash && isMain()) || hash.toLowerCase() === getId().toLowerCase())
   function _onClick() {
     isExpanded = !isExpanded
   }
@@ -89,7 +106,7 @@
                 title="Streams"
               >
                 <Icon.Stream size={20} />
-                <div>{feed.getStreams().count()}</div>
+                <div>{streams.count()}</div>
               </button>
             {/if}
             {#if guides.isNotEmpty()}
