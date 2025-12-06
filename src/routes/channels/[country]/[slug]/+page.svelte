@@ -10,20 +10,31 @@
 
   const { data }: Props = $props()
 
-  const { channel } = data
+  function getChannel() {
+    return data.channel
+  }
 
-  /* eslint-disable-next-line */
-  const schema = `<script type="application/ld+json">${JSON.stringify(channel.getStructuredData())}<\/script>`
+  const channel = getChannel()
+
+  function getTitle() {
+    return channel ? `${channel.getUniqueName()} • iptv-org` : 'iptv-org'
+  }
+
+  function getDescription() {
+    return `Detailed description of ${channel ? channel.getUniqueName() : ''}.`
+  }
+
+  function getSchema() {
+    /* eslint-disable-next-line */
+    return `<script type="application/ld+json">${JSON.stringify(channel.getStructuredData())}<\/script>`
+  }
 </script>
 
 <svelte:head>
-  <title>{channel ? `${channel.getUniqueName()} • iptv-org` : 'iptv-org'}</title>
-  <meta
-    name="description"
-    content="Detailed description of {channel ? channel.getUniqueName() : ''}."
-  />
+  <title>{getTitle()}</title>
+  <meta name="description" content={getDescription()} />
 
-  {@html schema}
+  {@html getSchema()}
 </svelte:head>
 
 <header class="fixed z-40 w-full min-w-[360px] top-0">

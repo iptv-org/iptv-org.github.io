@@ -14,14 +14,17 @@
 
   const { close } = getContext<Context>('simple-modal')
 
-  const wrapperClass =
-    variant === 'default'
+  function getWrapperClasses() {
+    return variant === 'default'
       ? 'flex justify-center p-2 pb-20 sm:py-28 z-50'
       : 'flex justify-center p-2 pt-14 pb-20 sm:py-44 z-50'
+  }
 
-  const title = variant === 'default' ? channel.name : 'Logos'
+  function getTitle() {
+    return variant === 'default' ? channel.name : 'Logos'
+  }
 </script>
 
-<Popup onClose={close} {wrapperClass}>
-  <LogosCard {channel} {feed} {title} onClose={close} />
+<Popup onClose={close} wrapperClass={getWrapperClasses()}>
+  <LogosCard {channel} {feed} title={getTitle()} onClose={close} />
 </Popup>

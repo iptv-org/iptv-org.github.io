@@ -51,6 +51,34 @@ export class Logo extends sdk.Models.Logo {
     return logo
   }
 
+  getEditUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'logos:edit',
+      template: '08_logos_edit.yml',
+      title: `Edit: ${this.getDisplayName()} Logo`,
+      feed_id: this.feed,
+      channel_id: this.channel,
+      logo_url: this.url
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getRemoveUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'logos:remove',
+      template: '09_logos_remove.yml',
+      title: `Remove: ${this.getDisplayName()} Logo`,
+      feed_id: this.feed,
+      channel_id: this.channel,
+      logo_url: this.url
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
   getDisplayName(): string {
     const feed = this.getFeed()
     if (feed) return feed.getFullName()

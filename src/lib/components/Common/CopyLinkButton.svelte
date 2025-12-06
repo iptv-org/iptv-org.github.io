@@ -10,10 +10,12 @@
   const { link, onCopy = () => {} }: Props = $props()
 </script>
 
-<Clipboard text={link} {onCopy} let:copy>
-  <Button onClick={copy} label="Copy Link">
-    {#snippet left()}
-      <Icon.Link class="text-gray-400" size={15} />
-    {/snippet}
-  </Button>
+<Clipboard text={link} {onCopy}>
+  {#snippet children({ copy })}
+    <Button onClick={copy} label="Copy Link">
+      {#snippet left()}
+        <Icon.Link class="text-gray-400" size={15} />
+      {/snippet}
+    </Button>
+  {/snippet}
 </Clipboard>

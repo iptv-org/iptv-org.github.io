@@ -144,6 +144,69 @@ export class Feed extends sdk.Models.Feed {
     return `${window.location.protocol}//${window.location.host}/channels/${countryCode}/${channelSlug}#${this.id}`
   }
 
+  getEditUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'feeds:edit',
+      template: '05_feeds_edit.yml',
+      title: `Edit: ${this.getFullName()}`,
+      feed_id: this.id,
+      channel_id: this.channel
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getRemoveUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'feeds:remove',
+      template: '06_feeds_remove.yml',
+      title: `Remove: ${this.getFullName()}`,
+      feed_id: this.id,
+      channel_id: this.channel
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getAddLogoUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'logos:add',
+      template: '07_logos_add.yml',
+      title: `Add: ${this.getFullName()} Logo`,
+      channel_id: this.channel,
+      feed_id: this.id
+    })
+
+    return `${endpoint}?${params}`
+  }
+
+  getAddStreamUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
+    const params = new URLSearchParams({
+      labels: 'streams:add',
+      template: '1_streams_add.yml',
+      title: `Add: ${this.getFullName()}`,
+      stream_id: this.getStreamId()
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getRequestLinkUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
+    const params = new URLSearchParams({
+      labels: 'channel search',
+      template: '4_channel-search.yml',
+      title: `Find: ${this.getFullName()}`,
+      stream_id: this.getStreamId()
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
   getFieldset(): HTMLPreviewField[] {
     return [
       { name: 'id', type: 'string', value: { text: this.id, title: this.id } },

@@ -1,7 +1,15 @@
+<script lang="ts">
+  interface Props {
+    size: number
+  }
+
+  let { size, ...restProps }: Props = $props()
+</script>
+
 <svg
-  {...$$restProps}
-  width={$$props.size}
-  height={$$props.size}
+  {...restProps}
+  width={size}
+  height={size}
   fill="currentColor"
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"

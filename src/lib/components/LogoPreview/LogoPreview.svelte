@@ -1,7 +1,6 @@
 <script lang="ts">
-  import type { Channel, Feed, Logo } from '$lib/models'
   import type { Context } from 'svelte-simple-modal'
-  import type { Collection } from '@freearhey/core'
+  import type { Channel, Feed } from '$lib/models'
   import { LogosPopup } from '$lib/components'
   import { getContext } from 'svelte'
   import * as Icon from '$lib/icons'
@@ -13,9 +12,16 @@
 
   const { channel, feed = undefined }: Props = $props()
 
-  const logos: Collection<Logo> = feed ? feed.getLogos() : channel.getLogos()
-  const displayName = feed ? feed.getFullName() : channel.name
-  const firstLogo = logos.first()
+  function getDisplayName() {
+    return feed ? feed.getFullName() : channel.name
+  }
+
+  function getLogos() {
+    return feed ? feed.getLogos() : channel.getLogos()
+  }
+
+  const displayName = getDisplayName()
+  const logo = getLogos().first()
 
   const { open } = getContext<Context>('simple-modal')
 
@@ -28,7 +34,7 @@
   }
 </script>
 
-{#if logos.isNotEmpty()}
+{#if logo}
   <div class="w-full justify-center items-center flex h-34 relative">
     <button
       onclick={showLogos}
@@ -36,12 +42,12 @@
       title="Logos"
     >
       <img
-        src={firstLogo.url}
+        src={logo.url}
         alt={`${displayName} logo`}
-        title={firstLogo.url}
+        title={logo.url}
         referrerpolicy="no-referrer"
         class="bg-gray-100 text-sm text-gray-400 dark:text-gray-600 rounded-sm overflow-hidden max-h-full"
-        style:max-width={firstLogo.width ? `${firstLogo.width}px` : ''}
+        style:max-width={logo.width ? `${logo.width}px` : ''}
       />
     </button>
     <div class="absolute bottom-1 right-1 pointer-events-none">

@@ -2,7 +2,11 @@
   import type { Guide } from '$lib/models'
   import * as Icon from '$lib/icons'
 
-  export let guide: Guide
+  interface Props {
+    guide: Guide
+  }
+
+  let { guide }: Props = $props()
 </script>
 
 <div

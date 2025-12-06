@@ -2,7 +2,6 @@
   import { Button } from '$lib/components'
   import type { Feed } from '$lib/models'
   import * as Icon from '$lib/icons'
-  import qs from 'qs'
 
   interface Props {
     feed: Feed
@@ -11,19 +10,8 @@
 
   const { feed, onClick = () => {} }: Props = $props()
 
-  const endpoint = 'https://github.com/iptv-org/database/issues/new'
-  const params = qs.stringify({
-    labels: 'feeds:remove',
-    template: '06_feeds_remove.yml',
-    title: `Remove: ${feed.getFullName()}`,
-    feed_id: feed.id,
-    channel_id: feed.channel
-  })
-
-  const url = `${endpoint}?${params}`
-
   function _onClick() {
-    window.open(url, '_blank')
+    window.open(feed.getRemoveUrl(), '_blank')
     onClick()
   }
 </script>

@@ -17,19 +17,23 @@
     ...restProps
   }: Props = $props()
 
-  let className = $state(
-    'rounded-lg text-sm flex items-center justify-center cursor-pointer shrink-0 text-gray-400'
-  )
-  if (variant === 'dark') className += ' hover:bg-primary-750'
-  else if (variant === 'light') className += ' hover:bg-gray-100'
-  else if (variant === 'overlay') className += ' hover:bg-white/10'
-  else className += ' hover:bg-gray-100 dark:hover:bg-primary-750'
+  function getClasses() {
+    let classes =
+      'rounded-lg text-sm flex items-center justify-center cursor-pointer shrink-0 text-gray-400'
+
+    if (variant === 'dark') classes += ' hover:bg-primary-750'
+    else if (variant === 'light') classes += ' hover:bg-gray-100'
+    else if (variant === 'overlay') classes += ' hover:bg-white/10'
+    else classes += ' hover:bg-gray-100 dark:hover:bg-primary-750'
+
+    return classes
+  }
 </script>
 
 <button
   {...restProps}
   type="button"
-  class={className}
+  class={getClasses()}
   style:width={`${size}px`}
   style:height={`${size}px`}
   onclick={onClick}

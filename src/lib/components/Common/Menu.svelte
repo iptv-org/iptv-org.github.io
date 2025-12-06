@@ -5,20 +5,19 @@
   import * as Icon from '$lib/icons'
 
   interface Props {
-    isOpened?: boolean
     variant?: string
     children?: Snippet
   }
 
-  const { isOpened = false, variant = 'default', children }: Props = $props()
+  const { variant = 'default', children }: Props = $props()
 
-  let showDropdown = $state(isOpened)
+  let isOpen = $state(false)
   function toggleMenu() {
-    showDropdown = !isOpened
+    isOpen = !isOpen
   }
 
   export function close() {
-    showDropdown = false
+    isOpen = false
   }
 </script>
 
@@ -27,7 +26,7 @@
     <Icon.Menu size={16} />
   </IconButton>
 
-  {#if showDropdown}
+  {#if isOpen}
     <div
       class="rounded-md bg-white dark:bg-primary-810 absolute top-10 right-0 w-48 z-10 p-1 border border-gray-200 dark:border-primary-750"
     >

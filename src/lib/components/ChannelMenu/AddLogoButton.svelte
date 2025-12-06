@@ -2,7 +2,6 @@
   import type { Channel } from '$lib/models'
   import { Button } from '$lib/components'
   import * as Icon from '$lib/icons'
-  import qs from 'qs'
 
   interface Props {
     channel: Channel
@@ -11,18 +10,8 @@
 
   const { channel, onClick = () => {} }: Props = $props()
 
-  const endpoint = 'https://github.com/iptv-org/database/issues/new'
-  const params = qs.stringify({
-    labels: 'logos:add',
-    template: '07_logos_add.yml',
-    title: `Add: ${channel.name} Logo`,
-    channel_id: channel.id
-  })
-
-  const url = `${endpoint}?${params}`
-
   function _onClick() {
-    window.open(url, '_blank')
+    window.open(channel.getAddLogoUrl(), '_blank')
     onClick()
   }
 </script>

@@ -1,7 +1,14 @@
-<script>
+<script lang="ts">
   import { SvelteToast } from '@zerodevx/svelte-toast'
   import Modal from 'svelte-simple-modal'
+  import type { Snippet } from 'svelte'
   import './+layout.css'
+
+  interface Props {
+    children?: Snippet
+  }
+
+  let { children }: Props = $props()
 
   const toastOptions = {
     duration: 2000,
@@ -33,7 +40,7 @@
   classBg="fixed top-0 left-0 z-70 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-scroll"
   closeButton={false}
 >
-  <slot />
+  {@render children?.()}
 </Modal>
 
 <SvelteToast options={toastOptions} />

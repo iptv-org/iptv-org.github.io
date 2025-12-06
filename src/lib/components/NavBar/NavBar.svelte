@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { SvelteURLSearchParams } from 'svelte/reactivity'
   import { query, updateSearchResults } from '$lib/store'
-  import { setSearchParam } from '$lib/utils/navigation'
+  import { setSearchParam } from '$lib/navigation'
   import { SearchField } from '$lib/components'
   import { goto } from '$app/navigation'
-  import * as NavBar from './'
   import { resolve } from '$app/paths'
-  import { SvelteURLSearchParams } from 'svelte/reactivity'
+  import * as NavBar from './'
 
   const { version = 'default', onSearchButtonClick = () => {} } = $props()
 

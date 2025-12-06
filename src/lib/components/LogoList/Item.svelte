@@ -2,7 +2,11 @@
   import { HTMLPreview, LogoMenu } from '$lib/components'
   import { Logo } from '$lib/models'
 
-  export let logo: Logo
+  interface Props {
+    logo: Logo
+  }
+
+  let { logo }: Props = $props()
 </script>
 
 <div class="w-full rounded-md overflow-hidden border border-gray-200 dark:border-gray-700 relative">

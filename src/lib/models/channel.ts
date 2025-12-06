@@ -1,13 +1,11 @@
 import type { HTMLPreviewField, HTMLPreviewLink } from '$lib/components/HTMLPreview/types'
 import { BlocklistRecord, BroadcastAreaLocation, Country, Feed, Guide, Logo, Stream } from './'
 import type { ChannelEncoded, ChannelStructuredData } from '$lib/types/channel'
+import { SITE_ORIGIN } from '../../constants'
 import { Collection } from '@freearhey/core'
-import { SITE_ORIGIN } from '$lib/constants'
 import { normalize } from '$lib/utils'
-import { resolve } from '$app/paths'
 import * as sdk from '@iptv-org/sdk'
 import dayjs from 'dayjs'
-import type { ResolvedPathname } from '$app/types'
 
 export class Channel extends sdk.Models.Channel {
   declare id: string
@@ -180,17 +178,62 @@ export class Channel extends sdk.Models.Channel {
     return `${this.name} (${country.name})`
   }
 
-  getPagePath(): ResolvedPathname {
+  getPagePath() {
     const [slug, country] = this.id.split('.')
 
-    return resolve('/channels/[country]/[slug]', {
-      country,
-      slug
-    })
+    return `/channels/${country}/${slug}`
   }
 
   getPageUrl(): string {
     return new URL(this.getPagePath(), SITE_ORIGIN).toString()
+  }
+
+  getEditUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'channels:edit',
+      template: '02_channels_edit.yml',
+      title: `Edit: ${this.getUniqueName()}`,
+      id: this.id
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getRemoveUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'channels:remove',
+      template: '03_channels_remove.yml',
+      title: `Remove: ${this.getUniqueName()}`,
+      id: this.id
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getAddFeedUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'feeds:add',
+      template: '04_feeds_add.yml',
+      title: `Add: ${this.name} Feed`,
+      channel_id: this.id
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
+  getAddLogoUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/database/issues/new'
+    const params = new URLSearchParams({
+      labels: 'logos:add',
+      template: '07_logos_add.yml',
+      title: `Add: ${this.name} Logo`,
+      channel_id: this.id
+    })
+
+    return `${endpoint}?${params.toString()}`
   }
 
   getLogoUrl(): string {
