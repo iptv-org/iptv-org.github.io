@@ -53,6 +53,12 @@ describe('Channel', () => {
     expect(channel.getLogos().count()).toBe(3)
     expect(channel.getLogos().first()).instanceOf(Logo)
     expect(channel.getLogos().first().url).toBe('https://i.imgur.com/CnhTn8i.png')
+    expect(channel.getLogos().first().getEditUrl()).toBe(
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+    )
+    expect(channel.getLogos().first().getRemoveUrl()).toBe(
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aremove&template=09_logos_remove.yml&title=Remove%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+    )
   })
 
   test('getBlocklistRecords()', () => {
