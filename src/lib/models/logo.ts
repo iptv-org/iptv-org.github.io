@@ -57,7 +57,7 @@ export class Logo extends sdk.Models.Logo {
       labels: 'logos:edit',
       template: '08_logos_edit.yml',
       title: `Edit: ${this.getDisplayName()} Logo`,
-      feed_id: this.feed,
+      feed_id: this.feed || '',
       channel_id: this.channel,
       logo_url: this.url
     })
@@ -71,7 +71,7 @@ export class Logo extends sdk.Models.Logo {
       labels: 'logos:remove',
       template: '09_logos_remove.yml',
       title: `Remove: ${this.getDisplayName()} Logo`,
-      feed_id: this.feed,
+      feed_id: this.feed || '',
       channel_id: this.channel,
       logo_url: this.url
     })
