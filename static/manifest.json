@@ -25,5 +25,12 @@
       "sizes": "512x512",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "text": "q"
+    }
+  }
 }
