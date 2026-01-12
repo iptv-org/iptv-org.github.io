@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Card, CloseButton, FeedList } from '$lib/components'
   import type { Channel, Feed } from '$lib/models'
+  import { onModalOpened, onModalClosed } from '$lib/store'
   import Modal from 'svelte-simple-modal'
   import * as Icon from '$lib/icons'
   import * as FeedsCard from './'
@@ -44,6 +45,9 @@
         unstyled={true}
         classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
         closeButton={false}
+        closeOnEsc={false}
+        onOpened={onModalOpened}
+        onClosed={onModalClosed}
       >
         <FeedList {channel} feeds={getFeeds()} {onClose} />
       </Modal>

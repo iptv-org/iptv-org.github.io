@@ -3,6 +3,54 @@ import { Channel, Feed, Stream } from '$lib/models'
 import { Collection } from '@freearhey/core'
 import * as sdk from '@iptv-org/sdk'
 
+// Modal depth tracking for proper scroll management with nested modals
+export const modalDepth = writable(0)
+
+// Saved scroll state from the first modal that opened
+let savedScrollY = 0
+let savedBodyPosition = ''
+let savedBodyOverflow = ''
+let savedBodyWidth = ''
+let savedBodyTop = ''
+
+export function onModalOpened() {
+  const currentDepth = get(modalDepth)
+  if (currentDepth === 0) {
+    // First modal opening - save the original scroll state
+    savedScrollY = window.scrollY
+    savedBodyPosition = document.body.style.position
+    savedBodyOverflow = document.body.style.overflow
+    savedBodyWidth = document.body.style.width
+    savedBodyTop = document.body.style.top
+  }
+  modalDepth.update(n => n + 1)
+}
+
+export function onModalClosed() {
+  // Use setTimeout to ensure this runs AFTER svelte-simple-modal's
+  // internal enableScroll() which breaks nested modal scroll state.
+  // Use 10ms delay to ensure all concurrent modal close operations complete.
+  setTimeout(() => {
+    const currentDepth = get(modalDepth) - 1
+    modalDepth.set(Math.max(0, currentDepth))
+
+    if (currentDepth <= 0) {
+      // Last modal closing - restore the original scroll state
+      document.body.style.position = savedBodyPosition
+      document.body.style.overflow = savedBodyOverflow
+      document.body.style.width = savedBodyWidth
+      document.body.style.top = savedBodyTop
+      window.scrollTo({ top: savedScrollY, left: 0, behavior: 'instant' })
+    } else {
+      // Parent modal still open - re-apply the scroll lock
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${savedScrollY}px`
+      document.body.style.overflow = 'hidden'
+      document.body.style.width = '100%'
+    }
+  }, 10)
+}
+
 const channels: Writable<Channel[]> = writable([])
 export const feeds: Writable<Feed[]> = writable([])
 

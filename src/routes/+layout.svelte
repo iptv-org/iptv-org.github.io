@@ -2,6 +2,7 @@
   import { SvelteToast } from '@zerodevx/svelte-toast'
   import Modal from 'svelte-simple-modal'
   import type { Snippet } from 'svelte'
+  import { onModalOpened, onModalClosed } from '$lib/store'
   import './+layout.css'
 
   interface Props {
@@ -39,6 +40,8 @@
   unstyled={true}
   classBg="fixed top-0 left-0 z-70 w-screen h-screen flex flex-col bg-black/[.7] overflow-y-scroll"
   closeButton={false}
+  onOpened={onModalOpened}
+  onClosed={onModalClosed}
 >
   {@render children?.()}
 </Modal>

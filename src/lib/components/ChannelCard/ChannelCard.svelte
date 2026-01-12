@@ -2,6 +2,7 @@
   import type { Channel } from '$lib/models'
   import Modal from 'svelte-simple-modal'
   import * as ChannelCard from './'
+  import { onModalOpened, onModalClosed } from '$lib/store'
   import {
     BlockedBadge,
     HTMLPreview,
@@ -55,6 +56,9 @@
         unstyled={true}
         classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
         closeButton={false}
+        closeOnEsc={false}
+        onOpened={onModalOpened}
+        onClosed={onModalClosed}
       >
         <LogoPreview {channel} />
       </Modal>

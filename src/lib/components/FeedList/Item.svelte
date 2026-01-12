@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Context } from 'svelte-simple-modal'
   import { Channel, Feed } from '$lib/models'
-  import { downloadMode } from '$lib/store'
+  import { downloadMode, onModalOpened, onModalClosed } from '$lib/store'
   import Modal from 'svelte-simple-modal'
   import { getContext } from 'svelte'
   import * as Icon from '$lib/icons'
@@ -130,6 +130,9 @@
           unstyled={true}
           classBg="fixed top-0 left-0 z-80 w-screen h-screen flex flex-col bg-black/70 overflow-y-scroll"
           closeButton={false}
+          closeOnEsc={false}
+          onOpened={onModalOpened}
+          onClosed={onModalClosed}
         >
           <LogoPreview {channel} {feed} />
         </Modal>
