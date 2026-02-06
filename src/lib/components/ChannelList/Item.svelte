@@ -90,7 +90,7 @@
       {#if logo}
         <button
           onclick={showLogos}
-          class="cursor-pointer w-full relative flex justify-center items-center"
+          class="cursor-pointer relative flex justify-center items-center h-[2.75rem] w-20"
           title="{channel.name} logos"
         >
           <img
