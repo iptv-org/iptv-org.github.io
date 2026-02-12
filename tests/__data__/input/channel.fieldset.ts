@@ -1,6 +1,4 @@
-import type { HTMLPreviewField } from '~/types/htmlPreviewField'
-
-export const fieldset: HTMLPreviewField[] = [
+export const fieldset = [
   { name: 'id', type: 'string', value: { text: 'AndorraTV.ad', title: 'AndorraTV.ad' } },
   { name: 'name', type: 'string', value: { text: 'Andorra TV', title: 'Andorra TV' } },
   {

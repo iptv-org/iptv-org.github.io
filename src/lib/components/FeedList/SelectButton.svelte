@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { selectFeeds, deselectFeeds, selectedFeeds } from '$lib/store'
+  import { selectStreams, deselectStreams, selectedStreams } from '$lib/store'
+  import type { Feed, Stream } from '$lib/models'
   import { Checkbox } from '$lib/components'
-  import type { Feed } from '$lib/models'
 
   interface Props {
     feed: Feed
@@ -9,29 +9,42 @@
 
   const { feed }: Props = $props()
 
-  function hasStreams() {
-    return feed.hasStreams()
+  function getSelectableStreams() {
+    return feed.getStreams()
   }
 
+  const selectableStreams = getSelectableStreams()
+
   let isSelected = $state(false)
-  const isDisabled = !hasStreams()
+  let isDisabled = $state(false)
+  let isIndeterminate = $state(false)
   function updateState() {
     setTimeout(() => {
-      isSelected = $selectedFeeds.has(feed)
+      const selectedFeedStreams = Array.from($selectedStreams).filter(
+        (stream: Stream) => stream.getId() === feed.getStreamId()
+      )
+      isSelected = selectedFeedStreams.length === selectableStreams.count()
+      isIndeterminate = selectedFeedStreams.length > 0
+      isDisabled = selectableStreams.isEmpty()
     }, 0)
   }
 
-  selectedFeeds.subscribe(() => {
+  selectedStreams.subscribe(() => {
     updateState()
   })
 
   function onCheckboxChange(selected: boolean) {
     if (selected) {
-      selectFeeds([feed])
+      selectStreams(selectableStreams.all())
     } else {
-      deselectFeeds([feed])
+      deselectStreams(selectableStreams.all())
     }
   }
 </script>
 
-<Checkbox selected={isSelected} disabled={isDisabled} onChange={onCheckboxChange} />
+<Checkbox
+  selected={isSelected}
+  disabled={isDisabled}
+  indeterminate={isIndeterminate}
+  onChange={onCheckboxChange}
+/>
