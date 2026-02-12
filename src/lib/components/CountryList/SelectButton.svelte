@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { Country, Feed } from '$lib/models'
+  import type { Country, Stream } from '$lib/models'
   import { Checkbox } from '$lib/components'
   import {
     searchResultsKeyByChannel,
-    selectedFeedsKeyByChannel,
-    deselectFeeds,
-    searchResults,
-    selectedFeeds,
-    selectFeeds
+    selectedStreamsKeyByChannel,
+    selectedStreams,
+    deselectStreams,
+    selectStreams,
+    searchResults
   } from '$lib/store'
 
   interface Props {
@@ -16,49 +16,49 @@
 
   const { country }: Props = $props()
 
-  function getSelectableFeeds() {
-    return country.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  function getSelectableStreams() {
+    return country.getStreams()
   }
 
-  const selectableFeeds = getSelectableFeeds()
+  const selectableStreams = getSelectableStreams()
 
   searchResults.subscribe(() => {
     updateState()
   })
 
-  selectedFeeds.subscribe(() => {
+  selectedStreams.subscribe(() => {
     updateState()
   })
 
-  let isDisabled = $state(false)
   let isSelected = $state(false)
+  let isDisabled = $state(false)
   let isIndeterminate = $state(false)
   function updateState() {
     setTimeout(() => {
-      const selectedFeedsInSearchResults = selectableFeeds.filter(
-        (feed: Feed) =>
-          $searchResultsKeyByChannel.has(feed.channel) &&
-          $selectedFeedsKeyByChannel.has(feed.channel)
+      const selectedStreamsInSearchResults = selectableStreams.filter(
+        (stream: Stream) =>
+          $searchResultsKeyByChannel.has(stream.channel) &&
+          $selectedStreamsKeyByChannel.has(stream.channel)
       )
-      const selectableFeedsInSearchResults = selectableFeeds.filter((feed: Feed) =>
-        $searchResultsKeyByChannel.has(feed.channel)
+      const selectableStreamsInSearchResults = selectableStreams.filter((stream: Stream) =>
+        $searchResultsKeyByChannel.has(stream.channel)
       )
       isSelected =
-        selectedFeedsInSearchResults.count() > 0 &&
-        selectedFeedsInSearchResults.count() === selectableFeedsInSearchResults.count()
-      isIndeterminate = selectedFeedsInSearchResults.count() > 0
-      isDisabled = selectableFeedsInSearchResults.isEmpty()
+        selectedStreamsInSearchResults.count() > 0 &&
+        selectedStreamsInSearchResults.count() === selectableStreamsInSearchResults.count()
+      isIndeterminate = selectedStreamsInSearchResults.count() > 0
+      isDisabled = selectableStreamsInSearchResults.isEmpty()
     }, 0)
   }
 
   function onCheckboxChange(selected: boolean) {
-    const selectableFeedsInSearchResults = selectableFeeds.filter((feed: Feed) =>
-      $searchResultsKeyByChannel.has(feed.channel)
+    const selectableStreamsInSearchResults = selectableStreams.filter((stream: Stream) =>
+      $searchResultsKeyByChannel.has(stream.channel)
     )
     if (selected) {
-      selectFeeds(selectableFeedsInSearchResults.all())
+      selectStreams(selectableStreamsInSearchResults.all())
     } else {
-      deselectFeeds(selectableFeeds.all())
+      deselectStreams(selectableStreams.all())
     }
   }
 </script>

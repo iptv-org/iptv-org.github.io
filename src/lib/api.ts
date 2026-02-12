@@ -81,15 +81,17 @@ function processData(rawData: sdk.Types.RawData) {
     acc.set(language.code, language)
     return acc
   }, new Map())
-  const streams = rawData.streams.map(data => {
-    const stream = new Stream(data)
+  const streams = rawData.streams
+    .map(data => {
+      const stream = new Stream(data)
 
-    stream
-      .withChannel(channelsKeyById.get(stream.channel))
-      .withFeed(feedsKeyByStreamId.get(stream.getId()))
+      stream
+        .withChannel(channelsKeyById.get(stream.channel))
+        .withFeed(feedsKeyByStreamId.get(stream.getId()))
 
-    return stream
-  })
+      return stream
+    })
+    .filter((stream: Stream) => stream.hasFeed())
   const streamsGroupedById = Map.groupBy(streams, (stream: Stream) => stream.getId())
   const guides = rawData.guides.map(data => new Guide(data))
   const guidesGroupedByStreamId = Map.groupBy(guides, (guide: Guide) => guide.getStreamId())
@@ -197,6 +199,7 @@ function processData(rawData: sdk.Types.RawData) {
   return {
     countries,
     channels,
-    feeds
+    feeds,
+    streams
   }
 }
