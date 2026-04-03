@@ -18,6 +18,6 @@
   }
 </script>
 
-<a href={getUrl()} onclick={onClick} class="underline hover:text-blue-400" title={value.label}>
+<a href={getUrl()} onclick={onClick} class="underline hover:text-blue-400" title={value.query}>
   {value.label}
 </a>
