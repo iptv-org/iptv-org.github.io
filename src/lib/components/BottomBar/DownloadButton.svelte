@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { getSelectedStreams, selectedFeeds } from '$lib/store'
   import { createPlaylist } from '$lib/utils/playlist'
+  import { selectedStreams } from '$lib/store'
   import { IconButton } from '$lib/components'
+  import { Collection } from '@freearhey/core'
   import { Stream } from '$lib/models'
   import * as Icon from '$lib/icons'
 
@@ -12,16 +13,14 @@
   const { variant = 'default' }: Props = $props()
 
   function _onClick() {
-    const streams = getSelectedStreams()
-      .sortBy(
-        [
-          (stream: Stream) => stream.channel.toLowerCase(),
-          (stream: Stream) => stream.getVerticalResolution(),
-          (stream: Stream) => stream.url
-        ],
-        ['asc', 'desc', 'asc']
-      )
-      .uniqBy((stream: Stream) => stream.channel + stream.feed)
+    const streams = new Collection(Array.from($selectedStreams)).sortBy(
+      [
+        (stream: Stream) => stream.channel.toLowerCase(),
+        (stream: Stream) => stream.getVerticalResolution(),
+        (stream: Stream) => stream.url
+      ],
+      ['asc', 'desc', 'asc']
+    )
 
     const playlist = createPlaylist(streams)
     const downloadLink = createDownloadLink(playlist.toString())
@@ -45,7 +44,7 @@
 
 <IconButton
   onClick={_onClick}
-  disabled={$selectedFeeds.size === 0}
+  disabled={$selectedStreams.size === 0}
   aria-label="Download Playlist"
   title="Download Playlist"
   {variant}

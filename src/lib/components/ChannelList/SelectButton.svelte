@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { selectFeeds, deselectFeeds, selectedFeeds } from '$lib/store'
-  import type { Channel, Feed } from '$lib/models'
+  import { selectStreams, deselectStreams, selectedStreams } from '$lib/store'
+  import type { Channel, Stream } from '$lib/models'
   import { Checkbox } from '$lib/components'
 
   interface Props {
@@ -9,35 +9,35 @@
 
   const { channel }: Props = $props()
 
-  function getSelectableFeeds() {
-    return channel.getFeeds().filter((feed: Feed) => feed.hasStreams())
+  function getSelectableStreams() {
+    return channel.getStreams()
   }
 
-  const selectableFeeds = getSelectableFeeds()
+  const selectableStreams = getSelectableStreams()
 
   let isSelected = $state(false)
   let isDisabled = $state(false)
   let isIndeterminate = $state(false)
   function updateState() {
     setTimeout(() => {
-      const selectedChannelFeeds = Array.from($selectedFeeds).filter(
-        (feed: Feed) => feed.channel === channel.id
+      const selectedChannelStreams = Array.from($selectedStreams).filter(
+        (stream: Stream) => stream.channel === channel.id
       )
-      isSelected = selectedChannelFeeds.length === selectableFeeds.count()
-      isIndeterminate = selectedChannelFeeds.length > 0
-      isDisabled = selectableFeeds.isEmpty()
+      isSelected = selectedChannelStreams.length === selectableStreams.count()
+      isIndeterminate = selectedChannelStreams.length > 0
+      isDisabled = selectableStreams.isEmpty()
     }, 0)
   }
 
-  selectedFeeds.subscribe(() => {
+  selectedStreams.subscribe(() => {
     updateState()
   })
 
   function onCheckboxChange(selected: boolean) {
     if (selected) {
-      selectFeeds(selectableFeeds.all())
+      selectStreams(selectableStreams.all())
     } else {
-      deselectFeeds(selectableFeeds.all())
+      deselectStreams(selectableStreams.all())
     }
   }
 </script>

@@ -55,6 +55,10 @@ export class Stream extends sdk.Models.Stream {
     return this._feed
   }
 
+  hasFeed(): boolean {
+    return !!this._feed
+  }
+
   getReportUrl(): string {
     const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
     const params = new URLSearchParams({

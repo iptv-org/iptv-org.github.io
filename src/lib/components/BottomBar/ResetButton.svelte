@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { selectedFeeds, deselectAllFeeds } from '$lib/store'
+  import { selectedStreams, deselectAllStreams } from '$lib/store'
   import { IconButton } from '$lib/components'
   import * as Icon from '$lib/icons'
 
@@ -10,8 +10,8 @@
   const { variant = 'default' }: Props = $props()
 </script>
 
-{#if $selectedFeeds.size > 0}
-  <IconButton onClick={deselectAllFeeds} aria-label="Reset" title="Reset" {variant}>
+{#if $selectedStreams.size > 0}
+  <IconButton onClick={deselectAllStreams} aria-label="Reset" title="Reset" {variant}>
     <Icon.Reset size={24} />
   </IconButton>
 {/if}

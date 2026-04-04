@@ -1,15 +1,15 @@
 <script lang="ts">
   import { IconButton } from '$lib/components'
-  import type { Feed } from '$lib/models'
+  import type { Stream } from '$lib/models'
   import * as Icon from '$lib/icons'
   import {
-    feeds,
+    streams,
     searchResultsKeyByChannel,
-    selectedFeedsKeyByChannel,
-    selectFeeds,
-    deselectFeeds,
+    selectedStreamsKeyByChannel,
+    selectStreams,
+    deselectStreams,
     searchResults,
-    selectedFeeds
+    selectedStreams
   } from '$lib/store'
 
   interface Props {
@@ -18,13 +18,11 @@
 
   const { variant = 'default' }: Props = $props()
 
-  const selectableFeeds = $feeds.filter((feed: Feed) => feed.hasStreams())
-
   searchResults.subscribe(() => {
     updateState()
   })
 
-  selectedFeeds.subscribe(() => {
+  selectedStreams.subscribe(() => {
     updateState()
   })
 
@@ -32,27 +30,27 @@
   let isSelected = $state(false)
   function updateState() {
     setTimeout(() => {
-      const selectedFeedsInSearchResults = selectableFeeds.filter(
-        (feed: Feed) =>
-          $searchResultsKeyByChannel.has(feed.channel) &&
-          $selectedFeedsKeyByChannel.has(feed.channel)
+      const selectedStreamsInSearchResults = $streams.filter(
+        (stream: Stream) =>
+          $searchResultsKeyByChannel.has(stream.channel) &&
+          $selectedStreamsKeyByChannel.has(stream.channel)
       )
-      const selectableFeedsInSearchResults = selectableFeeds.filter((feed: Feed) =>
-        $searchResultsKeyByChannel.has(feed.channel)
+      const selectableStreamsInSearchResults = $streams.filter((stream: Stream) =>
+        $searchResultsKeyByChannel.has(stream.channel)
       )
       isSelected =
-        selectedFeedsInSearchResults.length > 0 &&
-        selectedFeedsInSearchResults.length === selectableFeedsInSearchResults.length
+        selectedStreamsInSearchResults.length > 0 &&
+        selectedStreamsInSearchResults.length === selectableStreamsInSearchResults.length
     }, 0)
   }
 
   function selectAll() {
     isLoading = true
     setTimeout(() => {
-      const selectableFeedsInSearchResults = selectableFeeds.filter((feed: Feed) =>
-        $searchResultsKeyByChannel.has(feed.channel)
+      const selectableStreamsInSearchResults = $streams.filter((stream: Stream) =>
+        $searchResultsKeyByChannel.has(stream.channel)
       )
-      selectFeeds(selectableFeedsInSearchResults)
+      selectStreams(selectableStreamsInSearchResults)
       isLoading = false
     }, 0)
   }
@@ -60,10 +58,10 @@
   function deselectAll() {
     isLoading = true
     setTimeout(() => {
-      const selectableFeedsInSearchResults = selectableFeeds.filter((feed: Feed) =>
-        $searchResultsKeyByChannel.has(feed.channel)
+      const selectableStreamsInSearchResults = $streams.filter((stream: Stream) =>
+        $searchResultsKeyByChannel.has(stream.channel)
       )
-      deselectFeeds(selectableFeedsInSearchResults)
+      deselectStreams(selectableStreamsInSearchResults)
       isLoading = false
     }, 0)
   }

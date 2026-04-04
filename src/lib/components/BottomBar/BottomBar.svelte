@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { downloadMode, selectedFeeds } from '$lib/store'
+  import { downloadMode, selectedStreams } from '$lib/store'
   import { CloseButton } from '$lib/components'
   import * as BottomBar from './'
 </script>
@@ -10,7 +10,7 @@
   >
     <div class="flex justify-between items-center w-full max-w-7xl">
       <div class="text-sm text-gray-300 font-mono pl-2">
-        {$selectedFeeds.size} selected
+        {$selectedStreams.size} selected
       </div>
       <div class="flex space-x-1 sm:space-x-2 items-center">
         <BottomBar.ResetButton variant="dark" />
