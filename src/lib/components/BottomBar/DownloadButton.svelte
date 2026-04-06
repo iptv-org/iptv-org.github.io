@@ -13,16 +13,14 @@
   const { variant = 'default' }: Props = $props()
 
   function _onClick() {
-    const streams = new Collection(Array.from($selectedStreams))
-      .sortBy(
-        [
-          (stream: Stream) => stream.channel.toLowerCase(),
-          (stream: Stream) => stream.getVerticalResolution(),
-          (stream: Stream) => stream.url
-        ],
-        ['asc', 'desc', 'asc']
-      )
-      .uniqBy((stream: Stream) => stream.channel + stream.feed)
+    const streams = new Collection(Array.from($selectedStreams)).sortBy(
+      [
+        (stream: Stream) => stream.channel.toLowerCase(),
+        (stream: Stream) => stream.getVerticalResolution(),
+        (stream: Stream) => stream.url
+      ],
+      ['asc', 'desc', 'asc']
+    )
 
     const playlist = createPlaylist(streams)
     const downloadLink = createDownloadLink(playlist.toString())
