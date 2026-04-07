@@ -7,7 +7,6 @@ import type { Feed } from './feed'
 
 export class Stream extends sdk.Models.Stream {
   uuid: string
-  label?: string
 
   _channel?: Channel
   _feed?: Feed
@@ -158,6 +157,11 @@ export class Stream extends sdk.Models.Stream {
         name: 'quality',
         type: 'string',
         value: this.quality ? { text: this.quality, title: this.quality } : null
+      },
+      {
+        name: 'label',
+        type: 'string',
+        value: this.label ? { text: this.label, title: this.label } : null
       }
     ].filter((field: HTMLPreviewField) => field.value)
   }
