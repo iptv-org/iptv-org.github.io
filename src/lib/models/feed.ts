@@ -196,11 +196,10 @@ export class Feed extends sdk.Models.Feed {
   }
 
   getRequestLinkUrl(): string {
-    const endpoint = 'https://github.com/iptv-org/iptv/issues/new'
+    const endpoint = 'https://github.com/iptv-org/iptv/discussions/new'
     const params = new URLSearchParams({
-      labels: 'channel search',
-      template: '4_channel-search.yml',
-      title: `Find: ${this.getFullName()}`,
+      category: 'channel-search',
+      title: this.getFullName(),
       stream_id: this.getStreamId()
     })
 
