@@ -1,17 +1,17 @@
 <script lang="ts">
   import { Button } from '$lib/components'
-  import type { Feed } from '$lib/models'
+  import type { Channel } from '$lib/models'
   import * as Icon from '$lib/icons'
 
   interface Props {
-    feed: Feed
+    channel: Channel
     onClick?: () => void
   }
 
-  const { feed, onClick = () => {} }: Props = $props()
+  const { channel, onClick = () => {} }: Props = $props()
 
   function _onClick() {
-    window.open(feed.getRequestLinkUrl(), '_blank')
+    window.open(channel.getRequestLinkUrl(), '_blank')
     onClick()
   }
 </script>
