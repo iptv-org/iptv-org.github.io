@@ -16,7 +16,7 @@
   }
 </script>
 
-<Button onClick={_onClick} label="Request Link">
+<Button onClick={_onClick} label="Request Stream">
   {#snippet left()}
     <Icon.Request class="text-gray-400" size={16} />
   {/snippet}
