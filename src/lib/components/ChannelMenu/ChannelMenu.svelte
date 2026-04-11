@@ -10,6 +10,12 @@
 
   const { channel }: Props = $props()
 
+  function getStreams() {
+    return channel.getStreams()
+  }
+
+  const streams = getStreams()
+
   function getLogos() {
     return channel.getLogos()
   }
@@ -29,6 +35,9 @@
   <CopyLinkButton link={channel.getPageUrl()} onCopy={onLinkCopy} />
   {#if getLogos().isEmpty()}
     <ChannelMenu.AddLogoButton {channel} onClick={closeMenu} />
+  {/if}
+  {#if streams.isEmpty() && !channel.isBlocked() && !channel.isClosed()}
+    <ChannelMenu.RequestLinkButton {channel} onClick={closeMenu} />
   {/if}
   <ChannelMenu.EditButton {channel} onClick={closeMenu} />
   <ChannelMenu.RemoveButton {channel} onClick={closeMenu} />
