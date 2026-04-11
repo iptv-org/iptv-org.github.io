@@ -243,6 +243,17 @@ export class Channel extends sdk.Models.Channel {
     return logo.url || ''
   }
 
+  getRequestLinkUrl(): string {
+    const endpoint = 'https://github.com/iptv-org/iptv/discussions/new'
+    const params = new URLSearchParams({
+      category: 'channel-search',
+      title: this.name,
+      stream_id: this.id
+    })
+
+    return `${endpoint}?${params.toString()}`
+  }
+
   getFieldset(): HTMLPreviewField[] {
     const country = this.getCountry()
 
