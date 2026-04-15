@@ -110,6 +110,10 @@ export class Channel extends sdk.Models.Channel {
   }
 
   override getLogos(): Collection<Logo> {
+    function inUse(logo: Logo): number {
+      return logo.in_use ? 1 : -1
+    }
+
     function feed(logo: Logo): number {
       const feed = logo.getFeed()
 
@@ -129,7 +133,11 @@ export class Channel extends sdk.Models.Channel {
       return Math.abs(512 - logo.width) + Math.abs(512 - logo.height)
     }
 
-    return new Collection(this.logos).sortBy([feed, format, size], ['desc', 'desc', 'asc'], false)
+    return new Collection(this.logos).sortBy(
+      [inUse, feed, format, size],
+      ['desc', 'desc', 'desc', 'asc'],
+      false
+    )
   }
 
   override getBroadcastAreaLocations(): Collection<BroadcastAreaLocation> {
