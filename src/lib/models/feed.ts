@@ -124,6 +124,10 @@ export class Feed extends sdk.Models.Feed {
   }
 
   override getLogos(): Collection<Logo> {
+    function inUse(logo: Logo): number {
+      return logo.in_use ? 1 : -1
+    }
+
     function format(logo: Logo): number {
       const levelByFormat = { SVG: 2, PNG: 1, APNG: 1, WebP: 1, AVIF: 1, JPEG: 0, GIF: 0 }
 
@@ -134,7 +138,7 @@ export class Feed extends sdk.Models.Feed {
       return Math.abs(512 - logo.width) + Math.abs(512 - logo.height)
     }
 
-    return new Collection(this.logos).sortBy([format, size], ['desc', 'asc'], false)
+    return new Collection(this.logos).sortBy([inUse, format, size], ['desc', 'desc', 'asc'], false)
   }
 
   getPageUrl(): string {

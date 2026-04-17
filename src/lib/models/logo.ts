@@ -102,6 +102,11 @@ export class Logo extends sdk.Models.Logo {
         value: this.feed ? { text: this.feed, title: this.feed } : null
       },
       {
+        name: 'in_use',
+        type: 'string',
+        value: this.in_use ? { text: this.in_use, title: this.in_use } : null
+      },
+      {
         name: 'tags',
         type: 'string[]',
         value: this.tags.length ? this.tags.map(tag => ({ text: tag, title: tag })) : null
