@@ -29,10 +29,10 @@
 
   $effect(() => {
     const showModal = !!page.state.showModal
-    const channeId = page.state.channelId
+    const channelId = page.state.channelId
 
     if (showModal) {
-      openChannelPopup(channeId)
+      openChannelPopup(channelId)
     } else if (isChannelPopupOpened) {
       closeChannelPopup()
     }
