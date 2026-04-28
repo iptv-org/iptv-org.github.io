@@ -4,15 +4,13 @@ import { goto } from '$app/navigation'
 export function setSearchParam(key?: string, value?: string) {
   const url = new URL(window.location.href)
 
-  if (key && value) {
+  if (key && typeof value === 'string') {
     url.searchParams.set(key, value)
   } else {
     url.search = ''
   }
 
   goto(url.pathname + url.search)
-
-  setPageTitle(value)
 }
 
 export function setPageTitle(value?: string) {
