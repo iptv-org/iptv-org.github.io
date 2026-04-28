@@ -1,4 +1,5 @@
 import type { Channel } from '$lib/models/channel'
+import { error } from '@sveltejs/kit'
 import * as api from '$lib/api'
 
 const data = await api.loadDataFromDisk()
@@ -16,8 +17,11 @@ export async function entries() {
 
 export async function load({ params }) {
   const channelId = `${params.slug}.${params.country}`
-
   const channel = data.channels.find((channel: Channel) => channel.id === channelId)
+
+  if (!channel) {
+    error(404)
+  }
 
   return {
     channel
