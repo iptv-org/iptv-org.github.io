@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { query, updateSearchResults } from '$lib/store'
-  import { DEFAULT_QUERY } from '../../../constants'
   import { setSearchParam } from '$lib/navigation'
   import { SearchField } from '$lib/components'
   import { goto } from '$app/navigation'
   import { resolve } from '$app/paths'
+  import { query } from '$lib/store'
   import * as NavBar from './'
 
   const { version = 'default', onSearchButtonClick = () => {} } = $props()
