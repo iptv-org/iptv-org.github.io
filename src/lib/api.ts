@@ -290,7 +290,10 @@ function buildGraph(channels: sdk.Types.ChannelData[]) {
 
     if (channel.replaced_by) {
       const target = channel.replaced_by.split('@')[0]
-      graph.edges.push({ from: channel.id, to: target })
+
+      if (target !== channel.id) {
+        graph.edges.push({ from: channel.id, to: target })
+      }
     }
   })
 
