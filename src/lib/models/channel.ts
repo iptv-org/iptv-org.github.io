@@ -40,29 +40,45 @@ export class Channel extends sdk.Models.Channel {
   }
 
   encode(): ChannelEncoded {
+    function encodeChannel(channel: Channel | Channel[]) {
+      if (Array.isArray(channel)) return encodeChannel(channel)
+      return channel.encode()
+    }
+
     return {
       ...this.toObject(),
-      logos: this.logos,
-      feeds: this.feeds,
-      _categories: this._categories,
-      _country: this._country,
-      _history: this._history,
-      blocklistRecords: this.blocklistRecords,
+      logos: this.logos.map(logo => logo.encode()),
+      feeds: this.feeds.map(feed => feed.encode()),
+      _categories: this._categories.map(category => category.toObject()),
+      _country: this._country?.encode(),
+      _history: this._history.map(encodeChannel),
+      blocklistRecords: this.blocklistRecords.map(record => record.encode()),
       hasUniqueName: this.hasUniqueName
     }
   }
 
   static decode(data: ChannelEncoded): Channel {
+    function decodeChannel(data) {
+      if (Array.isArray(channel)) return decodeChannel(data)
+      return Channel.decode(data)
+    }
+
     const channel = new Channel(data)
+    const logos = data.logos.map(data => Logo.decode(data))
+    const feeds = data.feeds.map(data => Feed.decode(data))
+    const country = data._country ? Country.decode(data._country) : null
+    const history = data._history.map(decodeChannel)
+    const categories = data._categories.map(data => new sdk.Models.Category(data))
+    const blocklistRecords = data.blocklistRecords.map(data => BlocklistRecord.decode(data))
 
     channel
-      .withLogos(data.logos)
-      .withFeeds(data.feeds)
-      .withCategories(data._categories)
-      .withBlocklistRecords(data.blocklistRecords)
+      .withLogos(logos)
+      .withFeeds(feeds)
+      .withCategories(categories)
+      .withBlocklistRecords(blocklistRecords)
+      .withHistory(history)
 
-    if (data._history) channel.withHistory(data._history)
-    if (data._country) channel.withCountry(data._country)
+    if (country) channel.withCountry(country)
 
     channel.hasUniqueName = data.hasUniqueName
 

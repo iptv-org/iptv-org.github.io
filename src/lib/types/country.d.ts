@@ -1,9 +1,9 @@
-import type { Channel } from '$lib/models/channel'
+import type { ChannelEncoded } from './channel'
 
 export type CountryEncoded = {
   code: string
   name: string
   languages: string[]
   flag: string
-  channels: Channel[]
+  channels: ChannelEncoded[]
 }

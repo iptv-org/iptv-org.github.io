@@ -1,3 +1,4 @@
+import type { BroadcastAreaLocationEncoded } from '$lib/types/broadcastAreaLocation'
 import * as sdk from '@iptv-org/sdk'
 
 export class BroadcastAreaLocation extends sdk.Models.BroadcastAreaLocation {
@@ -13,14 +14,14 @@ export class BroadcastAreaLocation extends sdk.Models.BroadcastAreaLocation {
     return this.name
   }
 
-  encode() {
+  encode(): BroadcastAreaLocationEncoded {
     return {
       ...this.toObject(),
       name: this.name
     }
   }
 
-  static decode(data): BroadcastAreaLocation {
+  static decode(data: BroadcastAreaLocationEncoded): BroadcastAreaLocation {
     const location = new BroadcastAreaLocation(data)
 
     location.withName(data.name)

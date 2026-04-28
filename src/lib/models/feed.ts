@@ -21,29 +21,35 @@ export class Feed extends sdk.Models.Feed {
     this.uuid = crypto.randomUUID()
   }
 
-  encode() {
+  encode(): FeedEncoded {
     return {
       ...this.toObject(),
-      logos: this.logos,
-      _languages: this._languages,
-      _timezones: this._timezones,
-      streams: this.streams,
-      guides: this.guides,
-      broadcastArea: this.broadcastArea,
-      _channel: this._channel?.encode()
+      _languages: this._languages.map(language => language.toObject()),
+      _timezones: this._timezones.map(timezone => timezone.toObject()),
+      _channel: this._channel?.encode(),
+      broadcastArea: this.broadcastArea?.encode(),
+      logos: this.logos.map(logo => logo.encode()),
+      streams: this.streams.map(stream => stream.encode()),
+      guides: this.guides.map(guide => guide.encode())
     }
   }
 
   static decode(data: FeedEncoded): Feed {
     const feed = new Feed(data)
+    const logos = data.logos.map(data => Logo.decode(data))
+    const streams = data.streams.map(data => Stream.decode(data))
+    const guides = data.guides.map(data => Guide.decode(data))
+    const broadcastArea = data.broadcastArea ? BroadcastArea.decode(data.broadcastArea) : null
+    const languages = data._languages.map(data => new sdk.Models.Language(data))
+    const timezones = data._timezones.map(data => new sdk.Models.Timezone(data))
 
     feed
-      .withLogos(data.logos)
-      .withLanguages(data._languages)
-      .withTimezones(data._timezones)
-      .withGuides(data.guides)
-      .withStreams(data.streams)
-      .withBroadcastArea(data.broadcastArea)
+      .withLogos(logos)
+      .withLanguages(languages)
+      .withTimezones(timezones)
+      .withGuides(guides)
+      .withStreams(streams)
+      .withBroadcastArea(broadcastArea)
 
     if (data._channel) {
       const channel = Channel.decode(data._channel)

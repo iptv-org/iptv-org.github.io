@@ -3,7 +3,8 @@ import { Link } from 'iptv-playlist-generator'
 import * as sdk from '@iptv-org/sdk'
 import { Channel } from './channel'
 import type { Logo } from './logo'
-import type { Feed } from './feed'
+import { Feed } from './feed'
+import type { StreamEncoded } from '$lib/types/stream'
 
 export class Stream extends sdk.Models.Stream {
   uuid: string
@@ -17,19 +18,21 @@ export class Stream extends sdk.Models.Stream {
     this.uuid = crypto.randomUUID()
   }
 
-  encode() {
+  encode(): StreamEncoded {
     return {
       ...this.toObject(),
-      _channel: this._channel,
-      _feed: this._feed
+      _channel: this._channel?.encode(),
+      _feed: this._feed?.encode()
     }
   }
 
-  static decode(data): Stream {
+  static decode(data: StreamEncoded): Stream {
     const stream = new Stream(data)
+    const channel = data._channel ? Channel.decode(data._channel) : null
+    const feed = data._feed ? Feed.decode(data._feed) : null
 
-    if (data._channel) stream.withChannel(data._channel)
-    if (data._feed) stream.withFeed(data._feed)
+    if (channel) stream.withChannel(channel)
+    if (feed) stream.withFeed(feed)
 
     return stream
   }

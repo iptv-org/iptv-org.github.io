@@ -17,16 +17,16 @@ describe('Feed', () => {
   })
 
   test('getLogos()', () => {
-    expect(feed.getLogos().first()).instanceof(Logo)
+    expect(feed.getLogos().first()).instanceOf(Logo)
     expect(feed.getLogos().first().getEditUrl()).toBe(
       'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+%28Andorra%29+SD+Logo&feed_id=SD&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FBnhTn8i.png'
     )
   })
 
   test('encode()', () => {
-    const feedEncoded = feed.encode()
+    const encoded = feed.encode()
 
-    expect(feedEncoded._channel).instanceof(Channel)
+    expect(encoded.id).toBe('SD')
   })
 
   test('decode()', () => {
@@ -41,7 +41,7 @@ describe('Feed', () => {
       timezones: ['America/Port_of_Spain'],
       format: '576i',
       logos: [
-        new Logo({
+        {
           channel: 'AndorraTV.ad',
           feed: 'SD',
           in_use: true,
@@ -50,14 +50,14 @@ describe('Feed', () => {
           height: 512,
           format: 'PNG',
           url: 'https://i.imgur.com/BnhTn8i.png'
-        })
+        }
       ],
       streams: [],
       guides: [],
       _languages: [],
       broadcastArea: undefined,
       _timezones: [],
-      _channel: new Channel({
+      _channel: {
         id: 'AndorraTV.ad',
         name: 'Andorra TV',
         alt_names: ['ATV'],
@@ -69,12 +69,64 @@ describe('Feed', () => {
         launched: '2022-09-01',
         closed: '2025-09-01',
         replaced_by: 'BBCNews.uk',
-        website: 'https://www.andorradifusio.ad/'
-      })
+        website: 'https://www.andorradifusio.ad/',
+        logos: [],
+        feeds: [],
+        _categories: [
+          {
+            id: 'animation',
+            name: 'Animation',
+            description: 'Programming is mostly 2D or 3D animation'
+          },
+          {
+            id: 'kids',
+            name: 'Kids',
+            description: 'Programming targeted to children'
+          }
+        ],
+        _country: {
+          code: 'AF',
+          name: 'Afghanistan',
+          languages: ['pus', 'prd', 'tuk'],
+          flag: '🇦🇫',
+          channels: [
+            {
+              id: 'TVN.pl',
+              name: 'TVN',
+              alt_names: [],
+              network: null,
+              owners: [],
+              country: 'AF',
+              categories: [],
+              is_nsfw: false,
+              launched: null,
+              closed: null,
+              replaced_by: null,
+              website: null,
+              logos: [],
+              feeds: [],
+              _country: {
+                code: '',
+                name: '',
+                languages: [],
+                flag: '',
+                channels: []
+              },
+              _categories: [],
+              blocklistRecords: [],
+              _history: [],
+              hasUniqueName: false
+            }
+          ]
+        },
+        blocklistRecords: [],
+        _history: [],
+        hasUniqueName: false
+      }
     }
 
     const feedDecoded = Feed.decode(feedEncoded)
     expect(feedDecoded).instanceOf(Feed)
-    expect(feedDecoded._channel).instanceof(Channel)
+    expect(feedDecoded._channel).instanceOf(Channel)
   })
 })
