@@ -2,12 +2,13 @@
   import { searchResults, downloadMode, query, expandResults } from '$lib/store'
   import * as Flag from 'country-flag-icons/string/3x2'
   import { DEFAULT_QUERY } from '../../../constants'
-  import { ChannelList } from '$lib/components'
   import { Channel, Country } from '$lib/models'
+  import { ChannelList } from '$lib/components'
   import { fade } from 'svelte/transition'
   import * as sdk from '@iptv-org/sdk'
   import * as Icon from '$lib/icons'
   import * as CountryList from './'
+  import { untrack } from 'svelte'
 
   interface Props {
     country: Country
@@ -57,7 +58,10 @@
   }
 
   $effect(() => {
-    isExpanded = !!$query && !!$expandResults && $query.trim() !== DEFAULT_QUERY
+    const expand = $expandResults
+    const currentQuery = untrack(() => $query)
+
+    isExpanded = !!currentQuery && !!expand && currentQuery.trim() !== DEFAULT_QUERY
   })
 </script>
 
