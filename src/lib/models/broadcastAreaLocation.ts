@@ -2,9 +2,9 @@ import type { BroadcastAreaLocationEncoded } from '$lib/types/broadcastAreaLocat
 import * as sdk from '@iptv-org/sdk'
 
 export class BroadcastAreaLocation extends sdk.Models.BroadcastAreaLocation {
-  name: string = ''
+  name?: string
 
-  withName(name: string): this {
+  withName(name: string | undefined): this {
     this.name = name
 
     return this
