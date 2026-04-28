@@ -60,7 +60,7 @@ export class Feed extends sdk.Models.Feed {
     return this
   }
 
-  override getChannel(): Channel {
+  override getChannel(): Channel | undefined {
     return this._channel
   }
 
