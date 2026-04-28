@@ -335,7 +335,7 @@ function getChannelHistory(
   }
 
   const ancestors = getAncestors(targetId)
-  const history = [...ancestors, channelsKeyById.get(targetId), ...successors]
+  const history = [...ancestors, channelsKeyById.get(targetId), ...successors].filter(Boolean)
 
   return history
 }
