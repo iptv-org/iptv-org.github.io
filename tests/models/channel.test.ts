@@ -23,6 +23,10 @@ describe('Channel', () => {
     expect(channel.uuid.length).toBe(36)
   })
 
+  test('getUniqueName()', () => {
+    expect(channel.getUniqueName()).toBe('Andorra TV (Andorra)')
+  })
+
   test('getPagePath()', () => {
     expect(channel.getPagePath()).toBe('/channels/ad/AndorraTV')
   })
@@ -71,6 +75,16 @@ describe('Channel', () => {
     expect(channel.getLogoUrl()).toBe('https://i.imgur.com/CnhTn8i.png')
   })
 
+  test.only('getHistory()', () => {
+    const history = channel.getHistory()
+    expect(history.length).toBe(5)
+    expect(history[0].id).toBe('LibyasChannel.ly')
+    expect(history[1].id).toBe('AndorraTV.ad')
+    expect(history[2].id).toBe('BBCNews.uk')
+    expect(history[3].id).toBe('EverydayHeroes.us')
+    expect(history[4].id).toBe('Eve.us')
+  })
+
   test('getFieldset()', () => {
     expect(channel.getFieldset()).toMatchObject(fieldset)
   })
@@ -95,6 +109,7 @@ describe('Channel', () => {
     expect(encoded.logos[0]).instanceOf(Logo)
     expect(encoded.feeds[0]).instanceOf(Feed)
     expect(encoded._categories[0]).instanceOf(sdk.Models.Category)
+    expect(encoded._history[0]).instanceOf(Channel)
   })
 
   test('decode()', () => {
@@ -115,6 +130,7 @@ describe('Channel', () => {
         new Logo({
           channel: 'AndorraTV.ad',
           feed: 'SD',
+          in_use: true,
           tags: [],
           width: 512,
           height: 512,
@@ -124,6 +140,7 @@ describe('Channel', () => {
         new Logo({
           channel: 'AndorraTV.ad',
           feed: null,
+          in_use: true,
           tags: [],
           width: 1000,
           height: 1000,
@@ -133,6 +150,7 @@ describe('Channel', () => {
         new Logo({
           channel: 'AndorraTV.ad',
           feed: null,
+          in_use: true,
           tags: [],
           width: 512,
           height: 512,
@@ -171,6 +189,22 @@ describe('Channel', () => {
           channel: 'AndorraTV.ad',
           reason: 'dmca',
           ref: 'https://github.com/iptv-org/iptv/issues/16839'
+        })
+      ],
+      _history: [
+        new Channel({
+          id: 'TVN.pl',
+          name: 'TVN',
+          alt_names: [],
+          network: null,
+          owners: [],
+          country: 'AF',
+          categories: [],
+          is_nsfw: false,
+          launched: null,
+          closed: null,
+          replaced_by: null,
+          website: null
         })
       ]
     }
