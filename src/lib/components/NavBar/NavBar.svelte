@@ -15,16 +15,6 @@
     document.body.scrollIntoView()
   }
 
-  function reset(event: MouseEvent) {
-    event.preventDefault()
-    event.stopPropagation()
-
-    scrollToTop()
-    const newQuery = DEFAULT_QUERY + ' '
-    setSearchParam('q', newQuery)
-    updateSearchResults()
-  }
-
   let searchField: SearchField = $state()
   function focusOnInput() {
     if (searchField) searchField.focus()
