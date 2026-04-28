@@ -54,7 +54,7 @@ export class Feed extends sdk.Models.Feed {
     return this.streams && this.streams.length > 0
   }
 
-  withChannel(channel: Channel): this {
+  withChannel(channel: Channel | undefined): this {
     this._channel = channel
 
     return this
