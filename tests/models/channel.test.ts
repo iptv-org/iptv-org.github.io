@@ -50,7 +50,7 @@ describe('Channel', () => {
   test('getFeeds()', () => {
     expect(channel.getFeeds().count()).toBe(1)
     expect(channel.getFeeds().first()).instanceOf(Feed)
-    expect(channel.getFeeds().first().getFullName()).toBe('Andorra TV SD')
+    expect(channel.getFeeds().first().getFullName()).toBe('Andorra TV (Andorra) SD')
   })
 
   test('getLogos()', () => {
@@ -58,10 +58,10 @@ describe('Channel', () => {
     expect(channel.getLogos().first()).instanceOf(Logo)
     expect(channel.getLogos().first().url).toBe('https://i.imgur.com/CnhTn8i.png')
     expect(channel.getLogos().first().getEditUrl()).toBe(
-      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+%28Andorra%29+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
     )
     expect(channel.getLogos().first().getRemoveUrl()).toBe(
-      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aremove&template=09_logos_remove.yml&title=Remove%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aremove&template=09_logos_remove.yml&title=Remove%3A+Andorra+TV+%28Andorra%29+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
     )
   })
 
@@ -75,7 +75,7 @@ describe('Channel', () => {
     expect(channel.getLogoUrl()).toBe('https://i.imgur.com/CnhTn8i.png')
   })
 
-  test.only('getHistory()', () => {
+  test('getHistory()', () => {
     const history = channel.getHistory()
     expect(history.length).toBe(5)
     expect(history[0].id).toBe('LibyasChannel.ly')
