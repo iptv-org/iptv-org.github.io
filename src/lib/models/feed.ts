@@ -11,7 +11,7 @@ export class Feed extends sdk.Models.Feed {
   streams: Stream[] = []
   guides: Guide[] = []
   _languages: sdk.Models.Language[] = []
-  broadcastArea: BroadcastArea
+  broadcastArea?: BroadcastArea
   _timezones: sdk.Models.Timezone[] = []
   _channel?: Channel
 
@@ -104,17 +104,17 @@ export class Feed extends sdk.Models.Feed {
     return new Collection(this.guides)
   }
 
-  withBroadcastArea(broadcastArea: BroadcastArea): this {
+  withBroadcastArea(broadcastArea: BroadcastArea | undefined): this {
     this.broadcastArea = broadcastArea
 
     return this
   }
 
   override getBroadcastAreaLocations(): Collection<BroadcastAreaLocation> {
-    return this.getBroadcastArea().getLocations()
+    return this.getBroadcastArea()?.getLocations() || new Collection<BroadcastAreaLocation>()
   }
 
-  override getBroadcastArea(): BroadcastArea {
+  override getBroadcastArea(): BroadcastArea | undefined {
     return this.broadcastArea
   }
 
@@ -249,8 +249,7 @@ export class Feed extends sdk.Models.Feed {
       {
         name: 'broadcast_area',
         type: 'link[]',
-        value: this.getBroadcastArea()
-          .getLocations()
+        value: this.getBroadcastAreaLocations()
           .map((location: sdk.Models.BroadcastAreaLocation) => ({
             label: location.getName(),
             query: `broadcast_area:${location.rawCode}`
