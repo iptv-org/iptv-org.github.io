@@ -1,7 +1,7 @@
 <script lang="ts">
   interface Props {
     size: number
-    class: string
+    class?: string
   }
 
   let { size, ...restProps }: Props = $props()
