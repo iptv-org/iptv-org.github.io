@@ -61,6 +61,7 @@
           type="reset"
           onmousedown={event => {
             event.preventDefault()
+            event.stopPropagation()
             onClear()
           }}
           class="cursor-pointer w-6 h-6"

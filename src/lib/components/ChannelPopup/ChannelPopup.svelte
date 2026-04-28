@@ -1,8 +1,8 @@
 <script lang="ts">
   import { Popup, ChannelCard } from '$lib/components'
-  import type { Context } from 'svelte-simple-modal'
   import type { Channel } from '$lib/models'
-  import { getContext } from 'svelte'
+  import { pushState } from '$app/navigation'
+  import { rootUrl } from '$lib/store'
 
   interface Props {
     channel: Channel
@@ -10,15 +10,11 @@
 
   const { channel }: Props = $props()
 
-  const { close } = getContext<Context>('simple-modal')
-
-  window.onpopstate = event => {
-    if (event.target.location.pathname === '/') {
-      close()
-    }
+  function _onClose() {
+    pushState($rootUrl, {})
   }
 </script>
 
-<Popup onClose={close}>
-  <ChannelCard {channel} onClose={close} />
+<Popup onClose={_onClose}>
+  <ChannelCard {channel} onClose={_onClose} />
 </Popup>

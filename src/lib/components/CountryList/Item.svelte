@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { searchResults, downloadMode, query, isSearchResultsReady } from '$lib/store'
+  import { searchResults, downloadMode, query, expandResults } from '$lib/store'
   import * as Flag from 'country-flag-icons/string/3x2'
-  import { ChannelList } from '$lib/components'
+  import { DEFAULT_QUERY } from '../../../constants'
   import { Channel, Country } from '$lib/models'
+  import { ChannelList } from '$lib/components'
   import { fade } from 'svelte/transition'
   import * as sdk from '@iptv-org/sdk'
   import * as Icon from '$lib/icons'
   import * as CountryList from './'
+  import { untrack } from 'svelte'
 
   interface Props {
     country: Country
@@ -55,8 +57,11 @@
     isExpanded = !isExpanded
   }
 
-  isSearchResultsReady.subscribe((value: boolean) => {
-    isExpanded = $query && value
+  $effect(() => {
+    const expand = $expandResults
+    const currentQuery = untrack(() => $query)
+
+    isExpanded = !!currentQuery && !!expand && currentQuery.trim() !== DEFAULT_QUERY
   })
 </script>
 

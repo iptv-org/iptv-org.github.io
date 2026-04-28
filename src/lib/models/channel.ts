@@ -1,8 +1,8 @@
-import type { HTMLPreviewField, HTMLPreviewLink } from '$lib/components/HTMLPreview/types'
 import { BlocklistRecord, BroadcastAreaLocation, Country, Feed, Guide, Logo, Stream } from './'
+import type { HTMLPreviewField, HTMLPreviewLink } from '$lib/components/HTMLPreview/types'
 import type { ChannelEncoded, ChannelStructuredData } from '$lib/types/channel'
-import { SITE_ORIGIN } from '../../constants'
 import { Collection } from '@freearhey/core'
+import { SITE_ORIGIN } from '../../constants'
 import { normalize } from '$lib/utils'
 import * as sdk from '@iptv-org/sdk'
 import dayjs from 'dayjs'
@@ -17,6 +17,7 @@ export class Channel extends sdk.Models.Channel {
   blocklistRecords: BlocklistRecord[] = []
   _categories: sdk.Models.Category[] = []
   _country?: Country
+  _history: (Channel | Channel[])[] = []
 
   constructor(data?: sdk.Types.ChannelData) {
     super(data)
@@ -24,33 +25,68 @@ export class Channel extends sdk.Models.Channel {
     this.uuid = crypto.randomUUID()
   }
 
+  hasHistory() {
+    return !!this._history && this._history.length > 0
+  }
+
+  withHistory(history: (Channel | Channel[])[]): this {
+    this._history = history || []
+
+    return this
+  }
+
+  getHistory(): (Channel | Channel[])[] {
+    return this._history || []
+  }
+
   encode(): ChannelEncoded {
+    function encodeChannel(channel: Channel | Channel[]) {
+      if (Array.isArray(channel)) return channel.map(encodeChannel)
+      return channel.encode()
+    }
+
     return {
       ...this.toObject(),
-      logos: this.logos,
-      feeds: this.feeds,
-      _categories: this._categories,
-      _country: this._country,
-      blocklistRecords: this.blocklistRecords
+      logos: this.logos.map(logo => logo.encode()),
+      feeds: this.feeds.map(feed => feed.encode()),
+      _categories: this._categories.map(category => category.toObject()),
+      _country: this._country ? this._country.encode() : undefined,
+      _history: this._history.map(encodeChannel),
+      blocklistRecords: this.blocklistRecords.map(record => record.encode()),
+      hasUniqueName: this.hasUniqueName
     }
   }
 
   static decode(data: ChannelEncoded): Channel {
+    function decodeChannel(data) {
+      if (Array.isArray(data)) return data.map(decodeChannel)
+      return Channel.decode(data)
+    }
+
     const channel = new Channel(data)
+    const logos = data.logos.map(data => Logo.decode(data))
+    const feeds = data.feeds.map(data => Feed.decode(data))
+    const country = data._country ? Country.decode(data._country) : null
+    const history = data._history.map(decodeChannel)
+    const categories = data._categories.map(data => new sdk.Models.Category(data))
+    const blocklistRecords = data.blocklistRecords.map(data => BlocklistRecord.decode(data))
 
     channel
-      .withLogos(data.logos)
-      .withFeeds(data.feeds)
-      .withCategories(data._categories)
-      .withBlocklistRecords(data.blocklistRecords)
+      .withLogos(logos)
+      .withFeeds(feeds)
+      .withCategories(categories)
+      .withBlocklistRecords(blocklistRecords)
+      .withHistory(history)
 
-    if (data._country) channel.withCountry(data._country)
+    if (country) channel.withCountry(country)
+
+    channel.hasUniqueName = data.hasUniqueName
 
     return channel
   }
 
   withBlocklistRecords(records: BlocklistRecord[]): this {
-    this.blocklistRecords = records
+    this.blocklistRecords = records || []
 
     return this
   }
@@ -66,7 +102,7 @@ export class Channel extends sdk.Models.Channel {
   }
 
   withCategories(categories: sdk.Models.Category[]): this {
-    this._categories = categories
+    this._categories = categories || []
 
     return this
   }
@@ -76,7 +112,7 @@ export class Channel extends sdk.Models.Channel {
   }
 
   withFeeds(feeds: Feed[]): this {
-    this.feeds = feeds
+    this.feeds = feeds || []
 
     return this
   }
@@ -104,7 +140,7 @@ export class Channel extends sdk.Models.Channel {
   }
 
   withLogos(logos: Logo[]): this {
-    this.logos = logos
+    this.logos = logos || []
 
     return this
   }
@@ -225,7 +261,7 @@ export class Channel extends sdk.Models.Channel {
     const params = new URLSearchParams({
       labels: 'feeds:add',
       template: '04_feeds_add.yml',
-      title: `Add: ${this.name} Feed`,
+      title: `Add: ${this.getUniqueName()} Feed`,
       channel_id: this.id
     })
 
@@ -237,7 +273,7 @@ export class Channel extends sdk.Models.Channel {
     const params = new URLSearchParams({
       labels: 'logos:add',
       template: '07_logos_add.yml',
-      title: `Add: ${this.name} Logo`,
+      title: `Add: ${this.getUniqueName()} Logo`,
       channel_id: this.id
     })
 
@@ -255,7 +291,7 @@ export class Channel extends sdk.Models.Channel {
     const endpoint = 'https://github.com/iptv-org/iptv/discussions/new'
     const params = new URLSearchParams({
       category: 'channel-search',
-      title: this.name,
+      title: this.getUniqueName(),
       stream_id: this.id
     })
 

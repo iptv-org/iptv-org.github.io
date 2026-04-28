@@ -15,7 +15,7 @@
   function _onClick() {
     const streams = new Collection(Array.from($selectedStreams)).sortBy(
       [
-        (stream: Stream) => stream.channel.toLowerCase(),
+        (stream: Stream) => stream.getFullTitle(),
         (stream: Stream) => stream.getVerticalResolution(),
         (stream: Stream) => stream.url
       ],

@@ -8,9 +8,9 @@
     "country": "AD",
     "categories": ["animation","kids"],
     "is_nsfw": false,
-    "launched": "2022-09-01",
-    "closed": "2025-09-01",
-    "replaced_by": "BBCNews.uk",
+    "launched": "2025-09-01",
+    "closed": "2025-10-01",
+    "replaced_by": "BBCNews.uk@HD",
     "website": "https://www.andorradifusio.ad/"
   },
   {
@@ -26,6 +26,7 @@
       "general"
     ],
     "is_nsfw": false,
+    "replaced_by": "EverydayHeroes.us",
     "website": null
   },
   {
@@ -37,6 +38,7 @@
     "subdivision": null,
     "city": null,
     "categories": [],
+    "replaced_by": "Eve.us@SD",
     "is_nsfw": false,
     "website": null
   },
@@ -50,6 +52,9 @@
     "city": null,
     "categories": [],
     "is_nsfw": false,
+    "launched": "2025-10-01",
+    "closed": "2025-11-01",
+    "replaced_by": "Eve.us",
     "website": null
   },
   {
@@ -99,6 +104,9 @@
     "subdivision": null,
     "city": null,
     "categories": [],
+    "launched": "2022-09-01",
+    "closed": "2025-09-01",
+    "replaced_by": "AndorraTV.ad",
     "is_nsfw": false,
     "website": null
   },
@@ -123,6 +131,7 @@
     "owners": [],
     "country": "AF",
     "categories": [],
+    "replaced_by": "BBCNews.uk",
     "is_nsfw": false,
     "website": null
   },
@@ -142,7 +151,7 @@
   },
   {
     "id": "TUTV.us",
-    "name": "TUTV",
+    "name": "Andorra TV",
     "network": null,
     "owners": [],
     "country": "US",

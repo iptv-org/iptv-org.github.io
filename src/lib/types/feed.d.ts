@@ -1,5 +1,8 @@
-import type { Logo, Channel, Stream, Guide, BroadcastArea } from '$lib/models'
 import * as sdk from '@iptv-org/sdk'
+import type { ChannelEncoded } from './channel'
+import type { LogoEncoded } from './logo'
+import type { StreamEncoded } from './stream'
+import type { BroadcastAreaEncoded } from './broadcastArea'
 
 export type FeedEncoded = {
   channel: string
@@ -11,11 +14,11 @@ export type FeedEncoded = {
   languages: string[]
   timezones: string[]
   format: string
-  logos: Logo[]
-  streams: Stream[]
-  guides: Guide[]
-  _languages: sdk.Models.Language[]
-  broadcastArea: BroadcastArea
-  _timezones: sdk.Models.Timezone[]
-  _channel?: Channel
+  logos: LogoEncoded[]
+  streams: StreamEncoded[]
+  guides: sdk.Types.GuideData[]
+  _languages: sdk.Types.LanguageData[]
+  broadcastArea?: BroadcastAreaEncoded
+  _timezones: sdk.Types.TimezoneData[]
+  _channel?: ChannelEncoded
 }
