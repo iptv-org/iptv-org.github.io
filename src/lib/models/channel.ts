@@ -17,7 +17,7 @@ export class Channel extends sdk.Models.Channel {
   blocklistRecords: BlocklistRecord[] = []
   _categories: sdk.Models.Category[] = []
   _country?: Country
-  _history: Channel[] | Channel[][] = []
+  _history: (Channel | Channel[])[] = []
 
   constructor(data?: sdk.Types.ChannelData) {
     super(data)
@@ -29,13 +29,13 @@ export class Channel extends sdk.Models.Channel {
     return !!this._history && this._history.length > 0
   }
 
-  withHistory(history: Channel[] | Channel[][]): this {
+  withHistory(history: (Channel | Channel[])[]): this {
     this._history = history || []
 
     return this
   }
 
-  getHistory(): Channel[] | Channel[][] {
+  getHistory(): (Channel | Channel[])[] {
     return this._history || []
   }
 
