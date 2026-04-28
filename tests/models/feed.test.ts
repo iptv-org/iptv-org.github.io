@@ -16,6 +16,12 @@ describe('Feed', () => {
     expect(feed.getChannel()).instanceOf(Channel)
   })
 
+  test('getLogo()', () => {
+    expect(feed.getLogos().first().getEditUrl()).toBe(
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+%28Andorra%29+SD+Logo&feed_id=SD&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FBnhTn8i.png'
+    )
+  })
+
   test('encode()', () => {
     const feedEncoded = feed.encode()
 
@@ -37,6 +43,7 @@ describe('Feed', () => {
         new Logo({
           channel: 'AndorraTV.ad',
           feed: 'SD',
+          in_use: true,
           tags: [],
           width: 512,
           height: 512,
