@@ -1,4 +1,6 @@
-export function scrollToSelected(node, isSelected: boolean) {
+import type { Action } from 'svelte/action'
+
+export const scrollToSelected: Action<HTMLElement, boolean> = (node, isSelected) => {
   const scroll = (active: boolean) => {
     const container = node.parentElement
     if (active && container) {
