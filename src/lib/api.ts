@@ -109,9 +109,12 @@ function processData(rawData: sdk.Types.RawData): ProcessedData {
     const feed = feedsKeyByStreamId.get(logo.getStreamId())
     const channel = channelsKeyById.get(logo.channel)
 
-    if (feed) feed.withChannel(channel)
+    if (feed && channel) feed.withChannel(channel)
 
-    return logo.withFeed(feed).withChannel(channel)
+    if (feed) logo.withFeed(feed)
+    if (channel) logo.withChannel(channel)
+
+    return logo
   })
 
   const logosGroupedByStreamId = Map.groupBy(logos, (logo: Logo) => logo.getStreamId())
