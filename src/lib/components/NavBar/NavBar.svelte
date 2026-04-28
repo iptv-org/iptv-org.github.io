@@ -94,7 +94,7 @@
             version="mini"
             onClear={clearQuery}
             onSubmit={() => {
-              setSearchParam('q', $query)
+              goto(`${resolve('/')}?q=${encodeURIComponent($query)}`)
             }}
           />
         </div>
