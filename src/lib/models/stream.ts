@@ -28,11 +28,16 @@ export class Stream extends sdk.Models.Stream {
 
   static decode(data: StreamEncoded): Stream {
     const stream = new Stream(data)
-    const channel = data._channel ? Channel.decode(data._channel) : null
-    const feed = data._feed ? Feed.decode(data._feed) : null
 
-    if (channel) stream.withChannel(channel)
-    if (feed) stream.withFeed(feed)
+    if (data._channel) {
+      const channel = Channel.decode(data._channel)
+      stream.withChannel(channel)
+    }
+
+    if (data._feed) {
+      const feed = Feed.decode(data._feed)
+      stream.withFeed(feed)
+    }
 
     return stream
   }
