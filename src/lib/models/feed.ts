@@ -39,7 +39,6 @@ export class Feed extends sdk.Models.Feed {
     const logos = data.logos.map(data => Logo.decode(data))
     const streams = data.streams.map(data => Stream.decode(data))
     const guides = data.guides.map(data => Guide.decode(data))
-    const broadcastArea = data.broadcastArea ? BroadcastArea.decode(data.broadcastArea) : null
     const languages = data._languages.map(data => new sdk.Models.Language(data))
     const timezones = data._timezones.map(data => new sdk.Models.Timezone(data))
 
@@ -49,12 +48,17 @@ export class Feed extends sdk.Models.Feed {
       .withTimezones(timezones)
       .withGuides(guides)
       .withStreams(streams)
-      .withBroadcastArea(broadcastArea)
 
     if (data._channel) {
       const channel = Channel.decode(data._channel)
 
       feed.withChannel(channel)
+    }
+
+    if (data.broadcastArea) {
+      const broadcastArea = BroadcastArea.decode(data.broadcastArea)
+
+      feed.withBroadcastArea(broadcastArea)
     }
 
     return feed
