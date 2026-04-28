@@ -103,7 +103,7 @@
 
   afterNavigate(() => {
     const q = page.url.searchParams.get('q')
-    const searchQuery = typeof q === 'string' ? q : DEFAULT_QUERY + ' '
+    const searchQuery = typeof q === 'string' ? decodeURIComponent(q) : DEFAULT_QUERY + ' '
 
     query.set(searchQuery)
 
