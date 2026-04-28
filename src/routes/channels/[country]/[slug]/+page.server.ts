@@ -20,7 +20,7 @@ export async function load({ params }) {
   const channel = data.channels.find((channel: Channel) => channel.id === channelId)
 
   if (!channel) {
-    error(404)
+    throw error(404)
   }
 
   return {
