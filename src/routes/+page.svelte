@@ -128,7 +128,6 @@
 
   function onSearch() {
     setSearchParam('q', $query)
-    updateSearchResults()
   }
 
   function clearQuery() {
