@@ -16,7 +16,9 @@
 <div
   class="overflow-x-auto flex border-t border-gray-200 dark:border-primary-700 py-4 space-x-[2px]"
 >
-  {#each channel.getHistory() as item (Array.isArray(item) ? item.length : item.id)}
+  {#each channel.getHistory() as item (Array.isArray(item) ? item
+        .map(c => c.id)
+        .join(',') : item.id)}
     {#if Array.isArray(item)}
       <HistoryBlock.Group channels={item} />
     {:else}
