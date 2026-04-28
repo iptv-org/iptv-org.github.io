@@ -105,7 +105,7 @@ export class Logo extends sdk.Models.Logo {
       {
         name: 'in_use',
         type: 'string',
-        value: this.in_use ? { text: this.in_use, title: this.in_use } : null
+        value: { text: this.in_use.toString(), title: this.in_use.toString() }
       },
       {
         name: 'tags',
