@@ -56,7 +56,14 @@
       $searchResultsKeyByChannel.has(stream.channel)
     )
     if (selected) {
-      selectStreams(selectableStreamsInSearchResults.all())
+      const included = new Set<string>()
+      const streams = selectableStreamsInSearchResults.filter((stream: Stream) => {
+        if (included.has(stream.getId())) return false
+        included.add(stream.getId())
+        return true
+      })
+
+      selectStreams(streams.all())
     } else {
       deselectStreams(selectableStreams.all())
     }
