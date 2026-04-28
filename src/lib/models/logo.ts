@@ -38,8 +38,8 @@ export class Logo extends sdk.Models.Logo {
   encode(): LogoEncoded {
     return {
       ...this.toObject(),
-      _feed: this._feed ? this._feed.encode() : null,
-      _channel: this._channel ? this._channel.encode() : null
+      _feed: this._feed ? this._feed.encode() : undefined,
+      _channel: this._channel ? this._channel.encode() : undefined
     }
   }
 
