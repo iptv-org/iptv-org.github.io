@@ -50,7 +50,7 @@ export class Channel extends sdk.Models.Channel {
       logos: this.logos.map(logo => logo.encode()),
       feeds: this.feeds.map(feed => feed.encode()),
       _categories: this._categories.map(category => category.toObject()),
-      _country: this._country ? this._country.encode() : null,
+      _country: this._country ? this._country.encode() : undefined,
       _history: this._history.map(encodeChannel),
       blocklistRecords: this.blocklistRecords.map(record => record.encode()),
       hasUniqueName: this.hasUniqueName
