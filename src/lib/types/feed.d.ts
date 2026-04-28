@@ -18,7 +18,7 @@ export type FeedEncoded = {
   streams: StreamEncoded[]
   guides: sdk.Types.GuideData[]
   _languages: sdk.Types.LanguageData[]
-  broadcastArea: BroadcastAreaEncoded
+  broadcastArea?: BroadcastAreaEncoded
   _timezones: sdk.Types.TimezoneData[]
   _channel?: ChannelEncoded
 }
