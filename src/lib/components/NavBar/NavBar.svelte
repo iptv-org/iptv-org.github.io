@@ -86,7 +86,7 @@
   >
     <div class="flex justify-between items-center mx-auto px-3 w-full max-w-7xl">
       <div class="flex flex-start items-center sm:basis-120 shrink">
-        <a href={resolve('/')} class="pr-2" onclick={reset}>
+        <a href={resolve('/')} class="pr-2">
           <NavBar.Logo />
         </a>
         <div class="hidden sm:block w-full">
