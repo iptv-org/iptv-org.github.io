@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Country, Stream } from '$lib/models'
+  import { SvelteSet } from 'svelte/reactivity'
   import { Checkbox } from '$lib/components'
   import {
     searchResultsKeyByChannel,
@@ -56,7 +57,7 @@
       $searchResultsKeyByChannel.has(stream.channel)
     )
     if (selected) {
-      const included = new Set<string>()
+      const included = new SvelteSet<string>()
       const streams = selectableStreamsInSearchResults.filter((stream: Stream) => {
         if (included.has(stream.getId())) return false
         included.add(stream.getId())

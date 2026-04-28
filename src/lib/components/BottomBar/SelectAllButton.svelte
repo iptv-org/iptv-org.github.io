@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { SvelteSet } from 'svelte/reactivity'
   import { IconButton } from '$lib/components'
   import type { Stream } from '$lib/models'
   import * as Icon from '$lib/icons'
@@ -47,7 +48,7 @@
   function selectAll() {
     isLoading = true
     setTimeout(() => {
-      const included = new Set<string>()
+      const included = new SvelteSet<string>()
       const selectableStreamsInSearchResults = $streams.filter((stream: Stream) => {
         if (!$searchResultsKeyByChannel.has(stream.channel) || included.has(stream.getId())) {
           return false
