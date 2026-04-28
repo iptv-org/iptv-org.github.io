@@ -41,7 +41,7 @@ export class Channel extends sdk.Models.Channel {
 
   encode(): ChannelEncoded {
     function encodeChannel(channel: Channel | Channel[]) {
-      if (Array.isArray(channel)) return encodeChannel(channel)
+      if (Array.isArray(channel)) return channel.map(encodeChannel)
       return channel.encode()
     }
 
@@ -59,7 +59,7 @@ export class Channel extends sdk.Models.Channel {
 
   static decode(data: ChannelEncoded): Channel {
     function decodeChannel(data) {
-      if (Array.isArray(channel)) return decodeChannel(data)
+      if (Array.isArray(data)) return data.map(decodeChannel)
       return Channel.decode(data)
     }
 
