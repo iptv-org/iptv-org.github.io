@@ -89,24 +89,24 @@ export const fieldset = [
     name: 'launched',
     type: 'string',
     value: {
-      text: '1 September 2022',
-      title: '2022-09-01'
+      text: '1 September 2025',
+      title: '2025-09-01'
     }
   },
   {
     name: 'closed',
     type: 'string',
     value: {
-      text: '1 September 2025',
-      title: '2025-09-01'
+      text: '1 October 2025',
+      title: '2025-10-01'
     }
   },
   {
     name: 'replaced_by',
     type: 'link',
     value: {
-      label: 'BBCNews.uk',
-      query: 'BBCNews.uk'
+      label: 'BBCNews.uk@HD',
+      query: 'BBCNews.uk@HD'
     }
   },
   {
