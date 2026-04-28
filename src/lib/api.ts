@@ -24,7 +24,7 @@ type ProcessedData = {
   channelsKeyById: Map<string, Channel>
 }
 
-export let processedData: ProcessedData
+export let processedData: ProcessedData | undefined
 
 export async function loadData(config: Config = {}): Promise<ProcessedData> {
   const dataDir = config.dataDir || DATA_DIR
