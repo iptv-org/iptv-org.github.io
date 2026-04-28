@@ -1,13 +1,11 @@
 import { browser } from '$app/environment'
-import { pushState } from '$app/navigation'
+import { goto } from '$app/navigation'
 
 export function setSearchParam(key?: string, value?: string) {
-  let query = key && value ? `?${key}=${value}` : ''
+  let query = key ? `?${key}=${value}` : ''
   query = query.replace(/\+/g, '%2B')
   const url = `${window.location.protocol}//${window.location.host}/${query}`
-  const state: { [key: string]: string } = {}
-  state[key] = value
-  pushState(url, state)
+  goto(url)
   setPageTitle(value)
 }
 

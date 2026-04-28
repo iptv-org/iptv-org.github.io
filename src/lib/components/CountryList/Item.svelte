@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { searchResults, downloadMode, query, isSearchResultsReady } from '$lib/store'
+  import { searchResults, downloadMode, query, expandResults } from '$lib/store'
   import * as Flag from 'country-flag-icons/string/3x2'
+  import { DEFAULT_QUERY } from '../../../constants'
   import { ChannelList } from '$lib/components'
   import { Channel, Country } from '$lib/models'
   import { fade } from 'svelte/transition'
@@ -55,8 +56,8 @@
     isExpanded = !isExpanded
   }
 
-  isSearchResultsReady.subscribe((value: boolean) => {
-    isExpanded = $query && value
+  expandResults.subscribe((value: boolean) => {
+    isExpanded = !!$query && !!value && $query.trim() !== DEFAULT_QUERY
   })
 </script>
 

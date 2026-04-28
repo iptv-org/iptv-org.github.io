@@ -1,4 +1,4 @@
-import type { BlocklistRecord, Country, Feed, Logo } from '$lib/models'
+import type { BlocklistRecord, Channel, Country, Feed, Logo } from '$lib/models'
 import * as sdk from '@iptv-org/sdk'
 
 export type ChannelStructuredData = {
@@ -30,4 +30,6 @@ export type ChannelEncoded = {
   _country: Country
   _categories: sdk.Models.Category[]
   blocklistRecords: BlocklistRecord[]
+  _history: Channel[] | Channel[][]
+  hasUniqueName: boolean
 }

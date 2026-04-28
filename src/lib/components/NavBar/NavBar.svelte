@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { SvelteURLSearchParams } from 'svelte/reactivity'
   import { query, updateSearchResults } from '$lib/store'
+  import { DEFAULT_QUERY } from '../../../constants'
   import { setSearchParam } from '$lib/navigation'
   import { SearchField } from '$lib/components'
   import { goto } from '$app/navigation'
@@ -15,10 +15,13 @@
     document.body.scrollIntoView()
   }
 
-  function reset() {
+  function reset(event: MouseEvent) {
+    event.preventDefault()
+    event.stopPropagation()
+
     scrollToTop()
-    query.set('')
-    setSearchParam('q', '')
+    const newQuery = DEFAULT_QUERY + ' '
+    setSearchParam('q', newQuery)
     updateSearchResults()
   }
 
@@ -27,12 +30,10 @@
     if (searchField) searchField.focus()
   }
 
-  const searchParams = $derived.by(() => {
-    const _searchParams = new SvelteURLSearchParams()
-    _searchParams.set('q', $query)
-
-    return _searchParams
-  })
+  function clearQuery() {
+    query.set('')
+    focusOnInput()
+  }
 </script>
 
 <svelte:window bind:scrollY />
@@ -44,7 +45,7 @@
   >
     <div class="flex justify-between items-center mx-auto px-3 w-full max-w-7xl">
       <div class="flex flex-start items-center sm:basis-120 shrink">
-        <a href={resolve('/')} class="pr-2" onclick={reset}>
+        <a href={resolve('/')} class="pr-2">
           <NavBar.Logo />
         </a>
         <div class="hidden sm:block w-full">
@@ -52,12 +53,9 @@
             <SearchField
               version="mini"
               bind:this={searchField}
-              onClear={() => {
-                query.set('')
-                focusOnInput()
-              }}
+              onClear={clearQuery}
               onSubmit={() => {
-                goto(`${resolve('/')}?${searchParams.toString()}`)
+                setSearchParam('q', $query)
               }}
             />
           {/if}
@@ -94,9 +92,9 @@
         <div class="hidden sm:block w-full">
           <SearchField
             version="mini"
-            onClear={reset}
+            onClear={clearQuery}
             onSubmit={() => {
-              goto(`${resolve('/')}?${searchParams.toString()}`)
+              setSearchParam('q', $query)
             }}
           />
         </div>

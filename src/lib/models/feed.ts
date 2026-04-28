@@ -1,5 +1,6 @@
-import type { HTMLPreviewField } from '$lib/components/HTMLPreview/types'
 import { Stream, Logo, Guide, BroadcastArea, BroadcastAreaLocation, Channel } from './'
+import type { HTMLPreviewField } from '$lib/components/HTMLPreview/types'
+import type { FeedEncoded } from '$lib/types/feed'
 import { Collection } from '@freearhey/core'
 import * as sdk from '@iptv-org/sdk'
 
@@ -33,7 +34,7 @@ export class Feed extends sdk.Models.Feed {
     }
   }
 
-  static decode(data): Feed {
+  static decode(data: FeedEncoded): Feed {
     const feed = new Feed(data)
 
     feed
@@ -80,7 +81,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withGuides(guides: Guide[]): this {
-    this.guides = guides
+    this.guides = guides || []
 
     return this
   }
@@ -108,7 +109,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withStreams(streams: Stream[]): this {
-    this.streams = streams
+    this.streams = streams || []
 
     return this
   }
@@ -118,7 +119,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withLogos(logos: Logo[]): this {
-    this.logos = logos
+    this.logos = logos || []
 
     return this
   }
@@ -146,6 +147,13 @@ export class Feed extends sdk.Models.Feed {
     if (!channelSlug || !countryCode || typeof window === 'undefined') return ''
 
     return `${window.location.protocol}//${window.location.host}/channels/${countryCode}/${channelSlug}#${this.id}`
+  }
+
+  override getFullName(): string {
+    const channel = this.getChannel()
+    if (!channel) return ''
+
+    return `${channel.getUniqueName()} ${this.name}`
   }
 
   getEditUrl(): string {
