@@ -13,7 +13,7 @@ export function scrollToSelected(node, isSelected: boolean) {
 
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: 'instant'
+        behavior: 'auto'
       })
     }
   }
