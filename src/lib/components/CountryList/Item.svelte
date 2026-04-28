@@ -56,8 +56,8 @@
     isExpanded = !isExpanded
   }
 
-  expandResults.subscribe((value: boolean) => {
-    isExpanded = !!$query && !!value && $query.trim() !== DEFAULT_QUERY
+  $effect(() => {
+    isExpanded = !!$query && !!$expandResults && $query.trim() !== DEFAULT_QUERY
   })
 </script>
 
