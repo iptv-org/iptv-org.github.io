@@ -30,7 +30,7 @@ export class Feed extends sdk.Models.Feed {
       streams: this.streams,
       guides: this.guides,
       broadcastArea: this.broadcastArea,
-      _channel: this._channel
+      _channel: this._channel?.encode()
     }
   }
 
@@ -45,7 +45,11 @@ export class Feed extends sdk.Models.Feed {
       .withStreams(data.streams)
       .withBroadcastArea(data.broadcastArea)
 
-    if (data._channel) feed.withChannel(data._channel)
+    if (data._channel) {
+      const channel = Channel.decode(data._channel)
+
+      feed.withChannel(channel)
+    }
 
     return feed
   }
