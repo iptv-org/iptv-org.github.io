@@ -94,7 +94,7 @@
 </a>
 
 <style lang="postcss">
-  @reference "../../../routes/+layout.css";
+  @reference "../../../../routes/+layout.css";
 
   .selected {
     @apply bg-gray-100 dark:bg-primary-750 cursor-default;
