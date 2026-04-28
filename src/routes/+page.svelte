@@ -6,7 +6,7 @@
     updateSearchResults,
     isSearching
   } from '$lib/store'
-  import { setSearchParam } from '$lib/navigation'
+  import { setSearchParam, setPageTitle } from '$lib/navigation'
   import { onMount, getContext, untrack } from 'svelte'
   import type { Context } from 'svelte-simple-modal'
   import { afterNavigate, beforeNavigate } from '$app/navigation'
@@ -32,9 +32,17 @@
     const channelId = page.state.channelId
 
     if (showModal) {
-      openChannelPopup(channelId)
+      const channelsKeyById = api.processedData?.channelsKeyById
+      if (!channelsKeyById) return
+
+      const channel = channelsKeyById.get(channelId)
+      if (!channel) return
+
+      openChannelPopup(channel)
+      setPageTitle(channel.getUniqueName())
     } else if (isChannelPopupOpened) {
       closeChannelPopup()
+      setPageTitle('')
     }
   })
 
@@ -46,13 +54,7 @@
     })
   }
 
-  function openChannelPopup(channelId) {
-    const channelsKeyById = api.processedData?.channelsKeyById
-    if (!channelsKeyById) return
-
-    const channel = channelsKeyById.get(channelId)
-    if (!channel) return
-
+  function openChannelPopup(channel) {
     untrack(() => {
       if (isChannelPopupOpened) {
         close({
