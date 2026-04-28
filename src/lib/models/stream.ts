@@ -97,7 +97,7 @@ export class Stream extends sdk.Models.Stream {
     const feed = this.getFeed()
     if (!feed) return channel.name
 
-    return `${channel.name} ${feed.name}`
+    return `${channel.getUniqueName()} ${feed.name}`
   }
 
   getVerticalResolution(): number {
