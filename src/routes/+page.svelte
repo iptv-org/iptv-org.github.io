@@ -1,15 +1,77 @@
 <script lang="ts">
-  import { NavBar, BottomBar, CountryList, SearchField, SearchSyntaxPopup } from '$lib/components'
-  import store, { searchResults, query, downloadMode, updateSearchResults } from '$lib/store'
-  import { setPageTitle, setSearchParam } from '$lib/navigation'
+  import store, {
+    searchResults,
+    query,
+    downloadMode,
+    updateSearchResults,
+    isSearching
+  } from '$lib/store'
+  import { setSearchParam } from '$lib/navigation'
+  import { onMount, getContext, untrack } from 'svelte'
   import type { Context } from 'svelte-simple-modal'
-  import { afterNavigate } from '$app/navigation'
-  import { onMount, getContext } from 'svelte'
+  import { afterNavigate, beforeNavigate } from '$app/navigation'
   import { Country } from '$lib/models'
   import { page } from '$app/state'
   import * as api from '$lib/api'
+  import {
+    SearchSyntaxPopup,
+    ChannelPopup,
+    CountryList,
+    SearchField,
+    BottomBar,
+    NavBar
+  } from '$lib/components'
+  import { DEFAULT_QUERY } from '../constants'
 
-  const { open } = getContext<Context>('simple-modal')
+  const { open, close } = getContext<Context>('simple-modal')
+
+  let isChannelPopupOpened = false
+
+  $effect(() => {
+    const showModal = !!page.state.showModal
+    const channeId = page.state.channelId
+
+    if (showModal) {
+      openChannelPopup(channeId)
+    } else if (isChannelPopupOpened) {
+      closeChannelPopup()
+    }
+  })
+
+  function closeChannelPopup() {
+    close({
+      onClosed: () => {
+        isChannelPopupOpened = false
+      }
+    })
+  }
+
+  function openChannelPopup(channelId) {
+    const channel = api.processedData.channelsKeyById.get(channelId)
+    if (!channel) return
+
+    untrack(() => {
+      if (isChannelPopupOpened) {
+        close({
+          onClosed: () => {
+            isChannelPopupOpened = true
+            open(
+              ChannelPopup,
+              { channel },
+              { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+            )
+          }
+        })
+      } else {
+        isChannelPopupOpened = true
+        open(
+          ChannelPopup,
+          { channel },
+          { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+        )
+      }
+    })
+  }
 
   let countries: Country[] = $state([])
   let isLoading = $state(true)
@@ -28,21 +90,21 @@
     updateSearchResults()
   })
 
-  afterNavigate(() => {
-    const searchQuery = page.url.searchParams.get('q')
-
-    if (searchQuery) {
-      query.set(decodeURIComponent(searchQuery))
-      setPageTitle(searchQuery)
-    } else {
-      setPageTitle(null)
+  beforeNavigate(({ type }) => {
+    if (type === 'popstate') {
+      isSearching.set(true)
     }
+  })
+
+  afterNavigate(() => {
+    const q = page.url.searchParams.get('q')
+    const searchQuery = typeof q === 'string' ? q : DEFAULT_QUERY + ' '
+
+    query.set(decodeURIComponent(searchQuery))
 
     if (isLoading) return
 
-    setTimeout(() => {
-      updateSearchResults()
-    }, 0)
+    updateSearchResults()
   })
 
   let scrollY = $state(0)
@@ -66,7 +128,7 @@
     updateSearchResults()
   }
 
-  function resetSearch() {
+  function clearQuery() {
     query.set('')
     focusOnSearchField()
   }
@@ -90,7 +152,7 @@
 
 <main class="bg-slate-50 dark:bg-primary-850 min-h-screen min-w-[360px]">
   <section class="max-w-[960px] mx-auto px-2 pt-16 sm:pt-20 pb-20 overflow-hidden min-h-full">
-    <SearchField bind:this={searchField} onSubmit={onSearch} onClear={resetSearch} />
+    <SearchField bind:this={searchField} onSubmit={onSearch} onClear={clearQuery} />
     <div class="pt-2 pb-6 flex justify-between px-1">
       <span class="inline-flex text-sm text-gray-500 dark:text-gray-400 font-mono pt-0.5"
         >Found&nbsp;
