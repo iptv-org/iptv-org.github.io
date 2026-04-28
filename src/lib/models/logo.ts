@@ -25,7 +25,7 @@ export class Logo extends sdk.Models.Logo {
     return this._feed
   }
 
-  withChannel(channel: Channel): this {
+  withChannel(channel: Channel | undefined): this {
     this._channel = channel
 
     return this
