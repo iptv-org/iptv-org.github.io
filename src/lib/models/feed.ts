@@ -150,10 +150,10 @@ export class Feed extends sdk.Models.Feed {
   }
 
   override getFullName(): string {
-    const channel = this.getChannel()
-    if (!channel) return ''
+    const uniqueName = this.getChannel()?.getUniqueName()
+    if (!uniqueName) return ''
 
-    return `${channel.getUniqueName()} ${this.name}`
+    return `${uniqueName} ${this.name}`
   }
 
   getEditUrl(): string {
