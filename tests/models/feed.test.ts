@@ -16,7 +16,8 @@ describe('Feed', () => {
     expect(feed.getChannel()).instanceOf(Channel)
   })
 
-  test('getLogo()', () => {
+  test('getLogos()', () => {
+    expect(feed.getLogos().first()).instanceof(Logo)
     expect(feed.getLogos().first().getEditUrl()).toBe(
       'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+%28Andorra%29+SD+Logo&feed_id=SD&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FBnhTn8i.png'
     )
