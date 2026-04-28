@@ -103,7 +103,7 @@
     const q = page.url.searchParams.get('q')
     const searchQuery = typeof q === 'string' ? q : DEFAULT_QUERY + ' '
 
-    query.set(decodeURIComponent(searchQuery))
+    query.set(searchQuery)
 
     if (isLoading) return
 
