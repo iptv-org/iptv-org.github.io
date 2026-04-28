@@ -302,46 +302,44 @@ function getChannelHistory(
   edgesTo: Map<string, string[]>,
   edgesFrom: Map<string, string>,
   channelsKeyById: Map<string, Channel>
-): Channel[] | Channel[][] {
+): (Channel | Channel[])[] {
   const visited = new Set<string>()
 
-  // eslint-disable-next-line
-  const getAncestors = (id: string): any[] => {
+  const getAncestors = (id: string): (Channel | Channel[])[] => {
     if (visited.has(id)) return []
     visited.add(id)
 
-    const parentIds = edgesTo.get(id)
-    if (!parentIds || parentIds.length === 0) return []
+    const parentIds = edgesTo.get(id) || []
 
-    const parents = parentIds.map(fromId => {
-      const parentNode = channelsKeyById.get(fromId)
-      const grandparents = getAncestors(fromId)
+    const parents = parentIds
+      .map(fromId => {
+        const parentNode = channelsKeyById.get(fromId)
+        const ancestors = getAncestors(fromId)
 
-      if (grandparents.length > 0) {
-        grandparents.push(parentNode)
-        return grandparents
-      }
-      return parentNode
-    })
+        return parentNode ? [...ancestors, parentNode] : null
+      })
+      .filter((item): item is NonNullable<typeof item> => item !== null)
 
-    return parents.length > 1 ? [parents] : parents.flat()
+    return parents.length > 1 ? [parents.flat() as Channel[]] : parents.flat()
   }
 
-  const successors = []
+  const successors: Channel[] = []
   const visitedSuccessors = new Set<string>([targetId])
   let current = targetId
 
   while (true) {
-    const nextTo = edgesFrom.get(current)
-    if (!nextTo || nextTo === current || visitedSuccessors.has(nextTo)) break
+    const nextId = edgesFrom.get(current)
+    const nextNode = nextId ? channelsKeyById.get(nextId) : null
 
-    successors.push(channelsKeyById.get(nextTo))
-    visitedSuccessors.add(nextTo)
-    current = nextTo
+    if (!nextId || !nextNode || visitedSuccessors.has(nextId)) break
+
+    successors.push(nextNode)
+    visitedSuccessors.add(nextId)
+    current = nextId
   }
 
+  const targetNode = channelsKeyById.get(targetId)
   const ancestors = getAncestors(targetId)
-  const history = [...ancestors, channelsKeyById.get(targetId), ...successors].filter(Boolean)
 
-  return history
+  return [...ancestors, targetNode, ...successors].filter(Boolean)
 }
