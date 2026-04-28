@@ -37,7 +37,7 @@ describe('Channel', () => {
   test('getStreams()', () => {
     expect(channel.getStreams().count()).toBe(1)
     expect(channel.getStreams().first()).instanceOf(Stream)
-    expect(channel.getStreams().first().getDisplayName()).toBe('Andorra TV SD')
+    expect(channel.getStreams().first().getDisplayName()).toBe('Andorra TV (Andorra) SD')
   })
 
   test('getGuides()', () => {
