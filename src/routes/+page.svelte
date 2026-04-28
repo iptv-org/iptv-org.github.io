@@ -47,7 +47,10 @@
   }
 
   function openChannelPopup(channelId) {
-    const channel = api.processedData.channelsKeyById.get(channelId)
+    const channelsKeyById = api.processedData?.channelsKeyById
+    if (!channelsKeyById) return
+
+    const channel = channelsKeyById.get(channelId)
     if (!channel) return
 
     untrack(() => {

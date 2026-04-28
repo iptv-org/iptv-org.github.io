@@ -50,7 +50,10 @@ export async function loadDataFromDisk(config: Config = {}): Promise<ProcessedDa
 }
 
 function processData(rawData: sdk.Types.RawData): ProcessedData {
-  const channelsGroupedByName = Map.groupBy(rawData.channels, (channel: Channel) => channel.name)
+  const channelsGroupedByName = Map.groupBy(
+    rawData.channels,
+    (channel: sdk.Types.ChannelData) => channel.name
+  )
   const feedsKeyByStreamId: Map<string, Feed> = rawData.feeds.reduce(
     (acc, data: sdk.Types.FeedData) => {
       const feed = new Feed(data)
