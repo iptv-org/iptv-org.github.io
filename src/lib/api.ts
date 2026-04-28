@@ -319,7 +319,7 @@ function getChannelHistory(
       const multiParents = parentIds
         .map(pId => channelsKeyById.get(pId))
         .filter((p): p is Channel => !!p)
-      return [multiParents]
+      return multiParents.length > 0 ? [multiParents] : []
     }
 
     const parentId = parentIds[0]
