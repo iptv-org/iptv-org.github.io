@@ -35,7 +35,7 @@
   const closedYear = getClosedYear()
 
   function _onClick(event: MouseEvent) {
-    if (page.url.pathname !== '/') return
+    if (page.route.id !== '/') return
 
     event.preventDefault()
 
