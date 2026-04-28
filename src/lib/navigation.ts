@@ -12,9 +12,7 @@ export function setSearchParam(key?: string, value?: string) {
 
   goto(url.pathname + url.search)
 
-  if (value) {
-    setPageTitle(value)
-  }
+  setPageTitle(value)
 }
 
 export function setPageTitle(value?: string) {
