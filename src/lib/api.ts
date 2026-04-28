@@ -313,17 +313,20 @@ function getChannelHistory(
     visited.add(id)
 
     const parentIds = edgesTo.get(id) || []
+    if (parentIds.length === 0) return []
 
-    const parents = parentIds
-      .map(fromId => {
-        const parentNode = channelsKeyById.get(fromId)
-        const ancestors = getAncestors(fromId)
+    if (parentIds.length > 1) {
+      const multiParents = parentIds
+        .map(pId => channelsKeyById.get(pId))
+        .filter((p): p is Channel => !!p)
+      return [multiParents]
+    }
 
-        return parentNode ? [...ancestors, parentNode] : null
-      })
-      .filter((item): item is NonNullable<typeof item> => item !== null)
+    const parentId = parentIds[0]
+    const parentNode = channelsKeyById.get(parentId)
+    const ancestors = getAncestors(parentId)
 
-    return parents.length > 1 ? [parents.flat() as Channel[]] : parents.flat()
+    return parentNode ? [...ancestors, parentNode] : ancestors
   }
 
   const successors: Channel[] = []
@@ -333,7 +336,6 @@ function getChannelHistory(
   while (true) {
     const nextId = edgesFrom.get(current)
     const nextNode = nextId ? channelsKeyById.get(nextId) : null
-
     if (!nextId || !nextNode || visitedSuccessors.has(nextId)) break
 
     successors.push(nextNode)
@@ -344,5 +346,5 @@ function getChannelHistory(
   const targetNode = channelsKeyById.get(targetId)
   const ancestors = getAncestors(targetId)
 
-  return [...ancestors, targetNode, ...successors].filter(Boolean)
+  return [...ancestors, targetNode, ...successors].filter((n): n is Channel | Channel[] => !!n)
 }
