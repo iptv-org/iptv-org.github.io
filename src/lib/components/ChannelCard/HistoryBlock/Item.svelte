@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { pushState } from '$app/navigation'
-  import { page } from '$app/state'
-  import type { Channel } from '$lib/models'
   import { scrollToSelected } from '$lib/actions'
+  import { pushState } from '$app/navigation'
+  import type { Channel } from '$lib/models'
+  import * as Icon from '$lib/icons'
+  import { page } from '$app/state'
   import dayjs from 'dayjs'
 
   interface Props {
@@ -59,13 +60,17 @@
     <div
       class="flex w-25 h-25 rounded-md justify-center items-center bg-gray-100 text-sm text-gray-400 dark:text-gray-600 overflow-hidden"
     >
-      <img
-        class="max-w-20 max-h-20 mx-auto text-sm text-gray-400 dark:text-gray-600 rounded-xs"
-        src={logoUrl}
-        alt={channelName}
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      />
+      {#if logoUrl}
+        <img
+          class="max-w-20 max-h-20 mx-auto text-sm text-gray-400 dark:text-gray-600 rounded-xs"
+          src={logoUrl}
+          alt={channelName}
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        />
+      {:else}
+        <Icon.NoImage size={30} class="text-gray-400" />
+      {/if}
     </div>
     <div class="text-sm overflow-hidden w-25 text-left">
       <div class="truncate text-gray-900 dark:text-gray-100">
