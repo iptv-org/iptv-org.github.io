@@ -1,16 +1,11 @@
 <script lang="ts">
-  import store, {
-    searchResults,
-    query,
-    downloadMode,
-    updateSearchResults,
-    isSearching
-  } from '$lib/store'
+  import { afterNavigate, beforeNavigate, pushState } from '$app/navigation'
   import { setSearchParam, setPageTitle } from '$lib/navigation'
   import { onMount, getContext, untrack } from 'svelte'
   import type { Context } from 'svelte-simple-modal'
-  import { afterNavigate, beforeNavigate } from '$app/navigation'
+  import { DEFAULT_QUERY } from '../constants'
   import { Country } from '$lib/models'
+  import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import * as api from '$lib/api'
   import {
@@ -21,7 +16,13 @@
     BottomBar,
     NavBar
   } from '$lib/components'
-  import { DEFAULT_QUERY } from '../constants'
+  import store, {
+    updateSearchResults,
+    searchResults,
+    downloadMode,
+    isSearching,
+    query
+  } from '$lib/store'
 
   const { open, close } = getContext<Context>('simple-modal')
 
@@ -50,8 +51,13 @@
     close({
       onClosed: () => {
         isChannelPopupOpened = false
+        setPageTitle('')
       }
     })
+  }
+
+  function onChannelPopupClosed() {
+    pushState(resolve('/'), { showModal: false })
   }
 
   function openChannelPopup(channel) {
@@ -63,7 +69,10 @@
             open(
               ChannelPopup,
               { channel },
-              { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+              { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
+              {
+                onClosed: onChannelPopupClosed
+              }
             )
           }
         })
@@ -72,7 +81,10 @@
         open(
           ChannelPopup,
           { channel },
-          { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } }
+          { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
+          {
+            onClosed: onChannelPopupClosed
+          }
         )
       }
     })

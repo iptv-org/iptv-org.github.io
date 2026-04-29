@@ -1,8 +1,8 @@
 <script lang="ts">
   import { Popup, ChannelCard } from '$lib/components'
-  import type { Channel } from '$lib/models'
   import { pushState } from '$app/navigation'
-  import { rootUrl } from '$lib/store'
+  import type { Channel } from '$lib/models'
+  import { resolve } from '$app/paths'
 
   interface Props {
     channel: Channel
@@ -11,7 +11,7 @@
   const { channel }: Props = $props()
 
   function _onClose() {
-    pushState($rootUrl, {})
+    pushState(resolve('/'), {})
   }
 </script>
 

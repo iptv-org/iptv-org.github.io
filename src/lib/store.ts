@@ -7,7 +7,6 @@ export const streams: Writable<Stream[]> = writable([])
 
 export const searchResults: Writable<sdk.Types.ChannelSearchableData[]> = writable([])
 export const isSearching = writable(false)
-export const rootUrl = writable('/')
 export const query = writable('')
 export const downloadMode = writable(false)
 export const selectedStreams = writable(new Set<Stream>())
