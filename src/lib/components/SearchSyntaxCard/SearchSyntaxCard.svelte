@@ -24,6 +24,11 @@
       query: 'owner:/^$/',
       result: 'Finds channels that have no owner listed.'
     },
+    {
+      query: 'cat -owner:dog',
+      result:
+        'Finds channels that have "cat" in their description, except for those whose owners include "dog"'
+    },
     { query: 'country:GY', result: 'Finds all channels that are broadcast from Guyana.' },
     { query: 'broadcast_area:c/CV', result: 'Finds channels that are broadcast in Cape Verde.' },
     {
