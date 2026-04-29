@@ -50,5 +50,8 @@
   },
   "overrides": {
     "esbuild": "0.23.1"
+  },
+  "dependencies": {
+    "@freearhey/search-js": "^0.3.0"
   }
 }
