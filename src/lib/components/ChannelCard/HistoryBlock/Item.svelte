@@ -81,7 +81,7 @@
           {#if launchedYear}
             <div>{launchedYear}</div>
           {:else}
-            <div>...</div>
+            <div>?</div>
           {/if}
           {#if closedYear}
             <div>-</div>
