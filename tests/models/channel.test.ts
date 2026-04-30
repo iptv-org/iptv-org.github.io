@@ -1,9 +1,8 @@
-import { Channel, Logo, Stream, Feed, Guide, Country, BlocklistRecord } from '$lib/models'
+import { Channel, Logo, Stream, Feed, Guide, BlocklistRecord } from '$lib/models'
 import { fieldset } from '../__data__/input/channel.fieldset'
 import { describe, beforeAll, test, expect } from 'vitest'
 import type { ChannelEncoded } from '$lib/types/channel'
 import { loadDataFromDisk } from '$lib/api'
-import * as sdk from '@iptv-org/sdk'
 
 let channel: Channel
 
@@ -23,6 +22,10 @@ describe('Channel', () => {
     expect(channel.uuid.length).toBe(36)
   })
 
+  test('getUniqueName()', () => {
+    expect(channel.getUniqueName()).toBe('Andorra TV (Andorra)')
+  })
+
   test('getPagePath()', () => {
     expect(channel.getPagePath()).toBe('/channels/ad/AndorraTV')
   })
@@ -34,7 +37,7 @@ describe('Channel', () => {
   test('getStreams()', () => {
     expect(channel.getStreams().count()).toBe(1)
     expect(channel.getStreams().first()).instanceOf(Stream)
-    expect(channel.getStreams().first().getDisplayName()).toBe('Andorra TV SD')
+    expect(channel.getStreams().first().getDisplayName()).toBe('Andorra TV (Andorra) SD')
   })
 
   test('getGuides()', () => {
@@ -46,7 +49,7 @@ describe('Channel', () => {
   test('getFeeds()', () => {
     expect(channel.getFeeds().count()).toBe(1)
     expect(channel.getFeeds().first()).instanceOf(Feed)
-    expect(channel.getFeeds().first().getFullName()).toBe('Andorra TV SD')
+    expect(channel.getFeeds().first().getFullName()).toBe('Andorra TV (Andorra) SD')
   })
 
   test('getLogos()', () => {
@@ -54,10 +57,10 @@ describe('Channel', () => {
     expect(channel.getLogos().first()).instanceOf(Logo)
     expect(channel.getLogos().first().url).toBe('https://i.imgur.com/CnhTn8i.png')
     expect(channel.getLogos().first().getEditUrl()).toBe(
-      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aedit&template=08_logos_edit.yml&title=Edit%3A+Andorra+TV+%28Andorra%29+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
     )
     expect(channel.getLogos().first().getRemoveUrl()).toBe(
-      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aremove&template=09_logos_remove.yml&title=Remove%3A+Andorra+TV+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
+      'https://github.com/iptv-org/database/issues/new?labels=logos%3Aremove&template=09_logos_remove.yml&title=Remove%3A+Andorra+TV+%28Andorra%29+Logo&feed_id=&channel_id=AndorraTV.ad&logo_url=https%3A%2F%2Fi.imgur.com%2FCnhTn8i.png'
     )
   })
 
@@ -69,6 +72,16 @@ describe('Channel', () => {
 
   test('getLogoUrl()', () => {
     expect(channel.getLogoUrl()).toBe('https://i.imgur.com/CnhTn8i.png')
+  })
+
+  test('getHistory()', () => {
+    const history = channel.getHistory()
+    expect(history.length).toBe(5)
+    expect((history[0] as Channel).id).toBe('LibyasChannel.ly')
+    expect((history[1] as Channel).id).toBe('AndorraTV.ad')
+    expect((history[2] as Channel).id).toBe('BBCNews.uk')
+    expect((history[3] as Channel).id).toBe('EverydayHeroes.us')
+    expect((history[4] as Channel).id).toBe('Eve.us')
   })
 
   test('getFieldset()', () => {
@@ -89,12 +102,9 @@ describe('Channel', () => {
   })
 
   test('encode()', () => {
-    const encoded = channel.encode()
+    const channelEncoded = channel.encode()
 
-    expect(encoded._country).instanceOf(Country)
-    expect(encoded.logos[0]).instanceOf(Logo)
-    expect(encoded.feeds[0]).instanceOf(Feed)
-    expect(encoded._categories[0]).instanceOf(sdk.Models.Category)
+    expect(channelEncoded.id).toBe('AndorraTV.ad')
   })
 
   test('decode()', () => {
@@ -111,37 +121,41 @@ describe('Channel', () => {
       closed: '2025-09-01',
       replaced_by: 'BBCNews.uk',
       website: 'https://www.andorradifusio.ad/',
+      hasUniqueName: false,
       logos: [
-        new Logo({
+        {
           channel: 'AndorraTV.ad',
           feed: 'SD',
+          in_use: true,
           tags: [],
           width: 512,
           height: 512,
           format: 'PNG',
           url: 'https://i.imgur.com/BnhTn8i.png'
-        }),
-        new Logo({
+        },
+        {
           channel: 'AndorraTV.ad',
           feed: null,
+          in_use: true,
           tags: [],
           width: 1000,
           height: 1000,
           format: 'JPEG',
           url: 'https://i.imgur.com/AnhTn8i.png'
-        }),
-        new Logo({
+        },
+        {
           channel: 'AndorraTV.ad',
           feed: null,
+          in_use: true,
           tags: [],
           width: 512,
           height: 512,
           format: 'SVG',
           url: 'https://i.imgur.com/CnhTn8i.png'
-        })
+        }
       ],
       feeds: [
-        new Feed({
+        {
           channel: 'AndorraTV.ad',
           id: 'SD',
           name: 'SD',
@@ -150,29 +164,42 @@ describe('Channel', () => {
           broadcast_area: ['ct/ADCAN'],
           languages: ['cat'],
           timezones: ['America/Port_of_Spain'],
-          format: '576i'
-        })
+          format: '576i',
+          logos: [],
+          streams: [],
+          guides: [],
+          _languages: [],
+          broadcastArea: undefined,
+          _timezones: []
+        }
       ],
-      _country: new Country({ name: 'Andorra', code: 'AD', languages: ['cat'], flag: '🇦🇩' }),
+      _country: {
+        name: 'Andorra',
+        code: 'AD',
+        languages: ['cat'],
+        flag: '🇦🇩',
+        channels: []
+      },
       _categories: [
-        new sdk.Models.Category({
+        {
           id: 'animation',
           name: 'Animation',
           description: 'Programming is mostly 2D or 3D animation'
-        }),
-        new sdk.Models.Category({
+        },
+        {
           id: 'kids',
           name: 'Kids',
           description: 'Programming targeted to children'
-        })
+        }
       ],
       blocklistRecords: [
-        new BlocklistRecord({
+        {
           channel: 'AndorraTV.ad',
           reason: 'dmca',
           ref: 'https://github.com/iptv-org/iptv/issues/16839'
-        })
-      ]
+        }
+      ],
+      _history: []
     }
 
     expect(Channel.decode(channelEncoded)).instanceOf(Channel)

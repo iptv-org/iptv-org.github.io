@@ -10,7 +10,7 @@ export const isSearching = writable(false)
 export const query = writable('')
 export const downloadMode = writable(false)
 export const selectedStreams = writable(new Set<Stream>())
-export const isSearchResultsReady = writable(false)
+export const expandResults = writable(false)
 
 let searchIndex = undefined
 
@@ -32,16 +32,17 @@ export function updateSearchResults() {
   isSearching.set(true)
   setTimeout(() => {
     if (get(query)) {
+      expandResults.set(false)
       if (searchIndex) {
         const results = searchIndex.search(get(query))
         searchResults.set(results)
-        isSearchResultsReady.set(true)
+        expandResults.set(true)
       } else {
-        isSearchResultsReady.set(false)
+        expandResults.set(false)
         searchResults.set([])
       }
     } else {
-      isSearchResultsReady.set(false)
+      expandResults.set(false)
       const searchableData = get(channels).map((channel: Channel) => channel.getSearchable())
       searchResults.set(searchableData)
     }

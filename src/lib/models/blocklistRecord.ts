@@ -1,3 +1,4 @@
+import type { BlocklistRecordEncoded } from '$lib/types/blocklistRecord'
 import * as sdk from '@iptv-org/sdk'
 
 export class BlocklistRecord extends sdk.Models.BlocklistRecord {
@@ -18,5 +19,13 @@ export class BlocklistRecord extends sdk.Models.BlocklistRecord {
     }
 
     return refLabel
+  }
+
+  encode(): BlocklistRecordEncoded {
+    return this.toObject()
+  }
+
+  static decode(data: BlocklistRecordEncoded): BlocklistRecord {
+    return new BlocklistRecord(data)
   }
 }

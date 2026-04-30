@@ -1,4 +1,5 @@
 import type { HTMLPreviewField } from '$lib/components/HTMLPreview/types'
+import type { LogoEncoded } from '$lib/types/logo'
 import * as sdk from '@iptv-org/sdk'
 import { Feed } from './feed'
 import { Channel } from './channel'
@@ -20,33 +21,33 @@ export class Logo extends sdk.Models.Logo {
     return this
   }
 
-  override getFeed(): Feed {
+  override getFeed(): Feed | undefined {
     return this._feed
   }
 
-  withChannel(channel: Channel): this {
+  withChannel(channel: Channel | undefined): this {
     this._channel = channel
 
     return this
   }
 
-  override getChannel(): Channel {
+  override getChannel(): Channel | undefined {
     return this._channel
   }
 
-  encode() {
+  encode(): LogoEncoded {
     return {
       ...this.toObject(),
-      _feed: this._feed ? this._feed.toObject() : null,
-      _channel: this._channel ? this._channel.toObject() : null
+      _feed: this._feed ? this._feed.encode() : undefined,
+      _channel: this._channel ? this._channel.encode() : undefined
     }
   }
 
-  static decode(data): Logo {
+  static decode(data: LogoEncoded): Logo {
     const logo = new Logo(data)
 
-    if (data._feed) logo.withFeed(new Feed(data._feed))
-    if (data._channel) logo.withChannel(new Channel(data._channel))
+    if (data._feed) logo._feed = Feed.decode(data._feed)
+    if (data._channel) logo._channel = Channel.decode(data._channel)
 
     return logo
   }
@@ -84,7 +85,7 @@ export class Logo extends sdk.Models.Logo {
     if (feed) return feed.getFullName()
 
     const channel = this.getChannel()
-    if (channel) return channel.name
+    if (channel) return channel.getUniqueName()
 
     return ''
   }
@@ -104,7 +105,7 @@ export class Logo extends sdk.Models.Logo {
       {
         name: 'in_use',
         type: 'string',
-        value: this.in_use ? { text: this.in_use, title: this.in_use } : null
+        value: { text: this.in_use.toString(), title: this.in_use.toString() }
       },
       {
         name: 'tags',

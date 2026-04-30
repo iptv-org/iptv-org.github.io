@@ -29,7 +29,7 @@ describe('Country', () => {
   test('encode()', () => {
     const countryEncoded = country.encode()
 
-    expect(countryEncoded.channels[0]).instanceof(Channel)
+    expect(countryEncoded.code).toBe('AF')
   })
 
   test('decode()', () => {
@@ -39,7 +39,7 @@ describe('Country', () => {
       languages: ['pus', 'prd', 'tuk'],
       flag: '🇦🇫',
       channels: [
-        new Channel({
+        {
           id: 'TVN.pl',
           name: 'TVN',
           alt_names: [],
@@ -51,8 +51,21 @@ describe('Country', () => {
           launched: null,
           closed: null,
           replaced_by: null,
-          website: null
-        })
+          website: null,
+          logos: [],
+          feeds: [],
+          _country: {
+            code: '',
+            name: '',
+            languages: [],
+            flag: '',
+            channels: []
+          },
+          _categories: [],
+          blocklistRecords: [],
+          _history: [],
+          hasUniqueName: false
+        }
       ]
     }
 

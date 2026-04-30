@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { BlockedBadge, ClosedBadge, CodeBlock, FeedsPopup, LogosPopup } from '$lib/components'
   import type { Context } from 'svelte-simple-modal'
   import { pushState } from '$app/navigation'
   import { downloadMode } from '$lib/store'
@@ -8,14 +9,6 @@
   import { getContext } from 'svelte'
   import * as Icon from '$lib/icons'
   import * as ChannelList from './'
-  import {
-    ChannelPopup,
-    BlockedBadge,
-    ClosedBadge,
-    CodeBlock,
-    FeedsPopup,
-    LogosPopup
-  } from '$lib/components'
 
   interface Props {
     channel: Channel
@@ -34,19 +27,18 @@
   const feeds = getFeeds()
   const logo = getLogos().first()
 
+  function openChannelModal(event) {
+    event.preventDefault()
+
+    pushState(channel.getPagePath(), { showModal: true, channelId: channel.id })
+  }
+
   const { open } = getContext<Context>('simple-modal')
 
-  let prevUrl = '/'
-  function onOpened() {
-    prevUrl = window.location.href
-    pushState(channel.getPagePath(), {})
-  }
+  function showFeedsPopup(event: MouseEvent) {
+    event.preventDefault()
+    event.stopPropagation()
 
-  function onClose() {
-    pushState(prevUrl, {})
-  }
-
-  function showFeeds() {
     open(
       FeedsPopup,
       { channel },
@@ -54,18 +46,10 @@
     )
   }
 
-  function showChannelData(event: MouseEvent) {
+  function showLogosPopup(event: MouseEvent) {
     event.preventDefault()
+    event.stopPropagation()
 
-    open(
-      ChannelPopup,
-      { channel },
-      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
-      { onOpened, onClose }
-    )
-  }
-
-  function showLogos() {
     open(
       LogosPopup,
       { channel },
@@ -89,7 +73,8 @@
     <div class="inline-flex items-center justify-center whitespace-nowrap overflow-hidden">
       {#if logo}
         <button
-          onclick={showLogos}
+          onclick={showLogosPopup}
+          type="button"
           class="cursor-pointer relative flex justify-center items-center h-[2.75rem] w-20"
           title="{channel.name} logos"
         >
@@ -110,7 +95,7 @@
   <div class="w-full sm:w-77 px-2 sm:shrink-0 overflow-hidden sm:overflow-auto">
     <div class="flex items-center space-x-2 text-left">
       <a
-        onclick={showChannelData}
+        onclick={openChannelModal}
         href={channel.getPagePath()}
         tabindex="0"
         class="text-gray-600 dark:text-white hover:underline hover:text-blue-400 truncate whitespace-nowrap"
@@ -137,6 +122,19 @@
         {channel.alt_names.join(', ')}
       </div>
     {/if}
+
+    <div class="pt-0.5">
+      {#if channel.isClosed()}
+        <div class="inline sm:hidden">
+          <ClosedBadge {channel} />
+        </div>
+      {/if}
+      {#if channel.isBlocked()}
+        <div class="inline sm:hidden">
+          <BlockedBadge {channel} />
+        </div>
+      {/if}
+    </div>
   </div>
   <div class="w-54 sm:w-[280px] px-4 hidden lg:flex sm:shrink-0">
     <CodeBlock>{channel.id}</CodeBlock>
@@ -145,7 +143,7 @@
     <div class="text-right flex justify-end space-x-3 items-center">
       {#if feeds.count()}
         <button
-          onclick={showFeeds}
+          onclick={showFeedsPopup}
           class="text-sm text-gray-400 inline-flex space-x-1 flex items-center hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer"
         >
           <Icon.Feed size={20} />

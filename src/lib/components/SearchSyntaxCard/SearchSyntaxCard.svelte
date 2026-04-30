@@ -16,6 +16,11 @@
       result: 'Find channels that have "Nat Geo" in the name.'
     },
     {
+      query: 'name:cat -owner:dog',
+      result:
+        'Finds channels that have "cat" in their name, except for those whose owners include "dog".'
+    },
+    {
       query: 'alt_name:חינוכית',
       result: 'Finds channels whose alternative name contains "חינוכית".'
     },

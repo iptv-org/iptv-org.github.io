@@ -52,18 +52,19 @@
       placeholder="Search"
     />
     <div
-      class="absolute right-0 top-0 pr-1 text-gray-400 flex items-center"
-      class:h-10.5={version === 'default'}
-      class:h-9.5={version === 'mini'}
+      class="absolute right-1 top-1 bottom-1 pr-1 pl-5 text-gray-400 flex items-center rounded-md bg-gradient-to-l from-white dark:from-primary-750 to-transparent from-60%"
+      class:h-8.5={version === 'default'}
+      class:h-7.5={version === 'mini'}
     >
       {#if $query.length}
         <button
           type="reset"
           onmousedown={event => {
             event.preventDefault()
+            event.stopPropagation()
             onClear()
           }}
-          class="cursor-pointer w-6 h-6"
+          class="cursor-pointer w-6 h-6 flex justify-center items-center"
           title="Clear"
         >
           <Icon.Clear size={16} />

@@ -12,4 +12,12 @@ export class Guide extends sdk.Models.Guide {
   getUrl() {
     return `https://${this.site}`
   }
+
+  encode(): sdk.Types.GuideData {
+    return this.toObject()
+  }
+
+  static decode(data: sdk.Types.GuideData): Guide {
+    return new Guide(data)
+  }
 }

@@ -1,5 +1,6 @@
-import type { HTMLPreviewField } from '$lib/components/HTMLPreview/types'
 import { Stream, Logo, Guide, BroadcastArea, BroadcastAreaLocation, Channel } from './'
+import type { HTMLPreviewField } from '$lib/components/HTMLPreview/types'
+import type { FeedEncoded } from '$lib/types/feed'
 import { Collection } from '@freearhey/core'
 import * as sdk from '@iptv-org/sdk'
 
@@ -10,7 +11,7 @@ export class Feed extends sdk.Models.Feed {
   streams: Stream[] = []
   guides: Guide[] = []
   _languages: sdk.Models.Language[] = []
-  broadcastArea: BroadcastArea
+  broadcastArea?: BroadcastArea
   _timezones: sdk.Models.Timezone[] = []
   _channel?: Channel
 
@@ -20,31 +21,45 @@ export class Feed extends sdk.Models.Feed {
     this.uuid = crypto.randomUUID()
   }
 
-  encode() {
+  encode(): FeedEncoded {
     return {
       ...this.toObject(),
-      logos: this.logos,
-      _languages: this._languages,
-      _timezones: this._timezones,
-      streams: this.streams,
-      guides: this.guides,
-      broadcastArea: this.broadcastArea,
-      _channel: this._channel
+      _languages: this._languages.map(language => language.toObject()),
+      _timezones: this._timezones.map(timezone => timezone.toObject()),
+      _channel: this._channel?.encode(),
+      broadcastArea: this.broadcastArea?.encode(),
+      logos: this.logos.map(logo => logo.encode()),
+      streams: this.streams.map(stream => stream.encode()),
+      guides: this.guides.map(guide => guide.encode())
     }
   }
 
-  static decode(data): Feed {
+  static decode(data: FeedEncoded): Feed {
     const feed = new Feed(data)
+    const logos = data.logos.map(data => Logo.decode(data))
+    const streams = data.streams.map(data => Stream.decode(data))
+    const guides = data.guides.map(data => Guide.decode(data))
+    const languages = data._languages.map(data => new sdk.Models.Language(data))
+    const timezones = data._timezones.map(data => new sdk.Models.Timezone(data))
 
     feed
-      .withLogos(data.logos)
-      .withLanguages(data._languages)
-      .withTimezones(data._timezones)
-      .withGuides(data.guides)
-      .withStreams(data.streams)
-      .withBroadcastArea(data.broadcastArea)
+      .withLogos(logos)
+      .withLanguages(languages)
+      .withTimezones(timezones)
+      .withGuides(guides)
+      .withStreams(streams)
 
-    if (data._channel) feed.withChannel(data._channel)
+    if (data._channel) {
+      const channel = Channel.decode(data._channel)
+
+      feed.withChannel(channel)
+    }
+
+    if (data.broadcastArea) {
+      const broadcastArea = BroadcastArea.decode(data.broadcastArea)
+
+      feed.withBroadcastArea(broadcastArea)
+    }
 
     return feed
   }
@@ -53,13 +68,13 @@ export class Feed extends sdk.Models.Feed {
     return this.streams && this.streams.length > 0
   }
 
-  withChannel(channel: Channel): this {
+  withChannel(channel: Channel | undefined): this {
     this._channel = channel
 
     return this
   }
 
-  override getChannel(): Channel {
+  override getChannel(): Channel | undefined {
     return this._channel
   }
 
@@ -80,7 +95,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withGuides(guides: Guide[]): this {
-    this.guides = guides
+    this.guides = guides || []
 
     return this
   }
@@ -89,17 +104,17 @@ export class Feed extends sdk.Models.Feed {
     return new Collection(this.guides)
   }
 
-  withBroadcastArea(broadcastArea: BroadcastArea): this {
+  withBroadcastArea(broadcastArea: BroadcastArea | undefined): this {
     this.broadcastArea = broadcastArea
 
     return this
   }
 
   override getBroadcastAreaLocations(): Collection<BroadcastAreaLocation> {
-    return this.getBroadcastArea().getLocations()
+    return this.getBroadcastArea()?.getLocations() || new Collection<BroadcastAreaLocation>()
   }
 
-  override getBroadcastArea(): BroadcastArea {
+  override getBroadcastArea(): BroadcastArea | undefined {
     return this.broadcastArea
   }
 
@@ -108,7 +123,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withStreams(streams: Stream[]): this {
-    this.streams = streams
+    this.streams = streams || []
 
     return this
   }
@@ -118,7 +133,7 @@ export class Feed extends sdk.Models.Feed {
   }
 
   withLogos(logos: Logo[]): this {
-    this.logos = logos
+    this.logos = logos || []
 
     return this
   }
@@ -146,6 +161,13 @@ export class Feed extends sdk.Models.Feed {
     if (!channelSlug || !countryCode || typeof window === 'undefined') return ''
 
     return `${window.location.protocol}//${window.location.host}/channels/${countryCode}/${channelSlug}#${this.id}`
+  }
+
+  override getFullName(): string {
+    const uniqueName = this.getChannel()?.getUniqueName()
+    if (!uniqueName) return ''
+
+    return `${uniqueName} ${this.name}`
   }
 
   getEditUrl(): string {
@@ -227,8 +249,7 @@ export class Feed extends sdk.Models.Feed {
       {
         name: 'broadcast_area',
         type: 'link[]',
-        value: this.getBroadcastArea()
-          .getLocations()
+        value: this.getBroadcastAreaLocations()
           .map((location: sdk.Models.BroadcastAreaLocation) => ({
             label: location.getName(),
             query: `broadcast_area:${location.rawCode}`

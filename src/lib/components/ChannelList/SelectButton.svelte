@@ -1,6 +1,7 @@
 <script lang="ts">
   import { selectStreams, deselectStreams, selectedStreams } from '$lib/store'
   import type { Channel, Stream } from '$lib/models'
+  import { SvelteSet } from 'svelte/reactivity'
   import { Checkbox } from '$lib/components'
 
   interface Props {
@@ -35,7 +36,14 @@
 
   function onCheckboxChange(selected: boolean) {
     if (selected) {
-      selectStreams(selectableStreams.all())
+      const included = new SvelteSet<string>()
+      const streams = selectableStreams.filter((stream: Stream) => {
+        if (included.has(stream.getId())) return false
+        included.add(stream.getId())
+        return true
+      })
+
+      selectStreams(streams.all())
     } else {
       deselectStreams(selectableStreams.all())
     }

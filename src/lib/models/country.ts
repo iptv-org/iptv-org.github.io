@@ -1,7 +1,7 @@
 import type { CountryEncoded } from '$lib/types/country'
 import { Collection } from '@freearhey/core'
-import * as sdk from '@iptv-org/sdk'
 import { Channel, Feed, Stream } from './'
+import * as sdk from '@iptv-org/sdk'
 
 export class Country extends sdk.Models.Country {
   channels: Channel[] = []
@@ -47,14 +47,15 @@ export class Country extends sdk.Models.Country {
   encode(): CountryEncoded {
     return {
       ...this.toObject(),
-      channels: this.channels
+      channels: this.channels.map(channel => channel.encode())
     }
   }
 
   static decode(data: CountryEncoded): Country {
     const country = new Country(data)
+    const channels = data.channels.map(data => Channel.decode(data))
 
-    country.withChannels(data.channels)
+    country.withChannels(channels)
 
     return country
   }
