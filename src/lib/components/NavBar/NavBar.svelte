@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { DEFAULT_QUERY } from '../../../constants'
   import { setSearchParam } from '$lib/navigation'
   import { SearchField } from '$lib/components'
   import { goto } from '$app/navigation'
@@ -27,7 +26,7 @@
 
   function onLogoClick(event: MouseEvent) {
     event.preventDefault()
-    setSearchParam('q', DEFAULT_QUERY + ' ')
+    goto(resolve('/'))
   }
 </script>
 
