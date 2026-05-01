@@ -33,26 +33,30 @@
   $effect(() => {
     const showModal = !!page.state.showModal
     const channelId = page.state.channelId
+    const currentStatus = modalStatus
 
     untrack(() => {
       if (page.state.originUrl) originUrl = page.state.originUrl
-      if (showModal && modalStatus === 'closed') {
+      if (showModal && currentStatus === 'closed') {
         const channel = api.processedData?.channelsKeyById?.get(channelId)
         if (channel) openChannelPopup(channel)
-      } else if (showModal && modalStatus === 'open' && channelId !== currentChannelId) {
-        close({
-          onClose: () => (modalStatus = 'closing'),
-          onClosed: () => {
-            modalStatus = 'closed'
-            currentChannelId = null
-
-            const nextChannelId = page.state.channelId
-            const nextChannel = api.processedData?.channelsKeyById?.get(nextChannelId)
-
-            if (nextChannel) openChannelPopup(nextChannel)
-          }
-        })
-      } else if (!showModal && (modalStatus === 'open' || modalStatus === 'opening')) {
+      } else if (
+        showModal &&
+        (currentStatus === 'open' || currentStatus === 'opening') &&
+        channelId !== currentChannelId
+      ) {
+        if (currentStatus === 'open') {
+          close({
+            onClose: () => (modalStatus = 'closing'),
+            onClosed: () => {
+              modalStatus = 'closed'
+              currentChannelId = null
+              const nextChannel = api.processedData?.channelsKeyById?.get(page.state.channelId)
+              if (nextChannel) openChannelPopup(nextChannel)
+            }
+          })
+        }
+      } else if (!showModal && (currentStatus === 'open' || currentStatus === 'opening')) {
         closeChannelPopup()
       }
     })
