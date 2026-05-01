@@ -38,17 +38,18 @@
         const channel = api.processedData?.channelsKeyById?.get(channelId)
         if (channel) openChannelPopup(channel)
       } else if (showModal && modalStatus === 'open' && channelId !== currentChannelId) {
-        const nextChannel = api.processedData?.channelsKeyById?.get(channelId)
-        if (nextChannel) {
-          close({
-            onClose: () => (modalStatus = 'closing'),
-            onClosed: () => {
-              modalStatus = 'closed'
-              currentChannelId = null
-              openChannelPopup(nextChannel)
-            }
-          })
-        }
+        close({
+          onClose: () => (modalStatus = 'closing'),
+          onClosed: () => {
+            modalStatus = 'closed'
+            currentChannelId = null
+
+            const nextChannelId = page.state.channelId
+            const nextChannel = api.processedData?.channelsKeyById?.get(nextChannelId)
+
+            if (nextChannel) openChannelPopup(nextChannel)
+          }
+        })
       } else if (!showModal && (modalStatus === 'open' || modalStatus === 'opening')) {
         closeChannelPopup()
       }
