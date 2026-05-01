@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tippy } from '$lib/actions'
+  import { interactiveTooltip } from '$lib/actions/tooltip'
   import * as Icon from '$lib/icons'
 
   interface Props {
@@ -29,7 +29,7 @@
     aria-label="Disabled"
   >
     <div
-      use:tippy={{
+      use:interactiveTooltip={{
         content: 'No streams available',
         placement: 'right'
       }}

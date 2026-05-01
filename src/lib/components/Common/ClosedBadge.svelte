@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Badge } from '$lib/components'
   import { Channel } from '$lib/models'
-  import { tippy } from '$lib/actions'
+  import { tooltip } from '$lib/actions/tooltip'
 
   interface Props {
     channel: Channel
@@ -12,13 +12,7 @@
 
 <Badge>
   {#if channel.closed}
-    <div
-      use:tippy={{
-        content: `closed: ${channel.closed}`,
-        allowHTML: true,
-        interactive: true
-      }}
-    >
+    <div use:tooltip={{ content: `closed: ${channel.closed}` }}>
       Closed
     </div>
   {:else}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Channel, BlocklistRecord } from '$lib/models'
   import { Badge } from '$lib/components'
-  import { tippy } from '$lib/actions'
+  import { interactiveTooltip } from '$lib/actions/tooltip'
 
   interface Props {
     channel: Channel
@@ -46,10 +46,8 @@
 
 <Badge>
   <div
-    use:tippy={{
-      content: `${getMessage()}: ${getBlocklistRecordUrls()}`,
-      allowHTML: true,
-      interactive: true
+    use:interactiveTooltip={{
+      content: `${getMessage()}: ${getBlocklistRecordUrls()}`
     }}
   >
     Blocked
