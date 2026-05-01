@@ -2,9 +2,9 @@
   import { afterNavigate, beforeNavigate, pushState } from '$app/navigation'
   import { setSearchParam, setPageTitle } from '$lib/navigation'
   import { onMount, getContext, untrack } from 'svelte'
+  import type { Channel, Country } from '$lib/models'
   import type { Context } from 'svelte-simple-modal'
   import { DEFAULT_QUERY } from '../constants'
-  import { Country } from '$lib/models'
   import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import * as api from '$lib/api'
@@ -26,68 +26,81 @@
 
   const { open, close } = getContext<Context>('simple-modal')
 
-  let isChannelPopupOpened = false
+  let modalStatus = $state<'closed' | 'opening' | 'open' | 'closing'>('closed')
+  let currentChannelId = $state<string | null>(null)
+  let originUrl = $state<string | null>(resolve('/'))
 
   $effect(() => {
     const showModal = !!page.state.showModal
     const channelId = page.state.channelId
+    const currentStatus = modalStatus
 
-    if (showModal) {
-      const channelsKeyById = api.processedData?.channelsKeyById
-      if (!channelsKeyById) return
-
-      const channel = channelsKeyById.get(channelId)
-      if (!channel) return
-
-      openChannelPopup(channel)
-      setPageTitle(channel.getUniqueName())
-    } else if (isChannelPopupOpened) {
-      closeChannelPopup()
-      setPageTitle('')
-    }
+    untrack(() => {
+      if (page.state.originUrl) originUrl = page.state.originUrl
+      if (showModal && currentStatus === 'closed') {
+        const channel = api.processedData?.channelsKeyById?.get(channelId)
+        if (channel) openChannelPopup(channel)
+      } else if (
+        showModal &&
+        (currentStatus === 'open' || currentStatus === 'opening') &&
+        channelId !== currentChannelId
+      ) {
+        if (currentStatus === 'open') {
+          close({
+            onClose: () => (modalStatus = 'closing'),
+            onClosed: () => {
+              modalStatus = 'closed'
+              currentChannelId = null
+              const nextChannel = api.processedData?.channelsKeyById?.get(page.state.channelId)
+              if (nextChannel) openChannelPopup(nextChannel)
+            }
+          })
+        }
+      } else if (!showModal && (currentStatus === 'open' || currentStatus === 'opening')) {
+        closeChannelPopup()
+      }
+    })
   })
+
+  function openChannelPopup(channel: Channel) {
+    currentChannelId = channel.id
+    setPageTitle(channel.getUniqueName())
+
+    open(
+      ChannelPopup,
+      {
+        channel,
+        onClose: closeChannelPopup
+      },
+      { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
+      {
+        onOpen: () => (modalStatus = 'opening'),
+        onOpened: onChannelPopupOpened,
+        onClose: () => (modalStatus = 'closing'),
+        onClosed: onChannelPopupClosed
+      }
+    )
+  }
 
   function closeChannelPopup() {
     close({
-      onClosed: () => {
-        isChannelPopupOpened = false
-        setPageTitle('')
-      }
+      onClose: () => (modalStatus = 'closing'),
+      onClosed: onChannelPopupClosed
     })
   }
 
   function onChannelPopupClosed() {
-    pushState(resolve('/'), { showModal: false })
+    modalStatus = 'closed'
+    currentChannelId = null
+    setPageTitle('')
+
+    if (page.state.showModal && originUrl) {
+      pushState(originUrl, { showModal: false })
+    }
   }
 
-  function openChannelPopup(channel) {
-    untrack(() => {
-      if (isChannelPopupOpened) {
-        close({
-          onClosed: () => {
-            isChannelPopupOpened = true
-            open(
-              ChannelPopup,
-              { channel },
-              { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
-              {
-                onClosed: onChannelPopupClosed
-              }
-            )
-          }
-        })
-      } else {
-        isChannelPopupOpened = true
-        open(
-          ChannelPopup,
-          { channel },
-          { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
-          {
-            onClosed: onChannelPopupClosed
-          }
-        )
-      }
-    })
+  function onChannelPopupOpened() {
+    modalStatus = 'open'
   }
 
   let countries: Country[] = $state([])

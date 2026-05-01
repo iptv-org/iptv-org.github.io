@@ -30,7 +30,11 @@
   function openChannelModal(event) {
     event.preventDefault()
 
-    pushState(channel.getPagePath(), { showModal: true, channelId: channel.id })
+    pushState(channel.getPagePath(), {
+      showModal: true,
+      channelId: channel.id,
+      originUrl: window.location.href
+    })
   }
 
   const { open } = getContext<Context>('simple-modal')
