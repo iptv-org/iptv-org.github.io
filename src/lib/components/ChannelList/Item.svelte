@@ -8,7 +8,6 @@
   import { Channel } from '$lib/models'
   import { getContext } from 'svelte'
   import * as Icon from '$lib/icons'
-  import { page } from '$app/state'
   import * as ChannelList from './'
 
   interface Props {
