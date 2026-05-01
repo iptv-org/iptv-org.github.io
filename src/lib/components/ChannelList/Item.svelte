@@ -1,8 +1,8 @@
 <script lang="ts">
   import { BlockedBadge, ClosedBadge, CodeBlock, FeedsPopup, LogosPopup } from '$lib/components'
   import type { Context } from 'svelte-simple-modal'
+  import { downloadMode, rootUrl } from '$lib/store'
   import { pushState } from '$app/navigation'
-  import { downloadMode } from '$lib/store'
   import { fade } from 'svelte/transition'
   import { pluralize } from '$lib/utils'
   import { Channel } from '$lib/models'
@@ -29,6 +29,8 @@
 
   function openChannelModal(event) {
     event.preventDefault()
+
+    rootUrl.set(window.location.href)
 
     pushState(channel.getPagePath(), { showModal: true, channelId: channel.id })
   }

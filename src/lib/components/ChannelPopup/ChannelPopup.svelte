@@ -3,6 +3,7 @@
   import { pushState } from '$app/navigation'
   import type { Channel } from '$lib/models'
   import { resolve } from '$app/paths'
+  import { rootUrl } from '$lib/store'
 
   interface Props {
     channel: Channel
@@ -11,7 +12,7 @@
   const { channel }: Props = $props()
 
   function _onClose() {
-    pushState(resolve('/'), {})
+    pushState($rootUrl, { showModal: false })
   }
 </script>
 

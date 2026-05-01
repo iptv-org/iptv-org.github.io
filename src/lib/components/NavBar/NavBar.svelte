@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { DEFAULT_QUERY } from '../../../constants'
   import { setSearchParam } from '$lib/navigation'
   import { SearchField } from '$lib/components'
   import { goto } from '$app/navigation'
@@ -23,6 +24,11 @@
     query.set('')
     focusOnInput()
   }
+
+  function onLogoClick(event: MouseEvent) {
+    event.preventDefault()
+    setSearchParam('q', DEFAULT_QUERY + ' ')
+  }
 </script>
 
 <svelte:window bind:scrollY />
@@ -34,7 +40,7 @@
   >
     <div class="flex justify-between items-center mx-auto px-3 w-full max-w-7xl">
       <div class="flex flex-start items-center sm:basis-120 shrink">
-        <a href={resolve('/')} class="pr-2">
+        <a href={resolve('/')} class="pr-2" onclick={onLogoClick}>
           <NavBar.Logo />
         </a>
         <div class="hidden sm:block w-full">
