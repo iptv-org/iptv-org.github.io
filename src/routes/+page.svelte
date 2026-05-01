@@ -2,9 +2,9 @@
   import { afterNavigate, beforeNavigate, pushState } from '$app/navigation'
   import { setSearchParam, setPageTitle } from '$lib/navigation'
   import { onMount, getContext, untrack } from 'svelte'
+  import type { Channel, Country } from '$lib/models'
   import type { Context } from 'svelte-simple-modal'
   import { DEFAULT_QUERY } from '../constants'
-  import { Country } from '$lib/models'
   import { page } from '$app/state'
   import * as api from '$lib/api'
   import {
