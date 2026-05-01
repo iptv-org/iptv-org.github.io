@@ -5,6 +5,7 @@
   import type { Channel, Country } from '$lib/models'
   import type { Context } from 'svelte-simple-modal'
   import { DEFAULT_QUERY } from '../constants'
+  import { resolve } from '$app/paths'
   import { page } from '$app/state'
   import * as api from '$lib/api'
   import {
@@ -20,20 +21,21 @@
     searchResults,
     downloadMode,
     isSearching,
-    query,
-    rootUrl
+    query
   } from '$lib/store'
 
   const { open, close } = getContext<Context>('simple-modal')
 
   let modalStatus = $state<'closed' | 'opening' | 'open' | 'closing'>('closed')
   let currentChannelId = $state<string | null>(null)
+  let originUrl = $state<string | null>(resolve('/'))
 
   $effect(() => {
     const showModal = !!page.state.showModal
     const channelId = page.state.channelId
 
     untrack(() => {
+      if (page.state.originUrl) originUrl = page.state.originUrl
       if (showModal && modalStatus === 'closed') {
         const channel = api.processedData?.channelsKeyById?.get(channelId)
         if (channel) openChannelPopup(channel)
@@ -62,7 +64,10 @@
 
     open(
       ChannelPopup,
-      { channel },
+      {
+        channel,
+        onClose: closeChannelPopup
+      },
       { transitionBgProps: { duration: 0 }, transitionWindowProps: { duration: 0 } },
       {
         onOpen: () => (modalStatus = 'opening'),
@@ -85,8 +90,8 @@
     currentChannelId = null
     setPageTitle('')
 
-    if (page.state.showModal) {
-      pushState($rootUrl, { showModal: false })
+    if (page.state.showModal && originUrl) {
+      pushState(originUrl, { showModal: false })
     }
   }
 

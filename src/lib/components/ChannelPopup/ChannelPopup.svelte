@@ -2,19 +2,15 @@
   import { Popup, ChannelCard } from '$lib/components'
   import { pushState } from '$app/navigation'
   import type { Channel } from '$lib/models'
-  import { rootUrl } from '$lib/store'
 
   interface Props {
     channel: Channel
+    onClose: () => void
   }
 
-  const { channel }: Props = $props()
-
-  function _onClose() {
-    pushState($rootUrl, { showModal: false })
-  }
+  const { channel, onClose }: Props = $props()
 </script>
 
-<Popup onClose={_onClose}>
-  <ChannelCard {channel} onClose={_onClose} />
+<Popup {onClose}>
+  <ChannelCard {channel} {onClose} />
 </Popup>

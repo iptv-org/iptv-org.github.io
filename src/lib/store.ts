@@ -1,6 +1,5 @@
 import { writable, type Writable, get, derived } from 'svelte/store'
 import { Channel, Stream } from '$lib/models'
-import { resolve } from '$app/paths'
 import * as sdk from '@iptv-org/sdk'
 
 const channels: Writable<Channel[]> = writable([])
@@ -12,7 +11,6 @@ export const query = writable('')
 export const downloadMode = writable(false)
 export const selectedStreams = writable(new Set<Stream>())
 export const expandResults = writable(false)
-export const rootUrl = writable(resolve('/'))
 
 let searchIndex = undefined
 
