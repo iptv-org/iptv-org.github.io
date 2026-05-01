@@ -11,6 +11,7 @@ export const query = writable('')
 export const downloadMode = writable(false)
 export const selectedStreams = writable(new Set<Stream>())
 export const expandResults = writable(false)
+export const rootUrl = writable('/')
 
 let searchIndex = undefined
 
