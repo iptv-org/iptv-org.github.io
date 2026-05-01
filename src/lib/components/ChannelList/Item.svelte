@@ -8,6 +8,7 @@
   import { Channel } from '$lib/models'
   import { getContext } from 'svelte'
   import * as Icon from '$lib/icons'
+  import { page } from '$app/state'
   import * as ChannelList from './'
 
   interface Props {
@@ -30,7 +31,9 @@
   function openChannelModal(event) {
     event.preventDefault()
 
-    rootUrl.set(window.location.href)
+    if (!page.state.showModal) {
+      rootUrl.set(window.location.href)
+    }
 
     pushState(channel.getPagePath(), { showModal: true, channelId: channel.id })
   }
