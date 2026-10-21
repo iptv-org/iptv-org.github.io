@@ -25,23 +25,20 @@
   <CopyLinkButton url={channel.pageUrl} onCopy={onLinkCopy} />
   {#if !channel.hasLogos}
     <Menu.Button
-      url={channel.addLogoUrl}
+      url={channel.addLogoUrl || ''}
       label="Add Logo"
       iconName="Image"
       external
       onClick={closeMenu}
     />
   {/if}
-  {#if !channel.hasStreams && !channel.isBlocked && !channel.isClosed}
-    <Menu.Button
-      url={channel.requestLinkUrl}
-      label="Request Stream"
-      iconName="Request"
-      external
-      onClick={closeMenu}
-    />
-  {/if}
-  <Menu.Button url={channel.editUrl} label="Edit" iconName="Edit" external onClick={closeMenu} />
+  <Menu.Button
+    url={channel.editUrl || ''}
+    label="Edit"
+    iconName="Edit"
+    external
+    onClick={closeMenu}
+  />
   <Menu.Button
     url={channel.removeUrl}
     label="Remove"
